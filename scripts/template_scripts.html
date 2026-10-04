@@ -1,8 +1,6 @@
   <script>
     const iemsData = __JSON_DATA__;
     let currentFilter = 'all';
-    let currentPriceTier = 'all';
-    let currentNozzle = 'all';
     let currentSort = 'score-desc';
     let searchQuery = '';
     let viewingSharedOnly = false;
@@ -12,10 +10,10 @@
     function fireConfetti(x = 0.5, y = 0.7) {
       if (typeof confetti === 'function') {
         confetti({
-          particleCount: 45,
-          spread: 65,
+          particleCount: 35,
+          spread: 55,
           origin: { x, y },
-          colors: ['#f43f5e', '#a855f7', '#38bdf8', '#fbbf24', '#34d399'],
+          colors: ['#fbbf24', '#f59e0b', '#38bdf8', '#34d399', '#f43f5e'],
           disableForReducedMotion: true
         });
       }
@@ -25,65 +23,173 @@
     let shortlist = JSON.parse(localStorage.getItem('iem_radar_shortlist') || '[]');
     let personalNotes = JSON.parse(localStorage.getItem('iem_radar_notes') || '{}');
 
-    // Parse URL params for ?picks=iem1,iem2
+    // Parse URL params for shared picks
     const urlParams = new URLSearchParams(window.location.search);
-    const sharedPicks = urlParams.get('picks') ? urlParams.get('picks').split(',') : [];
-
-    if (sharedPicks.length > 0) {
-      document.getElementById('shared-picks-banner').classList.remove('hidden');
-      if (shortlist.length === 0) {
-        shortlist = [...sharedPicks];
-        localStorage.setItem('iem_radar_shortlist', JSON.stringify(shortlist));
+    const sharedPicksParam = urlParams.get('picks');
+    let sharedPicks = [];
+    if (sharedPicksParam) {
+      sharedPicks = sharedPicksParam.split(',').map(s => s.trim().toLowerCase());
+      if (sharedPicks.length > 0) {
+        document.getElementById('shared-picks-banner').classList.remove('hidden');
       }
     }
 
-    // Elements
+    // DOM Elements
     const cardsView = document.getElementById('cards-view');
     const tableView = document.getElementById('table-view');
     const tableBody = document.getElementById('table-body');
+    const emptyState = document.getElementById('empty-state');
+    const resultsCountText = document.getElementById('results-count-text');
     const searchInput = document.getElementById('search-input');
-    const priceFilter = document.getElementById('price-filter');
-    const nozzleFilter = document.getElementById('nozzle-filter');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
     const sortSelect = document.getElementById('sort-select');
-    const personaButtons = document.querySelectorAll('.persona-btn');
-    const resetPersonaBtn = document.getElementById('reset-persona-btn');
+    const filterPills = document.querySelectorAll('.filter-pill');
     const viewCardsBtn = document.getElementById('view-cards-btn');
     const viewTableBtn = document.getElementById('view-table-btn');
-
-    // Modals
-    const detailModal = document.getElementById('detail-modal');
-    const closeDetailModalBtn = document.getElementById('close-detail-modal-btn');
-    const wishlistModal = document.getElementById('wishlist-modal');
-    const closeWishlistBtn = document.getElementById('close-wishlist-btn');
+    const wishlistDrawer = document.getElementById('wishlist-drawer');
+    const drawerBackdrop = document.getElementById('drawer-backdrop');
     const openWishlistTopBtn = document.getElementById('open-wishlist-top-btn');
-    const openWishlistModalBtn = document.getElementById('open-wishlist-modal-btn');
-    const floatingWishlistPill = document.getElementById('floating-wishlist-pill');
+    const closeWishlistBtn = document.getElementById('close-wishlist-btn');
     const wishlistCounterBadge = document.getElementById('wishlist-counter-badge');
-    const wishlistPillCount = document.getElementById('wishlist-pill-count');
-    const wishlistPillTotal = document.getElementById('wishlist-pill-total');
+    const drawerCountLabel = document.getElementById('drawer-count-label');
+    const wishlistItemsContainer = document.getElementById('wishlist-items-container');
+    const copyShareUrlBtn = document.getElementById('copy-share-url-btn');
+    const clearAllWishlistBtn = document.getElementById('clear-all-wishlist-btn');
 
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      document.getElementById('toast-message').textContent = msg;
-      toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.add('hidden'), 2600);
-    }
+    // Modal Elements
+    const detailModal = document.getElementById('iem-detail-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const modalImage = document.getElementById('modal-image');
+    const modalBrand = document.getElementById('modal-brand');
+    const modalTitle = document.getElementById('modal-title');
+    const modalSoundDetail = document.getElementById('modal-sound-detail');
+    const modalDriver = document.getElementById('modal-driver');
+    const modalNozzle = document.getElementById('modal-nozzle');
+    const modalCable = document.getElementById('modal-cable');
+    const modalAccessories = document.getElementById('modal-accessories');
+    const modalNoteInput = document.getElementById('modal-note-input');
+    const saveNoteBtn = document.getElementById('save-note-btn');
+    const modalStoresContainer = document.getElementById('modal-stores-container');
 
+    // Search and Filter Listeners
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      clearSearchBtn.classList.toggle('hidden', !searchQuery);
+      render();
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      render();
+    });
+
+    sortSelect.addEventListener('change', (e) => {
+      currentSort = e.target.value;
+      render();
+    });
+
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => {
+          p.classList.remove('active', 'bg-amber-400', 'text-black', 'font-bold', 'border-amber-400');
+          p.classList.add('bg-studio-900', 'text-slate-300', 'border-studio-border');
+        });
+        pill.classList.add('active', 'bg-amber-400', 'text-black', 'font-bold', 'border-amber-400');
+        pill.classList.remove('bg-studio-900', 'text-slate-300', 'border-studio-border');
+        currentFilter = pill.dataset.filter;
+        render();
+      });
+    });
+
+    document.getElementById('reset-filters-btn').addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      currentFilter = 'all';
+      filterPills.forEach(p => {
+        if (p.dataset.filter === 'all') {
+          p.classList.add('active', 'bg-amber-400', 'text-black', 'font-bold', 'border-amber-400');
+          p.classList.remove('bg-studio-900', 'text-slate-300', 'border-studio-border');
+        } else {
+          p.classList.remove('active', 'bg-amber-400', 'text-black', 'font-bold', 'border-amber-400');
+          p.classList.add('bg-studio-900', 'text-slate-300', 'border-studio-border');
+        }
+      });
+      render();
+    });
+
+    // View Switching
+    viewCardsBtn.addEventListener('click', () => {
+      viewCardsBtn.classList.add('bg-amber-400', 'text-black', 'font-bold');
+      viewCardsBtn.classList.remove('text-slate-400');
+      viewTableBtn.classList.remove('bg-amber-400', 'text-black', 'font-bold');
+      viewTableBtn.classList.add('text-slate-400');
+      cardsView.classList.remove('hidden');
+      tableView.classList.add('hidden');
+    });
+
+    viewTableBtn.addEventListener('click', () => {
+      viewTableBtn.classList.add('bg-amber-400', 'text-black', 'font-bold');
+      viewTableBtn.classList.remove('text-slate-400');
+      viewCardsBtn.classList.remove('bg-amber-400', 'text-black', 'font-bold');
+      viewCardsBtn.classList.add('text-slate-400');
+      tableView.classList.remove('hidden');
+      cardsView.classList.add('hidden');
+    });
+
+    // Shared picks actions
+    document.getElementById('filter-shared-only-btn').addEventListener('click', () => {
+      viewingSharedOnly = true;
+      render();
+    });
+    document.getElementById('clear-shared-view-btn').addEventListener('click', () => {
+      viewingSharedOnly = false;
+      render();
+    });
+
+    // Shortlist Logic
     function updateShortlistUI() {
-      const count = shortlist.length;
-      wishlistCounterBadge.textContent = count;
-      wishlistPillCount.textContent = count;
+      wishlistCounterBadge.textContent = shortlist.length;
+      drawerCountLabel.textContent = `${shortlist.length} item${shortlist.length === 1 ? '' : 's'} saved`;
 
-      if (count > 0) {
-        floatingWishlistPill.classList.remove('hidden');
-        const totalAli = shortlist.reduce((sum, id) => {
-          const item = iemsData.find(i => i.id === id);
-          return sum + (item ? item.price_eur_ali_1111 : 0);
-        }, 0);
-        wishlistPillTotal.textContent = '~€' + totalAli.toFixed(1);
-      } else {
-        floatingWishlistPill.classList.add('hidden');
+      if (shortlist.length === 0) {
+        wishlistItemsContainer.innerHTML = `
+          <div class="text-center py-12 text-slate-400 space-y-2">
+            <i class="fa-regular fa-bookmark text-2xl text-slate-500"></i>
+            <p class="text-xs">Your saved shortlist is empty.</p>
+            <p class="text-[11px] text-slate-500">Tap the bookmark icon on any IEM card to save it here.</p>
+          </div>
+        `;
+        return;
       }
+
+      const savedItems = iemsData.filter(i => shortlist.includes(i.id));
+      wishlistItemsContainer.innerHTML = savedItems.map(item => {
+        const note = personalNotes[item.id] || '';
+        return `
+          <div class="p-3.5 rounded-xl bg-studio-950 border border-studio-border flex flex-col gap-2">
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center space-x-3 min-w-0">
+                <img src="${item.image || 'assets/images/' + item.id + '.jpg'}" alt="${item.name}" class="w-12 h-12 rounded-lg object-contain bg-studio-900 border border-studio-border p-1 shrink-0">
+                <div class="min-w-0">
+                  <h4 class="text-sm font-bold text-white truncate">${item.name}</h4>
+                  <span class="text-[11px] font-mono text-amber-400">~€${item.price_eur_amazon} (Amazon) • ~€${item.price_eur_ali_1111} (11.11)</span>
+                </div>
+              </div>
+              <button type="button" onclick="removeFromShortlist('${item.id}')" aria-label="Remove item" class="w-7 h-7 rounded-md bg-studio-900 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 flex items-center justify-center transition shrink-0">
+                <i class="fa-solid fa-trash-can text-xs"></i>
+              </button>
+            </div>
+            ${note ? `
+              <div class="text-xs p-2 rounded bg-studio-900 text-slate-300 italic border border-studio-border">
+                "${note}"
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
     }
 
     window.toggleShortlist = function(id, event) {
@@ -91,29 +197,120 @@
       const idx = shortlist.indexOf(id);
       if (idx > -1) {
         shortlist.splice(idx, 1);
-        showToast('Removed from Shortlist');
       } else {
         shortlist.push(id);
-        fireConfetti(event ? event.clientX / window.innerWidth : 0.5, event ? event.clientY / window.innerHeight : 0.6);
-        showToast('Added to Shortlist ❤️');
+        fireConfetti(0.85, 0.2);
       }
       localStorage.setItem('iem_radar_shortlist', JSON.stringify(shortlist));
       updateShortlistUI();
       render();
     };
 
+    window.removeFromShortlist = function(id) {
+      const idx = shortlist.indexOf(id);
+      if (idx > -1) {
+        shortlist.splice(idx, 1);
+        localStorage.setItem('iem_radar_shortlist', JSON.stringify(shortlist));
+        updateShortlistUI();
+        render();
+      }
+    };
+
+    clearAllWishlistBtn.addEventListener('click', () => {
+      if (confirm('Clear all saved IEMs from your shortlist?')) {
+        shortlist = [];
+        localStorage.setItem('iem_radar_shortlist', JSON.stringify(shortlist));
+        updateShortlistUI();
+        render();
+      }
+    });
+
+    copyShareUrlBtn.addEventListener('click', () => {
+      if (shortlist.length === 0) {
+        alert('Save some IEMs to your shortlist first before sharing!');
+        return;
+      }
+      const shareUrl = `${window.location.origin}${window.location.pathname}?picks=${shortlist.join(',')}`;
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        copyShareUrlBtn.innerHTML = '<i class="fa-solid fa-check"></i><span>Link Copied to Clipboard!</span>';
+        setTimeout(() => {
+          copyShareUrlBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i><span>Copy Shareable Link for Friend</span>';
+        }, 2500);
+      });
+    });
+
+    // Drawer Controls
+    function openDrawer() {
+      wishlistDrawer.classList.remove('translate-x-full');
+      drawerBackdrop.classList.remove('hidden');
+      updateShortlistUI();
+    }
+    function closeDrawer() {
+      wishlistDrawer.classList.add('translate-x-full');
+      drawerBackdrop.classList.add('hidden');
+    }
+    openWishlistTopBtn.addEventListener('click', openDrawer);
+    closeWishlistBtn.addEventListener('click', closeDrawer);
+    drawerBackdrop.addEventListener('click', closeDrawer);
+
+    // Modal Dialog Controls
+    window.openModal = function(id) {
+      const item = iemsData.find(i => i.id === id);
+      if (!item) return;
+      currentModalIemId = id;
+
+      modalBrand.textContent = item.brand;
+      modalTitle.textContent = item.name;
+      modalImage.src = item.image || `assets/images/${item.id}.jpg`;
+      modalSoundDetail.textContent = item.takeaway || item.sound_description;
+      modalDriver.textContent = `${item.driver_type} (${item.driver_detail || 'Dynamic'})`;
+      modalNozzle.textContent = `${item.nozzle_diameter_mm}mm (${item.comfort_rating >= 9.2 ? 'Small ear safe' : 'Standard bore'})`;
+      modalCable.textContent = item.cable_detail || item.connection;
+      modalAccessories.textContent = item.accessories_included || 'Silicone tips, pouch';
+
+      modalNoteInput.value = personalNotes[id] || '';
+
+      modalStoresContainer.innerHTML = (item.verified_stores || []).map(store => `
+        <a href="${store.url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-studio-950 hover:bg-studio-800 text-slate-200 border border-studio-border text-xs font-mono font-semibold transition flex items-center gap-1.5">
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-amber-400"></i>
+          <span>${store.name}</span>
+        </a>
+      `).join('');
+
+      detailModal.showModal();
+    };
+
+    closeModalBtn.addEventListener('click', () => detailModal.close());
+    detailModal.addEventListener('click', (e) => {
+      if (e.target === detailModal) detailModal.close();
+    });
+
+    saveNoteBtn.addEventListener('click', () => {
+      if (!currentModalIemId) return;
+      const note = modalNoteInput.value.trim();
+      if (note) {
+        personalNotes[currentModalIemId] = note;
+      } else {
+        delete personalNotes[currentModalIemId];
+      }
+      localStorage.setItem('iem_radar_notes', JSON.stringify(personalNotes));
+      saveNoteBtn.textContent = 'Saved!';
+      setTimeout(() => { saveNoteBtn.textContent = 'Save'; }, 1500);
+      render();
+      updateShortlistUI();
+    });
+
+    // Render Filtered Cards & Table
     function render() {
       let filtered = iemsData.filter(iem => {
         if (viewingSharedOnly && !sharedPicks.includes(iem.id)) return false;
 
-        // Persona matching
+        // Persona & Category matching
         if (currentFilter !== 'all') {
           if (currentFilter === 'Tactical FPS Gaming') {
             if (iem.gaming_score < 8.4) return false;
           } else if (currentFilter === 'Audio Purists & Reference') {
             if (!iem.sound_signature.includes('Neutral') && !iem.name.includes('Hexa') && !iem.name.includes('RED')) return false;
-          } else if (currentFilter === 'Warm & Relaxed Daily') {
-            if (!iem.sound_signature.includes('Warm') && !iem.sound_signature.includes('Lush') && !iem.sound_signature.includes('Harman')) return false;
           } else if (currentFilter === 'Bassheads & Theatrical EDM') {
             if (!iem.sound_signature.includes('Bass') && !iem.sound_signature.includes('U-Curve') && !iem.name.includes('ZAR') && !iem.name.includes('Op.22') && !iem.name.includes('Titan X')) return false;
           } else if (currentFilter === 'Smartphone USB-C Users') {
@@ -125,24 +322,14 @@
           }
         }
 
-        // Price Tier
-        if (currentPriceTier === 'ultra-budget' && iem.price_eur_amazon > 30) return false;
-        if (currentPriceTier === 'entry' && (iem.price_eur_amazon <= 30 || iem.price_eur_amazon > 55)) return false;
-        if (currentPriceTier === 'mid' && (iem.price_eur_amazon <= 55 || iem.price_eur_amazon > 80)) return false;
-        if (currentPriceTier === 'upper' && iem.price_eur_amazon <= 80) return false;
-
-        // Nozzle Safety
-        if (currentNozzle === 'safe' && iem.nozzle_diameter_mm > 5.5) return false;
-        if (currentNozzle === 'warning' && iem.nozzle_diameter_mm <= 6.0) return false;
-
         // Search Query
         if (searchQuery) {
-          const q = searchQuery.toLowerCase();
+          const q = searchQuery;
           const match = iem.name.toLowerCase().includes(q) ||
                         iem.brand.toLowerCase().includes(q) ||
                         iem.driver_type.toLowerCase().includes(q) ||
                         iem.sound_signature.toLowerCase().includes(q) ||
-                        iem.target_personas.some(p => p.toLowerCase().includes(q));
+                        (iem.takeaway && iem.takeaway.toLowerCase().includes(q));
           if (!match) return false;
         }
 
@@ -155,95 +342,95 @@
         if (currentSort === 'price-ali-asc') return a.price_eur_ali_1111 - b.price_eur_ali_1111;
         if (currentSort === 'price-amazon-asc') return a.price_eur_amazon - b.price_eur_amazon;
         if (currentSort === 'comfort-desc') return b.comfort_rating - a.comfort_rating;
-        if (currentSort === 'gaming-desc') return b.gaming_score - a.gaming_score;
+        if (currentSort === 'name-asc') return a.name.localeCompare(b.name);
         return 0;
       });
+
+      resultsCountText.textContent = `Showing ${filtered.length} of ${iemsData.length} sets`;
+      emptyState.classList.toggle('hidden', filtered.length > 0);
 
       // Render Cards
       cardsView.innerHTML = filtered.map(iem => {
         const isFavorited = shortlist.includes(iem.id);
         const hasNote = personalNotes[iem.id];
+        const isSmallEarSafe = iem.nozzle_diameter_mm <= 5.5;
 
         return `
-          <div class="card-bouncy rounded-3xl p-6 sm:p-7 flex flex-col justify-between relative group">
+          <div class="studio-card rounded-2xl p-5 flex flex-col justify-between group relative">
             <div>
-              <!-- Card Header -->
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="cute-sticker bg-carbon-900 text-slate-200 border border-white/10 text-xs px-3 py-1 font-mono uppercase font-bold">
-                  ${iem.brand}
-                </span>
+              <!-- IEM Image Showcase -->
+              <div class="aspect-[4/3] bg-studio-950 rounded-xl overflow-hidden mb-4 relative cursor-pointer border border-studio-border/60 flex items-center justify-center p-3" onclick="openModal('${iem.id}')">
+                <img src="${iem.image || 'assets/images/' + iem.id + '.jpg'}" alt="${iem.name}" loading="lazy" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
                 
-                <div class="flex items-center gap-2">
+                <!-- Badge on Image -->
+                <div class="absolute top-2.5 left-2.5">
                   ${iem.nozzle_diameter_mm > 6.0 ? `
-                    <span class="cute-sticker bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs px-2.5 py-0.5">
+                    <span class="px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[11px] font-mono font-bold">
                       ⚠️ 6.2mm Nozzle
                     </span>
-                  ` : iem.comfort_rating >= 9.4 ? `
-                    <span class="cute-sticker bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs px-2.5 py-0.5">
+                  ` : isSmallEarSafe ? `
+                    <span class="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] font-mono font-bold">
                       🌸 Small Ear Safe
                     </span>
                   ` : ''}
-                  
-                  <button type="button" onclick="toggleShortlist('${iem.id}', event)" aria-label="Toggle favorite" class="w-9 h-9 rounded-2xl flex items-center justify-center transition ${isFavorited ? 'bg-gradient-to-r from-pink-600 to-rose-600 text-white shadow-md shadow-pink-500/25' : 'bg-carbon-900 text-slate-300 hover:text-pink-400 hover:bg-carbon-800'} border border-white/10 btn-tactile">
-                    <i class="fa-solid fa-heart text-sm"></i>
-                  </button>
                 </div>
+
+                <!-- Favorite Bookmark Button -->
+                <button type="button" onclick="toggleShortlist('${iem.id}', event)" aria-label="Save to shortlist" class="absolute top-2.5 right-2.5 w-8 h-8 rounded-lg flex items-center justify-center transition ${isFavorited ? 'bg-amber-400 text-black shadow-md' : 'bg-studio-900/80 hover:bg-studio-800 text-slate-300 hover:text-amber-400'} border border-studio-border btn-tactile">
+                  <i class="fa-${isFavorited ? 'solid' : 'regular'} fa-bookmark text-xs"></i>
+                </button>
               </div>
 
-              <!-- Title & Driver -->
-              <h4 class="text-2xl font-bold font-display text-white group-hover:text-cyan-400 transition cursor-pointer leading-snug" onclick="openModal('${iem.id}')">
+              <!-- Title & Brand -->
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[11px] font-mono uppercase text-slate-400 font-bold tracking-wider">${iem.brand}</span>
+                <span class="text-[11px] font-mono text-slate-400">${iem.driver_type}</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-amber-300 transition cursor-pointer mt-0.5" onclick="openModal('${iem.id}')">
                 ${iem.name}
-              </h4>
-              <div class="flex items-center gap-2 mt-1.5 text-xs text-slate-300 font-mono">
-                <span>${iem.driver_type}</span>
-                <span>•</span>
-                <span>${iem.nozzle_diameter_mm}mm outer bore</span>
-              </div>
+              </h3>
 
-              <!-- Sound Signature Tag -->
-              <div class="mt-3.5">
-                <span class="inline-block px-3 py-1 rounded-xl bg-cyan-500/15 text-cyan-300 text-xs font-semibold border border-cyan-500/30 font-mono">
+              <!-- Sound Signature Chip -->
+              <div class="mt-2.5">
+                <span class="inline-block px-2.5 py-0.5 rounded-md bg-studio-850 text-amber-300 text-xs font-mono font-medium border border-studio-border">
                   ${iem.sound_signature}
                 </span>
               </div>
 
-              <!-- Sound Summary -->
-              <p class="text-sm text-slate-200 mt-3 leading-relaxed line-clamp-3 font-normal">
-                ${iem.sound_description}
+              <!-- Human Takeaway Copy -->
+              <p class="text-xs text-slate-300 mt-3 leading-relaxed font-sans line-clamp-3">
+                ${iem.takeaway || iem.sound_description}
               </p>
 
-              <!-- Persona Badges -->
-              <div class="flex flex-wrap gap-1.5 mt-3.5">
-                ${iem.target_personas.slice(0, 2).map(p => `
-                  <span class="text-xs px-2.5 py-1 rounded-full bg-carbon-900 text-slate-300 border border-white/10 font-mono">
-                    ${p}
-                  </span>
-                `).join('')}
+              <!-- Fit Verdict -->
+              <div class="text-[11px] font-mono text-slate-400 mt-3 flex items-center gap-1.5">
+                <i class="fa-solid fa-ruler-horizontal text-sky-400"></i>
+                <span class="truncate">${iem.fit_verdict || (iem.nozzle_diameter_mm + 'mm nozzle')}</span>
               </div>
 
               ${hasNote ? `
-                <div class="mt-3.5 text-xs p-3 rounded-2xl bg-indigo-500/15 border border-indigo-500/25 text-indigo-200 italic">
-                  <i class="fa-solid fa-pen text-xs mr-1 text-pink-400"></i> "${hasNote}"
+                <div class="mt-3 text-xs p-2.5 rounded-lg bg-amber-400/10 text-amber-200 border border-amber-400/20 italic">
+                  <i class="fa-solid fa-pen text-amber-400 mr-1 text-[10px]"></i> "${hasNote}"
                 </div>
               ` : ''}
             </div>
 
-            <!-- Pricing & Action -->
-            <div class="mt-6 pt-5 border-t border-white/10 space-y-3.5">
-              <div class="grid grid-cols-2 gap-2.5 text-xs">
-                <div class="bg-carbon-950 p-3 rounded-2xl border border-white/10">
-                  <span class="text-xs text-slate-400 block font-mono uppercase font-bold">Amazon.de</span>
-                  <span class="font-bold text-white font-mono text-base mt-0.5 block">~€${iem.price_eur_amazon}</span>
+            <!-- Pricing & Action Footer -->
+            <div class="mt-5 pt-4 border-t border-studio-border space-y-3">
+              <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border">
+                  <span class="text-[10px] text-slate-400 block uppercase">Amazon.de</span>
+                  <span class="font-bold text-white text-sm block mt-0.5">~€${iem.price_eur_amazon}</span>
                 </div>
-                <div class="bg-emerald-500/10 p-3 rounded-2xl border border-emerald-500/25">
-                  <span class="text-xs text-emerald-400 block font-mono uppercase font-bold">11.11 / Choice</span>
-                  <span class="font-bold text-emerald-400 font-mono text-base mt-0.5 block">~€${iem.price_eur_ali_1111}</span>
+                <div class="bg-emerald-500/10 p-2.5 rounded-lg border border-emerald-500/20">
+                  <span class="text-[10px] text-emerald-400 block uppercase">11.11 / Choice</span>
+                  <span class="font-bold text-emerald-300 text-sm block mt-0.5">~€${iem.price_eur_ali_1111}</span>
                 </div>
               </div>
 
-              <button type="button" onclick="openModal('${iem.id}')" class="w-full py-3 px-4 rounded-2xl bg-carbon-800 hover:bg-carbon-700 text-slate-200 text-xs font-bold transition flex items-center justify-center gap-2 border border-white/10 btn-tactile">
-                <i class="fa-solid fa-circle-info text-cyan-400"></i>
-                <span>Inspect Details &amp; Stores</span>
+              <button type="button" onclick="openModal('${iem.id}')" class="w-full py-2 px-3 rounded-lg bg-studio-850 hover:bg-studio-800 text-slate-200 text-xs font-bold transition flex items-center justify-center gap-2 border border-studio-border btn-tactile">
+                <i class="fa-solid fa-circle-info text-amber-400"></i>
+                <span>Notes, Cables &amp; Stores</span>
               </button>
             </div>
           </div>
@@ -254,23 +441,26 @@
       tableBody.innerHTML = filtered.map(iem => {
         const isFavorited = shortlist.includes(iem.id);
         return `
-          <tr class="hover:bg-carbon-800/50 transition cursor-pointer" onclick="openModal('${iem.id}')">
-            <td class="px-4 py-3.5 font-bold text-white text-sm">
-              ${iem.name}
-              <span class="block text-xs text-slate-400 font-normal font-mono">${iem.brand}</span>
+          <tr class="hover:bg-studio-850/60 transition cursor-pointer" onclick="openModal('${iem.id}')">
+            <td class="px-4 py-3 flex items-center space-x-3">
+              <img src="${iem.image || 'assets/images/' + iem.id + '.jpg'}" alt="${iem.name}" class="w-10 h-10 rounded-md object-contain bg-studio-950 border border-studio-border p-1 shrink-0">
+              <div>
+                <span class="font-bold text-white text-sm block">${iem.name}</span>
+                <span class="text-[11px] text-slate-400 font-mono">${iem.brand}</span>
+              </div>
             </td>
-            <td class="px-4 py-3.5 text-slate-300 font-mono text-xs">${iem.driver_type}</td>
-            <td class="px-4 py-3.5 text-slate-200 text-xs">${iem.sound_signature}</td>
-            <td class="px-4 py-3.5 font-mono text-center text-xs ${iem.nozzle_diameter_mm > 6.0 ? 'text-rose-400 font-bold' : 'text-slate-300'}">
-              ${iem.nozzle_diameter_mm}mm
+            <td class="px-4 py-3 font-mono text-slate-300 text-xs">${iem.driver_type}</td>
+            <td class="px-4 py-3">
+              <span class="px-2 py-0.5 rounded bg-studio-850 text-amber-300 font-mono text-[11px] border border-studio-border">
+                ${iem.sound_signature}
+              </span>
             </td>
-            <td class="px-4 py-3.5 font-mono text-emerald-400 text-center text-xs font-bold">${iem.comfort_rating}/10</td>
-            <td class="px-4 py-3.5 font-mono text-emerald-400 font-bold text-sm">~€${iem.price_eur_ali_1111}</td>
-            <td class="px-4 py-3.5 font-mono text-slate-200 text-sm">~€${iem.price_eur_amazon}</td>
-            <td class="px-4 py-3.5 font-mono text-cyan-400 font-bold text-center text-sm">★ ${iem.community_score}</td>
-            <td class="px-4 py-3.5 text-right">
-              <button type="button" onclick="toggleShortlist('${iem.id}', event)" class="p-2.5 rounded-xl text-sm ${isFavorited ? 'text-pink-500' : 'text-slate-400 hover:text-white'}" aria-label="Favorite">
-                <i class="fa-solid fa-heart"></i>
+            <td class="px-4 py-3 font-mono text-slate-300 text-xs">${iem.nozzle_diameter_mm}mm</td>
+            <td class="px-4 py-3 font-mono font-bold text-white text-xs">~€${iem.price_eur_amazon}</td>
+            <td class="px-4 py-3 font-mono font-bold text-emerald-400 text-xs">~€${iem.price_eur_ali_1111}</td>
+            <td class="px-4 py-3 text-right" onclick="event.stopPropagation()">
+              <button type="button" onclick="toggleShortlist('${iem.id}', event)" class="p-1.5 rounded-lg text-slate-400 hover:text-amber-400 transition">
+                <i class="fa-${isFavorited ? 'solid text-amber-400' : 'regular'} fa-bookmark text-sm"></i>
               </button>
             </td>
           </tr>
@@ -278,418 +468,153 @@
       }).join('');
     }
 
-    // Persona filter buttons
-    personaButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        personaButtons.forEach(b => {
-          b.classList.remove('active', 'border-pink-500', 'bg-pink-500/20', 'text-white');
-          b.classList.add('border-white/10', 'bg-carbon-900', 'text-slate-300');
-        });
-        btn.classList.add('active', 'border-pink-500', 'bg-pink-500/20', 'text-white');
-        btn.classList.remove('border-white/10', 'bg-carbon-900', 'text-slate-300');
-        currentFilter = btn.dataset.persona;
-        resetPersonaBtn.classList.remove('hidden');
-        render();
-      });
-    });
-
-    resetPersonaBtn.addEventListener('click', () => {
-      currentFilter = 'all';
-      resetPersonaBtn.classList.add('hidden');
-      personaButtons.forEach(b => {
-        b.classList.remove('active', 'border-pink-500', 'bg-pink-500/20', 'text-white');
-        b.classList.add('border-white/10', 'bg-carbon-900', 'text-slate-300');
-        if (b.dataset.persona === 'all') {
-          b.classList.add('active', 'border-pink-500', 'bg-pink-500/20', 'text-white');
-          b.classList.remove('border-white/10', 'bg-carbon-900', 'text-slate-300');
-        }
-      });
-      render();
-    });
-
-    // Inputs
-    searchInput.addEventListener('input', (e) => {
-      searchQuery = e.target.value;
-      render();
-    });
-    priceFilter.addEventListener('change', (e) => {
-      currentPriceTier = e.target.value;
-      render();
-    });
-    nozzleFilter.addEventListener('change', (e) => {
-      currentNozzle = e.target.value;
-      render();
-    });
-    sortSelect.addEventListener('change', (e) => {
-      currentSort = e.target.value;
-      render();
-    });
-
-    // View toggles
-    viewCardsBtn.addEventListener('click', () => {
-      cardsView.classList.remove('hidden');
-      tableView.classList.add('hidden');
-      viewCardsBtn.className = 'px-3 py-1.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md';
-      viewTableBtn.className = 'px-3 py-1.5 rounded-xl text-slate-300 hover:text-white text-xs font-bold transition flex items-center gap-1.5';
-    });
-    viewTableBtn.addEventListener('click', () => {
-      cardsView.classList.add('hidden');
-      tableView.classList.remove('hidden');
-      viewTableBtn.className = 'px-3 py-1.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md';
-      viewCardsBtn.className = 'px-3 py-1.5 rounded-xl text-slate-300 hover:text-white text-xs font-bold transition flex items-center gap-1.5';
-    });
-
-    // Wishlist Modal open/close
-    function openWishlistModal() {
-      const container = document.getElementById('wishlist-modal-items');
-      if (shortlist.length === 0) {
-        container.innerHTML = `
-          <div class="text-center py-12 space-y-3">
-            <i class="fa-regular fa-heart text-4xl text-slate-500"></i>
-            <p class="text-slate-300 text-sm font-medium">Your shortlist is currently empty.</p>
-            <p class="text-slate-400 text-xs">Click the heart icon on any IEM card to add it to your shortlist!</p>
-          </div>
-        `;
-        document.getElementById('wishlist-total-ali').textContent = '€0';
-        document.getElementById('wishlist-total-amazon').textContent = '€0';
-      } else {
-        let totalAli = 0;
-        let totalAmazon = 0;
-        container.innerHTML = shortlist.map(id => {
-          const item = iemsData.find(i => i.id === id);
-          if (!item) return '';
-          totalAli += item.price_eur_ali_1111;
-          totalAmazon += item.price_eur_amazon;
-          return `
-            <div class="flex items-center justify-between p-3.5 rounded-2xl bg-carbon-950 border border-white/10">
-              <div>
-                <span class="cute-sticker bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs px-2 py-0.5">${item.brand}</span>
-                <h5 class="font-bold font-display text-white text-base mt-1">${item.name}</h5>
-                <span class="text-xs text-slate-300 font-mono">${item.sound_signature} • ${item.nozzle_diameter_mm}mm nozzle</span>
-              </div>
-              <div class="text-right">
-                <span class="font-mono font-bold text-emerald-400 text-base">~€${item.price_eur_ali_1111}</span>
-                <span class="block text-xs text-slate-400 line-through">Amazon: €${item.price_eur_amazon}</span>
-                <button type="button" onclick="toggleShortlist('${item.id}', event); openWishlistModal();" class="text-rose-400 hover:text-rose-300 text-xs font-mono mt-1 font-semibold">
-                  Remove
-                </button>
-              </div>
-            </div>
-          `;
-        }).join('');
-        document.getElementById('wishlist-total-ali').textContent = '€' + totalAli.toFixed(1);
-        document.getElementById('wishlist-total-amazon').textContent = '€' + totalAmazon.toFixed(1);
-      }
-      wishlistModal.classList.remove('hidden');
-    }
-
-    openWishlistTopBtn.addEventListener('click', openWishlistModal);
-    openWishlistModalBtn.addEventListener('click', openWishlistModal);
-    closeWishlistBtn.addEventListener('click', () => wishlistModal.classList.add('hidden'));
-    wishlistModal.addEventListener('click', (e) => {
-      if (e.target === wishlistModal) wishlistModal.classList.add('hidden');
-    });
-
-    // Copy Shareable URL
-    document.getElementById('copy-share-url-btn').addEventListener('click', () => {
-      const shareUrl = window.location.origin + window.location.pathname + '?picks=' + shortlist.join(',');
-      navigator.clipboard.writeText(shareUrl).then(() => {
-        fireConfetti();
-        showToast('Shareable Link Copied to Clipboard!');
-      });
-    });
-
-    // Copy Message for Chat
-    document.getElementById('copy-chat-summary-btn').addEventListener('click', () => {
-      let text = "🎧 My Curated IEM Shortlist:\n\n";
-      let totalAli = 0;
-      let totalAmazon = 0;
-
-      shortlist.forEach((id, idx) => {
-        const item = iemsData.find(i => i.id === id);
-        if (item) {
-          totalAli += item.price_eur_ali_1111;
-          totalAmazon += item.price_eur_amazon;
-          text += `${idx + 1}. ${item.name} (${item.brand})\n`;
-          text += `   • Sound: ${item.sound_signature}\n`;
-          text += `   • 11.11 Sale Price: ~€${item.price_eur_ali_1111} (Amazon.de: ~€${item.price_eur_amazon})\n`;
-          text += `   • Nozzle: ${item.nozzle_diameter_mm}mm outer bore\n\n`;
-        }
-      });
-
-      text += `Total Est. on 11.11: €${totalAli.toFixed(1)} (vs. €${totalAmazon.toFixed(1)} on Amazon)\n`;
-      text += `View full comparison: ${window.location.origin + window.location.pathname + '?picks=' + shortlist.join(',')}`;
-
-      navigator.clipboard.writeText(text).then(() => {
-        fireConfetti();
-        showToast('Chat Message Summary Copied!');
-      });
-    });
-
-    // Shared Banner buttons
-    const filterSharedBtn = document.getElementById('filter-shared-only-btn');
-    if (filterSharedBtn) {
-      filterSharedBtn.addEventListener('click', () => {
-        viewingSharedOnly = true;
-        render();
-        showToast("Filtering to Friend's Picks");
-      });
-    }
-    const clearSharedBtn = document.getElementById('clear-shared-view-btn');
-    if (clearSharedBtn) {
-      clearSharedBtn.addEventListener('click', () => {
-        viewingSharedOnly = false;
-        render();
-        showToast('Displaying All 21 IEMs');
-      });
-    }
-
-    // Detail Modal logic
-    window.openModal = function(iemId) {
-      currentModalIemId = iemId;
-      const iem = iemsData.find(i => i.id === iemId);
-      if (!iem) return;
-
-      document.getElementById('modal-title').textContent = iem.name;
-      document.getElementById('modal-brand-badge').textContent = iem.brand;
-      document.getElementById('modal-driver').textContent = iem.driver_type;
-      document.getElementById('modal-nozzle').textContent = iem.nozzle_diameter_mm + ' mm';
-      document.getElementById('modal-comfort').textContent = iem.comfort_rating + ' / 10';
-      document.getElementById('modal-gaming').textContent = iem.gaming_score + ' / 10';
-      document.getElementById('modal-sound-desc').textContent = iem.sound_description;
-      document.getElementById('modal-build').textContent = iem.build_material;
-      document.getElementById('modal-cable').textContent = iem.cable_detail;
-      document.getElementById('modal-accessories').textContent = iem.accessories_included;
-      document.getElementById('modal-accessories-rating').textContent = '★ Accessory Score: ' + iem.accessories_rating + '/10';
-      document.getElementById('modal-qc').innerHTML = `
-        <strong>QC, Fit &amp; Reliability Profile:</strong><br>
-        ${iem.qc_and_known_issues}<br>
-        <div class="mt-2 text-slate-400 italic font-mono text-xs">${iem.notes}</div>
-      `;
-      document.getElementById('modal-crinacle').textContent = iem.crinacle_rank;
-      document.getElementById('modal-super').textContent = iem.super_review_rating;
-      document.getElementById('modal-jays').textContent = iem.jays_audio_rating;
-      document.getElementById('modal-price-amazon').textContent = '€' + iem.price_eur_amazon;
-      document.getElementById('modal-price-ali-choice').textContent = '€' + iem.price_eur_ali_choice;
-      document.getElementById('modal-price-ali-1111').textContent = '€' + iem.price_eur_ali_1111;
-
-      // Note
-      const noteInput = document.getElementById('modal-personal-note');
-      noteInput.value = personalNotes[iemId] || '';
-      noteInput.oninput = (e) => {
-        personalNotes[iemId] = e.target.value;
-        localStorage.setItem('iem_radar_notes', JSON.stringify(personalNotes));
-        render();
-      };
-
-      const linksContainer = document.getElementById('modal-links');
-      linksContainer.innerHTML = iem.verified_stores.map(store => `
-        <a href="${store.url}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs transition flex items-center gap-2 shadow-sm btn-tactile">
-          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-          <span>Check ${store.name}</span>
-        </a>
-      `).join('');
-
-      detailModal.classList.remove('hidden');
-    };
-
-    closeDetailModalBtn.addEventListener('click', () => {
-      detailModal.classList.add('hidden');
-    });
-    detailModal.addEventListener('click', (e) => {
-      if (e.target === detailModal) detailModal.classList.add('hidden');
-    });
-
-    // Hero share button
-    document.getElementById('hero-share-btn').addEventListener('click', () => {
-      fireConfetti();
-      if (navigator.share) {
-        navigator.share({
-          title: 'IEM Radar 2026',
-          text: 'Check out this comprehensive Chi-Fi IEM comparison guide and pricing radar!',
-          url: window.location.href,
-        });
-      } else {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          showToast('Website Link Copied to Clipboard!');
-        });
-      }
-    });
-
-    // ==========================================
-    // NOSTALGIC CHI-FI WEBRING CONTROLS
-    // ==========================================
-    let currentWebringIdx = 0;
-    document.getElementById('webring-prev-btn').addEventListener('click', () => {
-      currentWebringIdx = (currentWebringIdx - 1 + iemsData.length) % iemsData.length;
-      openModal(iemsData[currentWebringIdx].id);
-      showToast(`Webring: ${iemsData[currentWebringIdx].name}`);
-    });
-    document.getElementById('webring-next-btn').addEventListener('click', () => {
-      currentWebringIdx = (currentWebringIdx + 1) % iemsData.length;
-      openModal(iemsData[currentWebringIdx].id);
-      showToast(`Webring: ${iemsData[currentWebringIdx].name}`);
-    });
-    document.getElementById('webring-random-btn').addEventListener('click', () => {
-      const randIdx = Math.floor(Math.random() * iemsData.length);
-      currentWebringIdx = randIdx;
-      fireConfetti();
-      openModal(iemsData[randIdx].id);
-      showToast(`🎲 Random Gem Picked: ${iemsData[randIdx].name}!`);
-    });
-
-    // ==========================================
-    // AUDIOPHILE SOUND BENCH & YOUTUBE STREAMING
-    // ==========================================
+    // AUDIOPHILE SOUND BENCH LOGIC (Kessoku Band, YOASOBI, Eurobeat)
     const playlist = [
       {
-        id: "B7BxrAAXl94",
+        id: "7X_Z8p1hW7I",
+        title: "Ano Bando (あのバンド)",
+        artist: "Kessoku Band",
+        japanese: "結束バンド",
+        category: "kessoku",
+        categoryLabel: "🎸 Kessoku Band",
+        acousticTag: "Guitar Transients & Drum Attack",
+        acousticFocus: "Check how the IEM renders the electric guitar crunch, fast drum kick, and high-hat shimmer without sibilance.",
+        spotifyUrl: "https://open.spotify.com/search/Ano%20Bando%20Kessoku%20Band"
+      },
+      {
+        id: "Yg_oBqI5w30",
         title: "Guitar, Loneliness and Blue Planet",
+        artist: "Kessoku Band",
         japanese: "ギターと孤独と蒼い惑星",
-        artist: "Kessoku Band (Bocchi the Rock!)",
         category: "kessoku",
         categoryLabel: "🎸 Kessoku Band",
-        acousticTag: "Distorted Guitar & Treble Bite",
-        acousticFocus: "Tests distorted guitar separation, snare impact speed, and planar/BA treble bite without harsh sibilance. Benchmark for Truthear Hexa vs Zero:Red.",
-        spotifyUrl: "https://open.spotify.com/search/Kessoku%20Band%20Guitar%20Loneliness"
+        acousticTag: "Speed & Dynamic Separation",
+        acousticFocus: "Fast punk-rock tempo with aggressive distortion. Analytical sets like Hexa or Gate keep the rhythm tight.",
+        spotifyUrl: "https://open.spotify.com/search/Guitar%20Loneliness%20and%20Blue%20Planet"
       },
       {
-        id: "7221tTqp1bY",
-        title: "That Band (Ano Bando)",
-        japanese: "あのバンド",
-        artist: "Kessoku Band (Bocchi the Rock!)",
+        id: "d_q_Hsuu7g8",
+        title: "Seishun Complex (青春コンプレックス)",
+        artist: "Kessoku Band",
+        japanese: "結束バンド",
         category: "kessoku",
         categoryLabel: "🎸 Kessoku Band",
-        acousticTag: "Intro Solo & Bass Damping",
-        acousticFocus: "Iconic guitar intro tests upper-midrange timbre, followed by tight bass groove to test dynamic driver damping and texture (Kefine Delci & Tangzu Wan'er 2 test).",
-        spotifyUrl: "https://open.spotify.com/search/Kessoku%20Band%20That%20Band"
-      },
-      {
-        id: "Yd8kUoB72xU",
-        title: "Seishun Complex",
-        japanese: "青春コンプレックス",
-        artist: "Kessoku Band (Bocchi the Rock!)",
-        category: "kessoku",
-        categoryLabel: "🎸 Kessoku Band",
-        acousticTag: "Percussion Dynamics & Energy",
-        acousticFocus: "High-tempo rock energy that tests how well the IEM avoids mid-bass bleed into lower midrange vocals.",
-        spotifyUrl: "https://open.spotify.com/search/Kessoku%20Band%20Seishun%20Complex"
+        acousticTag: "Bassline Articulation & Vocal Energy",
+        acousticFocus: "Bouncy bass guitar groove during verses. Warm IEMs like 7Hz Zero:2 and Delci give this track delicious warmth.",
+        spotifyUrl: "https://open.spotify.com/search/Seishun%20Complex%20Kessoku%20Band"
       },
       {
         id: "ZRtdQ81jPUQ",
-        title: "Idol",
-        japanese: "アイドル",
+        title: "Idol (アイドル)",
         artist: "YOASOBI",
+        japanese: "夜遊び",
         category: "yoasobi",
         categoryLabel: "✨ YOASOBI",
-        acousticTag: "Sub-Bass Slam & Speed",
-        acousticFocus: "Ayase's rapid synth sequences and deep electronic sub-bass kick test 2DD subwoofer crossovers (Truthear Zero:Blue/Red) and driver speed.",
+        acousticTag: "High Vocal Energy & Sub-Bass Punch",
+        acousticFocus: "Intense J-pop production with rapid pitch shifts. Tests whether female vocals stay sweet or turn shouty.",
         spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Idol"
       },
       {
         id: "x8VYWazR5mE",
-        title: "Yoru ni Kakeru (Racing into the Night)",
-        japanese: "夜に駆ける",
+        title: "Yoru ni Kakeru (夜に駆ける)",
         artist: "YOASOBI",
+        japanese: "夜遊び",
         category: "yoasobi",
         categoryLabel: "✨ YOASOBI",
-        acousticTag: "Female Vocal Extension & Piano",
-        acousticFocus: "Ikura's soaring female vocals test 3kHz pinna gain and Harman upper-midrange accuracy; piano notes test micro-detail decay.",
+        acousticTag: "Piano Timbre & Vocal Sweetness",
+        acousticFocus: "Staccato piano chords and intimate vocals. Tangzu Wan'er and Cadenza make Ikura's voice sound lush.",
         spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Yoru%20ni%20Kakeru"
       },
       {
-        id: "Y4nEEZwckuU",
-        title: "Gunjo",
-        japanese: "群青",
+        id: "vELh3Q6EBj4",
+        title: "Gunjo (群青)",
         artist: "YOASOBI",
+        japanese: "夜遊び",
         category: "yoasobi",
         categoryLabel: "✨ YOASOBI",
-        acousticTag: "Choral Layering & Soundstage",
-        acousticFocus: "Massive vocal choir and acoustic snare in the chorus reveal soundstage width, depth, and instrument separation (great benchmark for Hexa and Moondrop May).",
+        acousticTag: "Choir Harmony & Deep Bass Shelf",
+        acousticFocus: "Multi-layered chorus with gospel harmonies. Dual-driver IEMs like Zero:Blue show off their sub-bass depth.",
         spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Gunjo"
-      },
-      {
-        id: "atuFSv2bLa8",
-        title: "Gas Gas Gas",
-        japanese: "Initial D OST",
-        artist: "Manuel",
-        category: "eurobeat",
-        categoryLabel: "🏎️ Eurobeat",
-        acousticTag: "155 BPM Synth & Treble Fatigue",
-        acousticFocus: "Relentless aggressive synth-brass and four-on-the-floor kick drum test treble fatigue and harshness threshold during high-energy listening.",
-        spotifyUrl: "https://open.spotify.com/search/Manuel%20Gas%20Gas%20Gas"
-      },
-      {
-        id: "dv13gl0a-FA",
-        title: "Deja Vu",
-        japanese: "Initial D OST",
-        artist: "Dave Rodgers",
-        category: "eurobeat",
-        categoryLabel: "🏎️ Eurobeat",
-        acousticTag: "Sawtooth Synth & Speed Benchmark",
-        acousticFocus: "Tests dynamic driver recovery speed. Budget IEMs with slow decay turn dense synth riffs into muddy sound; tests fast LCP/DLC diaphragms (Gate, Klean).",
-        spotifyUrl: "https://open.spotify.com/search/Dave%20Rodgers%20Deja%20Vu"
       },
       {
         id: "BJ0xBCwkg3E",
         title: "Running in the 90s",
-        japanese: "Initial D OST",
-        artist: "Max Coveri",
+        artist: "Maurizio De Jorio (Initial D)",
+        japanese: "頭文字D",
         category: "eurobeat",
         categoryLabel: "🏎️ Eurobeat",
-        acousticTag: "Rhythmic Snap & Mid-Bass Punch",
-        acousticFocus: "Crisp drum machines and driving bass rhythm. Tests mid-bass slam without boominess; reveals whether an IEM has clean bass tuck or warm bleed.",
-        spotifyUrl: "https://open.spotify.com/search/Running%20in%20the%2090s"
+        acousticTag: "Synthetic Kick & Synth Transients",
+        acousticFocus: "High BPM synthesizer riffs and punchy electronic drums. Tests bass speed and energy.",
+        spotifyUrl: "https://open.spotify.com/search/Running%20in%20the%2090s%20Eurobeat"
+      },
+      {
+        id: "dv13gl0a-FA",
+        title: "Deja Vu",
+        artist: "Dave Rodgers (Initial D)",
+        japanese: "頭文字D",
+        category: "eurobeat",
+        categoryLabel: "🏎️ Eurobeat",
+        acousticTag: "Bass Slam & Stereo Panning",
+        acousticFocus: "Aggressive brass synths and heavy bassline. Fun V-shaped sets like KZ ZAR shine here.",
+        spotifyUrl: "https://open.spotify.com/search/Dave%20Rodgers%20Deja%20Vu"
+      },
+      {
+        id: "atar_9j_3P0",
+        title: "Gas Gas Gas",
+        artist: "Manuel (Initial D)",
+        japanese: "頭文字D",
+        category: "eurobeat",
+        categoryLabel: "🏎️ Eurobeat",
+        acousticTag: "Fast Attack & Vocal Projection",
+        acousticFocus: "Maximum high-octane tempo. Tests driver recovery and fast transient response without muddying.",
+        spotifyUrl: "https://open.spotify.com/search/Manuel%20Gas%20Gas%20Gas"
       }
     ];
 
     let currentTrackIdx = 0;
-    let ytPlayer = null;
-    let isYtReady = false;
     let isPlaying = false;
+    let isYtReady = false;
+    let ytPlayer = null;
     let activeDeckCategory = 'all';
-    let progressTimer = null;
 
-    // DOM Elements
+    // Player Elements
     const soundDeckPill = document.getElementById('sound-deck-pill');
     const soundDeckPanel = document.getElementById('sound-deck-panel');
+    const pillDiscIcon = document.getElementById('pill-disc-icon');
+    const pillTrackTitle = document.getElementById('pill-track-title');
+    const pillTrackArtist = document.getElementById('pill-track-artist');
+    const pillEqBars = document.getElementById('pill-eq-bars');
     const pillPlayBtn = document.getElementById('pill-play-btn');
     const pillPlayIcon = document.getElementById('pill-play-icon');
     const pillExpandBtn = document.getElementById('pill-expand-btn');
-    const pillTrackTitle = document.getElementById('pill-track-title');
-    const pillEqContainer = document.getElementById('pill-eq-container');
-    const deckEqContainer = document.getElementById('deck-eq-container');
     const deckMinimizeBtn = document.getElementById('deck-minimize-btn');
-    const deckDiscIcon = document.getElementById('deck-disc-icon');
-
+    const deckTrackCategory = document.getElementById('deck-track-category');
     const deckTrackTitle = document.getElementById('deck-track-title');
     const deckTrackArtist = document.getElementById('deck-track-artist');
-    const deckTrackCategory = document.getElementById('deck-track-category');
+    const deckDiscIcon = document.getElementById('deck-disc-icon');
     const deckAcousticTag = document.getElementById('deck-acoustic-tag');
     const deckAcousticFocus = document.getElementById('deck-acoustic-focus');
-    const deckSpotifyLink = document.getElementById('deck-spotify-link');
-
-    const deckCurrentTime = document.getElementById('deck-current-time');
-    const deckDuration = document.getElementById('deck-duration');
     const deckProgressBar = document.getElementById('deck-progress-bar');
     const deckProgressFill = document.getElementById('deck-progress-fill');
-
+    const deckTimeCurrent = document.getElementById('deck-time-current');
+    const deckTimeDuration = document.getElementById('deck-time-duration');
+    const deckPrevBtn = document.getElementById('deck-prev-btn');
     const deckPlayBtn = document.getElementById('deck-play-btn');
     const deckPlayIcon = document.getElementById('deck-play-icon');
-    const deckPrevBtn = document.getElementById('deck-prev-btn');
     const deckNextBtn = document.getElementById('deck-next-btn');
-    const deckMuteBtn = document.getElementById('deck-mute-btn');
-    const deckVolumeIcon = document.getElementById('deck-volume-icon');
     const deckVolumeSlider = document.getElementById('deck-volume-slider');
+    const deckVolumeIcon = document.getElementById('deck-volume-icon');
+    const deckMuteBtn = document.getElementById('deck-mute-btn');
     const deckPlaylistContainer = document.getElementById('deck-playlist-container');
+    const deckSpotifyLink = document.getElementById('deck-spotify-link');
     const deckCatButtons = document.querySelectorAll('.deck-cat-btn');
 
-    // YouTube API Ready callback
+    // YouTube API init
     window.onYouTubeIframeAPIReady = function() {
       ytPlayer = new YT.Player('yt-player', {
-        height: '200',
-        width: '200',
-        videoId: playlist[0].id,
+        height: '10',
+        width: '10',
+        videoId: playlist[currentTrackIdx].id,
         playerVars: {
           playsinline: 1,
           controls: 0,
@@ -698,89 +623,66 @@
           rel: 0
         },
         events: {
-          onReady: onYtReady,
-          onStateChange: onYtStateChange
+          onReady: () => {
+            isYtReady = true;
+            ytPlayer.setVolume(75);
+          },
+          onStateChange: (event) => {
+            if (event.data === YT.PlayerState.PLAYING) {
+              isPlaying = true;
+              setPlayingVisuals(true);
+            } else if (event.data === YT.PlayerState.PAUSED) {
+              isPlaying = false;
+              setPlayingVisuals(false);
+            } else if (event.data === YT.PlayerState.ENDED) {
+              playNextTrack();
+            }
+          }
         }
       });
     };
-
-    function onYtReady(event) {
-      isYtReady = true;
-      if (ytPlayer && ytPlayer.setVolume) {
-        ytPlayer.setVolume(parseInt(deckVolumeSlider.value, 10));
-      }
-      updateTrackDisplay(false);
-    }
-
-    function onYtStateChange(event) {
-      if (event.data === YT.PlayerState.PLAYING) {
-        isPlaying = true;
-        setPlayingVisuals(true);
-        startProgressTimer();
-      } else if (event.data === YT.PlayerState.PAUSED) {
-        isPlaying = false;
-        setPlayingVisuals(false);
-        stopProgressTimer();
-      } else if (event.data === YT.PlayerState.ENDED) {
-        isPlaying = false;
-        setPlayingVisuals(false);
-        stopProgressTimer();
-        playNextTrack();
-      }
-    }
 
     function setPlayingVisuals(playing) {
       if (playing) {
         pillPlayIcon.className = 'fa-solid fa-pause';
         deckPlayIcon.className = 'fa-solid fa-pause';
-        pillEqContainer.classList.add('playing-bars');
-        deckEqContainer.classList.add('playing-bars');
+        pillDiscIcon.classList.add('spinning-disc');
         deckDiscIcon.classList.add('spinning-disc');
+        pillEqBars.classList.remove('hidden');
       } else {
         pillPlayIcon.className = 'fa-solid fa-play';
         deckPlayIcon.className = 'fa-solid fa-play';
-        pillEqContainer.classList.remove('playing-bars');
-        deckEqContainer.classList.remove('playing-bars');
+        pillDiscIcon.classList.remove('spinning-disc');
         deckDiscIcon.classList.remove('spinning-disc');
+        pillEqBars.classList.add('hidden');
       }
     }
 
-    function formatTime(seconds) {
-      if (!seconds || isNaN(seconds)) return '0:00';
-      const m = Math.floor(seconds / 60);
-      const s = Math.floor(seconds % 60);
-      return m + ':' + (s < 10 ? '0' : '') + s;
-    }
-
-    function startProgressTimer() {
-      stopProgressTimer();
-      progressTimer = setInterval(() => {
-        if (ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {
-          const cur = ytPlayer.getCurrentTime();
-          const dur = ytPlayer.getDuration();
-          deckCurrentTime.textContent = formatTime(cur);
-          deckDuration.textContent = formatTime(dur);
-          if (dur > 0) {
-            deckProgressFill.style.width = ((cur / dur) * 100) + '%';
-          }
+    // Time ticker
+    setInterval(() => {
+      if (isPlaying && ytPlayer && ytPlayer.getCurrentTime) {
+        const cur = ytPlayer.getCurrentTime() || 0;
+        const dur = ytPlayer.getDuration() || 0;
+        if (dur > 0) {
+          deckProgressFill.style.width = `${(cur / dur) * 100}%`;
+          deckTimeCurrent.textContent = formatTime(cur);
+          deckTimeDuration.textContent = formatTime(dur);
         }
-      }, 500);
-    }
-
-    function stopProgressTimer() {
-      if (progressTimer) {
-        clearInterval(progressTimer);
-        progressTimer = null;
       }
+    }, 500);
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return `${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
     function updateTrackDisplay(autoPlay = false) {
       const track = playlist[currentTrackIdx];
-      if (!track) return;
-
-      pillTrackTitle.textContent = track.artist.split(' ')[0] + ' • ' + track.title;
+      pillTrackTitle.textContent = track.title;
+      pillTrackArtist.textContent = track.artist;
       deckTrackTitle.textContent = track.title;
-      deckTrackArtist.textContent = track.artist + (track.japanese ? ' (' + track.japanese + ')' : '');
+      deckTrackArtist.textContent = `${track.artist} (${track.japanese})`;
       deckTrackCategory.textContent = track.categoryLabel;
       deckAcousticTag.textContent = track.acousticTag;
       deckAcousticFocus.textContent = track.acousticFocus;
@@ -801,7 +703,7 @@
 
     function togglePlay() {
       if (!isYtReady || !ytPlayer) {
-        showToast('Initializing audio stream...');
+        alert('Initializing audio stream...');
         return;
       }
       if (isPlaying) {
@@ -833,17 +735,17 @@
       deckPlaylistContainer.innerHTML = filtered.map(track => {
         const isCurrent = track.originalIndex === currentTrackIdx;
         return `
-          <div onclick="playDeckTrack(${track.originalIndex})" class="flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition text-xs ${isCurrent ? 'bg-pink-600/20 border border-pink-500/40 text-white font-bold' : 'bg-carbon-950/60 hover:bg-carbon-900 border border-white/10 text-slate-300'}">
-            <div class="flex items-center space-x-3 min-w-0">
-              <span class="w-5 text-center font-mono text-xs ${isCurrent ? 'text-pink-400 font-bold' : 'text-slate-400'}">
-                ${isCurrent && isPlaying ? '<i class="fa-solid fa-volume-high animate-pulse text-pink-400"></i>' : (track.originalIndex + 1)}
+          <div onclick="playDeckTrack(${track.originalIndex})" class="flex items-center justify-between p-2 rounded-lg cursor-pointer transition text-xs ${isCurrent ? 'bg-amber-400/20 text-white font-bold border border-amber-400/30' : 'bg-studio-900 text-slate-300 hover:text-white border border-studio-border'}">
+            <div class="flex items-center space-x-2 min-w-0">
+              <span class="w-4 text-center font-mono text-[10px] ${isCurrent ? 'text-amber-400 font-bold' : 'text-slate-500'}">
+                ${isCurrent && isPlaying ? '<i class=\"fa-solid fa-volume-high animate-pulse text-amber-400\"></i>' : (track.originalIndex + 1)}
               </span>
               <div class="min-w-0">
-                <span class="block truncate text-xs text-slate-200 font-medium">${track.title}</span>
-                <span class="block text-xs text-slate-400 font-mono truncate">${track.artist}</span>
+                <span class="block truncate text-xs">${track.title}</span>
+                <span class="block text-[10px] text-slate-400 font-mono truncate">${track.artist}</span>
               </div>
             </div>
-            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-carbon-800 text-slate-300 shrink-0 border border-white/10 ml-2">
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-studio-950 text-slate-400 border border-studio-border ml-2 shrink-0">
               ${track.acousticTag.split('&')[0]}
             </span>
           </div>
@@ -877,7 +779,6 @@
       }
     });
 
-    // Mute button
     deckMuteBtn.addEventListener('click', () => {
       if (!ytPlayer) return;
       if (ytPlayer.isMuted()) {
@@ -891,21 +792,21 @@
       }
     });
 
-    // Category Buttons
+    // Deck categories
     deckCatButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         deckCatButtons.forEach(b => {
-          b.classList.remove('active', 'bg-pink-500/20', 'text-white', 'border-pink-500/30');
-          b.classList.add('bg-carbon-950', 'text-slate-300', 'border-white/10');
+          b.classList.remove('active', 'bg-amber-400', 'text-black', 'font-bold');
+          b.classList.add('bg-studio-850', 'text-slate-300');
         });
-        btn.classList.add('active', 'bg-pink-500/20', 'text-white', 'border-pink-500/30');
-        btn.classList.remove('bg-carbon-950', 'text-slate-300', 'border-white/10');
+        btn.classList.add('active', 'bg-amber-400', 'text-black', 'font-bold');
+        btn.classList.remove('bg-studio-850', 'text-slate-300');
         activeDeckCategory = btn.dataset.cat;
         renderDeckPlaylist();
       });
     });
 
-    // Controls listeners
+    // Deck open/close
     pillPlayBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       togglePlay();
