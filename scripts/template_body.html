@@ -1,0 +1,904 @@
+
+  <!-- TOP STATUS STRIP -->
+  <aside class="bg-carbon-900 border-b border-white/10 py-2 px-4 text-xs font-mono text-slate-300">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center gap-2 text-emerald-400 font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>RESEARCH REPOSITORY</span>
+        </span>
+        <span class="text-slate-600">|</span>
+        <span class="text-slate-300">21 CHI-FI MODELS AUDITED</span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <span class="hidden md:inline text-pink-400 font-semibold">🌸 100% INDIE &amp; HAND-TUNED</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span>NEXT BIG SALE: <strong class="text-amber-400 font-bold">11.11 SINGLES' DAY</strong></span>
+        <span class="text-slate-600">|</span>
+        <a href="#vault" class="text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1.5 font-semibold">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>AUDIO SCIENCE VAULT</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-carbon-950/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-600 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-purple-500/25 font-display font-extrabold text-xl tracking-wider">
+          IR
+        </div>
+        <div>
+          <div class="flex items-center space-x-2.5">
+            <h1 class="text-2xl font-display font-extrabold tracking-wide text-white uppercase">IEM RADAR</h1>
+            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30 font-bold">2026.1</span>
+          </div>
+          <p class="text-xs text-slate-300 font-medium">Acoustic Targets, Fit Science &amp; European Market Pricing</p>
+        </div>
+      </div>
+
+      <nav class="flex items-center space-x-2 sm:space-x-3">
+        <a href="#finder" class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-carbon-850 hover:bg-carbon-800 text-xs font-semibold text-slate-200 border border-white/10 transition btn-tactile">
+          <i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i>
+          <span>Finder</span>
+        </a>
+        <a href="#models" class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-carbon-850 hover:bg-carbon-800 text-xs font-semibold text-slate-200 border border-white/10 transition btn-tactile">
+          <i class="fa-solid fa-list-check text-cyan-400"></i>
+          <span>All 21 IEMs</span>
+        </a>
+        <a href="#vault" class="hidden md:flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-carbon-850 hover:bg-carbon-800 text-xs font-semibold text-slate-200 border border-white/10 transition btn-tactile">
+          <i class="fa-solid fa-waveform-lines text-purple-400"></i>
+          <span>Acoustic Vault</span>
+        </a>
+        <a href="#eu-guide" class="hidden lg:flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-carbon-850 hover:bg-carbon-800 text-xs font-semibold text-slate-200 border border-white/10 transition btn-tactile">
+          <i class="fa-solid fa-tags text-amber-400"></i>
+          <span>EU Customs</span>
+        </a>
+        <button type="button" id="open-wishlist-top-btn" class="relative px-4 py-2 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-bold text-xs transition flex items-center gap-2 shadow-lg shadow-pink-600/25 btn-tactile">
+          <i class="fa-solid fa-heart text-white"></i>
+          <span>Shortlist</span>
+          <span id="wishlist-counter-badge" class="px-2 py-0.5 rounded-full bg-white text-pink-600 font-mono text-xs font-extrabold ml-0.5">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SHARED SHORTLIST BANNER (Visible if URL contains ?picks=...) -->
+  <div id="shared-picks-banner" class="hidden bg-gradient-to-r from-purple-900/90 via-pink-900/90 to-carbon-900 border-b border-pink-500/30 px-4 py-3.5 text-xs text-pink-100">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <span class="w-8 h-8 rounded-full bg-pink-500/30 flex items-center justify-center text-pink-300 text-base">
+          <i class="fa-solid fa-gift"></i>
+        </span>
+        <div>
+          <strong class="text-white font-bold text-sm">Shared Shortlist Detected!</strong>
+          <span class="text-pink-200 ml-1.5 text-xs">A custom curated selection of Chi-Fi IEM recommendations was shared with you.</span>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2.5">
+        <button type="button" id="filter-shared-only-btn" class="px-4 py-1.5 rounded-xl bg-white text-purple-950 font-bold text-xs hover:bg-pink-50 transition shadow-sm">
+          View Shared Picks Only
+        </button>
+        <button type="button" id="clear-shared-view-btn" class="px-4 py-1.5 rounded-xl bg-purple-950/80 text-pink-200 text-xs font-medium hover:bg-purple-900 transition border border-white/10">
+          Show All 21 Models
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
+
+    <!-- HERO SECTION (Neo-Brutalist & Tactile Indie Design) -->
+    <section class="card-bouncy rounded-3xl p-6 sm:p-12 relative overflow-hidden">
+      <div class="absolute -right-20 -top-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 space-y-5">
+          <!-- Playful tilted stickers -->
+          <div class="flex flex-wrap items-center gap-2.5 pt-1">
+            <span class="cute-sticker bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 -rotate-2">
+              <span>🍙</span>
+              <span>100% EAR-SAFE</span>
+            </span>
+            <span class="cute-sticker bg-pink-500/15 text-pink-300 border border-pink-500/30 rotate-1">
+              <span>✨</span>
+              <span>VOCAL MAGIC</span>
+            </span>
+            <span class="cute-sticker bg-amber-500/15 text-amber-300 border border-amber-500/30 -rotate-1">
+              <span>⚡</span>
+              <span>SUB-BASS SLAM</span>
+            </span>
+            <span class="cute-sticker bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 rotate-2">
+              <span>🍵</span>
+              <span>COZY ALL-DAY</span>
+            </span>
+          </div>
+          
+          <h2 class="text-4xl sm:text-7xl font-display font-black uppercase tracking-tight text-white leading-[1.05]">
+            PURITY IN SOUND.<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-cyan-300">
+              ZERO MARKETING HYPE.
+            </span>
+          </h2>
+          
+          <p class="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl font-normal">
+            An independent, data-grounded compass for the modern In-Ear Monitor market. We cross-reference acoustic targets from <strong class="text-white font-semibold">Crinacle</strong>, <strong class="text-white font-semibold">Super* Review</strong>, <strong class="text-white font-semibold">Jay's Audio</strong>, and <strong class="text-white font-semibold">Timmy (Gizaudio)</strong> with real European pricing, AliExpress mega-sales, and critical ear canal comfort ratings.
+          </p>
+
+          <div class="pt-3 flex flex-wrap items-center gap-3.5">
+            <a href="#finder" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 hover:from-pink-500 hover:to-indigo-500 text-white font-bold text-sm tracking-wide transition shadow-xl shadow-pink-600/25 flex items-center gap-2.5 btn-tactile">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>Find Your Sound Match</span>
+            </a>
+            <a href="#models" class="px-6 py-3 rounded-2xl bg-carbon-800 hover:bg-carbon-700 text-slate-200 font-bold text-sm border border-white/10 transition flex items-center gap-2.5 btn-tactile">
+              <i class="fa-solid fa-table-list"></i>
+              <span>Browse All 21 Models</span>
+            </a>
+            <button type="button" id="hero-share-btn" class="px-5 py-3 rounded-2xl bg-carbon-850 hover:bg-carbon-800 text-slate-200 text-sm font-semibold border border-white/10 transition flex items-center gap-2 btn-tactile">
+              <i class="fa-solid fa-share-nodes text-cyan-400"></i>
+              <span>Share Tool</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="lg:col-span-4 grid grid-cols-2 gap-3.5 font-mono text-center">
+          <div class="p-5 rounded-2xl bg-carbon-900/90 border border-white/10 card-bouncy">
+            <span class="text-3xl sm:text-4xl font-extrabold text-cyan-400 font-display block">21</span>
+            <span class="block text-xs text-slate-300 uppercase tracking-wider mt-1.5 font-semibold">Models Audited</span>
+          </div>
+          <div class="p-5 rounded-2xl bg-carbon-900/90 border border-white/10 card-bouncy">
+            <span class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono block">€10–€99</span>
+            <span class="block text-xs text-slate-300 uppercase tracking-wider mt-1.5 font-semibold">EU Price Range</span>
+          </div>
+          <div class="p-5 rounded-2xl bg-carbon-900/90 border border-white/10 card-bouncy">
+            <span class="text-3xl sm:text-4xl font-extrabold text-amber-400 font-display block">11.11</span>
+            <span class="block text-xs text-slate-300 uppercase tracking-wider mt-1.5 font-semibold">Peak Sale Window</span>
+          </div>
+          <div class="p-5 rounded-2xl bg-carbon-900/90 border border-white/10 card-bouncy">
+            <span class="text-2xl sm:text-3xl font-extrabold text-purple-400 font-mono block">&lt; €150</span>
+            <span class="block text-xs text-slate-300 uppercase tracking-wider mt-1.5 font-semibold">IOSS Tax-Free</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRITICAL ANATOMY ADVISORY (NOZZLE SIZE WARNING) -->
+    <section class="rounded-3xl border border-amber-500/30 bg-amber-500/10 p-6 sm:p-7 text-sm text-amber-200 flex flex-col sm:flex-row items-start gap-5 card-bouncy">
+      <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0 mt-0.5 text-2xl shadow-inner">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <div class="space-y-2">
+        <h4 class="font-display font-bold text-amber-300 uppercase tracking-wider text-base sm:text-lg flex items-center gap-2">
+          Anatomy &amp; Nozzle Girth Alert: Don't Buy Blindly!
+        </h4>
+        <p class="leading-relaxed text-slate-200 text-sm sm:text-base">
+          IEM nozzle diameter is the <strong class="text-white font-bold">#1 cause of return rates and ear ache</strong>. Standard IEMs measure 5.2mm to 5.5mm. Models like the <strong class="text-amber-300 font-bold">Truthear x Crinacle Zero:RED</strong> have a massive <strong class="text-amber-300 font-bold">6.2mm nozzle bore (6.8mm with outer lip)</strong> that causes physical ear-canal pain for small or medium ears after 30 minutes. 
+          If you have smaller ears, look for the <span class="cute-sticker bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs px-2.5 py-0.5">🌸 Small Ear Safe</span> badge or choose ultra-slim flush models like the <strong class="text-white font-bold">Moondrop Chu II</strong> or <strong class="text-white font-bold">Kefine Delci</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- PERSONA FINDER / MATCHER -->
+    <section id="finder" class="space-y-5">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-display font-bold uppercase tracking-wide text-white flex items-center gap-3">
+            <i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i>
+            <span>What Kind of Listener Are You?</span>
+          </h3>
+          <p class="text-sm text-slate-300 mt-1">Select a listening persona to instantly filter the catalog to your ideal sound signature</p>
+        </div>
+        <button type="button" id="reset-persona-btn" class="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 transition hidden px-3 py-1.5 rounded-xl bg-carbon-850 border border-white/10">
+          Reset Filter [x]
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3" id="persona-button-group">
+        <button type="button" data-persona="all" class="persona-btn active p-4 rounded-2xl border border-pink-500 bg-pink-500/20 text-white font-medium text-xs text-left transition hover:border-pink-400 flex flex-col justify-between h-28 btn-tactile">
+          <i class="fa-solid fa-border-all text-xl text-pink-400"></i>
+          <span class="block">
+            <strong class="block text-white font-bold text-sm">All IEMs</strong>
+            <span class="text-xs text-slate-300 font-mono block mt-0.5">21 Models</span>
+          </span>
+        </button>
+        
+        <button type="button" data-persona="Tactical FPS Gaming" class="persona-btn p-4 rounded-2xl border border-white/10 bg-carbon-900 hover:bg-carbon-800 text-slate-300 font-medium text-xs text-left transition flex flex-col justify-between h-28 btn-tactile">
+          <i class="fa-solid fa-crosshairs text-xl text-rose-400"></i>
+          <span class="block">
+            <strong class="block text-white font-bold text-sm">Tactical FPS</strong>
+            <span class="text-xs text-slate-300 font-mono block mt-0.5">Footsteps 🎮</span>
+          </span>
+        </button>
+
+        <button type="button" data-persona="Vocal & Acoustic Lovers" class="persona-btn p-4 rounded-2xl border border-white/10 bg-carbon-900 hover:bg-carbon-800 text-slate-300 font-medium text-xs text-left transition flex flex-col justify-between h-28 btn-tactile">
+          <i class="fa-solid fa-microphone-lines text-xl text-pink-400"></i>
+          <span class="block">
+            <strong class="block text-white font-bold text-sm">Vocal &amp; Indie</strong>
+            <span class="text-xs text-slate-300 font-mono block mt-0.5">Sweet Midrange 🌸</span>
+          </span>
+        </button>
+
+        <button type="button" data-persona="Audio Purists & Reference" class="persona-btn p-4 rounded-2xl border border-white/10 bg-carbon-900 hover:bg-carbon-800 text-slate-300 font-medium text-xs text-left transition flex flex-col justify-between h-28 btn-tactile">
+          <i class="fa-solid fa-scale-balanced text-xl text-cyan-400"></i>
+          <span class="block">
+            <strong class="block text-white font-bold text-sm">Reference</strong>
+            <span class="text-xs text-slate-300 font-mono block mt-0.5">Flat Neutral 🔬</span>
+          </span>
+        </button>
+
+        <button type="button" data-persona="Warm & Relaxed Daily" class="persona-btn p-4 rounded-2xl border border-white/10 bg-carbon-900 hover:bg-carbon-800 text-slate-300 font-medium text-xs text-left transition flex flex-col justify-between h-28 btn-tactile">
+          <i class="fa-solid fa-mug-hot text-xl text-amber-400"></i>
+          <span class="block">
+            <strong class="block text-white font-bold text-sm">Warm &amp; Cozy</strong>
+            <span class="text-xs text-slate-300 font-mono block mt-0.5">Zero Fatigue ☕</span>
+          </span>
+        </button>
+
+        <button type="button" data-persona="Bassheads & Theatrical EDM" class="persona-btn p-4 rounded-2xl border border-white/10 bg-carbon-900 hover:bg-carbon-800 text-slate-300 font-medium text-xs text-left transition flex flex-col justify-between h-28 btn-tactile">
+          <i class="fa-solid fa-bolt text-xl text-yellow-400"></i>
+          <span class="block">
+            <strong class="block text-white font-bold text-sm">Basshead</strong>
+            <span class="text-xs text-slate-300 font-mono block mt-0.5">Slam &amp; Movies ⚡</span>
+          </span>
+        </button>
+
+        <button type="button" data-persona="Smartphone USB-C Users" class="persona-btn p-4 rounded-2xl border border-white/10 bg-carbon-900 hover:bg-carbon-800 text-slate-300 font-medium text-xs text-left transition flex flex-col justify-between h-28 btn-tactile">
+          <i class="fa-brands fa-usb text-xl text-emerald-400"></i>
+          <span class="block">
+            <strong class="block text-white font-bold text-sm">Type-C DSP</strong>
+            <span class="text-xs text-slate-300 font-mono block mt-0.5">App PEQ 📱</span>
+          </span>
+        </button>
+
+        <button type="button" data-persona="Small Ears & Sleep" class="persona-btn p-4 rounded-2xl border border-white/10 bg-carbon-900 hover:bg-carbon-800 text-slate-300 font-medium text-xs text-left transition flex flex-col justify-between h-28 btn-tactile">
+          <i class="fa-solid fa-bed text-xl text-indigo-400"></i>
+          <span class="block">
+            <strong class="block text-white font-bold text-sm">Petite Ears</strong>
+            <span class="text-xs text-slate-300 font-mono block mt-0.5">Sleep Fit 😴</span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SEARCH & CONTROLS -->
+    <section id="models" class="space-y-6 pt-4">
+      <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 bg-carbon-950 p-4 rounded-3xl border border-white/10">
+        <div class="relative flex-1">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input type="text" id="search-input" placeholder="Search by model, brand (Moondrop, Truthear...), driver, or signature..." class="w-full bg-carbon-900 border border-white/10 rounded-2xl pl-11 pr-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 transition">
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2.5 text-xs font-mono">
+          <select id="price-filter" class="bg-carbon-900 border border-white/10 rounded-2xl px-3.5 py-3 text-slate-200 focus:outline-none focus:border-cyan-400 text-xs font-bold">
+            <option value="all">Price: All Tiers</option>
+            <option value="ultra-budget">Ultra-Budget (&lt; €30)</option>
+            <option value="entry">Entry Sweetspot (€30 - €55)</option>
+            <option value="mid">Mid-Tier (€55 - €80)</option>
+            <option value="upper">Upper Benchmark (&gt; €80)</option>
+          </select>
+
+          <select id="nozzle-filter" class="bg-carbon-900 border border-white/10 rounded-2xl px-3.5 py-3 text-slate-200 focus:outline-none focus:border-cyan-400 text-xs font-bold">
+            <option value="all">Nozzle: All Sizes</option>
+            <option value="safe">Small Ear Safe (&le; 5.5mm)</option>
+            <option value="warning">Wide Nozzle Only (&gt; 6.0mm)</option>
+          </select>
+
+          <select id="sort-select" class="bg-carbon-900 border border-white/10 rounded-2xl px-3.5 py-3 text-slate-200 focus:outline-none focus:border-cyan-400 text-xs font-bold">
+            <option value="score-desc">Sort: Reviewer Score</option>
+            <option value="price-ali-asc">Sort: 11.11 Price (Low to High)</option>
+            <option value="price-amazon-asc">Sort: Amazon.de Price</option>
+            <option value="comfort-desc">Sort: Comfort Rating</option>
+            <option value="gaming-desc">Sort: Tactical Gaming Score</option>
+          </select>
+
+          <!-- View Switcher -->
+          <div class="flex items-center bg-carbon-900 border border-white/10 rounded-2xl p-1.5 ml-auto">
+            <button type="button" id="view-cards-btn" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md" aria-label="Card Grid View" title="Card Grid View">
+              <i class="fa-solid fa-grip"></i>
+              <span class="hidden sm:inline">Cards</span>
+            </button>
+            <button type="button" id="view-table-btn" class="px-3 py-1.5 rounded-xl text-slate-300 hover:text-white text-xs font-bold transition flex items-center gap-1.5" aria-label="Table Comparison View" title="Table Comparison View">
+              <i class="fa-solid fa-table-list"></i>
+              <span class="hidden sm:inline">Table</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARDS GRID VIEW -->
+      <div id="cards-view" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+      <!-- TABLE VIEW (Hidden by default) -->
+      <div id="table-view" class="hidden overflow-x-auto rounded-3xl border border-white/10 bg-carbon-950/70 backdrop-blur-md">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead class="bg-carbon-900 text-slate-300 font-mono uppercase text-xs tracking-wider border-b border-white/10">
+            <tr>
+              <th class="px-4 py-3.5">Model</th>
+              <th class="px-4 py-3.5">Driver</th>
+              <th class="px-4 py-3.5">Signature</th>
+              <th class="px-4 py-3.5 text-center">Nozzle</th>
+              <th class="px-4 py-3.5 text-center">Comfort</th>
+              <th class="px-4 py-3.5">Ali 11.11</th>
+              <th class="px-4 py-3.5">Amazon.de</th>
+              <th class="px-4 py-3.5 text-center">Score</th>
+              <th class="px-4 py-3.5 text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="divide-y divide-white/5 font-mono text-xs"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- AUDIO SCIENCE & MEASUREMENT VAULT -->
+    <section id="vault" class="space-y-6 pt-10 border-t border-white/10">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 text-purple-300 font-mono text-xs mb-1.5 font-bold">
+            <i class="fa-solid fa-waveform-lines"></i>
+            <span>ACOUSTIC TARGETS &amp; MEASUREMENT GRAPHS</span>
+          </div>
+          <h3 class="text-3xl font-display font-extrabold uppercase text-white">Audio Science Vault</h3>
+          <p class="text-sm text-slate-300 mt-1">Decode frequency response targets, pinna gain curves, and community databases</p>
+        </div>
+      </div>
+
+      <!-- Frequency Band Explainer Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="card-bouncy rounded-3xl p-6 space-y-2.5 border-l-4 border-l-cyan-400">
+          <span class="font-mono text-cyan-400 font-bold block text-sm uppercase">SUB-BASS (20Hz - 60Hz)</span>
+          <p class="text-sm text-slate-200 leading-relaxed">
+            The visceral physical rumble you feel rather than hear. Critical for cinematic EDM and modern pop. Dual-driver IEMs like <strong class="text-white font-bold">Truthear Zero:BLUE 2</strong> dedicate a dedicated 10mm dynamic driver just to this band.
+          </p>
+        </div>
+
+        <div class="card-bouncy rounded-3xl p-6 space-y-2.5 border-l-4 border-l-blue-400">
+          <span class="font-mono text-blue-400 font-bold block text-sm uppercase">MID-BASS (60Hz - 250Hz)</span>
+          <p class="text-sm text-slate-200 leading-relaxed">
+            Punch, kick drums, and bass guitar notes. If elevated too much (&gt;8dB above 300Hz), it bleeds into vocals and sounds "muddy". Controlled cleanly on <strong class="text-white font-bold">7Hz Zero:2</strong> and <strong class="text-white font-bold">Kefine Delci</strong>.
+          </p>
+        </div>
+
+        <div class="card-bouncy rounded-3xl p-6 space-y-2.5 border-l-4 border-l-indigo-400">
+          <span class="font-mono text-indigo-400 font-bold block text-sm uppercase">LOWER MIDS (250Hz - 1kHz)</span>
+          <p class="text-sm text-slate-200 leading-relaxed">
+            Male vocals, acoustic body, and warmth. A clean "tuck" at 300Hz prevents boominess. <strong class="text-white font-bold">Tangzu Wan'er 2</strong> gives this range a rich, natural, intimate chest resonance.
+          </p>
+        </div>
+
+        <div class="card-bouncy rounded-3xl p-6 space-y-2.5 border-l-4 border-l-pink-400">
+          <span class="font-mono text-pink-400 font-bold block text-sm uppercase">PINNA GAIN / EAR GAIN (1kHz - 3kHz)</span>
+          <p class="text-sm text-slate-200 leading-relaxed">
+            Natural amplification created by the human outer ear (concha). Harman targets boost this by ~9-11dB around 2.7kHz. If tuned wrong, female vocals sound either shouting or hollow. Perfected on <strong class="text-white font-bold">Truthear Zero:RED</strong>.
+          </p>
+        </div>
+
+        <div class="card-bouncy rounded-3xl p-6 space-y-2.5 border-l-4 border-l-amber-400">
+          <span class="font-mono text-amber-400 font-bold block text-sm uppercase">PRESENCE (4kHz - 8kHz)</span>
+          <p class="text-sm text-slate-200 leading-relaxed">
+            Detail articulation, consonant sounds (s, sh, t), and tactical gaming footstep cues. Sharp spikes here cause painful sibilance and ear fatigue. Balanced Armatures in <strong class="text-white font-bold">Truthear Hexa</strong> keep this ultra-clean.
+          </p>
+        </div>
+
+        <div class="card-bouncy rounded-3xl p-6 space-y-2.5 border-l-4 border-l-purple-400">
+          <span class="font-mono text-purple-400 font-bold block text-sm uppercase">AIR &amp; UPPER TREBLE (10kHz - 20kHz)</span>
+          <p class="text-sm text-slate-200 leading-relaxed">
+            Room ambiance, cymbal decay, and soundstage extension. Planar magnetic drivers (like in <strong class="text-white font-bold">Moondrop May</strong>) excel at reproducing this micro-detail without metallic harshness.
+          </p>
+        </div>
+      </div>
+
+      <!-- Live Graph Databases Links -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+        <a href="https://squig.link" target="_blank" rel="noopener noreferrer" class="card-bouncy rounded-2xl p-5 flex flex-col justify-between hover:border-pink-500/50 group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-mono text-xs text-pink-400 font-bold">SquigLink Network</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-pink-400 transition"></i>
+            </div>
+            <h4 class="font-bold text-white text-base group-hover:text-pink-300 transition">Squig.link</h4>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">The global database of 711 and 5128 coupler measurements from hundreds of independent reviewers.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-pink-400 font-bold">
+            <span>Open Tool</span>
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </div>
+        </a>
+
+        <a href="https://crinacle.com/graphs/iems/graphtool/" target="_blank" rel="noopener noreferrer" class="card-bouncy rounded-2xl p-5 flex flex-col justify-between hover:border-purple-500/50 group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-mono text-xs text-purple-400 font-bold">Crinacle Graph Tool</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-purple-400 transition"></i>
+            </div>
+            <h4 class="font-bold text-white text-base group-hover:text-purple-300 transition">In-Ear Fidelity (IEF)</h4>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Over 4,000 IEM measurement graphs and Crinacle's master tier list with tone/tech grades.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-purple-400 font-bold">
+            <span>Open Tool</span>
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </div>
+        </a>
+
+        <a href="https://graph.hangout.audio" target="_blank" rel="noopener noreferrer" class="card-bouncy rounded-2xl p-5 flex flex-col justify-between hover:border-cyan-500/50 group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-mono text-xs text-cyan-400 font-bold">Hangout.audio</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-cyan-400 transition"></i>
+            </div>
+            <h4 class="font-bold text-white text-base group-hover:text-cyan-300 transition">Hangout Audio Graph Tool</h4>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Measurements and rankings curated by Timmy (Gizaudio) and the Hangout Audio community.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-cyan-400 font-bold">
+            <span>Open Tool</span>
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </div>
+        </a>
+
+        <a href="https://songbird.rocks" target="_blank" rel="noopener noreferrer" class="card-bouncy rounded-2xl p-5 flex flex-col justify-between hover:border-amber-500/50 group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-mono text-xs text-amber-400 font-bold">Songbird AutoEQ</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-amber-400 transition"></i>
+            </div>
+            <h4 class="font-bold text-white text-base group-hover:text-amber-300 transition">AutoEQ &amp; DSP Profiles</h4>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Generate parametric EQ profiles to match your IEM to any sound target (Harman 2019, IEF Neutral).</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-amber-400 font-bold">
+            <span>Open Tool</span>
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- GERMAN / EU BUYING STRATEGY -->
+    <section id="eu-guide" class="space-y-6 pt-10 border-t border-white/10">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 font-mono text-xs mb-1.5 font-bold">
+          <i class="fa-solid fa-euro-sign"></i>
+          <span>EU TAX &amp; IMPORT GUIDE</span>
+        </div>
+        <h3 class="text-3xl font-display font-extrabold uppercase text-white">Buying in Germany &amp; EU Without Customs Hassle</h3>
+        <p class="text-sm text-slate-300 mt-1">Master AliExpress IOSS rules, 11.11 promo stacking, and Amazon.de warranty trade-offs</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="card-bouncy rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-base">
+            <i class="fa-solid fa-shield-check"></i>
+          </div>
+          <h4 class="font-bold text-white text-base uppercase tracking-wider font-mono">AliExpress IOSS (&lt; €150)</h4>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            AliExpress participates in the EU <strong class="text-emerald-300">IOSS (Import One-Stop Shop)</strong>. On orders under €150, German 19% MwSt is collected directly at checkout.
+            The parcel clears customs in Frankfurt or Liège with <strong class="text-white font-bold">zero additional fees</strong> and no Deutsche Post €6 collection charge.
+          </p>
+        </div>
+
+        <div class="card-bouncy rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-base">
+            <i class="fa-solid fa-calendar-star"></i>
+          </div>
+          <h4 class="font-bold text-white text-base uppercase tracking-wider font-mono">11.11 &amp; Choice Sales</h4>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            The annual <strong class="text-amber-300">11.11 Singles' Day</strong> (Nov 11–18) offers the deepest Chi-Fi discounts of the year (20%–35% off).
+            Monthly <strong class="text-cyan-300">Choice Day</strong> (1st–5th of each month) offers free 7–10 day Cainiao delivery to Germany with €3–€8 store coupons.
+          </p>
+        </div>
+
+        <div class="card-bouncy rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-base">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <h4 class="font-bold text-white text-base uppercase tracking-wider font-mono">Amazon.de &amp; Returns</h4>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Amazon.de carries a 15%–25% price premium over Chinese retail, but includes <strong class="text-emerald-300 font-bold">30-day hassle-free returns</strong>.
+            If you are trying an IEM with a wide nozzle (like the Zero:RED) or don't know your ear canal size, buying on Amazon.de is a risk-free way to audition the fit.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE INDIE CHI-FI & AUDIOPHILE WEBRING -->
+    <section class="mt-16 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-carbon-900/90 via-indigo-950/40 to-carbon-900/90 border-2 border-indigo-500/30 shadow-2xl relative overflow-hidden card-bouncy">
+      <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+        <div class="space-y-2.5 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/15 border border-pink-500/30 text-pink-300 font-mono text-xs font-bold">
+            <span>🌸</span>
+            <span>CHI-FI &amp; INDIE AUDIO WEBRING #404</span>
+          </div>
+          <h4 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-wide">
+            Audiophile Webring &amp; Discovery Hub
+          </h4>
+          <p class="text-sm text-slate-300 max-w-xl leading-relaxed">
+            Connecting music nerds, anime OST lovers, and Chi-Fi enthusiasts worldwide. Hand-tuned sound, zero corporate sponsored nonsense.
+          </p>
+          
+          <!-- Retro 88x31 animated web badges -->
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-2.5 pt-2">
+            <div class="px-3 py-1.5 rounded-xl bg-black/80 border border-white/20 font-mono text-xs text-cyan-300 font-bold tracking-wider flex items-center gap-2 shadow-inner">
+              <i class="fa-solid fa-compact-disc text-rose-400 animate-spin"></i>
+              <span>IEM RADAR '26</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-black/80 border border-white/20 font-mono text-xs text-amber-300 font-bold tracking-wider flex items-center gap-1.5 shadow-inner">
+              <span>★</span>
+              <span>BEST VIEWED W/ EARPHONES</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-black/80 border border-white/20 font-mono text-xs text-emerald-300 font-bold tracking-wider flex items-center gap-1.5 shadow-inner">
+              <span>✓</span>
+              <span>100% INDIE &amp; HAND-CRAFTED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Webring navigation controls -->
+        <div class="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+          <button type="button" id="webring-prev-btn" class="px-4 py-2.5 rounded-2xl bg-carbon-800 hover:bg-carbon-700 text-slate-200 border border-white/10 text-xs font-mono font-bold transition flex items-center gap-2 shadow-md btn-tactile" aria-label="Previous IEM in Webring">
+            <i class="fa-solid fa-chevron-left text-pink-400"></i>
+            <span>Prev Station</span>
+          </button>
+          
+          <button type="button" id="webring-random-btn" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 hover:from-pink-500 hover:to-indigo-500 text-white text-xs font-mono font-bold transition flex items-center gap-2.5 shadow-xl shadow-pink-500/25 btn-tactile">
+            <i class="fa-solid fa-dice text-amber-300 text-base"></i>
+            <span>Pick a Random IEM Gem!</span>
+          </button>
+          
+          <button type="button" id="webring-next-btn" class="px-4 py-2.5 rounded-2xl bg-carbon-800 hover:bg-carbon-700 text-slate-200 border border-white/10 text-xs font-mono font-bold transition flex items-center gap-2 shadow-md btn-tactile" aria-label="Next IEM in Webring">
+            <span>Next Station</span>
+            <i class="fa-solid fa-chevron-right text-cyan-400"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="pt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4 font-mono font-medium">
+      <div>
+        IEM RADAR FRAMEWORK // OPEN AUDIOPHILE DATASET
+      </div>
+      <div class="flex items-center space-x-3">
+        <span>OCTOBER 2026 AUDIT</span>
+        <span>•</span>
+        <a href="#models" class="text-cyan-400 hover:text-cyan-300 transition font-bold">Back to Top ↑</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- FLOATING SHORTLIST / WISHLIST DRAWER TRIGGER -->
+  <div id="floating-wishlist-pill" class="fixed bottom-6 right-6 z-40 hidden animate-in fade-in slide-in-from-bottom-6 duration-300">
+    <button type="button" id="open-wishlist-modal-btn" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-pink-600 to-indigo-600 text-white font-bold text-xs tracking-wide shadow-2xl shadow-pink-600/30 flex items-center gap-3 hover:scale-105 transition border border-white/20 btn-tactile" aria-label="Open Shortlist">
+      <i class="fa-solid fa-heart text-base text-white animate-pulse"></i>
+      <span>Shortlist (<span id="wishlist-pill-count">0</span>)</span>
+      <span class="text-white/60">|</span>
+      <span id="wishlist-pill-total" class="font-mono text-emerald-300 font-bold">~€0</span>
+    </button>
+  </div>
+
+  <!-- SHORTLIST & COLLABORATION MODAL -->
+  <div id="wishlist-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-carbon-900 border border-white/15 max-w-2xl w-full rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div class="p-6 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-2xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-base">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold font-display text-white">Your Curated Shortlist</h3>
+            <p class="text-xs text-slate-300">Share your favorite picks with your friend or compare them side-by-side</p>
+          </div>
+        </div>
+        <button type="button" id="close-wishlist-btn" class="w-8 h-8 rounded-full bg-carbon-800 text-slate-400 hover:text-white flex items-center justify-center transition" aria-label="Close Shortlist Modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-4 custom-scrollbar text-sm flex-grow" id="wishlist-modal-items">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Action Footer -->
+      <div class="p-6 border-t border-white/10 bg-carbon-950 space-y-3.5">
+        <div class="flex items-center justify-between text-xs font-mono font-medium">
+          <span class="text-slate-300">Est. 11.11 Total vs. Amazon.de:</span>
+          <div>
+            <span id="wishlist-total-ali" class="text-emerald-400 font-bold text-base">€0</span>
+            <span class="text-slate-400 ml-2 line-through text-xs" id="wishlist-total-amazon">€0</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button type="button" id="copy-share-url-btn" class="py-3 px-4 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-xs transition flex items-center justify-center gap-2 shadow-md btn-tactile">
+            <i class="fa-solid fa-link"></i>
+            <span>Copy Shareable Link</span>
+          </button>
+          <button type="button" id="copy-chat-summary-btn" class="py-3 px-4 rounded-xl bg-carbon-800 hover:bg-carbon-700 text-slate-200 border border-white/10 font-bold text-xs transition flex items-center justify-center gap-2 btn-tactile">
+            <i class="fa-solid fa-copy text-emerald-400"></i>
+            <span>Copy Chat Message for Friend</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAIL MODAL FOR SINGLE IEM -->
+  <div id="detail-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-carbon-900 border border-white/15 max-w-2xl w-full rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+      <div class="p-6 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <span id="modal-brand-badge" class="cute-sticker bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs px-3 py-1"></span>
+          <h3 id="modal-title" class="text-2xl font-bold font-display text-white">IEM Specifications</h3>
+        </div>
+        <button type="button" id="close-detail-modal-btn" class="w-8 h-8 rounded-full bg-carbon-800 text-slate-400 hover:text-white flex items-center justify-center transition" aria-label="Close Detail Modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-6 custom-scrollbar text-sm">
+        <!-- Quick Specs -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+          <div class="p-3.5 rounded-2xl bg-carbon-950 border border-white/10">
+            <span class="text-slate-400 block text-xs uppercase font-mono font-semibold">Driver</span>
+            <span id="modal-driver" class="font-bold text-white text-xs mt-1 block font-mono"></span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-carbon-950 border border-white/10">
+            <span class="text-slate-400 block text-xs uppercase font-mono font-semibold">Nozzle Outer</span>
+            <span id="modal-nozzle" class="font-bold text-white text-xs mt-1 block font-mono"></span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-carbon-950 border border-white/10">
+            <span class="text-slate-400 block text-xs uppercase font-mono font-semibold">Comfort Fit</span>
+            <span id="modal-comfort" class="font-bold text-emerald-400 text-xs mt-1 block font-mono"></span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-carbon-950 border border-white/10">
+            <span class="text-slate-400 block text-xs uppercase font-mono font-semibold">Gaming Score</span>
+            <span id="modal-gaming" class="font-bold text-cyan-400 text-xs mt-1 block font-mono"></span>
+          </div>
+        </div>
+
+        <!-- Sound Profile -->
+        <div class="space-y-2">
+          <h5 class="font-bold text-slate-300 uppercase tracking-wider font-mono text-xs">Tonal Identity &amp; Signature</h5>
+          <p id="modal-sound-desc" class="text-slate-200 leading-relaxed text-sm bg-carbon-950 p-4 rounded-2xl border border-white/10"></p>
+        </div>
+
+        <!-- Build & Accessories -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <h5 class="font-bold text-slate-300 uppercase tracking-wider font-mono text-xs">Housing &amp; Connector</h5>
+            <div class="bg-carbon-950 p-4 rounded-2xl border border-white/10 space-y-1.5">
+              <div class="text-slate-200 font-medium text-xs" id="modal-build"></div>
+              <div class="text-slate-400 text-xs font-mono" id="modal-cable"></div>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <h5 class="font-bold text-slate-300 uppercase tracking-wider font-mono text-xs">Included Accessories</h5>
+            <div class="bg-carbon-950 p-4 rounded-2xl border border-white/10 space-y-1.5">
+              <div class="text-slate-200 text-xs font-medium" id="modal-accessories"></div>
+              <div class="text-amber-400 font-mono text-xs font-bold" id="modal-accessories-rating"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QC & Fit Alerts -->
+        <div class="space-y-2">
+          <h5 class="font-bold text-amber-400 uppercase tracking-wider font-mono text-xs flex items-center gap-2">
+            <i class="fa-solid fa-wrench"></i>
+            <span>Reliability, Moisture &amp; Fit Analysis</span>
+          </h5>
+          <div id="modal-qc" class="text-slate-200 leading-relaxed bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl text-xs sm:text-sm"></div>
+        </div>
+
+        <!-- Reviewer Verdicts -->
+        <div class="space-y-2">
+          <h5 class="font-bold text-slate-300 uppercase tracking-wider font-mono text-xs">Reviewer Consensus</h5>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="bg-carbon-950 p-3.5 rounded-2xl border border-white/10">
+              <span class="text-slate-400 block text-xs font-mono font-semibold">Crinacle IEF</span>
+              <span id="modal-crinacle" class="font-bold text-white mt-1 block text-sm font-mono"></span>
+            </div>
+            <div class="bg-carbon-950 p-3.5 rounded-2xl border border-white/10">
+              <span class="text-slate-400 block text-xs font-mono font-semibold">Super* Review</span>
+              <span id="modal-super" class="font-bold text-white mt-1 block text-sm font-mono"></span>
+            </div>
+            <div class="bg-carbon-950 p-3.5 rounded-2xl border border-white/10">
+              <span class="text-slate-400 block text-xs font-mono font-semibold">Jay's Audio</span>
+              <span id="modal-jays" class="font-bold text-white mt-1 block text-sm font-mono"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personal Notes Area -->
+        <div class="space-y-2">
+          <h5 class="font-bold text-slate-300 uppercase tracking-wider font-mono text-xs flex items-center gap-1.5">
+            <i class="fa-solid fa-pen text-pink-400"></i>
+            <span>Personal Note (Saved locally on your device)</span>
+          </h5>
+          <textarea id="modal-personal-note" rows="2" placeholder="Write your private thoughts or fit impressions here..." class="w-full bg-carbon-950 border border-white/10 rounded-2xl p-3.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 transition"></textarea>
+        </div>
+
+        <!-- Pricing Grid -->
+        <div class="space-y-2">
+          <h5 class="font-bold text-slate-300 uppercase tracking-wider font-mono text-xs">Pricing in Germany / EU</h5>
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="p-3.5 rounded-2xl bg-carbon-950 border border-white/10">
+              <span class="text-slate-400 text-xs block font-mono font-semibold">Amazon.de</span>
+              <span id="modal-price-amazon" class="font-bold text-white text-base mt-1 block font-mono"></span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-carbon-950 border border-white/10">
+              <span class="text-slate-400 text-xs block font-mono font-semibold">AliExpress Choice</span>
+              <span id="modal-price-ali-choice" class="font-bold text-cyan-400 text-base mt-1 block font-mono"></span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-carbon-950 border border-emerald-500/30 bg-emerald-500/10">
+              <span class="text-emerald-400 text-xs block font-mono font-bold">11.11 Mega Sale</span>
+              <span id="modal-price-ali-1111" class="font-bold text-emerald-400 text-base mt-1 block font-mono"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Store Links -->
+        <div class="space-y-2.5 pt-2 border-t border-white/10">
+          <h5 class="font-bold text-slate-300 uppercase tracking-wider font-mono text-xs">Verified Retail Channels</h5>
+          <div id="modal-links" class="flex flex-wrap gap-2.5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl bg-carbon-850 border border-white/20 text-white text-xs font-mono font-bold shadow-2xl hidden flex items-center gap-2.5">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- YOUTUBE IFRAME ENGINE (Zero-login legal streaming) -->
+  <div class="absolute -left-[9999px] -bottom-[9999px] w-px h-px overflow-hidden pointer-events-none">
+    <div id="yt-player"></div>
+  </div>
+
+  <!-- AUDIOPHILE SOUND BENCH (Bottom-Left) -->
+  <!-- Collapsed Pill -->
+  <div id="sound-deck-pill" class="fixed bottom-6 left-6 z-40 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-carbon-900/95 backdrop-blur-xl border border-white/15 shadow-2xl hover:border-cyan-400/50 transition cursor-pointer group card-bouncy">
+    <div class="flex items-end gap-0.5 h-4 w-4 text-cyan-400" id="pill-eq-container">
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+    </div>
+    <div class="flex flex-col text-left">
+      <span class="font-mono text-xs text-cyan-400 uppercase tracking-wider font-bold flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>SOUND BENCH</span>
+      </span>
+      <span id="pill-track-title" class="text-xs font-bold text-white max-w-[150px] sm:max-w-[190px] truncate block mt-0.5">
+        Kessoku Band • Guitar Loneliness
+      </span>
+    </div>
+    <div class="flex items-center gap-1.5 ml-1">
+      <button type="button" id="pill-play-btn" class="w-8 h-8 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white flex items-center justify-center text-xs transition shadow-md btn-tactile" aria-label="Play or pause audio">
+        <i class="fa-solid fa-play" id="pill-play-icon"></i>
+      </button>
+      <button type="button" id="pill-expand-btn" class="w-7 h-7 rounded-lg hover:bg-carbon-800 text-slate-300 hover:text-white flex items-center justify-center text-xs transition" aria-label="Expand Sound Bench" title="Expand Sound Bench">
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Expanded Cyberdeck Panel -->
+  <div id="sound-deck-panel" class="fixed bottom-6 left-6 z-50 w-[420px] max-w-[calc(100vw-2.5rem)] rounded-3xl bg-carbon-900/95 backdrop-blur-2xl border border-white/20 shadow-2xl overflow-hidden hidden flex flex-col transition-all duration-300">
+    <!-- Deck Header -->
+    <div class="p-4 border-b border-white/10 flex items-center justify-between bg-carbon-950/70">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-600 to-cyan-400 flex items-center justify-center text-white text-sm shadow-md">
+          <i class="fa-solid fa-sliders"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h4 class="font-display font-bold tracking-wider text-sm uppercase text-white">AUDIOPHILE SOUND BENCH</h4>
+            <span class="font-mono text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold">HI-FI</span>
+          </div>
+          <p class="text-xs text-slate-300 font-mono">Acoustic Benchmarks: Kessoku • YOASOBI • Eurobeat</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex items-end gap-0.5 h-4 w-4 mr-1" id="deck-eq-container">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+        </div>
+        <button type="button" id="deck-minimize-btn" class="w-7 h-7 rounded-lg bg-carbon-800 hover:bg-carbon-700 text-slate-300 hover:text-white flex items-center justify-center text-xs transition" aria-label="Minimize Audio Deck" title="Minimize">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Track Card -->
+    <div class="p-4 space-y-3.5">
+      <div class="flex items-center space-x-3 bg-carbon-950 p-3.5 rounded-2xl border border-white/10">
+        <div id="deck-disc-icon" class="w-12 h-12 rounded-full bg-gradient-to-br from-carbon-800 to-carbon-950 border-2 border-white/20 flex items-center justify-center text-xl text-cyan-400 shrink-0 shadow-inner">
+          <i class="fa-solid fa-compact-disc"></i>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center justify-between gap-1">
+            <span id="deck-track-category" class="font-mono text-xs text-pink-400 uppercase tracking-wider font-bold">Kessoku Band</span>
+            <span id="deck-acoustic-tag" class="font-mono text-xs px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 truncate font-semibold">Guitar Separation</span>
+          </div>
+          <h5 id="deck-track-title" class="font-bold font-display text-white text-base truncate mt-0.5">Guitar, Loneliness and Blue Planet</h5>
+          <p id="deck-track-artist" class="text-xs text-slate-300 truncate font-medium">Bocchi the Rock! OST</p>
+        </div>
+      </div>
+
+      <!-- Audiophile Testing Focus Note -->
+      <div class="bg-carbon-950/80 p-3.5 rounded-2xl border border-white/10 text-xs text-slate-200 space-y-1.5">
+        <div class="text-cyan-400 font-mono text-xs uppercase font-bold flex items-center gap-1.5">
+          <i class="fa-solid fa-headphones-simple"></i>
+          <span>Acoustic Evaluation Benchmark:</span>
+        </div>
+        <p id="deck-acoustic-focus" class="text-slate-200 leading-relaxed text-xs font-normal"></p>
+      </div>
+
+      <!-- Scrubber & Time -->
+      <div class="space-y-1.5">
+        <div class="flex items-center justify-between text-xs font-mono text-slate-300 font-medium">
+          <span id="deck-current-time">0:00</span>
+          <span id="deck-duration">0:00</span>
+        </div>
+        <div class="w-full bg-carbon-800 h-2 rounded-full overflow-hidden cursor-pointer relative" id="deck-progress-bar">
+          <div id="deck-progress-fill" class="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 h-full w-0 transition-all duration-200"></div>
+        </div>
+      </div>
+
+      <!-- Transport Controls -->
+      <div class="flex items-center justify-between pt-1">
+        <div class="flex items-center gap-2.5">
+          <button type="button" id="deck-prev-btn" class="w-9 h-9 rounded-xl bg-carbon-800 hover:bg-carbon-700 text-slate-200 hover:text-white flex items-center justify-center text-xs transition btn-tactile" aria-label="Previous Track">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button type="button" id="deck-play-btn" class="w-11 h-11 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white flex items-center justify-center text-sm transition shadow-lg shadow-pink-600/30 btn-tactile" aria-label="Play or Pause">
+            <i class="fa-solid fa-play text-base" id="deck-play-icon"></i>
+          </button>
+          <button type="button" id="deck-next-btn" class="w-9 h-9 rounded-xl bg-carbon-800 hover:bg-carbon-700 text-slate-200 hover:text-white flex items-center justify-center text-xs transition btn-tactile" aria-label="Next Track">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+        </div>
+
+        <!-- Volume -->
+        <div class="flex items-center gap-2.5 bg-carbon-950 px-3.5 py-2 rounded-xl border border-white/10">
+          <button type="button" id="deck-mute-btn" class="text-slate-300 hover:text-white text-xs" aria-label="Toggle Mute">
+            <i class="fa-solid fa-volume-high" id="deck-volume-icon"></i>
+          </button>
+          <input type="range" id="deck-volume-slider" min="0" max="100" value="75" aria-label="Volume Slider" class="w-16 h-1.5 bg-carbon-800 rounded-lg appearance-none cursor-pointer accent-pink-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="px-4 py-2.5 border-t border-white/10 bg-carbon-950/40 flex items-center gap-2 text-xs font-mono font-bold">
+      <button type="button" class="deck-cat-btn active px-3 py-1 rounded-xl bg-pink-500/20 text-white border border-pink-500/30 text-xs" data-cat="all">All (9)</button>
+      <button type="button" class="deck-cat-btn px-3 py-1 rounded-xl bg-carbon-950 text-slate-300 border border-white/10 text-xs hover:text-white" data-cat="kessoku">🎸 Kessoku</button>
+      <button type="button" class="deck-cat-btn px-3 py-1 rounded-xl bg-carbon-950 text-slate-300 border border-white/10 text-xs hover:text-white" data-cat="yoasobi">✨ YOASOBI</button>
+      <button type="button" class="deck-cat-btn px-3 py-1 rounded-xl bg-carbon-950 text-slate-300 border border-white/10 text-xs hover:text-white" data-cat="eurobeat">🏎️ Eurobeat</button>
+    </div>
+
+    <!-- Playlist Rows -->
+    <div class="max-h-[190px] overflow-y-auto custom-scrollbar p-2.5 space-y-1.5 bg-carbon-950/20" id="deck-playlist-container"></div>
+
+    <!-- Deck Footer -->
+    <div class="p-3.5 border-t border-white/10 bg-carbon-950 flex items-center justify-between text-xs font-mono text-slate-300 font-medium">
+      <span class="flex items-center gap-1.5 text-slate-300">
+        <i class="fa-brands fa-youtube text-rose-500 text-sm"></i>
+        <span>Zero-Login Stream</span>
+      </span>
+      <a id="deck-spotify-link" href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 transition font-bold">
+        <i class="fa-brands fa-spotify"></i>
+        <span>Search in Spotify</span>
+      </a>
+    </div>
+  </div>
