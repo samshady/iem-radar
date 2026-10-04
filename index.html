@@ -100,7 +100,51 @@
       text-transform: uppercase;
       font-weight: 700;
     }
+
+    /* Audiophile Sound Bench & Equalizer */
+    @keyframes eqBar1 {
+      0%, 100% { height: 4px; }
+      50% { height: 16px; }
+    }
+    @keyframes eqBar2 {
+      0%, 100% { height: 14px; }
+      50% { height: 5px; }
+    }
+    @keyframes eqBar3 {
+      0%, 100% { height: 7px; }
+      50% { height: 20px; }
+    }
+    @keyframes eqBar4 {
+      0%, 100% { height: 18px; }
+      50% { height: 8px; }
+    }
+    @keyframes eqBar5 {
+      0%, 100% { height: 6px; }
+      50% { height: 15px; }
+    }
+
+    .eq-bar {
+      width: 3px;
+      border-radius: 2px;
+      background-color: #3b82f6;
+      height: 4px;
+      transition: height 0.2s ease;
+      display: inline-block;
+    }
+    .playing-bars .eq-bar:nth-child(1) { animation: eqBar1 0.7s infinite ease-in-out; }
+    .playing-bars .eq-bar:nth-child(2) { animation: eqBar2 0.55s infinite ease-in-out; }
+    .playing-bars .eq-bar:nth-child(3) { animation: eqBar3 0.65s infinite ease-in-out; }
+    .playing-bars .eq-bar:nth-child(4) { animation: eqBar4 0.5s infinite ease-in-out; }
+    .playing-bars .eq-bar:nth-child(5) { animation: eqBar5 0.6s infinite ease-in-out; }
+
+    @keyframes spinDisc {
+      100% { transform: rotate(360deg); }
+    }
+    .spinning-disc {
+      animation: spinDisc 3.5s linear infinite;
+    }
   </style>
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body class="min-h-screen custom-scrollbar antialiased selection:bg-blue-500 selection:text-white">
 
@@ -782,6 +826,154 @@
     <span id="toast-message">Copied to clipboard!</span>
   </div>
 
+  <!-- YOUTUBE IFRAME AUDIO ENGINE (Zero-login, 100% free legal streaming) -->
+  <div style="position: absolute; left: -9999px; bottom: -9999px; width: 1px; height: 1px; overflow: hidden; pointer-events: none;">
+    <div id="yt-player"></div>
+  </div>
+
+  <!-- FLOATING AUDIOPHILE SOUND DECK DOCK (Bottom-Left) -->
+  <!-- Collapsed Pill -->
+  <div id="sound-deck-pill" class="fixed bottom-6 left-6 z-40 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-carbon-900/95 backdrop-blur-xl border border-white/10 shadow-2xl hover:border-blue-500/40 transition cursor-pointer group">
+    <div class="flex items-end gap-0.5 h-4 w-4 text-blue-400" id="pill-eq-container">
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+    </div>
+    <div class="flex flex-col text-left">
+      <span class="font-mono text-[9px] text-blue-400 uppercase tracking-wider font-semibold flex items-center gap-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        SOUND BENCH
+      </span>
+      <span id="pill-track-title" class="text-xs font-bold text-white max-w-[150px] sm:max-w-[190px] truncate block">
+        Kessoku Band • Guitar Loneliness
+      </span>
+    </div>
+    <div class="flex items-center gap-1 ml-1">
+      <button id="pill-play-btn" class="w-8 h-8 rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center text-xs transition shadow-md shadow-blue-600/30">
+        <i class="fa-solid fa-play" id="pill-play-icon"></i>
+      </button>
+      <button id="pill-expand-btn" class="w-7 h-7 rounded-lg hover:bg-carbon-800 text-slate-400 hover:text-white flex items-center justify-center text-xs transition" title="Expand Sound Bench">
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Expanded Sound Deck Window -->
+  <div id="sound-deck-panel" class="fixed bottom-6 left-6 z-50 w-[420px] max-w-[calc(100vw-2.5rem)] rounded-3xl bg-carbon-900/95 backdrop-blur-2xl border border-white/15 shadow-2xl overflow-hidden hidden flex flex-col transition-all duration-300">
+    <!-- Deck Header -->
+    <div class="p-4 border-b border-white/10 flex items-center justify-between bg-carbon-950/70">
+      <div class="flex items-center space-x-2.5">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white text-xs shadow-md">
+          <i class="fa-solid fa-sliders"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h4 class="font-display tracking-wider text-sm uppercase text-white font-bold">AUDIOPHILE SOUND BENCH</h4>
+            <span class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">HI-FI</span>
+          </div>
+          <p class="text-[10px] text-slate-400 font-mono">Acoustic Benchmarks: Kessoku • YOASOBI • Eurobeat</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex items-end gap-0.5 h-4 w-4 mr-1" id="deck-eq-container">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+        </div>
+        <button id="deck-minimize-btn" class="w-7 h-7 rounded-lg bg-carbon-800 hover:bg-carbon-700 text-slate-400 hover:text-white flex items-center justify-center text-xs transition" title="Minimize">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Track Card -->
+    <div class="p-4 space-y-3">
+      <div class="flex items-center space-x-3 bg-carbon-950 p-3 rounded-2xl border border-white/5">
+        <div id="deck-disc-icon" class="w-12 h-12 rounded-full bg-gradient-to-br from-carbon-800 to-carbon-950 border-2 border-white/10 flex items-center justify-center text-xl text-blue-400 shrink-0 shadow-inner">
+          <i class="fa-solid fa-compact-disc"></i>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center justify-between gap-1">
+            <span id="deck-track-category" class="font-mono text-[10px] text-blue-400 uppercase tracking-wider font-semibold">Kessoku Band</span>
+            <span id="deck-acoustic-tag" class="font-mono text-[9px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20 truncate">Guitar Separation</span>
+          </div>
+          <h5 id="deck-track-title" class="font-bold text-white text-sm truncate mt-0.5">Guitar, Loneliness and Blue Planet</h5>
+          <p id="deck-track-artist" class="text-[11px] text-slate-400 truncate">Bocchi the Rock! OST</p>
+        </div>
+      </div>
+
+      <!-- Audiophile Testing Focus Note -->
+      <div class="bg-carbon-950/80 p-3 rounded-xl border border-white/5 text-[11px] text-slate-300 space-y-1">
+        <div class="text-blue-400 font-mono text-[10px] uppercase font-bold flex items-center gap-1.5">
+          <i class="fa-solid fa-headphones-simple"></i>
+          <span>Acoustic Evaluation Benchmark:</span>
+        </div>
+        <p id="deck-acoustic-focus" class="text-slate-300 leading-relaxed text-[11px]"></p>
+      </div>
+
+      <!-- Scrubber & Time -->
+      <div class="space-y-1">
+        <div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+          <span id="deck-current-time">0:00</span>
+          <span id="deck-duration">0:00</span>
+        </div>
+        <div class="w-full bg-carbon-800 h-1.5 rounded-full overflow-hidden cursor-pointer relative" id="deck-progress-bar">
+          <div id="deck-progress-fill" class="bg-gradient-to-r from-blue-500 to-cyan-400 h-full w-0 transition-all duration-200"></div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-between pt-1">
+        <div class="flex items-center gap-2">
+          <button id="deck-prev-btn" class="w-8 h-8 rounded-xl bg-carbon-800 hover:bg-carbon-700 text-slate-300 hover:text-white flex items-center justify-center text-xs transition">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button id="deck-play-btn" class="w-10 h-10 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center text-sm transition shadow-lg shadow-blue-500/25">
+            <i class="fa-solid fa-play" id="deck-play-icon"></i>
+          </button>
+          <button id="deck-next-btn" class="w-8 h-8 rounded-xl bg-carbon-800 hover:bg-carbon-700 text-slate-300 hover:text-white flex items-center justify-center text-xs transition">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+        </div>
+
+        <!-- Volume -->
+        <div class="flex items-center gap-2 bg-carbon-950 px-3 py-1.5 rounded-xl border border-white/5">
+          <button id="deck-mute-btn" class="text-slate-400 hover:text-white text-xs">
+            <i class="fa-solid fa-volume-high" id="deck-volume-icon"></i>
+          </button>
+          <input type="range" id="deck-volume-slider" min="0" max="100" value="75" class="w-16 h-1 bg-carbon-800 rounded-lg appearance-none cursor-pointer accent-blue-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="px-4 py-2 border-t border-white/5 bg-carbon-950/40 flex items-center gap-1.5 text-xs font-mono">
+      <button class="deck-cat-btn active px-2.5 py-1 rounded-lg bg-blue-500/20 text-white border border-blue-500/30 text-[10px]" data-cat="all">All (9)</button>
+      <button class="deck-cat-btn px-2.5 py-1 rounded-lg bg-carbon-950 text-slate-400 border border-white/5 text-[10px] hover:text-white" data-cat="kessoku">🎸 Kessoku</button>
+      <button class="deck-cat-btn px-2.5 py-1 rounded-lg bg-carbon-950 text-slate-400 border border-white/5 text-[10px] hover:text-white" data-cat="yoasobi">✨ YOASOBI</button>
+      <button class="deck-cat-btn px-2.5 py-1 rounded-lg bg-carbon-950 text-slate-400 border border-white/5 text-[10px] hover:text-white" data-cat="eurobeat">🏎️ Eurobeat</button>
+    </div>
+
+    <!-- Playlist Rows (Scrollable) -->
+    <div class="max-h-[190px] overflow-y-auto custom-scrollbar p-2 space-y-1 bg-carbon-950/20" id="deck-playlist-container"></div>
+
+    <!-- Deck Footer -->
+    <div class="p-3 border-t border-white/10 bg-carbon-950 flex items-center justify-between text-[10px] font-mono text-slate-400">
+      <span class="flex items-center gap-1 text-slate-400">
+        <i class="fa-brands fa-youtube text-rose-500 text-xs"></i>
+        <span>Zero-Login Stream</span>
+      </span>
+      <a id="deck-spotify-link" href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition">
+        <i class="fa-brands fa-spotify"></i>
+        <span>Search in Spotify</span>
+      </a>
+    </div>
+  </div>
+
   <!-- JAVASCRIPT APPLICATION CODE -->
   <script>
     const iemsData = [{"id": "tanchjim-bunny", "name": "Tanchjim Bunny", "brand": "Tanchjim", "release_year": "2024-2025", "status": "Active", "price_usd_msrp": 22.0, "price_eur_amazon": 26.0, "price_eur_ali_choice": 18.0, "price_eur_ali_1111": 14.5, "driver_type": "1DD", "driver_detail": "10mm DMT4 Ultra Dynamic Driver with PET-Titanium diaphragm & acoustic labyrinth maze", "sound_signature": "Balanced Warm / Mild V", "sound_description": "Clean, linear bass, forward natural vocals, and smooth, non-fatiguing treble. Warm and relaxing.", "nozzle_diameter_mm": 5.4, "nozzle_warning": "No", "comfort_rating": 9.5, "build_material": "Clear polycarbonate shell, resin faceplate", "connection": "3.5mm or USB-C DSP", "cable_detail": "Detachable 0.78mm 2-pin; DSP edition features built-in DAC/AMP & Tanchjim app EQ", "accessories_included": "Silicone tips (S/M/L), cloth storage pouch, manual", "accessories_rating": 7.0, "qc_and_known_issues": "Lightweight plastic shell feels budget; otherwise rock-solid with zero driver flex.", "gaming_score": 8.0, "community_score": 8.4, "crinacle_rank": "Unranked (Measurement DB)", "super_review_rating": "Recommended Budget", "jays_audio_rating": "Solid Budget All-Rounder", "target_personas": ["Smartphone DSP / No Jack", "Small Ears & Sleep", "Casual Everyday"], "verified_stores": [{"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/tanchjim-bunny"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=tanchjim+bunny"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-tanchjim-bunny.html"}], "notes": "Available in Bunny 3.5mm, Bunny DSP (USB-C), and Bunny G (Gaming edition with 8-band PEQ in app)."}, {"id": "kefine-klean", "name": "Kefine Klean", "brand": "Kefine", "release_year": "2024", "status": "Active", "price_usd_msrp": 49.0, "price_eur_amazon": 59.0, "price_eur_ali_choice": 42.0, "price_eur_ali_1111": 34.0, "driver_type": "1DD", "driver_detail": "10mm Diamond-Like Carbon (DLC) Dynamic Driver + N52 neodymium magnet", "sound_signature": "Energetic / Transparent (Tunable)", "sound_description": "Clean, punchy low end, crisp transients, holographic imaging. Includes swappable silver (warm/smooth) and black (resolving/bright) nozzles.", "nozzle_diameter_mm": 5.6, "nozzle_warning": "No", "comfort_rating": 8.8, "build_material": "Aviation-grade full CNC cast alloy metal", "connection": "3.5mm or USB-C", "cable_detail": "High-purity silver-plated copper 2-pin 0.78mm braided cable", "accessories_included": "2 pairs tuning nozzles with rubber gaskets, solid zipper case, 2 styles silicone ear tips", "accessories_rating": 9.0, "qc_and_known_issues": "Exceptional QC, durable metal finish without paint chipping. Slightly heavier shell (9.8g per side).", "gaming_score": 8.5, "community_score": 8.9, "crinacle_rank": "Tracked (Community Hit)", "super_review_rating": "High Value Contender", "jays_audio_rating": "Top Sub-$50 Metal Pick", "target_personas": ["High Detail & Resolution", "Tunable Sound", "Built Like a Tank"], "verified_stores": [{"name": "HiFiGO", "url": "https://hifigo.com/products/kefine-klean"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=kefine+klean"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-kefine-klean.html"}], "notes": "Follow-up to the hit Delci, offering interchangeable acoustic nozzles at an even lower price point."}, {"id": "trn-conch", "name": "TRN Conch", "brand": "TRN", "release_year": "2023", "status": "Active", "price_usd_msrp": 35.0, "price_eur_amazon": 34.0, "price_eur_ali_choice": 26.0, "price_eur_ali_1111": 19.0, "driver_type": "1DD", "driver_detail": "10mm Dual-Magnetic Circuit DLC Dynamic Driver", "sound_signature": "Bright V-Shape / Crisp Harman", "sound_description": "Sparkly highs, energetic sub-bass, fast transients. Can be bright on Reference nozzle; tamable with Atmospheric nozzle or foam tips.", "nozzle_diameter_mm": 5.5, "nozzle_warning": "No", "comfort_rating": 8.2, "build_material": "Liquid metal alloy cavity with electroplated mirror finish", "connection": "Modular (3.5mm + 2.5mm + 4.4mm)", "cable_detail": "4-core silver-plated OFC modular cable with interchangeable 2.5/3.5/4.4mm jacks", "accessories_included": "3 modular plug adapters (3.5/2.5/4.4), 3 pairs tuning nozzles, metal puck case, TRN T-Ear tips + wide bore tips", "accessories_rating": 9.8, "qc_and_known_issues": "Treble can be intense for treble-sensitive listeners; mirror chrome finish attracts fingerprints and micro-scratches.", "gaming_score": 8.4, "community_score": 8.5, "crinacle_rank": "C+ (Bright tilt)", "super_review_rating": "Unmatched Accessory Value", "jays_audio_rating": "Insane Value Package", "target_personas": ["Accessory King", "Balanced 4.4mm Gear", "Bright Detail Hunters"], "verified_stores": [{"name": "Linsoul", "url": "https://www.linsoul.com/products/trn-conch"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=trn+conch"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-trn-conch.html"}], "notes": "Holds the record for best sub-$35 accessories with 3 modular plugs and 3 tuning nozzle filters."}, {"id": "dunu-titan-x", "name": "DUNU Titan X", "brand": "DUNU", "release_year": "2026", "status": "New Release", "price_usd_msrp": 35.0, "price_eur_amazon": 39.0, "price_eur_ali_choice": 28.0, "price_eur_ali_1111": 23.0, "driver_type": "1DD", "driver_detail": "10mm Dual-Magnetic Dual-Chamber Dynamic Driver with high-rigidity dome", "sound_signature": "Warm Punchy / Dynamic Fun", "sound_description": "Authoritative bass punch, natural warm vocal presence, and smooth, non-fatiguing treble. Excellent dynamic slam.", "nozzle_diameter_mm": 5.6, "nozzle_warning": "No", "comfort_rating": 8.7, "build_material": "High-density chrome-plated metallic alloy", "connection": "3.5mm or USB-C", "cable_detail": "Silver-plated copper Litz cable (0.78mm 2-pin)", "accessories_included": "DUNU Candy ear tips, cleaning brush, soft leatherette pouch, standard tips", "accessories_rating": 9.2, "qc_and_known_issues": "DUNU's industrial QC is top-tier; shell mirror finish collects fingerprints.", "gaming_score": 8.2, "community_score": 8.8, "crinacle_rank": "Unranked (2026 Model)", "super_review_rating": "Stellar Build & Fun Sound", "jays_audio_rating": "Great Dynamic Bass", "target_personas": ["Bass Punch & Rock/Pop", "Top-Tier Ear Tips Included", "Durable All-Metal"], "verified_stores": [{"name": "HiFiGO", "url": "https://hifigo.com/products/dunu-titan-x"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=dunu+titan+x"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-dunu-titan-x.html"}], "notes": "DUNU's 2026 entry-level disruptor. Includes DUNU Candy tips which are prized audiophile accessories on their own."}, {"id": "kz-zar", "name": "KZ ZAR", "brand": "KZ", "release_year": "2023", "status": "Active", "price_usd_msrp": 85.0, "price_eur_amazon": 79.0, "price_eur_ali_choice": 55.0, "price_eur_ali_1111": 42.0, "driver_type": "1DD + 7BA Hybrid", "driver_detail": "8 Drivers per side: 10mm DD + 6x 50024S BAs (mids/highs) + 1x 30019S BA (ultra-high)", "sound_signature": "U-Curve / Theatrical Bass & Detail", "sound_description": "Massive sub-bass slam, wide cinematic soundstage, forward vocals, crisp high frequency micro-details without the harsh sibilance of older KZ sets.", "nozzle_diameter_mm": 6.0, "nozzle_warning": "Caution (Moderate)", "comfort_rating": 7.3, "build_material": "Resin cavity with zinc alloy electroplated faceplate", "connection": "3.5mm", "cable_detail": "8-strand silver-plated cable with hooded QDC 2-pin connectors", "accessories_included": "Starline silicone ear tips (3 sizes), 8-strand cable", "accessories_rating": 6.8, "qc_and_known_issues": "Shell is large and heavy due to 8 drivers; QDC connector limits cable swaps; BA timbre can sound slightly unnatural on acoustic acoustic guitars.", "gaming_score": 8.6, "community_score": 7.9, "crinacle_rank": "Unranked", "super_review_rating": "Fun Theatrical V-Shape", "jays_audio_rating": "Bass Heavy Hybrid Monster", "target_personas": ["Bassheads & Theatrical EDM", "Cinematic Gaming Explosions", "Driver Count Enthusiasts"], "verified_stores": [{"name": "Linsoul", "url": "https://www.linsoul.com/products/kz-zar"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=kz+zar"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-kz-zar.html"}], "notes": "Packs 8 drivers per ear. If bought during AliExpress sales, it is an astonishing amount of raw acoustic hardware under €45."}, {"id": "kiwi-ears-cadenza-ii", "name": "Kiwi Ears Cadenza II", "brand": "Kiwi Ears", "release_year": "2026", "status": "New Release", "price_usd_msrp": 49.99, "price_eur_amazon": 54.0, "price_eur_ali_choice": 42.0, "price_eur_ali_1111": 35.0, "driver_type": "1DD", "driver_detail": "10mm Titanium-Coated PET DD with KARS 2.0 Acoustic Labyrinth Resonator", "sound_signature": "Warm Neutral / Musical Vocal", "sound_description": "Clean, tight sub-bass shelf that rolls off cleanly at 200Hz, preventing lower-mid mud. Luscious vocal presence and smooth airy highs.", "nozzle_diameter_mm": 5.5, "nozzle_warning": "No", "comfort_rating": 9.4, "build_material": "Medical resin shell with CNC machined aluminum faceplate", "connection": "3.5mm", "cable_detail": "High-purity 4-core braided single-crystal OFC cable (0.78mm 2-pin)", "accessories_included": "3 pairs balanced silicone tips, 3 pairs vocal silicone tips, storage pouch", "accessories_rating": 8.5, "qc_and_known_issues": "Seamless resin build, zero driver flex, excellent acoustic chamber stability.", "gaming_score": 8.3, "community_score": 9.1, "crinacle_rank": "Unranked (2026 Model)", "super_review_rating": "Superb Vocal All-Rounder", "jays_audio_rating": "Benchmark Sub-$50 Warm Neutral", "target_personas": ["Vocal & Acoustic Lovers", "All-Day Fatigue-Free", "Ergonomic Resin Fit"], "verified_stores": [{"name": "Linsoul", "url": "https://www.linsoul.com/products/kiwi-ears-cadenza-ii"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=kiwi+ears+cadenza+2"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-kiwi-ears-cadenza-2.html"}], "notes": "Successor to the legendary original Cadenza. KARS 2.0 acoustic tube ensures clean bass separation."}, {"id": "ooopusx-op22", "name": "ooopusX Op.22", "brand": "ooopusX", "release_year": "2024-2025", "status": "Active", "price_usd_msrp": 35.0, "price_eur_amazon": 39.0, "price_eur_ali_choice": 29.0, "price_eur_ali_1111": 23.0, "driver_type": "2DD + 2BA Hybrid", "driver_detail": "Coaxial 10mm + 8mm Dynamic Drivers (silicone carbon dome) + 2 Balanced Armatures", "sound_signature": "Dual Mode: Neutral Mode / Bass Boost Mode", "sound_description": "Rotary knob on shell switches between Neutral Mode (balanced, clear vocals, fast transients) and Bass Mode (+6dB sub-bass shelf for massive punch).", "nozzle_diameter_mm": 5.8, "nozzle_warning": "No", "comfort_rating": 7.8, "build_material": "Cyberpunk-styled translucent resin shell with mechanical rotary dial", "connection": "3.5mm", "cable_detail": "Detachable 2-pin 0.78mm copper braided cable", "accessories_included": "3 pairs silicone tips, standard cable, user manual", "accessories_rating": 7.2, "qc_and_known_issues": "Shell is slightly bulky; ensure both rotary knobs are set to the identical dot alignment to prevent channel imbalance.", "gaming_score": 8.7, "community_score": 8.3, "crinacle_rank": "Unranked", "super_review_rating": "Innovative Tuning Dial Pick", "jays_audio_rating": "Fun Hybrid Budget Disrupter", "target_personas": ["Tech Tinkerers & Gamers", "Two Sound Signatures in One", "Punchy Hybrid Fans"], "verified_stores": [{"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/ooopusx-op22"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=ooopusx+op22"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-ooopusx-op22.html"}], "notes": "Features a hardware physical dial so you can switch between competitive gaming clarity and fun bass without touching software EQ."}, {"id": "truthear-gate", "name": "Truthear Gate", "brand": "Truthear", "release_year": "2024", "status": "Active", "price_usd_msrp": 19.99, "price_eur_amazon": 24.99, "price_eur_ali_choice": 17.5, "price_eur_ali_1111": 13.9, "driver_type": "1DD", "driver_detail": "10mm Carbon LCP dome composite diaphragm + PU suspension, N52 double-cavity magnet", "sound_signature": "Neutral with Warm Tilt", "sound_description": "Clean, balanced, highly coherent. Natural midrange, smooth treble that avoids fatigue. Successor to the celebrated Hola.", "nozzle_diameter_mm": 5.4, "nozzle_warning": "No", "comfort_rating": 9.5, "build_material": "Lightweight transparent polycarbonate shell with CNC faceplate", "connection": "3.5mm (Mic optional)", "cable_detail": "Unusually thick, soft oxygen-free copper twisted 2-pin cable (punches way above $20 tier)", "accessories_included": "4 pairs silicone tips, thick OFC cable, soft storage pouch", "accessories_rating": 8.9, "qc_and_known_issues": "Exceptional QC and build consistency; lean sub-bass for extreme bassheads, but remarkable clarity.", "gaming_score": 8.1, "community_score": 8.8, "crinacle_rank": "B (Hola Class successor)", "super_review_rating": "Top Starter Benchmark", "jays_audio_rating": "Safe & Clean Under $20", "target_personas": ["Absolute Beginner Benchmark", "Small Ears & Daily Commute", "Great Stock Cable"], "verified_stores": [{"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/truthear-gate"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=truthear+gate"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-truthear-gate.html"}], "notes": "The safest $20 entry into IEMs. The stock cable alone is worth $15."}, {"id": "7hz-g1", "name": "7Hz G1 (Salnotes G1)", "brand": "7Hz", "release_year": "2024-2025", "status": "Active", "price_usd_msrp": 35.0, "price_eur_amazon": 39.0, "price_eur_ali_choice": 29.0, "price_eur_ali_1111": 22.5, "driver_type": "1DD", "driver_detail": "10mm Dual-Magnetic Dual-Cavity DLC Dynamic Driver (18Ω)", "sound_signature": "Harman V-Shape / Gaming Focused", "sound_description": "Punchy sub-bass slam, clear lower-mids, lifted energetic treble. Tuned specifically for fast transient response and positional audio cues.", "nozzle_diameter_mm": 5.6, "nozzle_warning": "No", "comfort_rating": 8.7, "build_material": "Matte black all-metal alloy shell", "connection": "3.5mm (Mic optional)", "cable_detail": "Silver-plated copper 2-pin 0.78mm cable with optional inline microphone", "accessories_included": "Silicone ear tips, carrying pouch, cable", "accessories_rating": 7.5, "qc_and_known_issues": "Durable all-metal shell; feels cold when first inserted; treble can be lively on poorly mastered music tracks.", "gaming_score": 9.1, "community_score": 8.3, "crinacle_rank": "Unranked", "super_review_rating": "Recommended Gaming Set", "jays_audio_rating": "Great Positional Cues", "target_personas": ["Tactical FPS Gaming", "Metal Shell Lovers", "Crisp Soundstage"], "verified_stores": [{"name": "Linsoul", "url": "https://www.linsoul.com/products/7hz-g1"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=7hz+g1"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-7hz-g1.html"}], "notes": "Engineered for competitive shooters (CS2, Valorant, Apex, Warzone) with laser-sharp footstep localization."}, {"id": "7hz-elua-ultra", "name": "7Hz Elua Ultra", "brand": "7Hz", "release_year": "2024-2025", "status": "Active", "price_usd_msrp": 38.0, "price_eur_amazon": 42.0, "price_eur_ali_choice": 31.0, "price_eur_ali_1111": 24.5, "driver_type": "2DD", "driver_detail": "Dual Dynamic Driver (10mm woofer + 8mm tweeter LCP diaphragms)", "sound_signature": "Harman Target / Warm & Relaxed", "sound_description": "Cohesive dual-driver low end, smooth vocal presentation, relaxed non-fatiguing treble. Zero BA metallic grain.", "nozzle_diameter_mm": 5.5, "nozzle_warning": "No", "comfort_rating": 9.1, "build_material": "Lightweight resin shell with polished silver faceplate", "connection": "3.5mm", "cable_detail": "Detachable 0.78mm 2-pin OFC cable", "accessories_included": "Silicone ear tips (3 sizes), basic pouch", "accessories_rating": 7.3, "qc_and_known_issues": "Reliable resin seal; sound signature is very polite/safe, not for hyper-analytical detail seekers.", "gaming_score": 8.0, "community_score": 8.2, "crinacle_rank": "Unranked", "super_review_rating": "Smooth All-Rounder", "jays_audio_rating": "Harman Dual-DD Performer", "target_personas": ["Fatigue-Free Long Sessions", "Warm Natural Timbre", "Dual-DD Coherence"], "verified_stores": [{"name": "Linsoul", "url": "https://www.linsoul.com/products/7hz-elua-ultra"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=7hz+elua+ultra"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-7hz-elua-ultra.html"}], "notes": "Great alternative for listeners who want the dual-driver authority of Truthear Zero without the huge nozzle girth."}, {"id": "tripowin-vivace", "name": "Tripowin Vivace", "brand": "Tripowin x 0DiBi", "release_year": "2024", "status": "Active", "price_usd_msrp": 35.0, "price_eur_amazon": 38.0, "price_eur_ali_choice": 27.0, "price_eur_ali_1111": 21.0, "driver_type": "1DD", "driver_detail": "10mm Titanium-Plated PET Dynamic Driver (Tuned with 0DiBi)", "sound_signature": "Crisp / Fast Transient / Analytical", "sound_description": "Tight, fast bass shelf, elevated upper-mid pinna gain, extended crisp highs. Designed to prioritize acoustic imaging and separation.", "nozzle_diameter_mm": 5.3, "nozzle_warning": "No", "comfort_rating": 9.2, "build_material": "Medical-grade 3D printed resin cavity", "connection": "3.5mm", "cable_detail": "Soft braided Tripowin silver-plated copper cable (famous for supple ergonomics)", "accessories_included": "Tripowin braided cable, 3 pairs silicone tips", "accessories_rating": 8.2, "qc_and_known_issues": "Lightweight sub-bass makes it less ideal for hip-hop/EDM; purely tuned for competitive tactical audio.", "gaming_score": 9.4, "community_score": 8.6, "crinacle_rank": "Unranked", "super_review_rating": "Specialized Gaming Value", "jays_audio_rating": "Crisp Competitive Weapon", "target_personas": ["Esports / Tactical FPS", "Crystal Clear Vocals", "Supple Tangle-Free Cable"], "verified_stores": [{"name": "Linsoul", "url": "https://www.linsoul.com/products/tripowin-vivace"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=tripowin+vivace"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-tripowin-vivace.html"}], "notes": "Collaboration with 0DiBi. One of the top-rated IEMs under €40 specifically for Valorant, CS2, and Apex Legends."}, {"id": "truthear-crinacle-zero-red", "name": "Truthear x Crinacle Zero:RED", "brand": "Truthear x Crinacle", "release_year": "2023", "status": "Active Benchmark", "price_usd_msrp": 55.0, "price_eur_amazon": 58.0, "price_eur_ali_choice": 48.0, "price_eur_ali_1111": 39.0, "driver_type": "2DD", "driver_detail": "Dual Dynamic Drivers (10mm woofer + 7.8mm tweeter) with specialized acoustic crossover", "sound_signature": "IEF Neutral with Sub-Bass Boost (+ Tunable Bass)", "sound_description": "Crinacle's reference target. Ultra-low distortion (<0.2% THD), natural timbre, clean mids. Included 10Ω adapter adds +2.5dB sub-bass.", "nozzle_diameter_mm": 6.2, "nozzle_warning": "CRITICAL FIT WARNING (6.2mm nozzle can cause pain for small ears)", "comfort_rating": 6.8, "build_material": "Dark red 3D printed DLP medical resin shell (HeyGears)", "connection": "3.5mm", "cable_detail": "Detachable 0.78mm 2-pin black twisted cable; includes 10Ω bass booster impedance adapter", "accessories_included": "10Ω bass impedance adapter, soft black leatherette case, 6 pairs silicone tips (narrow/wide bore), 1 pair foam tips", "accessories_rating": 9.4, "qc_and_known_issues": "Near-zero acoustic defects; but the massive 6.2mm nozzle causes discomfort for small-to-medium ear canals after 45 minutes.", "gaming_score": 8.8, "community_score": 9.2, "crinacle_rank": "Excluded (Co-Designed by Crinacle)", "super_review_rating": "Class Benchmark Neutral", "jays_audio_rating": "Clean Reference Baseline", "target_personas": ["Audio Purists & Reference", "Music Production / Mixing", "Bass Boost Flexibility (10Ω)"], "verified_stores": [{"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/truthear-x-crinacle-zero-red"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=truthear+zero+red"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-truthear-zero-red.html"}], "notes": "The $55 benchmark for tonal accuracy. Buy from Amazon.de first if unsure about your ear canal size."}, {"id": "truthear-crinacle-zero-blue2", "name": "Truthear x Crinacle ZERO:BLUE 2 (Blue2)", "brand": "Truthear x Crinacle", "release_year": "2025", "status": "Active Revision", "price_usd_msrp": 55.0, "price_eur_amazon": 59.0, "price_eur_ali_choice": 46.0, "price_eur_ali_1111": 38.0, "driver_type": "2DD", "driver_detail": "Upgraded Dual Dynamic Drivers (10mm + 7.8mm high-flux magnet)", "sound_signature": "Refined Harman 2019 / Engaging Bass Slam", "sound_description": "Punchy sub-bass slam, forward vocal clarity, and detailed sparkling treble. Tighter and cleaner than original Blue, with upgraded drivers.", "nozzle_diameter_mm": 5.5, "nozzle_warning": "No (Slimmed down from original 6.2mm!)", "comfort_rating": 8.9, "build_material": "Ergonomic 3D printed blue resin shell with revised low-profile contour", "connection": "3.5mm (Mic optional)", "cable_detail": "Upgraded 2-strand high-purity copper & silver-plated coaxial cable", "accessories_included": "Leatherette pouch, 6 pairs silicone tips, 1 pair foam tips", "accessories_rating": 8.8, "qc_and_known_issues": "Substantially fixed the primary complaint of the original Zero (the fat nozzle). Easier to drive off phones.", "gaming_score": 9.0, "community_score": 9.0, "crinacle_rank": "Excluded (Co-Designed by Crinacle)", "super_review_rating": "Fixed the Nozzle! Excellent Harman", "jays_audio_rating": "Fun, Engaging & Finally Comfortable", "target_personas": ["Pop, EDM & Hip-Hop", "Immersive Gaming", "Harman Bass Punch without Pain"], "verified_stores": [{"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/truthear-zero-blue"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=truthear+zero+blue+2"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-truthear-zero-blue-2.html"}], "notes": "The 2025 Blue2 edition solved the infamous fit problem of the original Blue, making it a stellar all-rounder."}, {"id": "kefine-delci", "name": "Kefine Delci (and Delci AE)", "brand": "Kefine", "release_year": "2024", "status": "Active Benchmark", "price_usd_msrp": 59.0, "price_eur_amazon": 82.0, "price_eur_ali_choice": 54.0, "price_eur_ali_1111": 44.0, "driver_type": "1DD", "driver_detail": "10mm DLC + PU Composite Dynamic Driver (Delci AE adds interchangeable nozzles)", "sound_signature": "Warm Lush / Deep Authoritative Bass", "sound_description": "Addictive, deep, textured sub-bass with zero mid-bass bloat. Natural acoustic timbre, silky smooth treble. Pure musical enjoyment.", "nozzle_diameter_mm": 5.4, "nozzle_warning": "No", "comfort_rating": 9.6, "build_material": "Aviation-grade CNC aluminum shell (ultra compact, featherlight)", "connection": "3.5mm", "cable_detail": "Thick dual-tone copper braided 0.78mm 2-pin cable", "accessories_included": "Hard zippered protective case, 2 sets of silicone tips (vocal & balanced)", "accessories_rating": 9.0, "qc_and_known_issues": "Flawless CNC build, zero paint chipping, highly reliable driver; note big price markup on Amazon DE (€82 vs €44 on Ali sales).", "gaming_score": 8.4, "community_score": 9.3, "crinacle_rank": "Measurement DB Favorite", "super_review_rating": "Outstanding Warm Tuning", "jays_audio_rating": "The Warm DD King", "target_personas": ["Bass Texture & Warmth", "Supreme Ergonomics & Sleep", "Organic Natural Instruments"], "verified_stores": [{"name": "HiFiGO", "url": "https://hifigo.com/products/kefine-delci"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=kefine+delci"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-kefine-delci.html"}], "notes": "Delci AE (Angel Ears edition) adds gold/silver tuning nozzles. High Amazon DE markup makes importing on AliExpress highly recommended."}, {"id": "moondrop-may", "name": "Moondrop May", "brand": "Moondrop", "release_year": "2024", "status": "Active", "price_usd_msrp": 65.0, "price_eur_amazon": 74.0, "price_eur_ali_choice": 58.0, "price_eur_ali_1111": 49.0, "driver_type": "1DD + 1 Planar Hybrid", "driver_detail": "10mm Sapphire-plated Dynamic Driver + 6mm Annular Planar Magnetic Tweeter", "sound_signature": "Planar Sparkle + DD Slam (Fully DSP Configurable)", "sound_description": "Combines dynamic driver bass slam with planar magnetic ultra-fast treble extension. Integrated DSP chip stores custom PEQ profiles directly in the cable.", "nozzle_diameter_mm": 5.6, "nozzle_warning": "No", "comfort_rating": 8.8, "build_material": "Medical-grade 3D printed resin cavity with stainless steel faceplate", "connection": "USB-C DSP (Built-in DAC/AMP)", "cable_detail": "USB-C DSP cable with integrated 32-bit DAC/Amp chip, 3-button remote, and microphone", "accessories_included": "Leatherette zip pouch, Moondrop silicone tips, USB-C DSP cable", "accessories_rating": 8.8, "qc_and_known_issues": "Moondrop Link app works great on Android, but iOS app has restricted DSP write access. Requires USB-C host port.", "gaming_score": 8.6, "community_score": 8.7, "crinacle_rank": "Unranked", "super_review_rating": "Versatile Hybrid DSP", "jays_audio_rating": "Great Hardware + Software Combo", "target_personas": ["Smartphone USB-C Users", "Planar Treble Lovers", "Custom Parametric EQ Tinkerer"], "verified_stores": [{"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/moondrop-may"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=moondrop+may"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-moondrop-may.html"}], "notes": "No dongle DAC needed. Plug directly into your phone or PC and choose between 5 factory tuning presets or write your own PEQ."}, {"id": "moondrop-aria-2", "name": "Moondrop Aria 2", "brand": "Moondrop", "release_year": "2023-2024", "status": "Active", "price_usd_msrp": 89.99, "price_eur_amazon": 99.0, "price_eur_ali_choice": 78.0, "price_eur_ali_1111": 64.0, "driver_type": "1DD", "driver_detail": "TiN Ceramic-Coated Dome Composite Dynamic Driver with brass acoustic cavity", "sound_signature": "Moondrop VDSF Target / Smooth Warm Harman", "sound_description": "Silky, sweet vocal presentation, rich lower midrange, extended natural treble, and lush soundstage. Very refined single dynamic timbre.", "nozzle_diameter_mm": 5.5, "nozzle_warning": "No", "comfort_rating": 8.6, "build_material": "CNC milled alloy shell with electroplated matte champagne finish", "connection": "Modular (3.5mm + 4.4mm)", "cable_detail": "Litz OFC silver-plated modular cable with screw-lock swappable 3.5mm and 4.4mm plugs", "accessories_included": "Modular cable with 3.5mm & 4.4mm plugs, white leatherette puck case, replacement screw-off nozzles and acoustic filters", "accessories_rating": 9.5, "qc_and_known_issues": "Electroplated finish fixed the old Aria paint-peeling issue; brass screw-off nozzles make cleaning moisture-clogged filters effortless.", "gaming_score": 8.3, "community_score": 8.9, "crinacle_rank": "B (Original Aria was B, Aria 2 refined)", "super_review_rating": "Luxurious Complete Package", "jays_audio_rating": "Classy Single DD Performer", "target_personas": ["Luxury Packaging & Feel", "4.4mm Balanced Users", "Sweet Female Vocals"], "verified_stores": [{"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/moondrop-aria-2"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=moondrop+aria+2"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-moondrop-aria-2.html"}], "notes": "Includes both 3.5mm and 4.4mm modular plugs and spare acoustic filters in the box."}, {"id": "truthear-hexa", "name": "Truthear Hexa", "brand": "Truthear", "release_year": "2023", "status": "Active Benchmark", "price_usd_msrp": 79.99, "price_eur_amazon": 85.0, "price_eur_ali_choice": 68.0, "price_eur_ali_1111": 55.0, "driver_type": "1DD + 3BA Hybrid", "driver_detail": "10mm PU + LCP Dynamic Driver (bass) + 3 Custom Balanced Armatures (mids/highs)", "sound_signature": "Strict Neutral / Analytical Reference", "sound_description": "The undisputed sub-$100 reference benchmark. Flat, transparent, resolving, zero bass bleed, pristine instrumental separation.", "nozzle_diameter_mm": 5.5, "nozzle_warning": "No", "comfort_rating": 9.0, "build_material": "DLP 3D-printed resin cavity by HeyGears with matte CNC aluminum faceplate", "connection": "3.5mm", "cable_detail": "4-strand black high-purity OFC 2-pin 0.78mm cable", "accessories_included": "Soft leatherette pouch, 3 sizes narrow-bore tips, 3 sizes wide-bore tips, 1 pair memory foam tips", "accessories_rating": 8.8, "qc_and_known_issues": "Extremely reliable medical-grade resin; low bass shelf may sound lean for listeners accustomed to commercial bass-heavy tuning.", "gaming_score": 9.1, "community_score": 9.5, "crinacle_rank": "B+ (Tone: A+, Tech: B)", "super_review_rating": "5 Stars (Benchmark)", "jays_audio_rating": "The Sub-$100 Neutral King", "target_personas": ["Audio Mixing & Critical Listening", "Acoustic / Classical / Jazz", "Tactical Gaming Footsteps"], "verified_stores": [{"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/truthear-hexa"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=truthear+hexa"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-truthear-hexa.html"}], "notes": "Crinacle Tone Grade A+. Universally acknowledged as the cleanest technical performer under €100."}, {"id": "gk-kunten", "name": "GK Kunten (Groove Keeper)", "brand": "GK (KZ Sub-Brand)", "release_year": "2025", "status": "Active Budget Hit", "price_usd_msrp": 18.0, "price_eur_amazon": 22.0, "price_eur_ali_choice": 14.0, "price_eur_ali_1111": 10.5, "driver_type": "1DD", "driver_detail": "10mm Super-Linear Dynamic Driver (43Ω, 109dB)", "sound_signature": "Balanced V-Shape / Fun & Energetic", "sound_description": "Punchy textured sub-bass, clear open midrange, and airy non-fatiguing treble. Astonishing technical resolution for a ~$12 IEM.", "nozzle_diameter_mm": 5.5, "nozzle_warning": "No", "comfort_rating": 9.2, "build_material": "Lightweight resin shell with metal faceplate (semi-open rear venting)", "connection": "3.5mm or Type-C", "cable_detail": "Detachable 1.2m QDC 2-pin cable (basic quality)", "accessories_included": "Basic silicone ear tips, QDC 2-pin cable", "accessories_rating": 6.5, "qc_and_known_issues": "Ultra-budget packaging; stock cable is thin; but raw acoustic performance competes with $35 sets.", "gaming_score": 8.0, "community_score": 8.6, "crinacle_rank": "Unranked (Community Secret)", "super_review_rating": "Hidden Budget Gem", "jays_audio_rating": "Crazy $12 Disruptor", "target_personas": ["Extreme Budget Value", "Gym / Travel Beater", "Surprising Sub-Bass"], "verified_stores": [{"name": "AliExpress Official", "url": "https://www.aliexpress.com/w/wholesale-gk-kunten.html"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=gk+kunten"}], "notes": "Often misspelled as 'GK Kuten'. Released by KZ's experimental GK division to undercut the sub-$20 market."}, {"id": "7hz-zero-2", "name": "7Hz x Crinacle Zero:2", "brand": "7Hz x Crinacle", "release_year": "2023-2024", "status": "Active Benchmark", "price_usd_msrp": 24.99, "price_eur_amazon": 29.0, "price_eur_ali_choice": 21.0, "price_eur_ali_1111": 16.5, "driver_type": "1DD", "driver_detail": "10mm Upgraded Dynamic Driver (flexible PU + metal composite)", "sound_signature": "Warm Harman / Balanced Bass Boost", "sound_description": "Added +3dB bass warmth compared to original Salnotes Zero, with a smoother, relaxed treble. Highly musical and forgiving of low-bitrate audio.", "nozzle_diameter_mm": 5.4, "nozzle_warning": "No", "comfort_rating": 9.2, "build_material": "Angular polycarbonate composite shell with metal accent plate", "connection": "3.5mm (Mic optional)", "cable_detail": "Upgraded silver-plated copper 0.78mm 2-pin cable", "accessories_included": "Multi-colored rainbow silicone tips (6 pairs), standard cable", "accessories_rating": 8.2, "qc_and_known_issues": "Stock rainbow tips can feel stiff; swapping to KBear 07 or SpinFit tips elevates comfort; very durable build.", "gaming_score": 8.3, "community_score": 9.3, "crinacle_rank": "Excluded (Co-Designed by Crinacle)", "super_review_rating": "Best Sub-$25 All-Rounder", "jays_audio_rating": "The Default Budget Recommendation", "target_personas": ["Universal Starter IEM", "Forgiving Casual Listening", "Pop, Rock, Hip-Hop"], "verified_stores": [{"name": "Linsoul", "url": "https://www.linsoul.com/products/7hz-x-crinacle-zero-2"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=7hz+zero+2"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-7hz-zero-2.html"}], "notes": "Co-tuned with Crinacle to fix the slightly bass-light sound of the original Zero. Universally recommended."}, {"id": "tangzu-waner-2", "name": "Tangzu Wan'er S.G II (Wan'er 2)", "brand": "Tangzu", "release_year": "2025", "status": "Active Revision", "price_usd_msrp": 22.0, "price_eur_amazon": 26.0, "price_eur_ali_choice": 17.0, "price_eur_ali_1111": 13.0, "driver_type": "1DD", "driver_detail": "10mm Upgraded PET Diaphragm Dynamic Driver with refined acoustic chamber", "sound_signature": "Warm Vocal Forward / Intimate Musical", "sound_description": "Sweet, luscious vocal midrange, smooth non-fatiguing highs, and warm, round bass punch. Available in standard and 'Red Lion' bass editions.", "nozzle_diameter_mm": 5.4, "nozzle_warning": "No", "comfort_rating": 9.0, "build_material": "Transparent sculpted resin with Chinese calligraphy faceplate", "connection": "3.5mm (Mic optional)", "cable_detail": "Detachable 0.78mm 2-pin OFC braided cable", "accessories_included": "Includes premium Tang Sancai silicone ear tips (a $10 bonus!), standard cable", "accessories_rating": 9.5, "qc_and_known_issues": "Lightweight resin shell; includes genuine Tang Sancai tips with pressure-release texture; zero driver flex.", "gaming_score": 8.0, "community_score": 9.0, "crinacle_rank": "Unranked", "super_review_rating": "Incredible Vocal Value", "jays_audio_rating": "Top Budget Midrange Pick", "target_personas": ["Female Vocals & Acoustic", "Included Tang Sancai Tips", "Smooth Non-Fatiguing"], "verified_stores": [{"name": "HiFiGO", "url": "https://hifigo.com/products/tangzu-waner-sg-2"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=tangzu+waner+2"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-tangzu-waner-2.html"}], "notes": "Includes Tang Sancai patented ear tips in the box. Unbeatable for vocal clarity and timbral warmth under €20."}, {"id": "moondrop-chu-2-3", "name": "Moondrop Chu II / Chu 3", "brand": "Moondrop", "release_year": "2023-2026", "status": "Active Benchmark / Revision", "price_usd_msrp": 22.0, "price_eur_amazon": 27.0, "price_eur_ali_choice": 18.0, "price_eur_ali_1111": 14.5, "driver_type": "1DD", "driver_detail": "10mm Al-Mg Alloy Composite Dynamic Driver (Chu 3 features PopAvg-DF JM-1 tuning)", "sound_signature": "Warm Harman / Lively Crisp", "sound_description": "Punchy sub-bass slam, clear intimate midrange, and airy treble. Chu 3 iteration adds thicker vocal density and warmer mid-bass.", "nozzle_diameter_mm": 5.3, "nozzle_warning": "No (Ultra small & slim)", "comfort_rating": 9.7, "build_material": "Cast zinc alloy metal housing (matte black or silver)", "connection": "3.5mm or USB-C DSP", "cable_detail": "Detachable 0.78mm 2-pin cable (huge improvement over Chu 1's fixed cable)", "accessories_included": "Black silicone tips, felt pouch, Chu II includes screw-off brass nozzles", "accessories_rating": 8.3, "qc_and_known_issues": "Zinc alloy can chip paint if dropped or jumbled with keys; moisture can accumulate on filters in humid climates (keep in dry pouch).", "gaming_score": 8.4, "community_score": 9.1, "crinacle_rank": "B (Measurement DB benchmark)", "super_review_rating": "Default Ultra-Compact Pick", "jays_audio_rating": "Great Fit, Great Bass", "target_personas": ["Side Sleepers & Small Ears", "Punchy Metal Shell", "Ultra-Compact Daily Carry"], "verified_stores": [{"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/moondrop-chu-ii"}, {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=moondrop+chu+2"}, {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-moondrop-chu-2.html"}], "notes": "Chu II has replaceable screw-off brass nozzles; Chu 3 has fixed brass nozzles with warmer mid-bass body. Both fit easily into tiny ear canals."}];
@@ -1294,7 +1486,400 @@
       }
     });
 
+    // ==========================================
+    // AUDIOPHILE SOUND BENCH & YOUTUBE STREAMING
+    // ==========================================
+    const playlist = [
+      {
+        id: "B7BxrAAXl94",
+        title: "Guitar, Loneliness and Blue Planet",
+        japanese: "ギターと孤独と蒼い惑星",
+        artist: "Kessoku Band (Bocchi the Rock!)",
+        category: "kessoku",
+        categoryLabel: "🎸 Kessoku Band",
+        acousticTag: "Distorted Guitar & Treble Bite",
+        acousticFocus: "Tests distorted guitar separation, snare impact speed, and planar/BA treble bite without harsh sibilance. Benchmark for Truthear Hexa vs Zero:Red.",
+        spotifyUrl: "https://open.spotify.com/search/Kessoku%20Band%20Guitar%20Loneliness"
+      },
+      {
+        id: "7221tTqp1bY",
+        title: "That Band (Ano Bando)",
+        japanese: "あのバンド",
+        artist: "Kessoku Band (Bocchi the Rock!)",
+        category: "kessoku",
+        categoryLabel: "🎸 Kessoku Band",
+        acousticTag: "Intro Solo & Bass Damping",
+        acousticFocus: "Iconic guitar intro tests upper-midrange timbre, followed by tight bass groove to test dynamic driver damping and texture (Kefine Delci & Tangzu Wan'er 2 test).",
+        spotifyUrl: "https://open.spotify.com/search/Kessoku%20Band%20That%20Band"
+      },
+      {
+        id: "Yd8kUoB72xU",
+        title: "Seishun Complex",
+        japanese: "青春コンプレックス",
+        artist: "Kessoku Band (Bocchi the Rock!)",
+        category: "kessoku",
+        categoryLabel: "🎸 Kessoku Band",
+        acousticTag: "Percussion Dynamics & Energy",
+        acousticFocus: "High-tempo rock energy that tests how well the IEM avoids mid-bass bleed into lower midrange vocals.",
+        spotifyUrl: "https://open.spotify.com/search/Kessoku%20Band%20Seishun%20Complex"
+      },
+      {
+        id: "ZRtdQ81jPUQ",
+        title: "Idol",
+        japanese: "アイドル",
+        artist: "YOASOBI",
+        category: "yoasobi",
+        categoryLabel: "✨ YOASOBI",
+        acousticTag: "Sub-Bass Slam & Speed",
+        acousticFocus: "Ayase's rapid synth sequences and deep electronic sub-bass kick test 2DD subwoofer crossovers (Truthear Zero:Blue/Red) and driver speed.",
+        spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Idol"
+      },
+      {
+        id: "x8VYWazR5mE",
+        title: "Yoru ni Kakeru (Racing into the Night)",
+        japanese: "夜に駆ける",
+        artist: "YOASOBI",
+        category: "yoasobi",
+        categoryLabel: "✨ YOASOBI",
+        acousticTag: "Female Vocal Extension & Piano",
+        acousticFocus: "Ikura's soaring female vocals test 3kHz pinna gain and Harman upper-midrange accuracy; piano notes test micro-detail decay.",
+        spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Yoru%20ni%20Kakeru"
+      },
+      {
+        id: "Y4nEEZwckuU",
+        title: "Gunjo",
+        japanese: "群青",
+        artist: "YOASOBI",
+        category: "yoasobi",
+        categoryLabel: "✨ YOASOBI",
+        acousticTag: "Choral Layering & Soundstage",
+        acousticFocus: "Massive vocal choir and acoustic snare in the chorus reveal soundstage width, depth, and instrument separation (great benchmark for Hexa and Moondrop May).",
+        spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Gunjo"
+      },
+      {
+        id: "atuFSv2bLa8",
+        title: "Gas Gas Gas",
+        japanese: "Initial D OST",
+        artist: "Manuel",
+        category: "eurobeat",
+        categoryLabel: "🏎️ Eurobeat",
+        acousticTag: "155 BPM Synth & Treble Fatigue",
+        acousticFocus: "Relentless aggressive synth-brass and four-on-the-floor kick drum test treble fatigue and harshness threshold during high-energy listening.",
+        spotifyUrl: "https://open.spotify.com/search/Manuel%20Gas%20Gas%20Gas"
+      },
+      {
+        id: "dv13gl0a-FA",
+        title: "Deja Vu",
+        japanese: "Initial D OST",
+        artist: "Dave Rodgers",
+        category: "eurobeat",
+        categoryLabel: "🏎️ Eurobeat",
+        acousticTag: "Sawtooth Synth & Speed Benchmark",
+        acousticFocus: "Tests dynamic driver recovery speed. Budget IEMs with slow decay turn dense synth riffs into muddy sound; tests fast LCP/DLC diaphragms (Gate, Klean).",
+        spotifyUrl: "https://open.spotify.com/search/Dave%20Rodgers%20Deja%20Vu"
+      },
+      {
+        id: "BJ0xBCwkg3E",
+        title: "Running in the 90s",
+        japanese: "Initial D OST",
+        artist: "Max Coveri",
+        category: "eurobeat",
+        categoryLabel: "🏎️ Eurobeat",
+        acousticTag: "Rhythmic Snap & Mid-Bass Punch",
+        acousticFocus: "Crisp drum machines and driving bass rhythm. Tests mid-bass slam without boominess; reveals whether an IEM has clean bass tuck or warm bleed.",
+        spotifyUrl: "https://open.spotify.com/search/Running%20in%20the%2090s"
+      }
+    ];
+
+    let currentTrackIdx = 0;
+    let ytPlayer = null;
+    let isYtReady = false;
+    let isPlaying = false;
+    let activeDeckCategory = 'all';
+    let progressTimer = null;
+
+    // DOM Elements
+    const soundDeckPill = document.getElementById('sound-deck-pill');
+    const soundDeckPanel = document.getElementById('sound-deck-panel');
+    const pillPlayBtn = document.getElementById('pill-play-btn');
+    const pillPlayIcon = document.getElementById('pill-play-icon');
+    const pillExpandBtn = document.getElementById('pill-expand-btn');
+    const pillTrackTitle = document.getElementById('pill-track-title');
+    const pillEqContainer = document.getElementById('pill-eq-container');
+    const deckEqContainer = document.getElementById('deck-eq-container');
+    const deckMinimizeBtn = document.getElementById('deck-minimize-btn');
+    const deckDiscIcon = document.getElementById('deck-disc-icon');
+
+    const deckTrackTitle = document.getElementById('deck-track-title');
+    const deckTrackArtist = document.getElementById('deck-track-artist');
+    const deckTrackCategory = document.getElementById('deck-track-category');
+    const deckAcousticTag = document.getElementById('deck-acoustic-tag');
+    const deckAcousticFocus = document.getElementById('deck-acoustic-focus');
+    const deckSpotifyLink = document.getElementById('deck-spotify-link');
+
+    const deckCurrentTime = document.getElementById('deck-current-time');
+    const deckDuration = document.getElementById('deck-duration');
+    const deckProgressBar = document.getElementById('deck-progress-bar');
+    const deckProgressFill = document.getElementById('deck-progress-fill');
+
+    const deckPlayBtn = document.getElementById('deck-play-btn');
+    const deckPlayIcon = document.getElementById('deck-play-icon');
+    const deckPrevBtn = document.getElementById('deck-prev-btn');
+    const deckNextBtn = document.getElementById('deck-next-btn');
+    const deckMuteBtn = document.getElementById('deck-mute-btn');
+    const deckVolumeIcon = document.getElementById('deck-volume-icon');
+    const deckVolumeSlider = document.getElementById('deck-volume-slider');
+    const deckPlaylistContainer = document.getElementById('deck-playlist-container');
+    const deckCatButtons = document.querySelectorAll('.deck-cat-btn');
+
+    // YouTube API Ready callback
+    window.onYouTubeIframeAPIReady = function() {
+      ytPlayer = new YT.Player('yt-player', {
+        height: '200',
+        width: '200',
+        videoId: playlist[0].id,
+        playerVars: {
+          playsinline: 1,
+          controls: 0,
+          disablekb: 1,
+          fs: 0,
+          rel: 0
+        },
+        events: {
+          onReady: onYtReady,
+          onStateChange: onYtStateChange
+        }
+      });
+    };
+
+    function onYtReady(event) {
+      isYtReady = true;
+      if (ytPlayer && ytPlayer.setVolume) {
+        ytPlayer.setVolume(parseInt(deckVolumeSlider.value, 10));
+      }
+      updateTrackDisplay(false);
+    }
+
+    function onYtStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        isPlaying = true;
+        setPlayingVisuals(true);
+        startProgressTimer();
+      } else if (event.data === YT.PlayerState.PAUSED) {
+        isPlaying = false;
+        setPlayingVisuals(false);
+        stopProgressTimer();
+      } else if (event.data === YT.PlayerState.ENDED) {
+        isPlaying = false;
+        setPlayingVisuals(false);
+        stopProgressTimer();
+        playNextTrack();
+      }
+    }
+
+    function setPlayingVisuals(playing) {
+      if (playing) {
+        pillPlayIcon.className = 'fa-solid fa-pause';
+        deckPlayIcon.className = 'fa-solid fa-pause';
+        pillEqContainer.classList.add('playing-bars');
+        deckEqContainer.classList.add('playing-bars');
+        deckDiscIcon.classList.add('spinning-disc');
+      } else {
+        pillPlayIcon.className = 'fa-solid fa-play';
+        deckPlayIcon.className = 'fa-solid fa-play';
+        pillEqContainer.classList.remove('playing-bars');
+        deckEqContainer.classList.remove('playing-bars');
+        deckDiscIcon.classList.remove('spinning-disc');
+      }
+    }
+
+    function formatTime(seconds) {
+      if (!seconds || isNaN(seconds)) return '0:00';
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    function startProgressTimer() {
+      stopProgressTimer();
+      progressTimer = setInterval(() => {
+        if (ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {
+          const cur = ytPlayer.getCurrentTime();
+          const dur = ytPlayer.getDuration();
+          deckCurrentTime.textContent = formatTime(cur);
+          deckDuration.textContent = formatTime(dur);
+          if (dur > 0) {
+            deckProgressFill.style.width = ((cur / dur) * 100) + '%';
+          }
+        }
+      }, 500);
+    }
+
+    function stopProgressTimer() {
+      if (progressTimer) {
+        clearInterval(progressTimer);
+        progressTimer = null;
+      }
+    }
+
+    function updateTrackDisplay(autoPlay = false) {
+      const track = playlist[currentTrackIdx];
+      if (!track) return;
+
+      pillTrackTitle.textContent = track.artist.split(' ')[0] + ' • ' + track.title;
+      deckTrackTitle.textContent = track.title;
+      deckTrackArtist.textContent = track.artist + (track.japanese ? ' (' + track.japanese + ')' : '');
+      deckTrackCategory.textContent = track.categoryLabel;
+      deckAcousticTag.textContent = track.acousticTag;
+      deckAcousticFocus.textContent = track.acousticFocus;
+      deckSpotifyLink.href = track.spotifyUrl;
+
+      renderDeckPlaylist();
+
+      if (isYtReady && ytPlayer) {
+        if (autoPlay) {
+          ytPlayer.loadVideoById(track.id);
+          isPlaying = true;
+          setPlayingVisuals(true);
+        } else {
+          ytPlayer.cueVideoById(track.id);
+        }
+      }
+    }
+
+    function togglePlay() {
+      if (!isYtReady || !ytPlayer) {
+        showToast('Initializing audio stream...');
+        return;
+      }
+      if (isPlaying) {
+        ytPlayer.pauseVideo();
+      } else {
+        ytPlayer.playVideo();
+      }
+    }
+
+    window.playDeckTrack = function(idx) {
+      currentTrackIdx = idx;
+      updateTrackDisplay(true);
+    };
+
+    function playNextTrack() {
+      currentTrackIdx = (currentTrackIdx + 1) % playlist.length;
+      updateTrackDisplay(true);
+    }
+
+    function playPrevTrack() {
+      currentTrackIdx = (currentTrackIdx - 1 + playlist.length) % playlist.length;
+      updateTrackDisplay(true);
+    }
+
+    function renderDeckPlaylist() {
+      const filtered = playlist.map((t, idx) => ({ ...t, originalIndex: idx }))
+        .filter(t => activeDeckCategory === 'all' || t.category === activeDeckCategory);
+
+      deckPlaylistContainer.innerHTML = filtered.map(track => {
+        const isCurrent = track.originalIndex === currentTrackIdx;
+        return `
+          <div onclick="playDeckTrack(${track.originalIndex})" class="flex items-center justify-between p-2 rounded-xl cursor-pointer transition text-xs ${isCurrent ? 'bg-blue-600/20 border border-blue-500/40 text-white font-semibold' : 'bg-carbon-950/60 hover:bg-carbon-900 border border-white/5 text-slate-300'}">
+            <div class="flex items-center space-x-2.5 min-w-0">
+              <span class="w-5 text-center font-mono text-[10px] ${isCurrent ? 'text-blue-400 font-bold' : 'text-slate-500'}">
+                ${isCurrent && isPlaying ? '<i class="fa-solid fa-volume-high animate-pulse text-blue-400"></i>' : (track.originalIndex + 1)}
+              </span>
+              <div class="min-w-0">
+                <span class="block truncate text-xs text-slate-200">${track.title}</span>
+                <span class="block text-[10px] text-slate-400 font-mono truncate">${track.artist}</span>
+              </div>
+            </div>
+            <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-carbon-800 text-slate-400 shrink-0 border border-white/5 ml-2">
+              ${track.acousticTag.split('&')[0]}
+            </span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Scrubber click
+    deckProgressBar.addEventListener('click', (e) => {
+      if (!ytPlayer || !ytPlayer.getDuration) return;
+      const rect = deckProgressBar.getBoundingClientRect();
+      const clickPos = (e.clientX - rect.left) / rect.width;
+      const dur = ytPlayer.getDuration();
+      if (dur > 0) {
+        ytPlayer.seekTo(clickPos * dur, true);
+      }
+    });
+
+    // Volume Slider
+    deckVolumeSlider.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value, 10);
+      if (ytPlayer && ytPlayer.setVolume) {
+        ytPlayer.setVolume(val);
+      }
+      if (val === 0) {
+        deckVolumeIcon.className = 'fa-solid fa-volume-xmark text-rose-400';
+      } else if (val < 50) {
+        deckVolumeIcon.className = 'fa-solid fa-volume-low text-slate-300';
+      } else {
+        deckVolumeIcon.className = 'fa-solid fa-volume-high text-slate-300';
+      }
+    });
+
+    // Mute button
+    deckMuteBtn.addEventListener('click', () => {
+      if (!ytPlayer) return;
+      if (ytPlayer.isMuted()) {
+        ytPlayer.unMute();
+        deckVolumeSlider.value = ytPlayer.getVolume() || 75;
+        deckVolumeIcon.className = 'fa-solid fa-volume-high text-slate-300';
+      } else {
+        ytPlayer.mute();
+        deckVolumeSlider.value = 0;
+        deckVolumeIcon.className = 'fa-solid fa-volume-xmark text-rose-400';
+      }
+    });
+
+    // Category Buttons
+    deckCatButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        deckCatButtons.forEach(b => {
+          b.classList.remove('active', 'bg-blue-500/20', 'text-white', 'border-blue-500/30');
+          b.classList.add('bg-carbon-950', 'text-slate-400', 'border-white/5');
+        });
+        btn.classList.add('active', 'bg-blue-500/20', 'text-white', 'border-blue-500/30');
+        btn.classList.remove('bg-carbon-950', 'text-slate-400', 'border-white/5');
+        activeDeckCategory = btn.dataset.cat;
+        renderDeckPlaylist();
+      });
+    });
+
+    // Controls listeners
+    pillPlayBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      togglePlay();
+    });
+    deckPlayBtn.addEventListener('click', togglePlay);
+    deckPrevBtn.addEventListener('click', playPrevTrack);
+    deckNextBtn.addEventListener('click', playNextTrack);
+
+    function expandSoundDeck() {
+      soundDeckPill.classList.add('hidden');
+      soundDeckPanel.classList.remove('hidden');
+    }
+    function minimizeSoundDeck() {
+      soundDeckPanel.classList.add('hidden');
+      soundDeckPill.classList.remove('hidden');
+    }
+
+    soundDeckPill.addEventListener('click', expandSoundDeck);
+    pillExpandBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      expandSoundDeck();
+    });
+    deckMinimizeBtn.addEventListener('click', minimizeSoundDeck);
+
     // Init
+    updateTrackDisplay(false);
     updateShortlistUI();
     render();
   </script>

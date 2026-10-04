@@ -126,7 +126,51 @@ def generate_html(iems):
       text-transform: uppercase;
       font-weight: 700;
     }}
+
+    /* Audiophile Sound Bench & Equalizer */
+    @keyframes eqBar1 {{
+      0%, 100% {{ height: 4px; }}
+      50% {{ height: 16px; }}
+    }}
+    @keyframes eqBar2 {{
+      0%, 100% {{ height: 14px; }}
+      50% {{ height: 5px; }}
+    }}
+    @keyframes eqBar3 {{
+      0%, 100% {{ height: 7px; }}
+      50% {{ height: 20px; }}
+    }}
+    @keyframes eqBar4 {{
+      0%, 100% {{ height: 18px; }}
+      50% {{ height: 8px; }}
+    }}
+    @keyframes eqBar5 {{
+      0%, 100% {{ height: 6px; }}
+      50% {{ height: 15px; }}
+    }}
+
+    .eq-bar {{
+      width: 3px;
+      border-radius: 2px;
+      background-color: #3b82f6;
+      height: 4px;
+      transition: height 0.2s ease;
+      display: inline-block;
+    }}
+    .playing-bars .eq-bar:nth-child(1) {{ animation: eqBar1 0.7s infinite ease-in-out; }}
+    .playing-bars .eq-bar:nth-child(2) {{ animation: eqBar2 0.55s infinite ease-in-out; }}
+    .playing-bars .eq-bar:nth-child(3) {{ animation: eqBar3 0.65s infinite ease-in-out; }}
+    .playing-bars .eq-bar:nth-child(4) {{ animation: eqBar4 0.5s infinite ease-in-out; }}
+    .playing-bars .eq-bar:nth-child(5) {{ animation: eqBar5 0.6s infinite ease-in-out; }}
+
+    @keyframes spinDisc {{
+      100% {{ transform: rotate(360deg); }}
+    }}
+    .spinning-disc {{
+      animation: spinDisc 3.5s linear infinite;
+    }}
   </style>
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body class="min-h-screen custom-scrollbar antialiased selection:bg-blue-500 selection:text-white">
 
@@ -808,6 +852,154 @@ def generate_html(iems):
     <span id="toast-message">Copied to clipboard!</span>
   </div>
 
+  <!-- YOUTUBE IFRAME AUDIO ENGINE (Zero-login, 100% free legal streaming) -->
+  <div style="position: absolute; left: -9999px; bottom: -9999px; width: 1px; height: 1px; overflow: hidden; pointer-events: none;">
+    <div id="yt-player"></div>
+  </div>
+
+  <!-- FLOATING AUDIOPHILE SOUND DECK DOCK (Bottom-Left) -->
+  <!-- Collapsed Pill -->
+  <div id="sound-deck-pill" class="fixed bottom-6 left-6 z-40 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-carbon-900/95 backdrop-blur-xl border border-white/10 shadow-2xl hover:border-blue-500/40 transition cursor-pointer group">
+    <div class="flex items-end gap-0.5 h-4 w-4 text-blue-400" id="pill-eq-container">
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+    </div>
+    <div class="flex flex-col text-left">
+      <span class="font-mono text-[9px] text-blue-400 uppercase tracking-wider font-semibold flex items-center gap-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        SOUND BENCH
+      </span>
+      <span id="pill-track-title" class="text-xs font-bold text-white max-w-[150px] sm:max-w-[190px] truncate block">
+        Kessoku Band • Guitar Loneliness
+      </span>
+    </div>
+    <div class="flex items-center gap-1 ml-1">
+      <button id="pill-play-btn" class="w-8 h-8 rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center text-xs transition shadow-md shadow-blue-600/30">
+        <i class="fa-solid fa-play" id="pill-play-icon"></i>
+      </button>
+      <button id="pill-expand-btn" class="w-7 h-7 rounded-lg hover:bg-carbon-800 text-slate-400 hover:text-white flex items-center justify-center text-xs transition" title="Expand Sound Bench">
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Expanded Sound Deck Window -->
+  <div id="sound-deck-panel" class="fixed bottom-6 left-6 z-50 w-[420px] max-w-[calc(100vw-2.5rem)] rounded-3xl bg-carbon-900/95 backdrop-blur-2xl border border-white/15 shadow-2xl overflow-hidden hidden flex flex-col transition-all duration-300">
+    <!-- Deck Header -->
+    <div class="p-4 border-b border-white/10 flex items-center justify-between bg-carbon-950/70">
+      <div class="flex items-center space-x-2.5">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white text-xs shadow-md">
+          <i class="fa-solid fa-sliders"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h4 class="font-display tracking-wider text-sm uppercase text-white font-bold">AUDIOPHILE SOUND BENCH</h4>
+            <span class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">HI-FI</span>
+          </div>
+          <p class="text-[10px] text-slate-400 font-mono">Acoustic Benchmarks: Kessoku • YOASOBI • Eurobeat</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex items-end gap-0.5 h-4 w-4 mr-1" id="deck-eq-container">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+        </div>
+        <button id="deck-minimize-btn" class="w-7 h-7 rounded-lg bg-carbon-800 hover:bg-carbon-700 text-slate-400 hover:text-white flex items-center justify-center text-xs transition" title="Minimize">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Track Card -->
+    <div class="p-4 space-y-3">
+      <div class="flex items-center space-x-3 bg-carbon-950 p-3 rounded-2xl border border-white/5">
+        <div id="deck-disc-icon" class="w-12 h-12 rounded-full bg-gradient-to-br from-carbon-800 to-carbon-950 border-2 border-white/10 flex items-center justify-center text-xl text-blue-400 shrink-0 shadow-inner">
+          <i class="fa-solid fa-compact-disc"></i>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center justify-between gap-1">
+            <span id="deck-track-category" class="font-mono text-[10px] text-blue-400 uppercase tracking-wider font-semibold">Kessoku Band</span>
+            <span id="deck-acoustic-tag" class="font-mono text-[9px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20 truncate">Guitar Separation</span>
+          </div>
+          <h5 id="deck-track-title" class="font-bold text-white text-sm truncate mt-0.5">Guitar, Loneliness and Blue Planet</h5>
+          <p id="deck-track-artist" class="text-[11px] text-slate-400 truncate">Bocchi the Rock! OST</p>
+        </div>
+      </div>
+
+      <!-- Audiophile Testing Focus Note -->
+      <div class="bg-carbon-950/80 p-3 rounded-xl border border-white/5 text-[11px] text-slate-300 space-y-1">
+        <div class="text-blue-400 font-mono text-[10px] uppercase font-bold flex items-center gap-1.5">
+          <i class="fa-solid fa-headphones-simple"></i>
+          <span>Acoustic Evaluation Benchmark:</span>
+        </div>
+        <p id="deck-acoustic-focus" class="text-slate-300 leading-relaxed text-[11px]"></p>
+      </div>
+
+      <!-- Scrubber & Time -->
+      <div class="space-y-1">
+        <div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+          <span id="deck-current-time">0:00</span>
+          <span id="deck-duration">0:00</span>
+        </div>
+        <div class="w-full bg-carbon-800 h-1.5 rounded-full overflow-hidden cursor-pointer relative" id="deck-progress-bar">
+          <div id="deck-progress-fill" class="bg-gradient-to-r from-blue-500 to-cyan-400 h-full w-0 transition-all duration-200"></div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-between pt-1">
+        <div class="flex items-center gap-2">
+          <button id="deck-prev-btn" class="w-8 h-8 rounded-xl bg-carbon-800 hover:bg-carbon-700 text-slate-300 hover:text-white flex items-center justify-center text-xs transition">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button id="deck-play-btn" class="w-10 h-10 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center text-sm transition shadow-lg shadow-blue-500/25">
+            <i class="fa-solid fa-play" id="deck-play-icon"></i>
+          </button>
+          <button id="deck-next-btn" class="w-8 h-8 rounded-xl bg-carbon-800 hover:bg-carbon-700 text-slate-300 hover:text-white flex items-center justify-center text-xs transition">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+        </div>
+
+        <!-- Volume -->
+        <div class="flex items-center gap-2 bg-carbon-950 px-3 py-1.5 rounded-xl border border-white/5">
+          <button id="deck-mute-btn" class="text-slate-400 hover:text-white text-xs">
+            <i class="fa-solid fa-volume-high" id="deck-volume-icon"></i>
+          </button>
+          <input type="range" id="deck-volume-slider" min="0" max="100" value="75" class="w-16 h-1 bg-carbon-800 rounded-lg appearance-none cursor-pointer accent-blue-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="px-4 py-2 border-t border-white/5 bg-carbon-950/40 flex items-center gap-1.5 text-xs font-mono">
+      <button class="deck-cat-btn active px-2.5 py-1 rounded-lg bg-blue-500/20 text-white border border-blue-500/30 text-[10px]" data-cat="all">All (9)</button>
+      <button class="deck-cat-btn px-2.5 py-1 rounded-lg bg-carbon-950 text-slate-400 border border-white/5 text-[10px] hover:text-white" data-cat="kessoku">🎸 Kessoku</button>
+      <button class="deck-cat-btn px-2.5 py-1 rounded-lg bg-carbon-950 text-slate-400 border border-white/5 text-[10px] hover:text-white" data-cat="yoasobi">✨ YOASOBI</button>
+      <button class="deck-cat-btn px-2.5 py-1 rounded-lg bg-carbon-950 text-slate-400 border border-white/5 text-[10px] hover:text-white" data-cat="eurobeat">🏎️ Eurobeat</button>
+    </div>
+
+    <!-- Playlist Rows (Scrollable) -->
+    <div class="max-h-[190px] overflow-y-auto custom-scrollbar p-2 space-y-1 bg-carbon-950/20" id="deck-playlist-container"></div>
+
+    <!-- Deck Footer -->
+    <div class="p-3 border-t border-white/10 bg-carbon-950 flex items-center justify-between text-[10px] font-mono text-slate-400">
+      <span class="flex items-center gap-1 text-slate-400">
+        <i class="fa-brands fa-youtube text-rose-500 text-xs"></i>
+        <span>Zero-Login Stream</span>
+      </span>
+      <a id="deck-spotify-link" href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition">
+        <i class="fa-brands fa-spotify"></i>
+        <span>Search in Spotify</span>
+      </a>
+    </div>
+  </div>
+
   <!-- JAVASCRIPT APPLICATION CODE -->
   <script>
     const iemsData = {json_data};
@@ -1320,7 +1512,400 @@ def generate_html(iems):
       }}
     }});
 
+    // ==========================================
+    // AUDIOPHILE SOUND BENCH & YOUTUBE STREAMING
+    // ==========================================
+    const playlist = [
+      {{
+        id: "B7BxrAAXl94",
+        title: "Guitar, Loneliness and Blue Planet",
+        japanese: "ギターと孤独と蒼い惑星",
+        artist: "Kessoku Band (Bocchi the Rock!)",
+        category: "kessoku",
+        categoryLabel: "🎸 Kessoku Band",
+        acousticTag: "Distorted Guitar & Treble Bite",
+        acousticFocus: "Tests distorted guitar separation, snare impact speed, and planar/BA treble bite without harsh sibilance. Benchmark for Truthear Hexa vs Zero:Red.",
+        spotifyUrl: "https://open.spotify.com/search/Kessoku%20Band%20Guitar%20Loneliness"
+      }},
+      {{
+        id: "7221tTqp1bY",
+        title: "That Band (Ano Bando)",
+        japanese: "あのバンド",
+        artist: "Kessoku Band (Bocchi the Rock!)",
+        category: "kessoku",
+        categoryLabel: "🎸 Kessoku Band",
+        acousticTag: "Intro Solo & Bass Damping",
+        acousticFocus: "Iconic guitar intro tests upper-midrange timbre, followed by tight bass groove to test dynamic driver damping and texture (Kefine Delci & Tangzu Wan'er 2 test).",
+        spotifyUrl: "https://open.spotify.com/search/Kessoku%20Band%20That%20Band"
+      }},
+      {{
+        id: "Yd8kUoB72xU",
+        title: "Seishun Complex",
+        japanese: "青春コンプレックス",
+        artist: "Kessoku Band (Bocchi the Rock!)",
+        category: "kessoku",
+        categoryLabel: "🎸 Kessoku Band",
+        acousticTag: "Percussion Dynamics & Energy",
+        acousticFocus: "High-tempo rock energy that tests how well the IEM avoids mid-bass bleed into lower midrange vocals.",
+        spotifyUrl: "https://open.spotify.com/search/Kessoku%20Band%20Seishun%20Complex"
+      }},
+      {{
+        id: "ZRtdQ81jPUQ",
+        title: "Idol",
+        japanese: "アイドル",
+        artist: "YOASOBI",
+        category: "yoasobi",
+        categoryLabel: "✨ YOASOBI",
+        acousticTag: "Sub-Bass Slam & Speed",
+        acousticFocus: "Ayase's rapid synth sequences and deep electronic sub-bass kick test 2DD subwoofer crossovers (Truthear Zero:Blue/Red) and driver speed.",
+        spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Idol"
+      }},
+      {{
+        id: "x8VYWazR5mE",
+        title: "Yoru ni Kakeru (Racing into the Night)",
+        japanese: "夜に駆ける",
+        artist: "YOASOBI",
+        category: "yoasobi",
+        categoryLabel: "✨ YOASOBI",
+        acousticTag: "Female Vocal Extension & Piano",
+        acousticFocus: "Ikura's soaring female vocals test 3kHz pinna gain and Harman upper-midrange accuracy; piano notes test micro-detail decay.",
+        spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Yoru%20ni%20Kakeru"
+      }},
+      {{
+        id: "Y4nEEZwckuU",
+        title: "Gunjo",
+        japanese: "群青",
+        artist: "YOASOBI",
+        category: "yoasobi",
+        categoryLabel: "✨ YOASOBI",
+        acousticTag: "Choral Layering & Soundstage",
+        acousticFocus: "Massive vocal choir and acoustic snare in the chorus reveal soundstage width, depth, and instrument separation (great benchmark for Hexa and Moondrop May).",
+        spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Gunjo"
+      }},
+      {{
+        id: "atuFSv2bLa8",
+        title: "Gas Gas Gas",
+        japanese: "Initial D OST",
+        artist: "Manuel",
+        category: "eurobeat",
+        categoryLabel: "🏎️ Eurobeat",
+        acousticTag: "155 BPM Synth & Treble Fatigue",
+        acousticFocus: "Relentless aggressive synth-brass and four-on-the-floor kick drum test treble fatigue and harshness threshold during high-energy listening.",
+        spotifyUrl: "https://open.spotify.com/search/Manuel%20Gas%20Gas%20Gas"
+      }},
+      {{
+        id: "dv13gl0a-FA",
+        title: "Deja Vu",
+        japanese: "Initial D OST",
+        artist: "Dave Rodgers",
+        category: "eurobeat",
+        categoryLabel: "🏎️ Eurobeat",
+        acousticTag: "Sawtooth Synth & Speed Benchmark",
+        acousticFocus: "Tests dynamic driver recovery speed. Budget IEMs with slow decay turn dense synth riffs into muddy sound; tests fast LCP/DLC diaphragms (Gate, Klean).",
+        spotifyUrl: "https://open.spotify.com/search/Dave%20Rodgers%20Deja%20Vu"
+      }},
+      {{
+        id: "BJ0xBCwkg3E",
+        title: "Running in the 90s",
+        japanese: "Initial D OST",
+        artist: "Max Coveri",
+        category: "eurobeat",
+        categoryLabel: "🏎️ Eurobeat",
+        acousticTag: "Rhythmic Snap & Mid-Bass Punch",
+        acousticFocus: "Crisp drum machines and driving bass rhythm. Tests mid-bass slam without boominess; reveals whether an IEM has clean bass tuck or warm bleed.",
+        spotifyUrl: "https://open.spotify.com/search/Running%20in%20the%2090s"
+      }}
+    ];
+
+    let currentTrackIdx = 0;
+    let ytPlayer = null;
+    let isYtReady = false;
+    let isPlaying = false;
+    let activeDeckCategory = 'all';
+    let progressTimer = null;
+
+    // DOM Elements
+    const soundDeckPill = document.getElementById('sound-deck-pill');
+    const soundDeckPanel = document.getElementById('sound-deck-panel');
+    const pillPlayBtn = document.getElementById('pill-play-btn');
+    const pillPlayIcon = document.getElementById('pill-play-icon');
+    const pillExpandBtn = document.getElementById('pill-expand-btn');
+    const pillTrackTitle = document.getElementById('pill-track-title');
+    const pillEqContainer = document.getElementById('pill-eq-container');
+    const deckEqContainer = document.getElementById('deck-eq-container');
+    const deckMinimizeBtn = document.getElementById('deck-minimize-btn');
+    const deckDiscIcon = document.getElementById('deck-disc-icon');
+
+    const deckTrackTitle = document.getElementById('deck-track-title');
+    const deckTrackArtist = document.getElementById('deck-track-artist');
+    const deckTrackCategory = document.getElementById('deck-track-category');
+    const deckAcousticTag = document.getElementById('deck-acoustic-tag');
+    const deckAcousticFocus = document.getElementById('deck-acoustic-focus');
+    const deckSpotifyLink = document.getElementById('deck-spotify-link');
+
+    const deckCurrentTime = document.getElementById('deck-current-time');
+    const deckDuration = document.getElementById('deck-duration');
+    const deckProgressBar = document.getElementById('deck-progress-bar');
+    const deckProgressFill = document.getElementById('deck-progress-fill');
+
+    const deckPlayBtn = document.getElementById('deck-play-btn');
+    const deckPlayIcon = document.getElementById('deck-play-icon');
+    const deckPrevBtn = document.getElementById('deck-prev-btn');
+    const deckNextBtn = document.getElementById('deck-next-btn');
+    const deckMuteBtn = document.getElementById('deck-mute-btn');
+    const deckVolumeIcon = document.getElementById('deck-volume-icon');
+    const deckVolumeSlider = document.getElementById('deck-volume-slider');
+    const deckPlaylistContainer = document.getElementById('deck-playlist-container');
+    const deckCatButtons = document.querySelectorAll('.deck-cat-btn');
+
+    // YouTube API Ready callback
+    window.onYouTubeIframeAPIReady = function() {{
+      ytPlayer = new YT.Player('yt-player', {{
+        height: '200',
+        width: '200',
+        videoId: playlist[0].id,
+        playerVars: {{
+          playsinline: 1,
+          controls: 0,
+          disablekb: 1,
+          fs: 0,
+          rel: 0
+        }},
+        events: {{
+          onReady: onYtReady,
+          onStateChange: onYtStateChange
+        }}
+      }});
+    }};
+
+    function onYtReady(event) {{
+      isYtReady = true;
+      if (ytPlayer && ytPlayer.setVolume) {{
+        ytPlayer.setVolume(parseInt(deckVolumeSlider.value, 10));
+      }}
+      updateTrackDisplay(false);
+    }}
+
+    function onYtStateChange(event) {{
+      if (event.data === YT.PlayerState.PLAYING) {{
+        isPlaying = true;
+        setPlayingVisuals(true);
+        startProgressTimer();
+      }} else if (event.data === YT.PlayerState.PAUSED) {{
+        isPlaying = false;
+        setPlayingVisuals(false);
+        stopProgressTimer();
+      }} else if (event.data === YT.PlayerState.ENDED) {{
+        isPlaying = false;
+        setPlayingVisuals(false);
+        stopProgressTimer();
+        playNextTrack();
+      }}
+    }}
+
+    function setPlayingVisuals(playing) {{
+      if (playing) {{
+        pillPlayIcon.className = 'fa-solid fa-pause';
+        deckPlayIcon.className = 'fa-solid fa-pause';
+        pillEqContainer.classList.add('playing-bars');
+        deckEqContainer.classList.add('playing-bars');
+        deckDiscIcon.classList.add('spinning-disc');
+      }} else {{
+        pillPlayIcon.className = 'fa-solid fa-play';
+        deckPlayIcon.className = 'fa-solid fa-play';
+        pillEqContainer.classList.remove('playing-bars');
+        deckEqContainer.classList.remove('playing-bars');
+        deckDiscIcon.classList.remove('spinning-disc');
+      }}
+    }}
+
+    function formatTime(seconds) {{
+      if (!seconds || isNaN(seconds)) return '0:00';
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return m + ':' + (s < 10 ? '0' : '') + s;
+    }}
+
+    function startProgressTimer() {{
+      stopProgressTimer();
+      progressTimer = setInterval(() => {{
+        if (ytPlayer && ytPlayer.getCurrentTime && ytPlayer.getDuration) {{
+          const cur = ytPlayer.getCurrentTime();
+          const dur = ytPlayer.getDuration();
+          deckCurrentTime.textContent = formatTime(cur);
+          deckDuration.textContent = formatTime(dur);
+          if (dur > 0) {{
+            deckProgressFill.style.width = ((cur / dur) * 100) + '%';
+          }}
+        }}
+      }}, 500);
+    }}
+
+    function stopProgressTimer() {{
+      if (progressTimer) {{
+        clearInterval(progressTimer);
+        progressTimer = null;
+      }}
+    }}
+
+    function updateTrackDisplay(autoPlay = false) {{
+      const track = playlist[currentTrackIdx];
+      if (!track) return;
+
+      pillTrackTitle.textContent = track.artist.split(' ')[0] + ' • ' + track.title;
+      deckTrackTitle.textContent = track.title;
+      deckTrackArtist.textContent = track.artist + (track.japanese ? ' (' + track.japanese + ')' : '');
+      deckTrackCategory.textContent = track.categoryLabel;
+      deckAcousticTag.textContent = track.acousticTag;
+      deckAcousticFocus.textContent = track.acousticFocus;
+      deckSpotifyLink.href = track.spotifyUrl;
+
+      renderDeckPlaylist();
+
+      if (isYtReady && ytPlayer) {{
+        if (autoPlay) {{
+          ytPlayer.loadVideoById(track.id);
+          isPlaying = true;
+          setPlayingVisuals(true);
+        }} else {{
+          ytPlayer.cueVideoById(track.id);
+        }}
+      }}
+    }}
+
+    function togglePlay() {{
+      if (!isYtReady || !ytPlayer) {{
+        showToast('Initializing audio stream...');
+        return;
+      }}
+      if (isPlaying) {{
+        ytPlayer.pauseVideo();
+      }} else {{
+        ytPlayer.playVideo();
+      }}
+    }}
+
+    window.playDeckTrack = function(idx) {{
+      currentTrackIdx = idx;
+      updateTrackDisplay(true);
+    }};
+
+    function playNextTrack() {{
+      currentTrackIdx = (currentTrackIdx + 1) % playlist.length;
+      updateTrackDisplay(true);
+    }}
+
+    function playPrevTrack() {{
+      currentTrackIdx = (currentTrackIdx - 1 + playlist.length) % playlist.length;
+      updateTrackDisplay(true);
+    }}
+
+    function renderDeckPlaylist() {{
+      const filtered = playlist.map((t, idx) => ({{ ...t, originalIndex: idx }}))
+        .filter(t => activeDeckCategory === 'all' || t.category === activeDeckCategory);
+
+      deckPlaylistContainer.innerHTML = filtered.map(track => {{
+        const isCurrent = track.originalIndex === currentTrackIdx;
+        return `
+          <div onclick="playDeckTrack(${{track.originalIndex}})" class="flex items-center justify-between p-2 rounded-xl cursor-pointer transition text-xs ${{isCurrent ? 'bg-blue-600/20 border border-blue-500/40 text-white font-semibold' : 'bg-carbon-950/60 hover:bg-carbon-900 border border-white/5 text-slate-300'}}">
+            <div class="flex items-center space-x-2.5 min-w-0">
+              <span class="w-5 text-center font-mono text-[10px] ${{isCurrent ? 'text-blue-400 font-bold' : 'text-slate-500'}}">
+                ${{isCurrent && isPlaying ? '<i class=\"fa-solid fa-volume-high animate-pulse text-blue-400\"></i>' : (track.originalIndex + 1)}}
+              </span>
+              <div class="min-w-0">
+                <span class="block truncate text-xs text-slate-200">${{track.title}}</span>
+                <span class="block text-[10px] text-slate-400 font-mono truncate">${{track.artist}}</span>
+              </div>
+            </div>
+            <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-carbon-800 text-slate-400 shrink-0 border border-white/5 ml-2">
+              ${{track.acousticTag.split('&')[0]}}
+            </span>
+          </div>
+        `;
+      }}).join('');
+    }}
+
+    // Scrubber click
+    deckProgressBar.addEventListener('click', (e) => {{
+      if (!ytPlayer || !ytPlayer.getDuration) return;
+      const rect = deckProgressBar.getBoundingClientRect();
+      const clickPos = (e.clientX - rect.left) / rect.width;
+      const dur = ytPlayer.getDuration();
+      if (dur > 0) {{
+        ytPlayer.seekTo(clickPos * dur, true);
+      }}
+    }});
+
+    // Volume Slider
+    deckVolumeSlider.addEventListener('input', (e) => {{
+      const val = parseInt(e.target.value, 10);
+      if (ytPlayer && ytPlayer.setVolume) {{
+        ytPlayer.setVolume(val);
+      }}
+      if (val === 0) {{
+        deckVolumeIcon.className = 'fa-solid fa-volume-xmark text-rose-400';
+      }} else if (val < 50) {{
+        deckVolumeIcon.className = 'fa-solid fa-volume-low text-slate-300';
+      }} else {{
+        deckVolumeIcon.className = 'fa-solid fa-volume-high text-slate-300';
+      }}
+    }});
+
+    // Mute button
+    deckMuteBtn.addEventListener('click', () => {{
+      if (!ytPlayer) return;
+      if (ytPlayer.isMuted()) {{
+        ytPlayer.unMute();
+        deckVolumeSlider.value = ytPlayer.getVolume() || 75;
+        deckVolumeIcon.className = 'fa-solid fa-volume-high text-slate-300';
+      }} else {{
+        ytPlayer.mute();
+        deckVolumeSlider.value = 0;
+        deckVolumeIcon.className = 'fa-solid fa-volume-xmark text-rose-400';
+      }}
+    }});
+
+    // Category Buttons
+    deckCatButtons.forEach(btn => {{
+      btn.addEventListener('click', () => {{
+        deckCatButtons.forEach(b => {{
+          b.classList.remove('active', 'bg-blue-500/20', 'text-white', 'border-blue-500/30');
+          b.classList.add('bg-carbon-950', 'text-slate-400', 'border-white/5');
+        }});
+        btn.classList.add('active', 'bg-blue-500/20', 'text-white', 'border-blue-500/30');
+        btn.classList.remove('bg-carbon-950', 'text-slate-400', 'border-white/5');
+        activeDeckCategory = btn.dataset.cat;
+        renderDeckPlaylist();
+      }});
+    }});
+
+    // Controls listeners
+    pillPlayBtn.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      togglePlay();
+    }});
+    deckPlayBtn.addEventListener('click', togglePlay);
+    deckPrevBtn.addEventListener('click', playPrevTrack);
+    deckNextBtn.addEventListener('click', playNextTrack);
+
+    function expandSoundDeck() {{
+      soundDeckPill.classList.add('hidden');
+      soundDeckPanel.classList.remove('hidden');
+    }}
+    function minimizeSoundDeck() {{
+      soundDeckPanel.classList.add('hidden');
+      soundDeckPill.classList.remove('hidden');
+    }}
+
+    soundDeckPill.addEventListener('click', expandSoundDeck);
+    pillExpandBtn.addEventListener('click', (e) => {{
+      e.stopPropagation();
+      expandSoundDeck();
+    }});
+    deckMinimizeBtn.addEventListener('click', minimizeSoundDeck);
+
     // Init
+    updateTrackDisplay(false);
     updateShortlistUI();
     render();
   </script>
