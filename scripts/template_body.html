@@ -9,7 +9,7 @@
           </div>
           <div>
             <div class="flex items-center space-x-2">
-              <span class="text-xl font-display font-extrabold tracking-tight text-white group-hover:text-amber-300 transition">Sam's IEM Notes</span>
+              <h1 class="text-xl font-display font-extrabold tracking-tight text-white group-hover:text-amber-300 transition">Sam's IEM Notes</h1>
               <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-studio-800 text-slate-300 border border-studio-border font-medium">2026 Picks</span>
             </div>
             <p class="text-xs text-slate-400 font-normal">Curated Chi-Fi guide, nozzle measurements &amp; listening bench</p>
@@ -75,7 +75,7 @@
             Hey! I put together this notebook while digging into the current crop of budget Chi-Fi earphones. I gathered reviews and frequency measurements from reviewers who actually know sound (Crinacle, Super* Review, Jay's Audio), checked real delivered prices in Germany across Amazon.de and AliExpress (including upcoming 11.11 Singles' Day sale prices), and measured nozzle diameters so nobody gets stuck with ear canal fatigue.
           </p>
           <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-mono">
-            💡 Tap the heart icon to save pairs to your shortlist, click any photo for accessories &amp; cables, and use the music deck at the bottom to test track performance.
+            💡 Tap the bookmark icon to save pairs to your shortlist, click any photo for accessories &amp; cables, and use the music deck at the bottom to test track performance.
           </p>
         </div>
 
@@ -102,9 +102,9 @@
       <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
         <!-- Search Input -->
         <div class="relative flex-1">
-          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
-          <input type="text" id="search-input" placeholder="Search by name, driver, sound signature, or brand..." class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-studio-900 border border-studio-border text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition font-sans">
-          <button type="button" id="clear-search-btn" aria-label="Clear search query" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white text-xs">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input type="text" id="search-input" placeholder="Search by name, driver, sound signature, or brand..." class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-studio-900 border border-studio-border text-sm text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 transition font-sans">
+          <button type="button" id="clear-search-btn" aria-label="Clear search query" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
@@ -112,19 +112,19 @@
         <!-- Sort and View Controls -->
         <div class="flex items-center gap-2.5 self-end md:self-auto">
           <div class="relative">
-            <select id="sort-select" class="appearance-none bg-studio-900 border border-studio-border text-slate-200 text-xs font-medium py-2.5 pl-3 pr-8 rounded-xl focus:outline-none focus:border-amber-400 cursor-pointer font-mono">
+            <select id="sort-select" aria-label="Sort IEM models" class="appearance-none bg-studio-900 border border-studio-border text-slate-200 text-xs font-medium py-2.5 pl-3 pr-8 rounded-xl focus:outline-none focus:border-amber-400 cursor-pointer font-mono">
               <option value="score-desc">Sort: Curator Recommendation</option>
               <option value="price-ali-asc">Price: Low to High (AliExpress)</option>
               <option value="price-amazon-asc">Price: Low to High (Amazon.de)</option>
               <option value="comfort-desc">Comfort &amp; Small Ears First</option>
               <option value="name-asc">Name (A — Z)</option>
             </select>
-            <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none text-xs"></i>
+            <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
           </div>
 
           <div class="flex items-center p-1 bg-studio-900 rounded-xl border border-studio-border">
             <button type="button" id="view-cards-btn" aria-label="Card grid view" class="px-2.5 py-1.5 rounded-lg bg-amber-400 text-black text-xs font-bold transition">
-              <i class="fa-solid fa-grid-2"></i>
+              <i class="fa-solid fa-table-cells"></i>
             </button>
             <button type="button" id="view-table-btn" aria-label="Comparison table view" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white text-xs transition">
               <i class="fa-solid fa-table-list"></i>
@@ -135,7 +135,7 @@
 
       <!-- Quick Filter Chips -->
       <div class="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-1 text-xs font-medium">
-        <span class="text-slate-500 font-mono text-[11px] uppercase tracking-wider shrink-0 mr-1">Filter:</span>
+        <span class="text-slate-400 font-mono text-[11px] uppercase tracking-wider shrink-0 mr-1">Filter:</span>
         <button type="button" class="filter-pill active px-3 py-1.5 rounded-lg bg-amber-400 text-black font-bold shrink-0 border border-amber-400" data-filter="all">All (21)</button>
         <button type="button" class="filter-pill px-3 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500" data-filter="Small Ears &amp; Sleep">🌸 Small Ears (&lt;5.5mm)</button>
         <button type="button" class="filter-pill px-3 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500" data-filter="Vocal &amp; Acoustic Lovers">☕ Warm Vocals</button>
@@ -296,7 +296,7 @@
   <div id="drawer-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden transition-opacity"></div>
 
   <!-- IEM DETAIL MODAL DIALOG -->
-  <dialog id="iem-detail-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md p-4 sm:p-6 w-full h-full flex items-center justify-center border-0">
+  <dialog id="iem-detail-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md p-4 sm:p-6 w-full h-full border-0 hidden items-center justify-center">
     <div class="bg-studio-900 border border-studio-border rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-6 space-y-6 text-slate-200">
       <div class="flex items-start justify-between gap-4">
         <div>
