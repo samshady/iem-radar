@@ -56,6 +56,15 @@ def build():
         shutil.copyfile(favicon_src, favicon_dist)
         print(f"Copied favicon to: {favicon_dist}")
 
+    # Copy assets (product images) to dist
+    assets_src = os.path.join(BASE_DIR, "assets")
+    assets_dist = os.path.join(DIST_DIR, "assets")
+    if os.path.exists(assets_src):
+        if os.path.exists(assets_dist):
+            shutil.rmtree(assets_dist)
+        shutil.copytree(assets_src, assets_dist)
+        print(f"Copied assets to: {assets_dist}")
+
     print("Site build complete successfully!")
 
 if __name__ == "__main__":
