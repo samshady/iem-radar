@@ -27,11 +27,24 @@
     "crinacle_rank": "Unranked (Measurement DB)",
     "super_review_rating": "Recommended Budget",
     "jays_audio_rating": "Solid Budget All-Rounder",
-    "target_personas": ["Smartphone DSP / No Jack", "Small Ears & Sleep", "Casual Everyday"],
+    "target_personas": [
+      "Smartphone DSP / No Jack",
+      "Small Ears & Sleep",
+      "Casual Everyday"
+    ],
     "verified_stores": [
-      {"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/tanchjim-bunny"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=tanchjim+bunny"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-tanchjim-bunny.html"}
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/pages/search-results-page?q=Tanchjim+Bunny"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Tanchjim+Bunny"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Tanchjim-Bunny.html"
+      }
     ],
     "notes": "Available in Bunny 3.5mm, Bunny DSP (USB-C), and Bunny G (Gaming edition with 8-band PEQ in app)."
   },
@@ -63,11 +76,24 @@
     "crinacle_rank": "Tracked (Community Hit)",
     "super_review_rating": "High Value Contender",
     "jays_audio_rating": "Top Sub-$50 Metal Pick",
-    "target_personas": ["High Detail & Resolution", "Tunable Sound", "Built Like a Tank"],
+    "target_personas": [
+      "High Detail & Resolution",
+      "Tunable Sound",
+      "Built Like a Tank"
+    ],
     "verified_stores": [
-      {"name": "HiFiGO", "url": "https://hifigo.com/products/kefine-klean"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=kefine+klean"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-kefine-klean.html"}
+      {
+        "name": "HiFiGO",
+        "url": "https://hifigo.com/pages/search-results-page?q=Kefine+Klean"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Kefine+Klean"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Kefine-Klean.html"
+      }
     ],
     "notes": "Follow-up to the hit Delci, offering interchangeable acoustic nozzles at an even lower price point."
   },
@@ -99,11 +125,24 @@
     "crinacle_rank": "C+ (Bright tilt)",
     "super_review_rating": "Unmatched Accessory Value",
     "jays_audio_rating": "Insane Value Package",
-    "target_personas": ["Accessory King", "Balanced 4.4mm Gear", "Bright Detail Hunters"],
+    "target_personas": [
+      "Accessory King",
+      "Balanced 4.4mm Gear",
+      "Bright Detail Hunters"
+    ],
     "verified_stores": [
-      {"name": "Linsoul", "url": "https://www.linsoul.com/products/trn-conch"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=trn+conch"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-trn-conch.html"}
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/search?q=TRN+Conch"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=TRN+Conch"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-TRN-Conch.html"
+      }
     ],
     "notes": "Holds the record for best sub-$35 accessories with 3 modular plugs and 3 tuning nozzle filters."
   },
@@ -135,11 +174,24 @@
     "crinacle_rank": "Unranked (2026 Model)",
     "super_review_rating": "Stellar Build & Fun Sound",
     "jays_audio_rating": "Great Dynamic Bass",
-    "target_personas": ["Bass Punch & Rock/Pop", "Top-Tier Ear Tips Included", "Durable All-Metal"],
+    "target_personas": [
+      "Bass Punch & Rock/Pop",
+      "Top-Tier Ear Tips Included",
+      "Durable All-Metal"
+    ],
     "verified_stores": [
-      {"name": "HiFiGO", "url": "https://hifigo.com/products/dunu-titan-x"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=dunu+titan+x"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-dunu-titan-x.html"}
+      {
+        "name": "HiFiGO",
+        "url": "https://hifigo.com/pages/search-results-page?q=DUNU+Titan+X"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=DUNU+Titan+X"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-DUNU-Titan-X.html"
+      }
     ],
     "notes": "DUNU's 2026 entry-level disruptor. Includes DUNU Candy tips which are prized audiophile accessories on their own."
   },
@@ -171,11 +223,24 @@
     "crinacle_rank": "Unranked",
     "super_review_rating": "Fun Theatrical V-Shape",
     "jays_audio_rating": "Bass Heavy Hybrid Monster",
-    "target_personas": ["Bassheads & Theatrical EDM", "Cinematic Gaming Explosions", "Driver Count Enthusiasts"],
+    "target_personas": [
+      "Bassheads & Theatrical EDM",
+      "Cinematic Gaming Explosions",
+      "Driver Count Enthusiasts"
+    ],
     "verified_stores": [
-      {"name": "Linsoul", "url": "https://www.linsoul.com/products/kz-zar"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=kz+zar"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-kz-zar.html"}
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/search?q=KZ+ZAR"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=KZ+ZAR"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-KZ-ZAR.html"
+      }
     ],
     "notes": "Packs 8 drivers per ear. If bought during AliExpress sales, it is an astonishing amount of raw acoustic hardware under €45."
   },
@@ -207,11 +272,24 @@
     "crinacle_rank": "Unranked (2026 Model)",
     "super_review_rating": "Superb Vocal All-Rounder",
     "jays_audio_rating": "Benchmark Sub-$50 Warm Neutral",
-    "target_personas": ["Vocal & Acoustic Lovers", "All-Day Fatigue-Free", "Ergonomic Resin Fit"],
+    "target_personas": [
+      "Vocal & Acoustic Lovers",
+      "All-Day Fatigue-Free",
+      "Ergonomic Resin Fit"
+    ],
     "verified_stores": [
-      {"name": "Linsoul", "url": "https://www.linsoul.com/products/kiwi-ears-cadenza-ii"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=kiwi+ears+cadenza+2"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-kiwi-ears-cadenza-2.html"}
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/search?q=Kiwi+Ears+Cadenza+II"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Kiwi+Ears+Cadenza+II"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Kiwi-Ears-Cadenza-II.html"
+      }
     ],
     "notes": "Successor to the legendary original Cadenza. KARS 2.0 acoustic tube ensures clean bass separation."
   },
@@ -243,11 +321,24 @@
     "crinacle_rank": "Unranked",
     "super_review_rating": "Innovative Tuning Dial Pick",
     "jays_audio_rating": "Fun Hybrid Budget Disrupter",
-    "target_personas": ["Tech Tinkerers & Gamers", "Two Sound Signatures in One", "Punchy Hybrid Fans"],
+    "target_personas": [
+      "Tech Tinkerers & Gamers",
+      "Two Sound Signatures in One",
+      "Punchy Hybrid Fans"
+    ],
     "verified_stores": [
-      {"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/ooopusx-op22"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=ooopusx+op22"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-ooopusx-op22.html"}
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/pages/search-results-page?q=ooopusX+Op.22"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=ooopusX+Op.22"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-ooopusX-Op.22.html"
+      }
     ],
     "notes": "Features a hardware physical dial so you can switch between competitive gaming clarity and fun bass without touching software EQ."
   },
@@ -279,11 +370,24 @@
     "crinacle_rank": "B (Hola Class successor)",
     "super_review_rating": "Top Starter Benchmark",
     "jays_audio_rating": "Safe & Clean Under $20",
-    "target_personas": ["Absolute Beginner Benchmark", "Small Ears & Daily Commute", "Great Stock Cable"],
+    "target_personas": [
+      "Absolute Beginner Benchmark",
+      "Small Ears & Daily Commute",
+      "Great Stock Cable"
+    ],
     "verified_stores": [
-      {"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/truthear-gate"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=truthear+gate"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-truthear-gate.html"}
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/pages/search-results-page?q=Truthear+Gate"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Truthear+Gate"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Truthear-Gate.html"
+      }
     ],
     "notes": "The safest $20 entry into IEMs. The stock cable alone is worth $15."
   },
@@ -315,11 +419,24 @@
     "crinacle_rank": "Unranked",
     "super_review_rating": "Recommended Gaming Set",
     "jays_audio_rating": "Great Positional Cues",
-    "target_personas": ["Tactical FPS Gaming", "Metal Shell Lovers", "Crisp Soundstage"],
+    "target_personas": [
+      "Tactical FPS Gaming",
+      "Metal Shell Lovers",
+      "Crisp Soundstage"
+    ],
     "verified_stores": [
-      {"name": "Linsoul", "url": "https://www.linsoul.com/products/7hz-g1"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=7hz+g1"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-7hz-g1.html"}
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/search?q=7Hz+G1"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=7Hz+G1"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-7Hz-G1.html"
+      }
     ],
     "notes": "Engineered for competitive shooters (CS2, Valorant, Apex, Warzone) with laser-sharp footstep localization."
   },
@@ -351,11 +468,24 @@
     "crinacle_rank": "Unranked",
     "super_review_rating": "Smooth All-Rounder",
     "jays_audio_rating": "Harman Dual-DD Performer",
-    "target_personas": ["Fatigue-Free Long Sessions", "Warm Natural Timbre", "Dual-DD Coherence"],
+    "target_personas": [
+      "Fatigue-Free Long Sessions",
+      "Warm Natural Timbre",
+      "Dual-DD Coherence"
+    ],
     "verified_stores": [
-      {"name": "Linsoul", "url": "https://www.linsoul.com/products/7hz-elua-ultra"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=7hz+elua+ultra"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-7hz-elua-ultra.html"}
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/search?q=7Hz+Elua+Ultra"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=7Hz+Elua+Ultra"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-7Hz-Elua-Ultra.html"
+      }
     ],
     "notes": "Great alternative for listeners who want the dual-driver authority of Truthear Zero without the huge nozzle girth."
   },
@@ -387,11 +517,24 @@
     "crinacle_rank": "Unranked",
     "super_review_rating": "Specialized Gaming Value",
     "jays_audio_rating": "Crisp Competitive Weapon",
-    "target_personas": ["Esports / Tactical FPS", "Crystal Clear Vocals", "Supple Tangle-Free Cable"],
+    "target_personas": [
+      "Esports / Tactical FPS",
+      "Crystal Clear Vocals",
+      "Supple Tangle-Free Cable"
+    ],
     "verified_stores": [
-      {"name": "Linsoul", "url": "https://www.linsoul.com/products/tripowin-vivace"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=tripowin+vivace"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-tripowin-vivace.html"}
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/search?q=Tripowin+Vivace"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Tripowin+Vivace"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Tripowin-Vivace.html"
+      }
     ],
     "notes": "Collaboration with 0DiBi. One of the top-rated IEMs under €40 specifically for Valorant, CS2, and Apex Legends."
   },
@@ -423,11 +566,24 @@
     "crinacle_rank": "Excluded (Co-Designed by Crinacle)",
     "super_review_rating": "Class Benchmark Neutral",
     "jays_audio_rating": "Clean Reference Baseline",
-    "target_personas": ["Audio Purists & Reference", "Music Production / Mixing", "Bass Boost Flexibility (10Ω)"],
+    "target_personas": [
+      "Audio Purists & Reference",
+      "Music Production / Mixing",
+      "Bass Boost Flexibility (10Ω)"
+    ],
     "verified_stores": [
-      {"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/truthear-x-crinacle-zero-red"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=truthear+zero+red"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-truthear-zero-red.html"}
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/pages/search-results-page?q=Truthear+x+Crinacle+Zero%3ARED"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Truthear+x+Crinacle+Zero%3ARED"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Truthear-x-Crinacle-Zero%3ARED.html"
+      }
     ],
     "notes": "The $55 benchmark for tonal accuracy. Buy from Amazon.de first if unsure about your ear canal size."
   },
@@ -459,11 +615,24 @@
     "crinacle_rank": "Excluded (Co-Designed by Crinacle)",
     "super_review_rating": "Fixed the Nozzle! Excellent Harman",
     "jays_audio_rating": "Fun, Engaging & Finally Comfortable",
-    "target_personas": ["Pop, EDM & Hip-Hop", "Immersive Gaming", "Harman Bass Punch without Pain"],
+    "target_personas": [
+      "Pop, EDM & Hip-Hop",
+      "Immersive Gaming",
+      "Harman Bass Punch without Pain"
+    ],
     "verified_stores": [
-      {"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/truthear-zero-blue"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=truthear+zero+blue+2"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-truthear-zero-blue-2.html"}
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/pages/search-results-page?q=Truthear+x+Crinacle+ZERO%3ABLUE+2"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Truthear+x+Crinacle+ZERO%3ABLUE+2"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Truthear-x-Crinacle-ZERO%3ABLUE-2.html"
+      }
     ],
     "notes": "The 2025 Blue2 edition solved the infamous fit problem of the original Blue, making it a stellar all-rounder."
   },
@@ -495,11 +664,24 @@
     "crinacle_rank": "Measurement DB Favorite",
     "super_review_rating": "Outstanding Warm Tuning",
     "jays_audio_rating": "The Warm DD King",
-    "target_personas": ["Bass Texture & Warmth", "Supreme Ergonomics & Sleep", "Organic Natural Instruments"],
+    "target_personas": [
+      "Bass Texture & Warmth",
+      "Supreme Ergonomics & Sleep",
+      "Organic Natural Instruments"
+    ],
     "verified_stores": [
-      {"name": "HiFiGO", "url": "https://hifigo.com/products/kefine-delci"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=kefine+delci"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-kefine-delci.html"}
+      {
+        "name": "HiFiGO",
+        "url": "https://hifigo.com/pages/search-results-page?q=Kefine+Delci"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Kefine+Delci"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Kefine-Delci.html"
+      }
     ],
     "notes": "Delci AE (Angel Ears edition) adds gold/silver tuning nozzles. High Amazon DE markup makes importing on AliExpress highly recommended."
   },
@@ -531,11 +713,24 @@
     "crinacle_rank": "Unranked",
     "super_review_rating": "Versatile Hybrid DSP",
     "jays_audio_rating": "Great Hardware + Software Combo",
-    "target_personas": ["Smartphone USB-C Users", "Planar Treble Lovers", "Custom Parametric EQ Tinkerer"],
+    "target_personas": [
+      "Smartphone USB-C Users",
+      "Planar Treble Lovers",
+      "Custom Parametric EQ Tinkerer"
+    ],
     "verified_stores": [
-      {"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/moondrop-may"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=moondrop+may"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-moondrop-may.html"}
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/pages/search-results-page?q=Moondrop+May"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Moondrop+May"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Moondrop-May.html"
+      }
     ],
     "notes": "No dongle DAC needed. Plug directly into your phone or PC and choose between 5 factory tuning presets or write your own PEQ."
   },
@@ -567,11 +762,24 @@
     "crinacle_rank": "B (Original Aria was B, Aria 2 refined)",
     "super_review_rating": "Luxurious Complete Package",
     "jays_audio_rating": "Classy Single DD Performer",
-    "target_personas": ["Luxury Packaging & Feel", "4.4mm Balanced Users", "Sweet Female Vocals"],
+    "target_personas": [
+      "Luxury Packaging & Feel",
+      "4.4mm Balanced Users",
+      "Sweet Female Vocals"
+    ],
     "verified_stores": [
-      {"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/moondrop-aria-2"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=moondrop+aria+2"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-moondrop-aria-2.html"}
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/pages/search-results-page?q=Moondrop+Aria+2"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Moondrop+Aria+2"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Moondrop-Aria-2.html"
+      }
     ],
     "notes": "Includes both 3.5mm and 4.4mm modular plugs and spare acoustic filters in the box."
   },
@@ -603,11 +811,24 @@
     "crinacle_rank": "B+ (Tone: A+, Tech: B)",
     "super_review_rating": "5 Stars (Benchmark)",
     "jays_audio_rating": "The Sub-$100 Neutral King",
-    "target_personas": ["Audio Mixing & Critical Listening", "Acoustic / Classical / Jazz", "Tactical Gaming Footsteps"],
+    "target_personas": [
+      "Audio Mixing & Critical Listening",
+      "Acoustic / Classical / Jazz",
+      "Tactical Gaming Footsteps"
+    ],
     "verified_stores": [
-      {"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/truthear-hexa"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=truthear+hexa"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-truthear-hexa.html"}
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/pages/search-results-page?q=Truthear+Hexa"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Truthear+Hexa"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Truthear-Hexa.html"
+      }
     ],
     "notes": "Crinacle Tone Grade A+. Universally acknowledged as the cleanest technical performer under €100."
   },
@@ -639,10 +860,20 @@
     "crinacle_rank": "Unranked (Community Secret)",
     "super_review_rating": "Hidden Budget Gem",
     "jays_audio_rating": "Crazy $12 Disruptor",
-    "target_personas": ["Extreme Budget Value", "Gym / Travel Beater", "Surprising Sub-Bass"],
+    "target_personas": [
+      "Extreme Budget Value",
+      "Gym / Travel Beater",
+      "Surprising Sub-Bass"
+    ],
     "verified_stores": [
-      {"name": "AliExpress Official", "url": "https://www.aliexpress.com/w/wholesale-gk-kunten.html"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=gk+kunten"}
+      {
+        "name": "AliExpress Official",
+        "url": "https://www.aliexpress.com/w/wholesale-GK-Kunten.html"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=GK+Kunten"
+      }
     ],
     "notes": "Often misspelled as 'GK Kuten'. Released by KZ's experimental GK division to undercut the sub-$20 market."
   },
@@ -674,11 +905,24 @@
     "crinacle_rank": "Excluded (Co-Designed by Crinacle)",
     "super_review_rating": "Best Sub-$25 All-Rounder",
     "jays_audio_rating": "The Default Budget Recommendation",
-    "target_personas": ["Universal Starter IEM", "Forgiving Casual Listening", "Pop, Rock, Hip-Hop"],
+    "target_personas": [
+      "Universal Starter IEM",
+      "Forgiving Casual Listening",
+      "Pop, Rock, Hip-Hop"
+    ],
     "verified_stores": [
-      {"name": "Linsoul", "url": "https://www.linsoul.com/products/7hz-x-crinacle-zero-2"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=7hz+zero+2"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-7hz-zero-2.html"}
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/search?q=7Hz+x+Crinacle+Zero%3A2"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=7Hz+x+Crinacle+Zero%3A2"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-7Hz-x-Crinacle-Zero%3A2.html"
+      }
     ],
     "notes": "Co-tuned with Crinacle to fix the slightly bass-light sound of the original Zero. Universally recommended."
   },
@@ -710,11 +954,24 @@
     "crinacle_rank": "Unranked",
     "super_review_rating": "Incredible Vocal Value",
     "jays_audio_rating": "Top Budget Midrange Pick",
-    "target_personas": ["Female Vocals & Acoustic", "Included Tang Sancai Tips", "Smooth Non-Fatiguing"],
+    "target_personas": [
+      "Female Vocals & Acoustic",
+      "Included Tang Sancai Tips",
+      "Smooth Non-Fatiguing"
+    ],
     "verified_stores": [
-      {"name": "HiFiGO", "url": "https://hifigo.com/products/tangzu-waner-sg-2"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=tangzu+waner+2"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-tangzu-waner-2.html"}
+      {
+        "name": "HiFiGO",
+        "url": "https://hifigo.com/pages/search-results-page?q=Tangzu+Wan%27er+S.G+II"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Tangzu+Wan%27er+S.G+II"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Tangzu-Wan%27er-S.G-II.html"
+      }
     ],
     "notes": "Includes Tang Sancai patented ear tips in the box. Unbeatable for vocal clarity and timbral warmth under €20."
   },
@@ -746,11 +1003,24 @@
     "crinacle_rank": "B (Measurement DB benchmark)",
     "super_review_rating": "Default Ultra-Compact Pick",
     "jays_audio_rating": "Great Fit, Great Bass",
-    "target_personas": ["Side Sleepers & Small Ears", "Punchy Metal Shell", "Ultra-Compact Daily Carry"],
+    "target_personas": [
+      "Side Sleepers & Small Ears",
+      "Punchy Metal Shell",
+      "Ultra-Compact Daily Carry"
+    ],
     "verified_stores": [
-      {"name": "ShenzhenAudio", "url": "https://shenzhenaudio.com/products/moondrop-chu-ii"},
-      {"name": "Amazon.de", "url": "https://www.amazon.de/s?k=moondrop+chu+2"},
-      {"name": "AliExpress Choice", "url": "https://www.aliexpress.com/w/wholesale-moondrop-chu-2.html"}
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/pages/search-results-page?q=Moondrop+Chu+II+%2F+Chu+3"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Moondrop+Chu+II+%2F+Chu+3"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Moondrop-Chu-II-%2F-Chu-3.html"
+      }
     ],
     "notes": "Chu II has replaceable screw-off brass nozzles; Chu 3 has fixed brass nozzles with warmer mid-bass body. Both fit easily into tiny ear canals."
   }
