@@ -386,7 +386,9 @@
 
         // Persona & Category matching
         if (currentFilter !== 'all') {
-          if (currentFilter === 'Tactical FPS Gaming') {
+          if (currentFilter === 'Wireless Chi-Fi TWS') {
+            if (!iem.connection.includes('Bluetooth') && !iem.connection.includes('Wireless') && !iem.driver_type.includes('TWS')) return false;
+          } else if (currentFilter === 'Tactical FPS Gaming') {
             if (iem.gaming_score < 8.4) return false;
           } else if (currentFilter === 'Audio Purists & Reference') {
             if (!iem.sound_signature.includes('Neutral') && !iem.name.includes('Hexa') && !iem.name.includes('RED')) return false;

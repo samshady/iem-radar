@@ -1566,5 +1566,241 @@
         "url": "assets/images/moondrop-chu-2-3-cable.jpg"
       }
     ]
+  },
+  {
+    "id": "moondrop-space-travel",
+    "name": "Moondrop Space Travel",
+    "brand": "Moondrop",
+    "release_year": "2023",
+    "status": "Active",
+    "price_usd_msrp": 24.99,
+    "price_eur_amazon": 28.0,
+    "price_eur_ali_choice": 22.0,
+    "price_eur_ali_1111": 18.5,
+    "driver_type": "1DD TWS (ANC)",
+    "driver_detail": "13mm Titanium-Dome Composite Diaphragm Dynamic Driver with CCAW voice coil",
+    "sound_signature": "Warm Neutral / Moondrop VDSF",
+    "sound_description": "Exceptional vocal clarity and tonal balance tuned to Moondrop VDSF. Tight sub-bass punch without mid-bass mud, natural vocal timbre, and smooth, non-fatiguing treble.",
+    "nozzle_diameter_mm": 5.4,
+    "nozzle_warning": "No",
+    "comfort_rating": 9.2,
+    "build_material": "Lightweight resin stem, open-cockpit acrylic charging case",
+    "connection": "Bluetooth 5.3 (Wireless TWS)",
+    "cable_detail": "True Wireless (No cable); USB-C charging dock & short charging cable included",
+    "accessories_included": "Custom shallow silicone ear tips (S/M/L), USB-C charging cable, anime user manual",
+    "accessories_rating": 7.5,
+    "qc_and_known_issues": "Open lidless case attracts pocket dust and lint; 4-hour battery life per charge is modest.",
+    "gaming_score": 8.6,
+    "community_score": 9.1,
+    "crinacle_rank": "3-Star Value Benchmark (TWS)",
+    "super_review_rating": "Top Budget TWS Recommendation",
+    "jays_audio_rating": "Unbeatable Sub-0 TWS Audio",
+    "target_personas": [
+      "Wireless TWS Lovers",
+      "Vocal & Acoustic Lovers",
+      "Tactical FPS Gaming"
+    ],
+    "verified_stores": [
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/products/moondrop-space-travel-13mm-dynamic-driver-bluetooth-5-3-true-wireless-earbuds"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Moondrop+Space+Travel"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Moondrop-Space-Travel.html"
+      }
+    ],
+    "notes": "Features official Mitsuki Yuki anime voice prompts for ANC modes (Shh, Hey!, Umm?). 55ms low latency gaming mode activated by 4 taps on the faceplate.",
+    "image": "assets/images/moondrop-space-travel.jpg",
+    "tagline": "The legendary sub-€25 wireless earphone that brought audiophile tuning to true wireless.",
+    "sound_summary": "Accurate, natural midrange and controlled sub-bass that easily outperforms most €100 mainstream wireless earbuds in vocal realism.",
+    "takeaway": "The original budget wireless benchmark that proved inexpensive Bluetooth earbuds do not have to sound bloated or muddy. Tuned strictly to the Moondrop VDSF target curve, it provides remarkably clean vocal clarity with punchy sub-bass and functional 35dB feedforward ANC. It includes Mitsuki Yuki anime voice prompts and a 55ms low latency mode. Trade-offs: 4-hour battery life per charge and an open, lidless case that collects pocket lint.",
+    "fit_verdict": "5.4mm oval nozzle • Very lightweight stem fit with shallow silicone tips.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Stem Style Acrylic Shell",
+        "url": "assets/images/moondrop-space-travel.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Charging Case",
+        "badge": "Transparent Lidless Cockpit",
+        "url": "assets/images/moondrop-space-travel-detail.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Packaging",
+        "badge": "Mitsuki Yuki Retail Box",
+        "url": "assets/images/moondrop-space-travel-packaging.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Accessories",
+        "badge": "Shallow Tips & USB-C Cable",
+        "url": "assets/images/moondrop-space-travel-accessories.jpg"
+      }
+    ]
+  },
+  {
+    "id": "moondrop-space-travel-2",
+    "name": "Moondrop Space Travel 2",
+    "brand": "Moondrop",
+    "release_year": "2025",
+    "status": "Active",
+    "price_usd_msrp": 29.99,
+    "price_eur_amazon": 34.0,
+    "price_eur_ali_choice": 28.0,
+    "price_eur_ali_1111": 23.5,
+    "driver_type": "1DD TWS (ANC)",
+    "driver_detail": "13mm Beryllium-Plated Dome Dynamic Driver with upgraded DSP architecture & AI NPU",
+    "sound_signature": "Warm Neutral / VDSF with PEQ",
+    "sound_description": "Refined Moondrop VDSF curve with improved transient response from the beryllium dome. Clean vocals, textured sub-bass, and full 5-band parametric EQ customization via the Moondrop Link app.",
+    "nozzle_diameter_mm": 5.4,
+    "nozzle_warning": "No",
+    "comfort_rating": 9.3,
+    "build_material": "Lightweight resin stem, upgraded magnetic retention transparent dock",
+    "connection": "Bluetooth 6.0 (Wireless TWS)",
+    "cable_detail": "True Wireless (No cable); Type-C charging case with enhanced retention magnets",
+    "accessories_included": "Custom shallow silicone ear tips (S/M/L), USB-C charging cable, manual",
+    "accessories_rating": 7.5,
+    "qc_and_known_issues": "Retailers advise against updating to unverified firmware 1.5.0 in the app; case remains lidless.",
+    "gaming_score": 8.8,
+    "community_score": 9.2,
+    "crinacle_rank": "3-Star Value Benchmark (TWS)",
+    "super_review_rating": "Recommended TWS Successor",
+    "jays_audio_rating": "Top Budget TWS Evolution",
+    "target_personas": [
+      "Wireless TWS Lovers",
+      "Vocal & Acoustic Lovers",
+      "Tactical FPS Gaming"
+    ],
+    "verified_stores": [
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/products/moondrop-space-travel-2-13mm-dynamic-driver-bluetooth-6-0-tws"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Moondrop+Space+Travel+2"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-Moondrop-Space-Travel-2.html"
+      }
+    ],
+    "notes": "Upgraded with Bluetooth 6.0, dual-device multipoint, and an on-chip AI NPU for call noise reduction. Space Travel 2 Ultra edition is also available with a 13mm annular planar driver and LDAC for ~€44.",
+    "image": "assets/images/moondrop-space-travel-2.jpg",
+    "tagline": "The 2025 successor: Bluetooth 6.0, 7-hour battery, beryllium driver, and parametric EQ.",
+    "sound_summary": "Fixes the original model's modest battery life while retaining the class-leading vocal fidelity and adding in-app parametric EQ.",
+    "takeaway": "The 2025 evolution of the budget wireless champion. Fixes the original model's biggest flaw by upgrading single-charge battery life to 7 hours (24 hours total with case). Upgrades to Bluetooth 6.0, adds an on-chip AI NPU for clearer voice calls, and integrates a 5-band parametric EQ directly into the Moondrop Link app. Still keeps the signature transparent hangar case and anime voice lines, while remaining the audiophile sound benchmark under €35.",
+    "fit_verdict": "5.4mm oval nozzle • Lightweight, secure fit with improved case retention magnets.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Beryllium Dynamic Driver Stem",
+        "url": "assets/images/moondrop-space-travel-2.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Charging Case",
+        "badge": "Transparent Cockpit with Stronger Magnets",
+        "url": "assets/images/moondrop-space-travel-2-detail.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Packaging",
+        "badge": "Space Travel 2 Presentation Box",
+        "url": "assets/images/moondrop-space-travel-2-packaging.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Accessories",
+        "badge": "Tips & USB-C Cable",
+        "url": "assets/images/moondrop-space-travel-2-accessories.jpg"
+      }
+    ]
+  },
+  {
+    "id": "qcy-melobuds-pro",
+    "name": "QCY MeloBuds Pro (HT08)",
+    "brand": "QCY",
+    "release_year": "2024-2025",
+    "status": "Active",
+    "price_usd_msrp": 39.99,
+    "price_eur_amazon": 42.0,
+    "price_eur_ali_choice": 29.5,
+    "price_eur_ali_1111": 24.5,
+    "driver_type": "1DD TWS (Hybrid ANC)",
+    "driver_detail": "12mm Dynamic Driver with Bio-Cellulose composite diaphragm",
+    "sound_signature": "Warm Energetic V-Curve / App PEQ",
+    "sound_description": "Deep, authoritative sub-bass slam, warm lower midrange, and crisp treble extension. Highly responsive to app EQ if you prefer a flatter, neutral profile.",
+    "nozzle_diameter_mm": 5.5,
+    "nozzle_warning": "No",
+    "comfort_rating": 9.0,
+    "build_material": "Matte polycarbonate with closed clamshell charging case",
+    "connection": "Bluetooth 5.3 (LDAC / Multipoint)",
+    "cable_detail": "True Wireless (No cable); Clamshell charging case with USB-C port",
+    "accessories_included": "Silicone ear tips (S/M/L), USB-C charging cable, manual",
+    "accessories_rating": 8.0,
+    "qc_and_known_issues": "Stock tuning is slightly bass-heavy out of the box; QCY companion app requires account registration.",
+    "gaming_score": 8.2,
+    "community_score": 8.8,
+    "crinacle_rank": "Unranked (Popular TWS Pick)",
+    "super_review_rating": "Best Sub-0 Feature Set",
+    "jays_audio_rating": "Top Value Daily Commute TWS",
+    "target_personas": [
+      "Wireless TWS Lovers",
+      "Bassheads & Theatrical EDM",
+      "Casual Everyday"
+    ],
+    "verified_stores": [
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=QCY+MeloBuds+Pro"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-QCY-MeloBuds-Pro.html"
+      }
+    ],
+    "notes": "Supports Sony LDAC high-resolution codec (up to 990 kbps), 46dB adaptive hybrid ANC, 6 microphones with AI ENC, IPX5 water resistance, in-ear optical wear detection, and multipoint pairing.",
+    "image": "assets/images/qcy-melobuds-pro.jpg",
+    "tagline": "The feature-packed daily driver: 46dB Hybrid ANC, LDAC Hi-Res, and 34-hour battery.",
+    "sound_summary": "Energetic, punchy, and fun sound backed by genuine Hi-Res LDAC decoding and strong noise isolation.",
+    "takeaway": "The lifestyle and feature powerhouse of budget Chi-Fi wireless. If you prioritize strong 46dB adaptive hybrid ANC, LDAC Hi-Res codec support, dual-device multipoint connection, and 34 hours of total battery life with a traditional protective clamshell lid, this is the top practical alternative to the Space Travel. Stock tuning is a fun, warm V-shape that can be easily customized with the companion app's 10-band EQ.",
+    "fit_verdict": "5.5mm nozzle • Ergonomic stem design with IPX5 splash resistance.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Ergonomic Stem Shell",
+        "url": "assets/images/qcy-melobuds-pro.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Charging Case",
+        "badge": "Closed Clamshell Case with 34h Battery",
+        "url": "assets/images/qcy-melobuds-pro-detail.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Packaging",
+        "badge": "QCY Retail Box",
+        "url": "assets/images/qcy-melobuds-pro-packaging.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Accessories",
+        "badge": "Silicone Tips & USB-C Cable",
+        "url": "assets/images/qcy-melobuds-pro-accessories.jpg"
+      }
+    ]
   }
 ]
