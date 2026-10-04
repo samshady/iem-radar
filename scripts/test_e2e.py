@@ -467,7 +467,7 @@ async def run_e2e_tests():
             else:
                 record_fail("Desktop overflow", "Detected horizontal scrollbar")
 
-            # Test mobile viewport
+            # Test mobile viewport (390px iPhone)
             await page.set_viewport_size({"width": 390, "height": 844})
             await page.wait_for_timeout(400)
             mobile_png = os.path.join(SCREENSHOTS_DIR, "mobile_390.png")
@@ -478,7 +478,46 @@ async def run_e2e_tests():
             if not has_overflow_mobile:
                 record_pass("Zero horizontal overflow on mobile (390px iPhone viewport)")
             else:
-                record_fail("Mobile overflow", "Detected horizontal scrollbar on mobile")
+                record_fail("Mobile overflow", "Detected horizontal scrollbar on mobile 390px")
+
+            # Check Mobile Quick Navigation Strip
+            mobile_nav_visible = await page.locator("header .sm\\:hidden").is_visible()
+            if mobile_nav_visible:
+                record_pass("Mobile quick-navigation strip is visible on small screen")
+            else:
+                record_fail("Mobile quick nav", "Quick nav strip was not visible")
+
+            # Check docked bottom player on mobile
+            pill_visible = await page.locator("#sound-deck-pill").is_visible()
+            if pill_visible:
+                record_pass("Docked bottom mini-player is visible across mobile viewport")
+            else:
+                record_fail("Mobile audio pill", "Bottom mini-player not visible")
+
+            # Test opening detail modal on mobile
+            await page.locator("#cards-view h3:has-text('Moondrop Chu II')").click()
+            await page.wait_for_timeout(400)
+            modal_visible_mobile = await page.locator("#iem-detail-modal").is_visible()
+            modal_overflow_mobile = await page.evaluate("() => document.querySelector('#iem-detail-modal > div').scrollWidth > document.querySelector('#iem-detail-modal > div').clientWidth")
+            if modal_visible_mobile and not modal_overflow_mobile:
+                record_pass("Detail modal opened on mobile with zero horizontal overflow")
+            else:
+                record_fail("Mobile modal", f"Visible: {modal_visible_mobile}, Overflow: {modal_overflow_mobile}")
+            await page.click("#close-modal-btn")
+            await page.wait_for_timeout(300)
+
+            # Test extra-compact 360px viewport (Android budget phones)
+            await page.set_viewport_size({"width": 360, "height": 740})
+            await page.wait_for_timeout(400)
+            mobile_360_png = os.path.join(SCREENSHOTS_DIR, "mobile_360.png")
+            await page.screenshot(path=mobile_360_png, full_page=True)
+            record_pass(f"Compact mobile 360px screenshot saved: {mobile_360_png}")
+
+            has_overflow_360 = await page.evaluate("() => document.documentElement.scrollWidth > document.documentElement.clientWidth")
+            if not has_overflow_360:
+                record_pass("Zero horizontal overflow on compact mobile (360px Android viewport)")
+            else:
+                record_fail("360px overflow", "Detected horizontal scrollbar on 360px viewport")
 
             # -----------------------------------------------------------------
             # Console & Network Integrity Check

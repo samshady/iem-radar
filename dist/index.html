@@ -2,7 +2,7 @@
 <html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Sam's Chi-Fi Notes: Budget In-Ear Monitor Guide &amp; Audio Bench</title>
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -117,6 +117,15 @@
     /* Vintage cassette/disc rotation */
     @keyframes spinReel { 100% { transform: rotate(360deg); } }
     .spinning-disc { animation: spinReel 3s linear infinite; }
+
+    /* Mobile Touch Utilities */
+    .touch-scroll-x {
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x proximity;
+    }
+    .touch-snap-start {
+      scroll-snap-align: start;
+    }
   </style>
 </head>
 <body class="min-h-screen custom-scrollbar antialiased selection:bg-amber-400 selection:text-black">
@@ -124,23 +133,23 @@
 
   <!-- NAVIGATION HEADER -->
   <header class="sticky top-0 z-40 bg-studio-950/90 backdrop-blur-md border-b border-studio-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
-      <div class="flex items-center space-x-3.5">
-        <a href="#" class="flex items-center space-x-3 group">
-          <div class="w-10 h-10 rounded-xl bg-amber-400 text-black flex items-center justify-center font-display font-extrabold text-lg shadow-sm group-hover:bg-amber-300 transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 flex items-center justify-between gap-3 sm:gap-4">
+      <div class="flex items-center space-x-2.5 sm:space-x-3.5 min-w-0">
+        <a href="#" class="flex items-center space-x-2.5 sm:space-x-3 group min-w-0">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-400 text-black flex items-center justify-center font-display font-extrabold text-base sm:text-lg shadow-sm group-hover:bg-amber-300 transition shrink-0">
             <i class="fa-solid fa-headphones"></i>
           </div>
-          <div>
-            <div class="flex items-center space-x-2">
-              <h1 class="text-xl font-display font-extrabold tracking-tight text-white group-hover:text-amber-300 transition">Sam's IEM Notes</h1>
-              <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-studio-800 text-slate-300 border border-studio-border font-semibold">2026 Picks</span>
+          <div class="min-w-0">
+            <div class="flex items-center space-x-1.5 sm:space-x-2">
+              <h1 class="text-lg sm:text-xl font-display font-extrabold tracking-tight text-white group-hover:text-amber-300 transition truncate">Sam's IEM Notes</h1>
+              <span class="text-xs font-mono px-2 py-0.5 rounded-md bg-studio-800 text-slate-300 border border-studio-border font-semibold shrink-0">2026 Picks</span>
             </div>
-            <p class="text-sm text-slate-300 font-normal">Curated Chi-Fi guide, nozzle measurements &amp; listening bench</p>
+            <p class="hidden sm:block text-xs sm:text-sm text-slate-300 font-normal truncate">Curated Chi-Fi guide, nozzle measurements &amp; listening bench</p>
           </div>
         </a>
       </div>
 
-      <nav class="flex items-center space-x-2.5">
+      <nav class="flex items-center space-x-2 sm:space-x-2.5 shrink-0">
         <a href="#picks" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-850 text-xs font-semibold text-slate-200 border border-studio-border transition btn-tactile">
           <i class="fa-solid fa-layer-group text-amber-400"></i>
           <span>The Sets</span>
@@ -153,12 +162,28 @@
           <i class="fa-solid fa-toolbox text-emerald-400"></i>
           <span>Gear Toolkit</span>
         </a>
-        <button type="button" id="open-wishlist-top-btn" class="relative px-3.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs transition flex items-center gap-2 shadow-sm btn-tactile">
+        <button type="button" id="open-wishlist-top-btn" class="relative px-3 sm:px-3.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs transition flex items-center gap-1.5 sm:gap-2 shadow-sm btn-tactile">
           <i class="fa-solid fa-bookmark text-black"></i>
           <span>Saved Picks</span>
-          <span id="wishlist-counter-badge" class="px-2 py-0.5 rounded-full bg-black text-amber-300 font-mono text-xs font-extrabold ml-0.5">0</span>
+          <span id="wishlist-counter-badge" class="px-1.5 py-0.5 rounded-full bg-black text-amber-300 font-mono text-xs font-extrabold ml-0.5">0</span>
         </button>
       </nav>
+    </div>
+
+    <!-- Mobile Quick Navigation Strip (visible only on small screens) -->
+    <div class="sm:hidden border-t border-studio-border/60 bg-studio-950 px-3 py-1.5 flex items-center justify-between gap-1.5 overflow-x-auto text-xs font-mono">
+      <a href="#picks" class="flex-1 text-center py-1.5 px-2 rounded-lg bg-studio-900 border border-studio-border/80 text-slate-200 font-semibold flex items-center justify-center gap-1 active:bg-amber-400 active:text-black">
+        <i class="fa-solid fa-layer-group text-amber-400"></i>
+        <span>21 Sets</span>
+      </a>
+      <a href="#nozzle-guide" class="flex-1 text-center py-1.5 px-2 rounded-lg bg-studio-900 border border-studio-border/80 text-slate-200 font-semibold flex items-center justify-center gap-1 active:bg-sky-400 active:text-black">
+        <i class="fa-solid fa-ruler-horizontal text-sky-400"></i>
+        <span>Fit Guide</span>
+      </a>
+      <a href="#gear-toolkit" class="flex-1 text-center py-1.5 px-2 rounded-lg bg-studio-900 border border-studio-border/80 text-slate-200 font-semibold flex items-center justify-center gap-1 active:bg-emerald-400 active:text-black">
+        <i class="fa-solid fa-toolbox text-emerald-400"></i>
+        <span>Toolkit</span>
+      </a>
     </div>
   </header>
 
@@ -185,7 +210,7 @@
     </div>
   </div>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+  <main class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8 sm:space-y-10 pb-28 sm:pb-16">
 
     <!-- CURATOR NOTE (Personal, Authentic Field Notes) -->
     <section class="studio-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
@@ -207,18 +232,18 @@
         </div>
 
         <!-- Quick Summary Stats -->
-        <div class="grid grid-cols-2 gap-3 w-full md:w-auto shrink-0 font-mono text-sm">
-          <div class="bg-studio-950 p-3.5 rounded-xl border border-studio-border">
-            <span class="text-slate-300 block">Sets Curated</span>
-            <span class="text-xl font-bold text-white mt-1 block">21 Models</span>
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-2 sm:gap-3 w-full md:w-auto shrink-0 font-mono text-xs sm:text-sm">
+          <div class="bg-studio-950 p-3 sm:p-3.5 rounded-xl border border-studio-border">
+            <span class="text-slate-300 block text-xs">Sets Curated</span>
+            <span class="text-lg sm:text-xl font-bold text-white mt-0.5 sm:mt-1 block">21 Models</span>
           </div>
-          <div class="bg-studio-950 p-3.5 rounded-xl border border-studio-border">
-            <span class="text-slate-300 block">Price Range</span>
-            <span class="text-xl font-bold text-amber-400 mt-1 block">€14 to €85</span>
+          <div class="bg-studio-950 p-3 sm:p-3.5 rounded-xl border border-studio-border">
+            <span class="text-slate-300 block text-xs">Price Range</span>
+            <span class="text-lg sm:text-xl font-bold text-amber-400 mt-0.5 sm:mt-1 block">€14 to €85</span>
           </div>
-          <div class="bg-studio-950 p-3.5 rounded-xl border border-studio-border col-span-2">
-            <span class="text-slate-300 block">Next Mega Sale</span>
-            <span class="text-sm font-bold text-emerald-400 mt-0.5 block">AliExpress 11.11 (Nov 11 to 18)</span>
+          <div class="bg-studio-950 p-3 sm:p-3.5 rounded-xl border border-studio-border col-span-2">
+            <span class="text-slate-300 block text-xs">Next Mega Sale</span>
+            <span class="text-xs sm:text-sm font-bold text-emerald-400 mt-0.5 block">AliExpress 11.11 (Nov 11 to 18)</span>
           </div>
         </div>
       </div>
@@ -226,7 +251,7 @@
 
     <!-- EXPLORER CONTROLS & FILTER BAR -->
     <section id="picks" class="space-y-4">
-      <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
         <!-- Search Input -->
         <div class="relative flex-1">
           <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
@@ -237,9 +262,9 @@
         </div>
 
         <!-- Sort and View Controls -->
-        <div class="flex items-center gap-2.5 self-end md:self-auto">
-          <div class="relative">
-            <select id="sort-select" aria-label="Sort IEM models" class="appearance-none bg-studio-900 border border-studio-border text-slate-200 text-sm font-medium py-2.5 pl-3 pr-8 rounded-xl focus:outline-none focus:border-amber-400 cursor-pointer font-mono">
+        <div class="flex items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
+          <div class="relative flex-1 sm:flex-initial">
+            <select id="sort-select" aria-label="Sort IEM models" class="w-full appearance-none bg-studio-900 border border-studio-border text-slate-200 text-xs sm:text-sm font-medium py-2.5 pl-3 pr-8 rounded-xl focus:outline-none focus:border-amber-400 cursor-pointer font-mono">
               <option value="score-desc">Sort: Curator Recommendation</option>
               <option value="price-ali-asc">Price: Low to High (AliExpress)</option>
               <option value="price-amazon-asc">Price: Low to High (Amazon.de)</option>
@@ -249,7 +274,7 @@
             <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
           </div>
 
-          <div class="flex items-center p-1 bg-studio-900 rounded-xl border border-studio-border">
+          <div class="flex items-center p-1 bg-studio-900 rounded-xl border border-studio-border shrink-0">
             <button type="button" id="view-cards-btn" aria-label="Card grid view" class="px-2.5 py-1.5 rounded-lg bg-amber-400 text-black text-xs font-bold transition">
               <i class="fa-solid fa-table-cells"></i>
             </button>
@@ -261,7 +286,7 @@
       </div>
 
       <!-- Quick Filter Chips -->
-      <div class="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-1 text-sm font-medium">
+      <div class="flex items-center gap-2 overflow-x-auto touch-scroll-x custom-scrollbar pb-1 text-sm font-medium -mx-3.5 px-3.5 sm:mx-0 sm:px-0">
         <span class="text-slate-400 font-mono text-xs uppercase tracking-wider shrink-0 mr-1">Filter:</span>
         <button type="button" class="filter-pill active px-3.5 py-1.5 rounded-lg bg-amber-400 text-black font-bold shrink-0 border border-amber-400" data-filter="all">All (21)</button>
         <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500" data-filter="Small Ears &amp; Sleep">🌸 Small Ears (&lt;5.5mm)</button>
@@ -404,7 +429,7 @@
         </div>
 
         <!-- Toolkit Tab Buttons -->
-        <div class="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-1 text-sm font-medium w-full md:w-auto" role="tablist" aria-label="Toolkit sections">
+        <div class="flex items-center gap-2 overflow-x-auto touch-scroll-x custom-scrollbar pb-1 text-sm font-medium w-full md:w-auto -mx-3.5 px-3.5 sm:mx-0 sm:px-0" role="tablist" aria-label="Toolkit sections">
           <button type="button" class="toolkit-tab-btn active px-3.5 py-1.5 rounded-lg bg-amber-400 text-black font-bold shrink-0 border border-amber-400 transition flex items-center gap-1.5" data-target="toolkit-panel-tips" role="tab" aria-selected="true">
             <i class="fa-solid fa-ear-listen"></i>
             <span>Ear Tips</span>
@@ -922,7 +947,7 @@
     <div id="wishlist-items-container" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-3.5"></div>
 
     <!-- Drawer Footer Actions -->
-    <div class="p-5 border-t border-studio-border bg-studio-950 space-y-3">
+    <div class="p-4 sm:p-5 border-t border-studio-border bg-studio-950 space-y-3 pb-[calc(1rem+env(safe-area-inset-bottom))] sm:pb-5">
       <button type="button" id="copy-share-url-btn" class="w-full py-2.5 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-bold text-sm transition flex items-center justify-center gap-2 shadow-sm btn-tactile">
         <i class="fa-solid fa-share-nodes"></i>
         <span>Copy Shareable Link</span>
@@ -935,29 +960,29 @@
   <div id="drawer-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden transition-opacity"></div>
 
   <!-- IEM DETAIL MODAL DIALOG -->
-  <dialog id="iem-detail-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md p-4 sm:p-6 w-full h-full border-0 hidden items-center justify-center">
-    <div class="bg-studio-900 border border-studio-border rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-6 space-y-6 text-slate-200">
+  <dialog id="iem-detail-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md p-2.5 sm:p-6 w-full h-full border-0 hidden items-center justify-center">
+    <div class="bg-studio-900 border border-studio-border rounded-2xl max-w-2xl w-full max-h-[92vh] sm:max-h-[90vh] overflow-y-auto overflow-x-hidden custom-scrollbar p-4 sm:p-6 space-y-4 sm:space-y-6 text-slate-200">
       <div class="flex items-start justify-between gap-4">
         <div>
           <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider block" id="modal-brand">Brand</span>
-          <h3 class="text-2xl font-display font-bold text-white mt-1" id="modal-title">IEM Details</h3>
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-white mt-1" id="modal-title">IEM Details</h3>
         </div>
-        <button type="button" id="close-modal-btn" aria-label="Close modal dialog" class="w-8 h-8 rounded-lg bg-studio-800 text-slate-400 hover:text-white flex items-center justify-center transition">
+        <button type="button" id="close-modal-btn" aria-label="Close modal dialog" class="w-8 h-8 rounded-lg bg-studio-800 text-slate-400 hover:text-white flex items-center justify-center transition shrink-0">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
       <!-- Interactive Photo Gallery -->
-      <div class="space-y-2.5">
-        <div class="relative rounded-xl overflow-hidden bg-studio-950 border border-studio-border flex items-center justify-center min-h-[220px] max-h-72 group">
-          <img id="modal-image" src="favicon.svg" alt="IEM Set" class="max-h-72 w-auto object-contain transition-opacity duration-200">
+      <div class="space-y-2.5 min-w-0 max-w-full overflow-hidden">
+        <div class="relative rounded-xl overflow-hidden bg-studio-950 border border-studio-border flex items-center justify-center min-h-[200px] sm:min-h-[220px] max-h-64 sm:max-h-72 group">
+          <img id="modal-image" src="favicon.svg" alt="IEM Set" class="max-h-64 sm:max-h-72 w-auto object-contain transition-opacity duration-200">
           <div id="modal-gallery-badge" class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm border border-white/10 text-xs font-mono font-semibold text-amber-300 pointer-events-none flex items-center gap-1.5 shadow-md">
             <i class="fa-solid fa-camera text-amber-400"></i>
             <span id="modal-gallery-caption">Studio Shell Craft</span>
           </div>
         </div>
         <!-- Gallery Switcher Tabs / Thumbnails -->
-        <div id="modal-gallery-strip" class="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-1 text-xs font-mono" role="tablist" aria-label="Photo gallery views"></div>
+        <div id="modal-gallery-strip" class="flex items-center gap-2 overflow-x-auto touch-scroll-x custom-scrollbar pb-1 text-xs font-mono max-w-full" role="tablist" aria-label="Photo gallery views"></div>
       </div>
 
       <!-- Modal Body Details -->
@@ -967,7 +992,7 @@
           <p id="modal-sound-detail" class="text-sm text-slate-200"></p>
         </div>
 
-        <div class="grid grid-cols-2 gap-3 font-mono bg-studio-950 p-3.5 rounded-xl border border-studio-border">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 font-mono bg-studio-950 p-3 sm:p-3.5 rounded-xl border border-studio-border">
           <div>
             <span class="text-slate-400 block text-xs">Driver Architecture</span>
             <span id="modal-driver" class="font-bold text-white block mt-0.5 text-sm"></span>
@@ -990,7 +1015,7 @@
         <div class="space-y-1.5 pt-2">
           <label for="modal-note-input" class="font-bold text-slate-300 font-mono text-xs block">Your Notes for This Set (saved locally):</label>
           <div class="flex gap-2">
-            <input type="text" id="modal-note-input" placeholder="e.g. 'Loved the sound signature', 'Great cable', 'Buy with 3.5mm jack'..." class="flex-1 bg-studio-950 border border-studio-border rounded-lg px-3.5 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-amber-400">
+            <input type="text" id="modal-note-input" placeholder="e.g. 'Loved the sound signature', 'Great cable', 'Buy with 3.5mm jack'..." class="flex-1 min-w-0 bg-studio-950 border border-studio-border rounded-lg px-3.5 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-amber-400">
             <button type="button" id="save-note-btn" class="px-4 py-2 bg-studio-800 hover:bg-studio-700 text-white rounded-lg font-bold text-sm transition">Save</button>
           </div>
         </div>
@@ -1006,34 +1031,39 @@
 
   <!-- CYBERDECK AUDIOPHILE SOUND BENCH (Sticky Bottom Audio Deck) -->
   <!-- Collapsed Bar / Pill -->
-  <div id="sound-deck-pill" class="fixed bottom-4 left-4 z-40 bg-studio-900 border border-studio-border hover:border-slate-500 rounded-xl p-2.5 shadow-2xl flex items-center space-x-3 cursor-pointer transition btn-tactile">
-    <div class="w-8 h-8 rounded-lg bg-amber-400 text-black flex items-center justify-center font-bold text-sm">
-      <i class="fa-solid fa-compact-disc spinning-disc" id="pill-disc-icon"></i>
-    </div>
-    <div class="min-w-0 pr-1">
-      <div class="flex items-center space-x-2">
-        <span class="text-sm font-bold text-white truncate max-w-[140px] sm:max-w-[200px]" id="pill-track-title">Ano Bando</span>
-        <span class="playing-bars hidden" id="pill-eq-bars">
-          <span class="eq-bar"></span>
-          <span class="eq-bar"></span>
-          <span class="eq-bar"></span>
-          <span class="eq-bar"></span>
-        </span>
+  <div id="sound-deck-pill" class="fixed bottom-0 inset-x-0 sm:inset-x-auto sm:bottom-4 sm:left-4 z-40 bg-studio-900/95 sm:bg-studio-900 backdrop-blur-md sm:backdrop-blur-none border-t sm:border border-studio-border rounded-none sm:rounded-xl p-2.5 sm:p-3 shadow-2xl flex items-center justify-between sm:justify-start space-x-3 cursor-pointer transition pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:pb-3">
+    <div class="flex items-center space-x-2.5 sm:space-x-3 min-w-0 flex-1">
+      <div class="w-8 h-8 rounded-lg bg-amber-400 text-black flex items-center justify-center font-bold text-sm shrink-0">
+        <i class="fa-solid fa-compact-disc spinning-disc" id="pill-disc-icon"></i>
       </div>
-      <span class="text-xs font-mono text-slate-300 truncate block" id="pill-track-artist">Kessoku Band</span>
+      <div class="min-w-0 flex-1 pr-1">
+        <div class="flex items-center space-x-2">
+          <span class="text-xs sm:text-sm font-bold text-white truncate max-w-[150px] sm:max-w-[200px]" id="pill-track-title">Ano Bando</span>
+          <span class="playing-bars hidden" id="pill-eq-bars">
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+          </span>
+        </div>
+        <span class="text-xs font-mono text-slate-300 truncate block" id="pill-track-artist">Kessoku Band</span>
+      </div>
     </div>
-    <div class="flex items-center space-x-1.5 pl-2 border-l border-studio-border">
-      <button type="button" id="pill-play-btn" aria-label="Toggle playback" class="w-7 h-7 rounded-md bg-studio-800 text-white hover:text-amber-300 flex items-center justify-center text-xs transition">
+    <div class="flex items-center space-x-1.5 pl-2 border-l border-studio-border shrink-0">
+      <button type="button" id="pill-play-btn" aria-label="Toggle playback" class="w-8 h-8 sm:w-7 sm:h-7 rounded-md bg-studio-800 text-white hover:text-amber-300 flex items-center justify-center text-xs transition">
         <i class="fa-solid fa-play" id="pill-play-icon"></i>
       </button>
-      <button type="button" id="pill-expand-btn" aria-label="Expand sound bench player" class="w-7 h-7 rounded-md bg-studio-800 text-slate-400 hover:text-white flex items-center justify-center text-xs transition">
+      <button type="button" id="pill-expand-btn" aria-label="Expand sound bench player" class="w-8 h-8 sm:w-7 sm:h-7 rounded-md bg-studio-800 text-slate-400 hover:text-white flex items-center justify-center text-xs transition">
         <i class="fa-solid fa-chevron-up"></i>
       </button>
     </div>
   </div>
 
   <!-- Expanded Sound Deck Panel -->
-  <div id="sound-deck-panel" class="hidden fixed bottom-4 left-4 right-4 sm:right-auto sm:w-[420px] z-40 bg-studio-900 border border-studio-border rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+  <div id="sound-deck-panel" class="hidden fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-4 sm:left-4 sm:w-[420px] z-40 max-h-[85vh] sm:max-h-[640px] bg-studio-900 border-t sm:border border-studio-border rounded-t-3xl sm:rounded-2xl shadow-2xl overflow-y-auto custom-scrollbar flex flex-col pb-[calc(1rem+env(safe-area-inset-bottom))] sm:pb-0">
+    <!-- Mobile Grab Bar -->
+    <div class="w-12 h-1.5 bg-studio-700/80 rounded-full mx-auto my-2 sm:hidden shrink-0"></div>
+
     <!-- Panel Header -->
     <div class="p-3.5 bg-studio-950 border-b border-studio-border flex items-center justify-between">
       <div class="flex items-center space-x-2.5">

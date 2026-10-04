@@ -2,7 +2,7 @@
 <html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Sam's Chi-Fi Notes: Budget In-Ear Monitor Guide &amp; Audio Bench</title>
   
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -117,6 +117,15 @@
     /* Vintage cassette/disc rotation */
     @keyframes spinReel { 100% { transform: rotate(360deg); } }
     .spinning-disc { animation: spinReel 3s linear infinite; }
+    
+    /* Mobile Touch Utilities */
+    .touch-scroll-x {
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x proximity;
+    }
+    .touch-snap-start {
+      scroll-snap-align: start;
+    }
   </style>
 </head>
 <body class="min-h-screen custom-scrollbar antialiased selection:bg-amber-400 selection:text-black">
