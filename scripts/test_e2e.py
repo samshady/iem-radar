@@ -337,6 +337,22 @@ async def run_e2e_tests():
             else:
                 record_fail("Modal open", f"Vis: {modal_visible}, Title: {modal_title}, Nozzle: {modal_nozzle_text}, Stores: {store_links_count}")
 
+            # Test interactive gallery switcher
+            gallery_tabs_count = await page.locator("#modal-gallery-strip button").count()
+            initial_caption = await page.locator("#modal-gallery-caption").text_content()
+            if gallery_tabs_count >= 2:
+                # Click second gallery tab
+                await page.locator("#modal-gallery-strip button:nth-child(2)").click()
+                await page.wait_for_timeout(300)
+                second_img_src = await page.locator("#modal-image").get_attribute("src")
+                second_caption = await page.locator("#modal-gallery-caption").text_content()
+                if second_img_src != modal_img_src and second_caption != initial_caption:
+                    record_pass(f"Gallery switcher correctly changed image to '{second_img_src}' ({second_caption})")
+                else:
+                    record_fail("Gallery switch", f"Image: {second_img_src}, Caption: {second_caption}")
+            else:
+                record_fail("Gallery tabs count", f"Expected >= 2, got {gallery_tabs_count}")
+
             # Save a personal note
             await page.fill("#modal-note-input", "Loved the red faceplates and bass slam!")
             await page.click("#save-note-btn")
@@ -396,9 +412,50 @@ async def run_e2e_tests():
                 record_fail("Minimize player", "Panel still visible")
 
             # -----------------------------------------------------------------
-            # TEST 10: Responsiveness & Screenshots
+            # TEST 10: Audiophile Gear Toolkit Interaction
             # -----------------------------------------------------------------
-            print("\n[Test 10] Responsive Layout & Visual Verification")
+            print("\n[Test 10] Audiophile Gear Toolkit Interaction")
+            toolkit_visible = await page.locator("#gear-toolkit").is_visible()
+            tabs_count = await page.locator(".toolkit-tab-btn").count()
+            if toolkit_visible and tabs_count == 5:
+                record_pass(f"Audiophile Gear Toolkit section is visible with {tabs_count} category tabs")
+            else:
+                record_fail("Toolkit visibility", f"Vis: {toolkit_visible}, Tabs: {tabs_count}")
+
+            # Verify initial Tips panel is visible
+            tips_visible = await page.locator("#toolkit-panel-tips").is_visible()
+            if tips_visible:
+                record_pass("Ear Tips panel is active by default with SpinFit, Sancai, and S&S")
+            else:
+                record_fail("Tips panel default", "Ear Tips panel was not visible")
+
+            # Click Dongle DACs tab
+            await page.click(".toolkit-tab-btn[data-target='toolkit-panel-dacs']")
+            await page.wait_for_timeout(300)
+            dacs_visible = await page.locator("#toolkit-panel-dacs").is_visible()
+            tips_now_hidden = not await page.locator("#toolkit-panel-tips").is_visible()
+            apple_dongle_present = await page.locator("#toolkit-panel-dacs h4:has-text('Apple USB-C')").is_visible()
+            jcally_present = await page.locator("#toolkit-panel-dacs h4:has-text('Jcally JA11')").is_visible()
+            if dacs_visible and tips_now_hidden and apple_dongle_present and jcally_present:
+                record_pass("Dongle DACs tab activated, displaying Apple Dongle & Jcally JA11 PEQ cards")
+            else:
+                record_fail("DACs tab switch", f"DACS vis: {dacs_visible}, Tips hidden: {tips_now_hidden}")
+
+            # Click Care & Storage tab
+            await page.click(".toolkit-tab-btn[data-target='toolkit-panel-care']")
+            await page.wait_for_timeout(300)
+            care_visible = await page.locator("#toolkit-panel-care").is_visible()
+            roadie_wrap = await page.locator("#toolkit-panel-care h4:has-text('Roadie Wrap')").is_visible()
+            silica_gel = await page.locator("#toolkit-panel-care h4:has-text('Silica Gel')").is_visible()
+            if care_visible and roadie_wrap and silica_gel:
+                record_pass("Care & Storage tab activated with Roadie Wrap and Silica Gel guides")
+            else:
+                record_fail("Care tab switch", f"Care vis: {care_visible}, Roadie: {roadie_wrap}, Silica: {silica_gel}")
+
+            # -----------------------------------------------------------------
+            # TEST 11: Responsiveness & Screenshots
+            # -----------------------------------------------------------------
+            print("\n[Test 11] Responsive Layout & Visual Verification")
             desktop_png = os.path.join(SCREENSHOTS_DIR, "desktop_1440.png")
             await page.screenshot(path=desktop_png, full_page=True)
             record_pass(f"Desktop screenshot saved: {desktop_png}")

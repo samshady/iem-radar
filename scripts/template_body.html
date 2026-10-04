@@ -26,6 +26,10 @@
           <i class="fa-solid fa-ruler-horizontal text-sky-400"></i>
           <span>Fit Guide</span>
         </a>
+        <a href="#gear-toolkit" class="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-850 text-xs font-semibold text-slate-200 border border-studio-border transition btn-tactile">
+          <i class="fa-solid fa-toolbox text-emerald-400"></i>
+          <span>Gear Toolkit</span>
+        </a>
         <button type="button" id="open-wishlist-top-btn" class="relative px-3.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs transition flex items-center gap-2 shadow-sm btn-tactile">
           <i class="fa-solid fa-bookmark text-black"></i>
           <span>Saved Picks</span>
@@ -260,6 +264,518 @@
       </div>
     </section>
 
+    <!-- AUDIOPHILE GEAR & ESSENTIALS TOOLKIT -->
+    <section id="gear-toolkit" class="space-y-6 pt-8 border-t border-studio-border">
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
+        <div class="space-y-1.5">
+          <div class="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider font-bold">
+            <i class="fa-solid fa-toolbox"></i>
+            <span>Gear &amp; Essentials Bench</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">
+            Audiophile Toolkit: Tips, DACs &amp; Care
+          </h2>
+          <p class="text-sm text-slate-300 max-w-2xl leading-relaxed">
+            Changing eartips, picking a clean dongle, and understanding connectors are the most effective real-world upgrades in personal audio. Here is honest, practical guidance without marketing snake oil.
+          </p>
+        </div>
+
+        <!-- Toolkit Tab Buttons -->
+        <div class="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-1 text-sm font-medium w-full md:w-auto" role="tablist" aria-label="Toolkit sections">
+          <button type="button" class="toolkit-tab-btn active px-3.5 py-1.5 rounded-lg bg-amber-400 text-black font-bold shrink-0 border border-amber-400 transition flex items-center gap-1.5" data-target="toolkit-panel-tips" role="tab" aria-selected="true">
+            <i class="fa-solid fa-ear-listen"></i>
+            <span>Ear Tips</span>
+          </button>
+          <button type="button" class="toolkit-tab-btn px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition flex items-center gap-1.5" data-target="toolkit-panel-dacs" role="tab" aria-selected="false">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Dongle DACs</span>
+          </button>
+          <button type="button" class="toolkit-tab-btn px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition flex items-center gap-1.5" data-target="toolkit-panel-connectors" role="tab" aria-selected="false">
+            <i class="fa-solid fa-circle-nodes"></i>
+            <span>Connectors</span>
+          </button>
+          <button type="button" class="toolkit-tab-btn px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition flex items-center gap-1.5" data-target="toolkit-panel-cables" role="tab" aria-selected="false">
+            <i class="fa-solid fa-lines-leaning"></i>
+            <span>Cables</span>
+          </button>
+          <button type="button" class="toolkit-tab-btn px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition flex items-center gap-1.5" data-target="toolkit-panel-care" role="tab" aria-selected="false">
+            <i class="fa-solid fa-shield-heart"></i>
+            <span>Care &amp; Storage</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PANEL 1: EAR TIPS GUIDE -->
+      <div id="toolkit-panel-tips" class="toolkit-panel space-y-4">
+        <!-- Sonic Rules Callout -->
+        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono leading-relaxed">
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Rule 1: Seal is King</span>
+            </div>
+            <p class="text-slate-300 font-sans text-sm">
+              If an ear tip does not create an airtight acoustic seal, low bass frequencies cancel out instantly. If an IEM sounds thin or shrill, 95% of the time it is an incorrect tip size.
+            </p>
+          </div>
+          <div class="space-y-1.5 border-t md:border-t-0 md:border-l border-studio-border pt-3 md:pt-0 md:pl-4">
+            <div class="flex items-center gap-1.5 text-sky-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-arrow-up-right-dots"></i>
+              <span>Wide Bore (e.g. S&amp;S, Spring)</span>
+            </div>
+            <p class="text-slate-300 font-sans text-sm">
+              Reduces acoustic impedance. Allows high-frequency sound waves to propagate without restriction, expanding the soundstage and enhancing treble sparkle.
+            </p>
+          </div>
+          <div class="space-y-1.5 border-t md:border-t-0 md:border-l border-studio-border pt-3 md:pt-0 md:pl-4">
+            <div class="flex items-center gap-1.5 text-emerald-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-arrow-down-short-wide"></i>
+              <span>Narrow Bore (e.g. CP100+)</span>
+            </div>
+            <p class="text-slate-300 font-sans text-sm">
+              Funnels sound waves down a tighter acoustic path. Reinforces sub-bass punch and tactile rumble while gently smoothing out sharp treble spikes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Ear Tips Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+          <!-- SpinFit -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">Patented 3D Swivel</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">~€12 to €16</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">SpinFit (CP100+, CP145, W1)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                The flexible silicone neck tilts inside the ear canal to match your natural anatomical curve. Eliminates pressure hot spots and secures a deep, comfortable seal.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Material: Medical Silicone</span>
+              <span class="text-emerald-400 font-semibold">Best for tricky canals</span>
+            </div>
+          </div>
+
+          <!-- Tangzu Tang Sancai -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">Pressure Relief Matrix</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">~€10 to €12</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Tangzu Tang Sancai</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Features a micro-embossed matte honeycomb texture on the outer umbrella. Gently equalizes air pressure between the ear canal and atmosphere to eliminate vacuum suction fatigue.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Material: Matte Medical Silicone</span>
+              <span class="text-sky-300 font-semibold">Zero vacuum suction</span>
+            </div>
+          </div>
+
+          <!-- DUNU S&S -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">Stage &amp; Studio Cylindrical</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">~€12 to €14</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">DUNU S&amp;S (Stage &amp; Studio)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Straight cylindrical sidewalls maintain consistent acoustic contact along the entire length of your canal. Provides a rock-solid seal, immense sub-bass grip, and an expansive soundstage.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Material: High-Tack Clear Silicone</span>
+              <span class="text-rose-300 font-semibold">Deep seal &amp; staging</span>
+            </div>
+          </div>
+
+          <!-- Moondrop Spring Tips -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">Acoustic Waveguide Horn</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">~€12 to €15</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Moondrop Spring Tips</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Molded from ultra-soft liquid silicone with a radial horn waveguide structure. Specifically engineered to suppress high-frequency cavity ringing while feeling nearly weightless.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Material: Liquid Silicone</span>
+              <span class="text-emerald-300 font-semibold">Tames treble spikes</span>
+            </div>
+          </div>
+
+          <!-- Memory Foam Tips -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider">Maximum Isolation (-30dB)</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">~€8 to €15</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Memory Foam (Comply / T400 / T500)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Compress between fingers, insert, and let them expand slowly to fit your exact ear anatomy. Blocks extreme outside noise on trains and flights. Replace every 2 to 3 months for hygiene.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Material: Viscoelastic Foam</span>
+              <span class="text-purple-300 font-semibold">Commutes &amp; flights</span>
+            </div>
+          </div>
+
+          <!-- Quick Tip Selector Rule -->
+          <div class="bg-studio-950 p-4 rounded-xl border border-dashed border-studio-border space-y-2 flex flex-col justify-center">
+            <span class="text-xs font-mono font-bold text-amber-300 uppercase tracking-wider">Pro Tip for Chi-Fi Sets</span>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+              For wide nozzle sets like Truthear Zero (6.2mm) or Hexa, choose <strong>DUNU S&amp;S</strong> or <strong>SpinFit CP145/CP155</strong>. For standard 5.0mm nozzles, <strong>SpinFit W1</strong> and <strong>Tang Sancai</strong> provide the best balance of seal and comfort.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 2: DONGLE DACS & MOBILE AUDIO -->
+      <div id="toolkit-panel-dacs" class="toolkit-panel hidden space-y-4">
+        <!-- DAC Info Banner -->
+        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-2 text-xs font-mono leading-relaxed">
+          <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span>Why a USB-C Dongle DAC Matters</span>
+          </div>
+          <p class="text-slate-300 font-sans text-sm">
+            Most smartphones lack headphone jacks, and standard laptop audio outputs suffer from electrical interference (background hiss) and high output impedance that distorts multi-driver IEMs. A clean USB-C dongle delivers a dead-silent noise floor, transparent digital conversion, and clean amplification.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+          <!-- Apple Dongle -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">Benchmark (~€10)</span>
+                <span class="text-xs font-mono text-emerald-400 font-semibold">Ultra-Clean DAC</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Apple USB-C to 3.5mm Adapter</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                The standard reference for budget audio. Built with custom Cirrus Logic silicon, delivering ruler-flat frequency response, near-zero distortion, and an ultra-low 0.5 ohm output impedance.
+              </p>
+              <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border/60 text-xs font-mono text-slate-300 space-y-1">
+                <strong class="text-amber-300 block">EU vs US Model Note:</strong>
+                <span>EU model (A2155) is capped at 0.5Vrms (~31mW) to satisfy EU rules. US model (A2049) delivers 1.0Vrms (~60mW). Both easily power sensitive IEMs with pitch-black backgrounds.</span>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Jack: 3.5mm Single-Ended</span>
+              <span class="text-slate-200 font-semibold">Apple / Android / PC</span>
+            </div>
+          </div>
+
+          <!-- Jcally JA11 -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">New Darling (~€12 to €15)</span>
+                <span class="text-xs font-mono text-amber-300 font-semibold">Hardware PEQ</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Jcally JA11 (DSP Parametric EQ)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Equipped with an onboard DSP processor featuring full Parametric Equalizer support. Tune bass, midrange, or treble via the Jcally web/app interface, and the EQ profile is saved directly into the dongle hardware.
+              </p>
+              <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border/60 text-xs font-mono text-slate-300">
+                <span class="text-emerald-400 font-semibold">Platform independent:</span>
+                <span class="block mt-0.5">Your custom sound signature stays active on your iPhone, Android, iPad, or Mac without any software running in the background.</span>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Jack: 3.5mm Single-Ended</span>
+              <span class="text-amber-400 font-semibold">Custom DSP profiles</span>
+            </div>
+          </div>
+
+          <!-- Jcally JM6 Pro -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">Dual-Chip Punch (~€16 to €18)</span>
+                <span class="text-xs font-mono text-sky-300 font-semibold">1.6Vrms Output</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Jcally JM6 Pro (DAC + Amp)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Combines a Conexant CX31993 DAC chip with a dedicated MAX97220 operational amplifier stage. Delivers substantial volume headroom and dynamic bass slam for planar or hybrid sets.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Architecture: Dual Silicon</span>
+              <span class="text-sky-400 font-semibold">Zero background hiss</span>
+            </div>
+          </div>
+
+          <!-- Fiio KA11 -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">Power Monster (~€28 to €32)</span>
+                <span class="text-xs font-mono text-rose-300 font-semibold">200mW Output</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Fiio KA11 (CS43131 High Output)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Houses a flagship Cirrus Logic CS43131 DAC inside a tiny aluminum cable housing. Pumps out an astonishing 200mW into 32 ohms, easily driving demanding headphones and planar IEMs.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Resolution: 384kHz / DSD256</span>
+              <span class="text-rose-400 font-semibold">Planar IEM ready</span>
+            </div>
+          </div>
+
+          <!-- Moondrop Dawn Pro -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider">Balanced Hub (~€45 to €50)</span>
+                <span class="text-xs font-mono text-purple-300 font-semibold">Dual DAC + 4.4mm</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Moondrop Dawn Pro</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Desktop-grade portable setup with dual CS43131 DAC chips and an independent 100-step tactile hardware volume rocker. Features both 3.5mm single-ended and 4.4mm balanced Pentaconn jacks.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Jacks: 3.5mm + 4.4mm</span>
+              <span class="text-purple-400 font-semibold">Hardware volume keys</span>
+            </div>
+          </div>
+
+          <!-- USB-C DSP Cable Note -->
+          <div class="bg-studio-950 p-4 rounded-xl border border-dashed border-studio-border space-y-2 flex flex-col justify-center">
+            <span class="text-xs font-mono font-bold text-amber-300 uppercase tracking-wider">Alternative: USB-C DSP Cables</span>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+              If you dislike carrying a separate dongle, sets like <strong>Moondrop May</strong>, <strong>Tanchjim Bunny DSP</strong>, or aftermarket cables like <strong>Moondrop FreeDSP</strong> embed the DAC and interactive parametric EQ straight into the USB-C cable connector.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 3: CONNECTOR TYPES & STANDARDS -->
+      <div id="toolkit-panel-connectors" class="toolkit-panel hidden space-y-4">
+        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-2 text-xs font-mono leading-relaxed">
+          <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-circle-nodes"></i>
+            <span>Understanding IEM Connector Standards</span>
+          </div>
+          <p class="text-slate-300 font-sans text-sm">
+            Chi-Fi earphones use several pin and socket architectures. Knowing which connector your IEM uses ensures seamless cable swapping without damaged sockets or bent pins.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+          <!-- 0.78mm 2-Pin -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2 hover:border-slate-500 transition">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">Universal Standard</span>
+              <span class="text-xs font-mono text-slate-300 font-semibold">0.78mm Spacing</span>
+            </div>
+            <h4 class="text-base font-display font-bold text-white">0.78mm 2-Pin (Flush &amp; Recessed)</h4>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+              Two parallel gold-plated brass pins spaced 0.78mm apart. Most modern sets (Truthear Hexa, Moondrop Chu II, Kiwi Ears Cadenza) use recessed sockets where the female port sits slightly inside the shell, shielding the pins from lateral bending forces.
+            </p>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-400">
+              <span>Used by: Truthear, Moondrop, Kiwi Ears, 7Hz, Tangzu</span>
+            </div>
+          </div>
+
+          <!-- QDC / KZ Hooded -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2 hover:border-slate-500 transition">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">Hooded Sleeve</span>
+              <span class="text-xs font-mono text-slate-300 font-semibold">0.75mm / 0.78mm</span>
+            </div>
+            <h4 class="text-base font-display font-bold text-white">QDC / KZ Style (Protruding Hood)</h4>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+              The female connector protrudes out of the earpiece inside a rectangular plastic block, and the cable plug has a hooded sleeve that slides completely over it. Extremely resistant to bending, but note that KZ/QDC pins frequently use reversed electrical polarity relative to standard 2-pin cables.
+            </p>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-400">
+              <span>Used by: KZ ZAR, CCA, QDC models</span>
+            </div>
+          </div>
+
+          <!-- MMCX -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2 hover:border-slate-500 transition">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">Coaxial Snap</span>
+              <span class="text-xs font-mono text-slate-300 font-semibold">360-Degree Swivel</span>
+            </div>
+            <h4 class="text-base font-display font-bold text-white">MMCX (Micro-Miniature Coaxial)</h4>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+              A circular snap-in connector that rotates freely 360 degrees. Provides natural earhook alignment because the cable swivels with head movements. However, frequent plugging and unplugging can loosen the internal gold retention clip over years of use.
+            </p>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-400">
+              <span>Used by: Shure, Westone, DUNU (older lines), TinHifi</span>
+            </div>
+          </div>
+
+          <!-- Modular Plugs -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2 hover:border-slate-500 transition">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">Swappable Plugs</span>
+              <span class="text-xs font-mono text-slate-300 font-semibold">3.5mm &amp; 4.4mm &amp; 2.5mm</span>
+            </div>
+            <h4 class="text-base font-display font-bold text-white">Modular Swappable Terminations</h4>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+              Found on premium packages like TRN Conch, DUNU Titan X, and Moondrop Aria 2. A 4-pin internal collar on the cable allows you to swap between 3.5mm single-ended, 4.4mm balanced Pentaconn, and 2.5mm plugs in 5 seconds without changing the cable.
+            </p>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-400">
+              <span>Benefit: Future-proof for phone dongles and balanced amps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 4: REPLACEMENT CABLES GUIDE -->
+      <div id="toolkit-panel-cables" class="toolkit-panel hidden space-y-4">
+        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-2 text-xs font-mono leading-relaxed">
+          <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-lines-leaning"></i>
+            <span>The Honest Truth About IEM Cables</span>
+          </div>
+          <p class="text-slate-300 font-sans text-sm">
+            Cables do not magically add bass or expand soundstage unless your original stock wire was damaged or had abnormally high electrical resistance. What quality aftermarket cables <strong>actually do</strong> is eliminate cable stiffness, eliminate microphonics (clothing rustle noise), prevent tangling, and provide soft, comfortable earhooks.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+          <!-- Tripowin Zonie -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">Community Favorite</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">~€15 to €18</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Tripowin Zonie (16-Core SPC)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                The undefeated king of budget replacement cables. 16 cores of silver-plated copper woven into an extraordinarily soft braid with zero memory retention. It never tangles and produces zero microphonic rustling when you walk.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Plugs: 3.5mm / 4.4mm</span>
+              <span class="text-emerald-400 font-semibold">0.78mm, QDC, MMCX</span>
+            </div>
+          </div>
+
+          <!-- NiceHCK BlackCat / RedAg -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">Tactile Metal Hardware</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">~€10 to €15</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">NiceHCK BlackCat / RedAg</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Features knurled aluminum alloy splitters, a snug chin slider that stays in place while jogging, and ultra-flexible PVC insulation. Outstanding build quality that feels three times its street price.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Hardware: CNC Alloy</span>
+              <span class="text-sky-400 font-semibold">Snug chin slider</span>
+            </div>
+          </div>
+
+          <!-- TRN Modular Cables -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">Swappable Jacks</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">~€18 to €24</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">TRN T2 Pro / RedChain Modular</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                A modular upgrade cable that includes 2.5mm, 3.5mm, and 4.4mm swappable jack plugs right in the package. Lets you switch between phones and balanced desktop amplifiers without buying separate cables.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Included: 3 Terminations</span>
+              <span class="text-rose-400 font-semibold">Modular versatility</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 5: CARE, STORAGE & CLEANING -->
+      <div id="toolkit-panel-care" class="toolkit-panel hidden space-y-4">
+        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-2 text-xs font-mono leading-relaxed">
+          <div class="flex items-center gap-1.5 text-emerald-400 font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-shield-heart"></i>
+            <span>Practical Rules for 5+ Year IEM Lifespan</span>
+          </div>
+          <p class="text-slate-300 font-sans text-sm">
+            Chi-Fi in-ear monitors are precision acoustic devices. Simple habits prevent 90% of common failures like channel imbalance, broken copper cores, and clogged damper filters.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+          <!-- The Roadie Wrap -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-amber-400 font-mono text-xs uppercase tracking-wider font-bold">
+                <i class="fa-solid fa-arrows-spin"></i>
+                <span>Cable Coiling Technique</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">The Over-Under 'Roadie Wrap'</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Never wrap cables tightly around your phone or around your knuckles. Tight wrapping creates severe torsional strain that breaks fine copper strands and leaves permanent kinks.
+              </p>
+              <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border/60 text-xs font-mono text-slate-300">
+                <span class="text-amber-300 font-semibold">The method:</span>
+                <span class="block mt-0.5">Coil one natural clockwise loop, then roll the next loop underneath. The cable drops straight down without knots or memory twists when uncoiled.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Moisture & Silica Gel -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-sky-400 font-mono text-xs uppercase tracking-wider font-bold">
+                <i class="fa-solid fa-droplet-slash"></i>
+                <span>Moisture &amp; Condensation</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Silica Gel Packs in Storage Cases</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Ear canal humidity condenses inside metal sound nozzles after extended listening. Condensation on nozzle mesh filters causes one earpiece to sound quiet or muffled, often misdiagnosed as driver failure.
+              </p>
+              <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border/60 text-xs font-mono text-slate-300">
+                <span class="text-sky-300 font-semibold">The fix:</span>
+                <span class="block mt-0.5">Keep a small desiccant silica gel pack inside your zippered carrying case. It draws out trapped moisture overnight and prevents mesh corrosion.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wax Cleaning -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-rose-400 font-mono text-xs uppercase tracking-wider font-bold">
+                <i class="fa-solid fa-broom"></i>
+                <span>Mesh Filter Cleaning</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Safe Earwax Removal Protocol</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Earwax buildup on the nozzle mesh is the number one cause of volume loss. Clean the mesh carefully without puncturing the delicate acoustic damper cloth underneath.
+              </p>
+              <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border/60 text-xs font-mono text-slate-300">
+                <span class="text-rose-300 font-semibold">Safe cleaning:</span>
+                <span class="block mt-0.5">Hold the IEM facing downward and gently brush with a soft nylon baby toothbrush or press Blu-Tack lightly on the surface. Never poke pins or needles into the mesh.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- SHORTLIST SLIDE-OVER DRAWER -->
@@ -308,9 +824,17 @@
         </button>
       </div>
 
-      <!-- Photo Preview -->
-      <div class="rounded-xl overflow-hidden bg-studio-950 border border-studio-border flex items-center justify-center max-h-72">
-        <img id="modal-image" src="favicon.svg" alt="IEM Set" class="max-h-72 w-auto object-contain">
+      <!-- Interactive Photo Gallery -->
+      <div class="space-y-2.5">
+        <div class="relative rounded-xl overflow-hidden bg-studio-950 border border-studio-border flex items-center justify-center min-h-[220px] max-h-72 group">
+          <img id="modal-image" src="favicon.svg" alt="IEM Set" class="max-h-72 w-auto object-contain transition-opacity duration-200">
+          <div id="modal-gallery-badge" class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm border border-white/10 text-xs font-mono font-semibold text-amber-300 pointer-events-none flex items-center gap-1.5 shadow-md">
+            <i class="fa-solid fa-camera text-amber-400"></i>
+            <span id="modal-gallery-caption">Studio Shell Craft</span>
+          </div>
+        </div>
+        <!-- Gallery Switcher Tabs / Thumbnails -->
+        <div id="modal-gallery-strip" class="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-1 text-xs font-mono" role="tablist" aria-label="Photo gallery views"></div>
       </div>
 
       <!-- Modal Body Details -->
