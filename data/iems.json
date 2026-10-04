@@ -51,7 +51,27 @@
     "tagline": "Tiny, featherweight, and great for sleeping or small ears.",
     "sound_summary": "Balanced, warm, and relaxing with clean, natural vocals and smooth treble that never fatigues.",
     "takeaway": "An ultra-compact budget gem that completely disappears into the ear. If your phone lacks a headphone jack, grab the USB-C DSP edition. It features a built-in DAC and lets you tweak an 8-band parametric EQ directly from the Tanchjim app.",
-    "fit_verdict": "5.4mm nozzle • Very comfortable for small ear canals & side sleeping."
+    "fit_verdict": "5.4mm nozzle • Very comfortable for small ear canals & side sleeping.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Clear Resin Shell & Silver Cable",
+        "url": "assets/images/tanchjim-bunny.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Bunny Faceplate",
+        "badge": "Bunny Emblem on Transparent Acrylic",
+        "url": "assets/images/tanchjim-bunny-detail.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Clear Cable",
+        "badge": "Silver-Plated Cable on Frosted Surface",
+        "url": "assets/images/tanchjim-bunny-cable.jpg"
+      }
+    ]
   },
   {
     "id": "kefine-klean",
@@ -105,7 +125,27 @@
     "tagline": "All-metal CNC alloy shell with two swappable tuning nozzles.",
     "sound_summary": "Energetic, punchy, and highly resolving with crisp dynamic driver attack.",
     "takeaway": "Kefine's successor to the beloved Delci. Built like a little tank out of machined alloy, it includes two screw-on brass nozzles: the silver nozzle gives an airy, detailed presentation, while the black nozzle adds warmth and sub-bass weight.",
-    "fit_verdict": "5.6mm nozzle • Ergonomic curved metal housing with an easy seal."
+    "fit_verdict": "5.6mm nozzle • Ergonomic curved metal housing with an easy seal.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "CNC Metal Shell Craft",
+        "url": "assets/images/kefine-klean.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Nozzles & Case",
+        "badge": "Denim Case, Cable & Tuning Nozzles",
+        "url": "assets/images/kefine-klean-accessories.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Screw-on Nozzles",
+        "badge": "Interchangeable Brass & Silver Filters",
+        "url": "assets/images/kefine-klean-detail.jpg"
+      }
+    ]
   },
   {
     "id": "trn-conch",
@@ -159,7 +199,27 @@
     "tagline": "The undisputed accessory champion of budget Chi-Fi.",
     "sound_summary": "Crisp, bright, and detailed with fast, punchy bass.",
     "takeaway": "Unbeatable value inside the box: you get full metal shells, three interchangeable tuning nozzles, a premium modular cable with swappable 2.5mm, 3.5mm, and 4.4mm plugs, and an aluminum hard-shell carrying case. Sound is on the brighter, more analytical side.",
-    "fit_verdict": "5.5mm nozzle • Standard comfortable fit, but can feel heavy due to solid metal shells."
+    "fit_verdict": "5.5mm nozzle • Standard comfortable fit, but can feel heavy due to solid metal shells.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Liquid Metal Mirror Shell",
+        "url": "assets/images/trn-conch.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Modular Cable",
+        "badge": "Modular Plugs (2.5mm, 3.5mm, 4.4mm)",
+        "url": "assets/images/trn-conch-cable.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Tuning Nozzles",
+        "badge": "3 Interchangeable Brass Tuning Nozzles",
+        "url": "assets/images/trn-conch-accessories.jpg"
+      }
+    ]
   },
   {
     "id": "dunu-titan-x",
@@ -213,7 +273,33 @@
     "tagline": "Mecha-styled dynamic set with rich bass slam and Candy tips.",
     "sound_summary": "Warm, punchy, and dynamic with satisfying sub-bass rumble.",
     "takeaway": "DUNU's stylish chrome-plated set featuring a dual-chamber dynamic driver. Bass has genuine physical punch and vocals sound rich and natural. Comes with DUNU's famous Candy silicone tips in the box, which provide one of the best acoustic seals available.",
-    "fit_verdict": "5.6mm nozzle • Angled sound bore with comfortable ergonomic seating."
+    "fit_verdict": "5.6mm nozzle • Angled sound bore with comfortable ergonomic seating.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Chrome Mecha Faceplates",
+        "url": "assets/images/dunu-titan-x.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Packaging & Box",
+        "badge": "Full Presentation Box & Leatherette Pouch",
+        "url": "assets/images/dunu-titan-x-packaging.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Accessories List",
+        "badge": "Included Modular Plugs & Ear Tips",
+        "url": "assets/images/dunu-titan-x-accessories.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Modular Cable",
+        "badge": "Red-Silver Braided Modular Cable",
+        "url": "assets/images/dunu-titan-x-cable.jpg"
+      }
+    ]
   },
   {
     "id": "kz-zar",
@@ -267,7 +353,27 @@
     "tagline": "Chunky 8-driver hybrid beast with massive theatrical bass.",
     "sound_summary": "Full-bodied U-curve with booming sub-bass and sparkling treble.",
     "takeaway": "If you love big, energetic, cinematic sound for electronic music, movies, or gaming explosions, this 1DD + 7BA hybrid delivers immense power and a wide soundstage. Keep in mind the shells are on the larger side, so they suit medium to large ears best.",
-    "fit_verdict": "6.0mm nozzle • Large chunky shell; not recommended for very small ears."
+    "fit_verdict": "6.0mm nozzle • Large chunky shell; not recommended for very small ears.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "1DD+7BA Smoked Acrylic Driver Array",
+        "url": "assets/images/kz-zar.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Braided Cable",
+        "badge": "8-Core Silver-Plated Cable & Mic",
+        "url": "assets/images/kz-zar-cable.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "2-Pin Port",
+        "badge": "Smoked Shell & 0.75mm 2-Pin Port",
+        "url": "assets/images/kz-zar-detail.jpg"
+      }
+    ]
   },
   {
     "id": "kiwi-ears-cadenza-ii",
@@ -321,7 +427,27 @@
     "tagline": "One of the most natural, musical vocal tunings under €50.",
     "sound_summary": "Smooth, warm-neutral balance with lush acoustic timbre.",
     "takeaway": "A perennial favorite for acoustic music, female vocals, and indie rock. The 3D-printed resin shells look like custom artisan jewelry, and the beryllium/titanium diaphragm produces an organic, warm midrange with zero harshness or sibilance.",
-    "fit_verdict": "5.5mm nozzle • Featherweight resin cavity that fits almost any ear effortlessly."
+    "fit_verdict": "5.5mm nozzle • Featherweight resin cavity that fits almost any ear effortlessly.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Starry Cosmic Resin Faceplate",
+        "url": "assets/images/kiwi-ears-cadenza-ii.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Packaging & Tips",
+        "badge": "Retail Box, Tips Cards, Pouch & Cable",
+        "url": "assets/images/kiwi-ears-cadenza-ii-packaging.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Shell Measurement",
+        "badge": "Digital Caliper Shell Profile",
+        "url": "assets/images/kiwi-ears-cadenza-ii-detail.jpg"
+      }
+    ]
   },
   {
     "id": "ooopusx-op22",
@@ -375,7 +501,27 @@
     "tagline": "Dual-mode hybrid with an on-shell physical rotary tuning switch.",
     "sound_summary": "Switchable between clean neutral monitor sound and energetic bass boost.",
     "takeaway": "A unique 2DD + 2BA hybrid with a mechanical rotary switch on the faceplate. You can flick the dial with your thumbnail between a clean, flat monitoring curve and a punchy, bass-boosted fun curve without fiddling with digital EQ apps.",
-    "fit_verdict": "5.8mm nozzle • Medium shell profile with comfortable resin contours."
+    "fit_verdict": "5.8mm nozzle • Medium shell profile with comfortable resin contours.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Matte Black Shell with Orange 22 Accents",
+        "url": "assets/images/ooopusx-op22.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Braided Cable",
+        "badge": "Twisted Cable & Pre-Formed Earhooks",
+        "url": "assets/images/ooopusx-op22-cable.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Acoustic Vents",
+        "badge": "Inner Vents & Protective Metal Mesh",
+        "url": "assets/images/ooopusx-op22-detail.jpg"
+      }
+    ]
   },
   {
     "id": "truthear-gate",
@@ -429,7 +575,27 @@
     "tagline": "The successor to the Hola: clean neutral sound and a fantastic cable.",
     "sound_summary": "Clean, linear neutral sound with an easy, fatigue-free warmth.",
     "takeaway": "Truthear replaced the legendary Hola with the Gate. Transparent faceplates reveal the 10mm carbon LCP driver inside. Sound is remarkably clean and balanced with near-zero distortion, and the included 4-strand OFC cable is unusually thick and tangle-free for this price.",
-    "fit_verdict": "5.4mm nozzle • Very light and comfortable for all-day listening sessions."
+    "fit_verdict": "5.4mm nozzle • Very light and comfortable for all-day listening sessions.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Clear Acrylic Dynamic Driver Shell",
+        "url": "assets/images/truthear-gate.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Retail Box Art",
+        "badge": "Anime Character Presentation Box",
+        "url": "assets/images/truthear-gate-packaging.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Transparent Shell",
+        "badge": "Clear Acrylic Cavity & Driver Assembly",
+        "url": "assets/images/truthear-gate-detail.jpg"
+      }
+    ]
   },
   {
     "id": "7hz-g1",
@@ -483,7 +649,27 @@
     "tagline": "Fast DLC driver with crisp transients for tactical gaming and rock.",
     "sound_summary": "Punchy Harman V-shape with swift attack and clean high-end snap.",
     "takeaway": "A solid metal-faceplate earphone featuring a 10mm diamond-like carbon (DLC) driver. The transient speed is noticeably fast, making drum hits crisp and giving tactical multiplayer gamers pinpoint directional awareness for footsteps and reloads.",
-    "fit_verdict": "5.6mm nozzle • Compact shell with good passive noise isolation."
+    "fit_verdict": "5.6mm nozzle • Compact shell with good passive noise isolation.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Gold Emblem & Floral Nozzle",
+        "url": "assets/images/7hz-g1.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Cable & Nozzle",
+        "badge": "Floral Filter & Transparent Cable",
+        "url": "assets/images/7hz-g1-cable.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Shell Profile",
+        "badge": "Matte Black Acoustic Cavity",
+        "url": "assets/images/7hz-g1-detail.jpg"
+      }
+    ]
   },
   {
     "id": "7hz-elua-ultra",
@@ -537,7 +723,27 @@
     "tagline": "Dual dynamic drivers tuned for smooth, relaxed study marathons.",
     "sound_summary": "Smooth, warm Harman profile with effortless low-end extension.",
     "takeaway": "Combines a 10mm dynamic driver for deep sub-bass and an 8mm driver for mids and highs. It has an easygoing, warm presentation that never pierces, making it an ideal companion for long workdays, studying, or background listening.",
-    "fit_verdict": "5.5mm nozzle • Lightweight ergonomic shells."
+    "fit_verdict": "5.5mm nozzle • Lightweight ergonomic shells.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Dual Driver Shell Craft",
+        "url": "assets/images/7hz-elua-ultra.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Cable",
+        "badge": "Silver Twisted Cable",
+        "url": "assets/images/7hz-elua-ultra-cable.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Fit & Tips",
+        "badge": "Ergonomic Shell & Silicone Tips",
+        "url": "assets/images/7hz-elua-ultra-accessories.jpg"
+      }
+    ]
   },
   {
     "id": "tripowin-vivace",
@@ -591,7 +797,27 @@
     "tagline": "Co-engineered with acoustic tuners for pinpoint 3D imaging.",
     "sound_summary": "Fast, crisp, and revealing with wide directional soundstage.",
     "takeaway": "Tuned with the assistance of acoustic engineers (0DiBi) specifically to maximize stereo imaging and separation. If you play competitive tactical shooters (Valorant, CS2, Apex) or love complex layered electronic productions, this set separates every element clearly.",
-    "fit_verdict": "5.3mm nozzle • Slim nozzle profile that seals easily with standard tips."
+    "fit_verdict": "5.3mm nozzle • Slim nozzle profile that seals easily with standard tips.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Titanium Diaphragm Faceplate",
+        "url": "assets/images/tripowin-vivace.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Braided OFC Cable",
+        "badge": "Black Twisted Oxygen-Free Copper Cable",
+        "url": "assets/images/tripowin-vivace-cable.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Inner Mold",
+        "badge": "Ergonomic Resin Cavity & Nozzle Bore",
+        "url": "assets/images/tripowin-vivace-detail.jpg"
+      }
+    ]
   },
   {
     "id": "truthear-crinacle-zero-red",
@@ -645,7 +871,27 @@
     "tagline": "Crinacle's dual-driver reference benchmark (warning: wide nozzle).",
     "sound_summary": "Clean IEF neutral with a dedicated 10mm subwoofer for deep sub-bass.",
     "takeaway": "Widely considered the sub-€60 benchmark for tonal accuracy. One driver acts as a dedicated subwoofer while the other handles mids and highs, producing exceptionally clean instrument separation. Includes a 10-ohm impedance adapter for an extra +2.5dB bass boost. Note: the 6.2mm nozzle is thick, so avoid if you have narrow ear canals.",
-    "fit_verdict": "6.2mm nozzle ⚠️ • Wide sound bore; can cause fatigue in smaller ears."
+    "fit_verdict": "6.2mm nozzle ⚠️ • Wide sound bore; can cause fatigue in smaller ears.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Ruby Red Herringbone Faceplate",
+        "url": "assets/images/truthear-crinacle-zero-red.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Retail Packaging",
+        "badge": "Earphones with Retail Presentation Box",
+        "url": "assets/images/truthear-crinacle-zero-red-packaging.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Black Braided Cable",
+        "badge": "Twisted Cable with Pre-Formed Earhooks",
+        "url": "assets/images/truthear-crinacle-zero-red-cable.jpg"
+      }
+    ]
   },
   {
     "id": "truthear-crinacle-zero-blue2",
@@ -699,7 +945,27 @@
     "tagline": "The original bass-slam sensation with an updated, slimmer nozzle.",
     "sound_summary": "Energetic Harman curve with visceral sub-bass punch.",
     "takeaway": "The fun sibling to the Zero:Red. It delivers deep, satisfying subwoofer rumble that makes pop, hip-hop, electronic music, and movie action sequences feel alive. The updated revision slimmed the nozzle down to 5.5mm for a much friendlier fit.",
-    "fit_verdict": "5.5mm nozzle • Slimmed down from original revision; much more comfortable."
+    "fit_verdict": "5.5mm nozzle • Slimmed down from original revision; much more comfortable.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Sapphire Blue Translucent Faceplate",
+        "url": "assets/images/truthear-crinacle-zero-blue2.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Presentation Box",
+        "badge": "Rigid Presentation Packaging",
+        "url": "assets/images/truthear-crinacle-zero-blue2-packaging.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Complete Unboxing",
+        "badge": "Box, Tips Cards, Cable & Anime Card",
+        "url": "assets/images/truthear-crinacle-zero-blue2-accessories.jpg"
+      }
+    ]
   },
   {
     "id": "kefine-delci",
@@ -753,7 +1019,27 @@
     "tagline": "The community's favorite comfort set: luxurious metal & warm bass.",
     "sound_summary": "Warm, lush, and rich with textured, velvety bass rumble.",
     "takeaway": "One of the easiest recommendations in modern Chi-Fi. Crafted from smooth aircraft-grade aluminum, the shells are tiny and slip into your ears with zero hotspots. The sound is warm, relaxing, and deeply musical with zero harshness. Pure listening enjoyment.",
-    "fit_verdict": "5.4mm nozzle • Outstanding comfort, one of the best shells on the market."
+    "fit_verdict": "5.4mm nozzle • Outstanding comfort, one of the best shells on the market.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Gunmetal CNC Aluminum Shell",
+        "url": "assets/images/kefine-delci.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Case & Tips",
+        "badge": "Kefine Hard Case, Cable & Tips",
+        "url": "assets/images/kefine-delci-accessories.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Leather Case",
+        "badge": "Earphones Rested on Zipper Case",
+        "url": "assets/images/kefine-delci-detail.jpg"
+      }
+    ]
   },
   {
     "id": "moondrop-may",
@@ -807,7 +1093,27 @@
     "tagline": "Dynamic + Planar hybrid with custom app EQ via USB-C.",
     "sound_summary": "Fast planar treble detail anchored by dynamic driver bass slam.",
     "takeaway": "Features a hybrid setup of a dynamic driver for bass and a planar magnetic driver for sparkly, detailed highs. Plugs straight into your phone or laptop with its USB-C cable and lets you download community EQ curves or make your own via the Moondrop Link app.",
-    "fit_verdict": "5.6mm nozzle • 3D-printed HeyGears medical resin with smooth fit."
+    "fit_verdict": "5.6mm nozzle • 3D-printed HeyGears medical resin with smooth fit.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Medical Resin & Custom Faceplate",
+        "url": "assets/images/moondrop-may.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "USB-C DSP Cable",
+        "badge": "Interactive DSP Cable & In-Line DAC",
+        "url": "assets/images/moondrop-may-cable.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Ergonomic Profile",
+        "badge": "Medical Grade 3D Resin Cavity",
+        "url": "assets/images/moondrop-may-detail.jpg"
+      }
+    ]
   },
   {
     "id": "moondrop-aria-2",
@@ -861,7 +1167,33 @@
     "tagline": "The luxury classic evolved: ceramic dome driver & modular cable.",
     "sound_summary": "Smooth, refined Moondrop house curve with lush female vocals.",
     "takeaway": "The successor to the legendary Aria. Moondrop fixed the old paint-peeling issue with a durable electroplated alloy finish, added screw-off brass nozzle filters for easy cleaning, and packed in a luxury modular cable with both 3.5mm and 4.4mm balanced plugs.",
-    "fit_verdict": "5.5mm nozzle • Solid, reassuring metal weight with smooth contours."
+    "fit_verdict": "5.5mm nozzle • Solid, reassuring metal weight with smooth contours.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Ceramic-Coated Matte Alloy Shell",
+        "url": "assets/images/moondrop-aria-2.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Retail Box Art",
+        "badge": "Violinist Anime Retail Box Cover",
+        "url": "assets/images/moondrop-aria-2-packaging.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Case & Accessories",
+        "badge": "Leather Case, Modular Plugs & Tips",
+        "url": "assets/images/moondrop-aria-2-accessories.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Modular Cable",
+        "badge": "Modular Screw-on 3.5mm & 4.4mm Plugs",
+        "url": "assets/images/moondrop-aria-2-cable.jpg"
+      }
+    ]
   },
   {
     "id": "truthear-hexa",
@@ -915,7 +1247,27 @@
     "tagline": "The sub-€100 king for critical listening, mixing, and acoustic clarity.",
     "sound_summary": "Strictly flat, analytical neutral reference with surgical separation.",
     "takeaway": "The benchmark for anyone who wants to hear their music exactly as recorded. 1 dynamic driver gives clean, unbloated bass while 3 balanced armatures carve out microscopic details in vocals, acoustic guitars, and orchestral layers. Zero fluff, pure transparency.",
-    "fit_verdict": "5.5mm nozzle • Lightweight matte HeyGears resin shell."
+    "fit_verdict": "5.5mm nozzle • Lightweight matte HeyGears resin shell.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "HeyGears 3D Printed Matte Polygon Shell",
+        "url": "assets/images/truthear-hexa.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Braided Cable",
+        "badge": "Hexa Shells with Cable on Stone Surface",
+        "url": "assets/images/truthear-hexa-cable.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Acoustic Bores",
+        "badge": "Hybrid 1DD+3BA Dedicated Sound Channels",
+        "url": "assets/images/truthear-hexa-detail.jpg"
+      }
+    ]
   },
   {
     "id": "gk-kunten",
@@ -965,7 +1317,27 @@
     "tagline": "The ultra-budget daily beater set for backpacks and workouts.",
     "sound_summary": "Punchy, balanced V-shape with lively bass and clean vocals.",
     "takeaway": "At under €15 on sale, this is the ultimate carefree pair. It sounds surprisingly punchy and balanced, and if you drop it on the sidewalk or leave it in a gym locker, you won't lose sleep. A great backup set to keep in your jacket pocket.",
-    "fit_verdict": "5.5mm nozzle • Extremely lightweight resin shell."
+    "fit_verdict": "5.5mm nozzle • Extremely lightweight resin shell.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Transparent Shell & Ultra-Linear DD",
+        "url": "assets/images/gk-kunten.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "USB-C Cable",
+        "badge": "USB-C DSP Cable with In-line Mic",
+        "url": "assets/images/gk-kunten-cable.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Acoustic Cavity",
+        "badge": "Exploded Driver Internal View",
+        "url": "assets/images/gk-kunten-detail.jpg"
+      }
+    ]
   },
   {
     "id": "7hz-zero-2",
@@ -1019,7 +1391,27 @@
     "tagline": "The safest first IEM recommendation in the world.",
     "sound_summary": "Warm Harman tuning with +3dB of punchy, engaging bass.",
     "takeaway": "Crinacle teamed up with 7Hz to improve upon the legendary Salnotes Zero. They added just the right amount of warm low-end punch to make rock, hip-hop, and pop tracks sound full and fun, while preserving crisp mids and a comfortable angular shell.",
-    "fit_verdict": "5.4mm nozzle • Universally easy seal and very light on the ears."
+    "fit_verdict": "5.4mm nozzle • Universally easy seal and very light on the ears.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Crinacle Tuned Faceplates",
+        "url": "assets/images/7hz-zero-2.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Packaging & Tips",
+        "badge": "Retail Box, Cable & Colored Tips Tray",
+        "url": "assets/images/7hz-zero-2-packaging.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Cable & Colorway",
+        "badge": "Orange Faceplate & High-Purity Cable",
+        "url": "assets/images/7hz-zero-2-cable.jpg"
+      }
+    ]
   },
   {
     "id": "tangzu-waner-2",
@@ -1073,7 +1465,27 @@
     "tagline": "The vocal lover's paradise, now including Tang Sancai tips.",
     "sound_summary": "Sweet, intimate, forward vocals with smooth, warm acoustics.",
     "takeaway": "Renowned for how naturally and intimately it renders human voices and acoustic instruments. Japanese and English female vocals sound luscious without ever piercing. The new edition includes Tangzu's premium Tang Sancai tips in the box, which are famous for their comfortable medical-grade silicone texture.",
-    "fit_verdict": "5.4mm nozzle • Classic ergonomic resin shell."
+    "fit_verdict": "5.4mm nozzle • Classic ergonomic resin shell.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Jade Cloud Classical Calligraphy",
+        "url": "assets/images/tangzu-waner-2.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Packaging & Case",
+        "badge": "Retail Box, Leather Case & Tang Sancai Tips",
+        "url": "assets/images/tangzu-waner-2-packaging.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Red Lion Edition",
+        "badge": "Red Lion Sculpted Shell Craft",
+        "url": "assets/images/tangzu-waner-2-detail.jpg"
+      }
+    ]
   },
   {
     "id": "moondrop-chu-2-3",
@@ -1127,6 +1539,32 @@
     "tagline": "Flush-fitting metal earbuds you can comfortably sleep in.",
     "sound_summary": "Crisp, lively Harman tuning with punchy sub-bass.",
     "takeaway": "Tiny cast-alloy metal earphones that sit completely flush inside the ear bowl, so you can lie your head flat against a pillow without discomfort. Features a detachable 2-pin cable and replaceable screw-off brass nozzle filters to prevent wax clogging.",
-    "fit_verdict": "5.3mm nozzle (Ultra-slim bore) • One of the best possible fits for tiny ears."
+    "fit_verdict": "5.3mm nozzle (Ultra-slim bore) • One of the best possible fits for tiny ears.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Zinc-Alloy Shell & Brass Nozzle",
+        "url": "assets/images/moondrop-chu-2-3.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Retail Packaging",
+        "badge": "Unboxing Desk Shot & Retail Box",
+        "url": "assets/images/moondrop-chu-2-3-packaging.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Brass Nozzle",
+        "badge": "Removable Brass Nozzle & Mesh Filter",
+        "url": "assets/images/moondrop-chu-2-3-detail.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "OFC Cable",
+        "badge": "High-Purity Black Cable & 3.5mm Plug",
+        "url": "assets/images/moondrop-chu-2-3-cable.jpg"
+      }
+    ]
   }
 ]

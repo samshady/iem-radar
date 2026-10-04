@@ -60,6 +60,8 @@
     const detailModal = document.getElementById('iem-detail-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
     const modalImage = document.getElementById('modal-image');
+    const modalGalleryStrip = document.getElementById('modal-gallery-strip');
+    const modalGalleryCaption = document.getElementById('modal-gallery-caption');
     const modalBrand = document.getElementById('modal-brand');
     const modalTitle = document.getElementById('modal-title');
     const modalSoundDetail = document.getElementById('modal-sound-detail');
@@ -271,7 +273,66 @@
 
       modalBrand.textContent = item.brand;
       modalTitle.textContent = item.name;
-      modalImage.src = item.image || `assets/images/${item.id}.jpg`;
+
+      // Populate interactive gallery tabs
+      const gallery = item.gallery && item.gallery.length > 0 ? item.gallery : [
+        { type: 'earphones', label: 'Earphones', badge: 'Studio Shell Craft', url: item.image || `assets/images/${item.id}.jpg` }
+      ];
+
+      if (modalGalleryStrip) {
+        modalGalleryStrip.innerHTML = '';
+        function setGalleryImage(gItem, activeBtn) {
+          modalImage.style.opacity = '0.3';
+          setTimeout(() => {
+            modalImage.src = gItem.url;
+            modalImage.alt = `${item.name} - ${gItem.label}`;
+            modalImage.style.opacity = '1';
+          }, 120);
+
+          if (modalGalleryCaption) {
+            modalGalleryCaption.textContent = gItem.badge || gItem.label;
+          }
+
+          modalGalleryStrip.querySelectorAll('.gallery-tab-btn').forEach(btn => {
+            btn.className = 'gallery-tab-btn px-3 py-1.5 rounded-lg border border-studio-border bg-studio-950 text-slate-300 hover:border-slate-500 hover:text-white shrink-0 font-medium transition flex items-center gap-1.5 cursor-pointer';
+            btn.setAttribute('aria-selected', 'false');
+          });
+          activeBtn.className = 'gallery-tab-btn px-3 py-1.5 rounded-lg border border-amber-400 bg-amber-400/15 text-amber-300 font-bold shrink-0 shadow-sm transition flex items-center gap-1.5 ring-1 ring-amber-400/30 cursor-pointer';
+          activeBtn.setAttribute('aria-selected', 'true');
+        }
+
+        gallery.forEach((gItem, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.role = 'tab';
+          btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+
+          let icon = 'fa-camera';
+          if (gItem.type === 'earphones') icon = 'fa-headphones';
+          else if (gItem.type === 'packaging') icon = 'fa-box-open';
+          else if (gItem.type === 'accessories') icon = 'fa-sliders';
+          else if (gItem.type === 'cable') icon = 'fa-plug';
+          else if (gItem.type === 'detail') icon = 'fa-magnifying-glass-plus';
+
+          btn.innerHTML = `<i class="fa-solid ${icon}"></i><span>${gItem.label}</span>`;
+          btn.className = idx === 0
+            ? 'gallery-tab-btn px-3 py-1.5 rounded-lg border border-amber-400 bg-amber-400/15 text-amber-300 font-bold shrink-0 shadow-sm transition flex items-center gap-1.5 ring-1 ring-amber-400/30 cursor-pointer'
+            : 'gallery-tab-btn px-3 py-1.5 rounded-lg border border-studio-border bg-studio-950 text-slate-300 hover:border-slate-500 hover:text-white shrink-0 font-medium transition flex items-center gap-1.5 cursor-pointer';
+
+          btn.addEventListener('click', () => setGalleryImage(gItem, btn));
+          modalGalleryStrip.appendChild(btn);
+        });
+
+        // Set initial image and caption
+        modalImage.src = gallery[0].url;
+        modalImage.alt = `${item.name} - ${gallery[0].label}`;
+        modalImage.style.opacity = '1';
+        if (modalGalleryCaption) {
+          modalGalleryCaption.textContent = gallery[0].badge || gallery[0].label;
+        }
+      } else {
+        modalImage.src = item.image || `assets/images/${item.id}.jpg`;
+      }
       modalSoundDetail.textContent = item.takeaway || item.sound_description;
       modalDriver.textContent = `${item.driver_type} (${item.driver_detail || 'Dynamic'})`;
       modalNozzle.textContent = `${item.nozzle_diameter_mm}mm (${item.comfort_rating >= 9.2 ? 'Small ear safe' : 'Standard bore'})`;
@@ -854,6 +915,32 @@
       expandSoundDeck();
     });
     deckMinimizeBtn.addEventListener('click', minimizeSoundDeck);
+
+    // Audiophile Gear Toolkit Tab Switcher
+    const toolkitTabs = document.querySelectorAll('.toolkit-tab-btn');
+    const toolkitPanels = document.querySelectorAll('.toolkit-panel');
+
+    toolkitTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetPanelId = tab.dataset.target;
+        toolkitTabs.forEach(t => {
+          t.classList.remove('active', 'border-amber-400', 'bg-amber-400', 'text-black', 'font-bold');
+          t.classList.add('border-studio-border', 'bg-studio-900', 'text-slate-300');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active', 'border-amber-400', 'bg-amber-400', 'text-black', 'font-bold');
+        tab.classList.remove('border-studio-border', 'bg-studio-900', 'text-slate-300');
+        tab.setAttribute('aria-selected', 'true');
+
+        toolkitPanels.forEach(panel => {
+          if (panel.id === targetPanelId) {
+            panel.classList.remove('hidden');
+          } else {
+            panel.classList.add('hidden');
+          }
+        });
+      });
+    });
 
     // Initializations
     updateTrackDisplay(false);
