@@ -16,7 +16,7 @@ HUMAN_DESCRIPTIONS = {
     "tanchjim-bunny": {
         "tagline": "Tiny, featherweight, and great for sleeping or small ears.",
         "sound_summary": "Balanced, warm, and relaxing with clean, natural vocals and smooth treble that never fatigues.",
-        "takeaway": "An ultra-compact budget gem that completely disappears into the ear. If your phone lacks a headphone jack, grab the USB-C DSP edition—it features a built-in DAC and lets you tweak an 8-band parametric EQ directly from the Tanchjim app.",
+        "takeaway": "An ultra-compact budget gem that completely disappears into the ear. If your phone lacks a headphone jack, grab the USB-C DSP edition. It features a built-in DAC and lets you tweak an 8-band parametric EQ directly from the Tanchjim app.",
         "fit_verdict": "5.4mm nozzle • Very comfortable for small ear canals & side sleeping."
     },
     "kefine-klean": {
@@ -136,7 +136,7 @@ HUMAN_DESCRIPTIONS = {
     "moondrop-chu-2-3": {
         "tagline": "Flush-fitting metal earbuds you can comfortably sleep in.",
         "sound_summary": "Crisp, lively Harman tuning with punchy sub-bass.",
-        "takeaway": "Tiny cast-alloy metal earphones that sit completely flush inside the ear bowl—you can lie your head flat against a pillow without discomfort. Features a detachable 2-pin cable and replaceable screw-off brass nozzle filters to prevent wax clogging.",
+        "takeaway": "Tiny cast-alloy metal earphones that sit completely flush inside the ear bowl, so you can lie your head flat against a pillow without discomfort. Features a detachable 2-pin cable and replaceable screw-off brass nozzle filters to prevent wax clogging.",
         "fit_verdict": "5.3mm nozzle (Ultra-slim bore) • One of the best possible fits for tiny ears."
     }
 }

@@ -65,7 +65,7 @@ async def run_e2e_tests():
     def record_fail(test_name, reason):
         nonlocal tests_failed
         tests_failed += 1
-        print(f"  ✗ FAIL: {test_name} — {reason}")
+        print(f"  ✗ FAIL: {test_name}: {reason}")
 
     try:
         async with async_playwright() as p:
@@ -338,7 +338,7 @@ async def run_e2e_tests():
                 record_fail("Modal open", f"Vis: {modal_visible}, Title: {modal_title}, Nozzle: {modal_nozzle_text}, Stores: {store_links_count}")
 
             # Save a personal note
-            await page.fill("#modal-note-input", "Check if she prefers the red faceplates!")
+            await page.fill("#modal-note-input", "Loved the red faceplates and bass slam!")
             await page.click("#save-note-btn")
             await page.wait_for_timeout(400)
             btn_saved_text = await page.locator("#save-note-btn").text_content()
@@ -352,7 +352,7 @@ async def run_e2e_tests():
             await page.wait_for_timeout(400)
 
             # Verify note appears on card
-            card_note = await page.locator("text=Check if she prefers the red faceplates!").is_visible()
+            card_note = await page.locator("text=Loved the red faceplates and bass slam!").is_visible()
             if card_note:
                 record_pass("Saved personal note correctly rendered on the IEM card")
             else:
