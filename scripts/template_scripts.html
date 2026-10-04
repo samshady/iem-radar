@@ -227,16 +227,26 @@
 
     copyShareUrlBtn.addEventListener('click', () => {
       if (shortlist.length === 0) {
-        alert('Save some IEMs to your shortlist first before sharing!');
+        copyShareUrlBtn.innerHTML = '<i class="fa-solid fa-triangle-exclamation text-amber-300"></i><span>Shortlist is empty!</span>';
+        setTimeout(() => {
+          copyShareUrlBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i><span>Copy Shareable Link for Friend</span>';
+        }, 2000);
         return;
       }
       const shareUrl = `${window.location.origin}${window.location.pathname}?picks=${shortlist.join(',')}`;
-      navigator.clipboard.writeText(shareUrl).then(() => {
-        copyShareUrlBtn.innerHTML = '<i class="fa-solid fa-check"></i><span>Link Copied to Clipboard!</span>';
-        setTimeout(() => {
-          copyShareUrlBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i><span>Copy Shareable Link for Friend</span>';
-        }, 2500);
-      });
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          copyShareUrlBtn.innerHTML = '<i class="fa-solid fa-check"></i><span>Link Copied to Clipboard!</span>';
+          setTimeout(() => {
+            copyShareUrlBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i><span>Copy Shareable Link for Friend</span>';
+          }, 2500);
+        }).catch(err => {
+          console.warn('Clipboard write failed, using prompt fallback:', err);
+          prompt('Copy this shareable link:', shareUrl);
+        });
+      } else {
+        prompt('Copy this shareable link:', shareUrl);
+      }
     });
 
     // Drawer Controls
@@ -277,12 +287,20 @@
         </a>
       `).join('');
 
+      detailModal.classList.remove('hidden');
+      detailModal.classList.add('flex');
       detailModal.showModal();
     };
 
-    closeModalBtn.addEventListener('click', () => detailModal.close());
+    function hideModal() {
+      detailModal.close();
+      detailModal.classList.remove('flex');
+      detailModal.classList.add('hidden');
+    }
+
+    closeModalBtn.addEventListener('click', hideModal);
     detailModal.addEventListener('click', (e) => {
-      if (e.target === detailModal) detailModal.close();
+      if (e.target === detailModal) hideModal();
     });
 
     saveNoteBtn.addEventListener('click', () => {
@@ -360,7 +378,7 @@
             <div>
               <!-- IEM Image Showcase -->
               <div class="aspect-[4/3] bg-studio-950 rounded-xl overflow-hidden mb-4 relative cursor-pointer border border-studio-border/60 flex items-center justify-center p-3" onclick="openModal('${iem.id}')">
-                <img src="${iem.image || 'assets/images/' + iem.id + '.jpg'}" alt="${iem.name}" loading="lazy" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
+                <img src="${iem.image || 'assets/images/' + iem.id + '.jpg'}" alt="${iem.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
                 
                 <!-- Badge on Image -->
                 <div class="absolute top-2.5 left-2.5">
@@ -471,7 +489,7 @@
     // AUDIOPHILE SOUND BENCH LOGIC (Kessoku Band, YOASOBI, Eurobeat)
     const playlist = [
       {
-        id: "7X_Z8p1hW7I",
+        id: "L2i0i9gWE00",
         title: "Ano Bando (あのバンド)",
         artist: "Kessoku Band",
         japanese: "結束バンド",
@@ -482,7 +500,7 @@
         spotifyUrl: "https://open.spotify.com/search/Ano%20Bando%20Kessoku%20Band"
       },
       {
-        id: "Yg_oBqI5w30",
+        id: "B7BxrAAXl94",
         title: "Guitar, Loneliness and Blue Planet",
         artist: "Kessoku Band",
         japanese: "ギターと孤独と蒼い惑星",
@@ -493,7 +511,7 @@
         spotifyUrl: "https://open.spotify.com/search/Guitar%20Loneliness%20and%20Blue%20Planet"
       },
       {
-        id: "d_q_Hsuu7g8",
+        id: "Yd8kUoB72xU",
         title: "Seishun Complex (青春コンプレックス)",
         artist: "Kessoku Band",
         japanese: "結束バンド",
@@ -515,7 +533,7 @@
         spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Idol"
       },
       {
-        id: "x8VYWazR5mE",
+        id: "j1hft9Wjq9U",
         title: "Yoru ni Kakeru (夜に駆ける)",
         artist: "YOASOBI",
         japanese: "夜遊び",
@@ -526,7 +544,7 @@
         spotifyUrl: "https://open.spotify.com/search/YOASOBI%20Yoru%20ni%20Kakeru"
       },
       {
-        id: "vELh3Q6EBj4",
+        id: "Y4nEEZwckuU",
         title: "Gunjo (群青)",
         artist: "YOASOBI",
         japanese: "夜遊び",
@@ -559,7 +577,7 @@
         spotifyUrl: "https://open.spotify.com/search/Dave%20Rodgers%20Deja%20Vu"
       },
       {
-        id: "atar_9j_3P0",
+        id: "ljwUlY9WW1I",
         title: "Gas Gas Gas",
         artist: "Manuel (Initial D)",
         japanese: "頭文字D",
@@ -637,6 +655,11 @@
             } else if (event.data === YT.PlayerState.ENDED) {
               playNextTrack();
             }
+          },
+          onError: (event) => {
+            console.warn('YouTube Player reported error:', event.data);
+            setPlayingVisuals(false);
+            playNextTrack();
           }
         }
       });
@@ -703,7 +726,8 @@
 
     function togglePlay() {
       if (!isYtReady || !ytPlayer) {
-        alert('Initializing audio stream...');
+        // Player still connecting or loading
+        pillPlayIcon.className = 'fa-solid fa-spinner animate-spin text-amber-400';
         return;
       }
       if (isPlaying) {
