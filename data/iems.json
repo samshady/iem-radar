@@ -1770,11 +1770,11 @@
         "url": "https://www.aliexpress.com/w/wholesale-QCY-MeloBuds-Pro.html"
       }
     ],
-    "notes": "Supports Sony LDAC high-resolution codec (up to 990 kbps), 46dB adaptive hybrid ANC, 6 microphones with AI ENC, IPX5 water resistance, in-ear optical wear detection, and multipoint pairing.",
+    "notes": "Predecessor to the MeloBuds N70. Supports Sony LDAC high-resolution codec (up to 990 kbps), 46dB adaptive hybrid ANC, 6 microphones with AI ENC, IPX5 water resistance, in-ear optical wear detection, and multipoint pairing.",
     "image": "assets/images/qcy-melobuds-pro.jpg",
-    "tagline": "The feature-packed daily driver: 46dB Hybrid ANC, LDAC Hi-Res, and 34-hour battery.",
+    "tagline": "The 2024 predecessor: 46dB Hybrid ANC, LDAC Hi-Res, and sub-€30 clearance value.",
     "sound_summary": "Energetic, punchy, and fun sound backed by genuine Hi-Res LDAC decoding and strong noise isolation.",
-    "takeaway": "The lifestyle and feature powerhouse of budget Chi-Fi wireless. If you prioritize strong 46dB adaptive hybrid ANC, LDAC Hi-Res codec support, dual-device multipoint connection, and 34 hours of total battery life with a traditional protective clamshell lid, this is the top practical alternative to the Space Travel. Stock tuning is a fun, warm V-shape that can be easily customized with the companion app's 10-band EQ.",
+    "takeaway": "The 2024 value champion that brought LDAC and 46dB hybrid ANC to the ultra-budget realm. While now superseded by the dual-driver MeloBuds N70, the Pro remains a fantastic clearance steal if you find it discounted under €30. It provides a traditional protective clamshell lid, optical wear detection, and 34 hours of total battery life with a fun, warm V-shaped sound signature.",
     "fit_verdict": "5.5mm nozzle • Ergonomic stem design with IPX5 splash resistance.",
     "gallery": [
       {
@@ -1800,6 +1800,158 @@
         "label": "Accessories",
         "badge": "Silicone Tips & USB-C Cable",
         "url": "assets/images/qcy-melobuds-pro-accessories.jpg"
+      }
+    ]
+  },
+  {
+    "id": "qcy-melobuds-n70",
+    "name": "QCY MeloBuds N70 (HT18)",
+    "brand": "QCY",
+    "release_year": "2025",
+    "status": "Active",
+    "price_usd_msrp": 49.99,
+    "price_eur_amazon": 54.0,
+    "price_eur_ali_choice": 39.0,
+    "price_eur_ali_1111": 34.0,
+    "driver_type": "Dual-Driver TWS (MEMS + DD)",
+    "driver_detail": "DualCore Acoustic System: High-excursion Ring Dynamic Driver (Bass) + USound Silicon MEMS Micro-Speaker Tweeter (Treble)",
+    "sound_signature": "Balanced High-Resolution / App PEQ",
+    "sound_description": "Significant generational leap over the older MeloBuds Pro. The dedicated MEMS micro-speaker delivers crystalline, airy treble and fast transient attack without harshness, while the dynamic woofer handles deep sub-bass without muddying lower vocals.",
+    "nozzle_diameter_mm": 5.4,
+    "nozzle_warning": "No",
+    "comfort_rating": 9.2,
+    "build_material": "Matte polycarbonate stem shell, Qi wireless charging clamshell case",
+    "connection": "Bluetooth 6.0 (LDAC / Multipoint)",
+    "cable_detail": "True Wireless (No cable); Clamshell case with USB-C and Qi wireless charging compatibility",
+    "accessories_included": "5 pairs silicone tips (XS/S/M/L/XL), USB-C charging cable, user manual",
+    "accessories_rating": 8.5,
+    "qc_and_known_issues": "Companion app requires account login for custom EQ; firmware updates should be applied via stable Wi-Fi.",
+    "gaming_score": 8.7,
+    "community_score": 9.0,
+    "crinacle_rank": "Unranked (2025 TWS Benchmark)",
+    "super_review_rating": "Top Sub-0 Flagship Leap",
+    "jays_audio_rating": "Best Tech-Per-Euro in TWS",
+    "target_personas": [
+      "Wireless TWS Lovers",
+      "Daily Commuters & Flights",
+      "Casual Everyday"
+    ],
+    "verified_stores": [
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=QCY+MeloBuds+N70"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/w/wholesale-QCY-MeloBuds-N70.html"
+      }
+    ],
+    "notes": "Official flagship successor to the MeloBuds Pro (HT08). Introduces a dedicated USound MEMS tweeter, 56dB PureSilenz adaptive hybrid ANC, Bluetooth 6.0 with Google Fast Pair, LDAC Hi-Res Wireless, and Qi wireless charging.",
+    "image": "assets/images/qcy-melobuds-n70.jpg",
+    "tagline": "The 2025 flagship leap: Silicon MEMS micro-speaker tweeter, 56dB adaptive ANC, and Bluetooth 6.0.",
+    "sound_summary": "Resolving, balanced sound with crystalline highs from its dedicated MEMS tweeter and clean, punchy bass that outclasses typical single-driver budget earbuds.",
+    "takeaway": "The direct successor to the MeloBuds Pro and a genuine technical breakthrough for budget wireless. By pairing a traditional dynamic woofer with a cutting-edge USound MEMS micro-speaker tweeter, it fixes the Pro's slightly rolled-off, metallic high end while boosting adaptive ANC to 56dB and total battery life to 50 hours. Add in Bluetooth 6.0, LDAC, and Qi wireless charging, and it sets the new sub-€55 benchmark.",
+    "fit_verdict": "5.4mm nozzle • Ergonomic stem fit with 5 tip sizes (XS to XL) and IPX5 rating.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Stem Shell & MEMS Sound Chamber",
+        "url": "assets/images/qcy-melobuds-n70.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "DualCore Drivers",
+        "badge": "Ring Dynamic Woofer & MEMS Tweeter",
+        "url": "assets/images/qcy-melobuds-n70-detail.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Packaging",
+        "badge": "QCY Retail Presentation Box",
+        "url": "assets/images/qcy-melobuds-n70-packaging.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Charging Case",
+        "badge": "Qi Wireless Clamshell with 50h Battery",
+        "url": "assets/images/qcy-melobuds-n70-accessories.jpg"
+      }
+    ]
+  },
+  {
+    "id": "earfun-air-pro-4",
+    "name": "EarFun Air Pro 4",
+    "brand": "EarFun",
+    "release_year": "2024-2025",
+    "status": "Active",
+    "price_usd_msrp": 79.99,
+    "price_eur_amazon": 69.0,
+    "price_eur_ali_choice": 58.0,
+    "price_eur_ali_1111": 49.0,
+    "driver_type": "1DD TWS (Snapdragon Sound ANC)",
+    "driver_detail": "10mm Composite Dynamic Driver powered by Qualcomm QCC3091 flagship audio SoC",
+    "sound_signature": "Engaging Harman-V / Deep Custom App EQ",
+    "sound_description": "Punchy, articulate sub-bass, clean midrange presence, and refined treble extension. Highly responsive to EarFun's in-app 10-band equalizer and personalized hearing tests.",
+    "nozzle_diameter_mm": 5.5,
+    "nozzle_warning": "No",
+    "comfort_rating": 9.3,
+    "build_material": "Premium matte polycarbonate shell, compact wireless charging case with multi-stage LED",
+    "connection": "Bluetooth 5.4 (aptX Lossless / LDAC / Auracast)",
+    "cable_detail": "True Wireless (No cable); Clamshell case with USB-C and Qi wireless charging",
+    "accessories_included": "5 pairs silicone tips (XS/S/M/L/XL), USB-C charging cable, user guide",
+    "accessories_rating": 9.0,
+    "qc_and_known_issues": "Touch controls can occasionally be overly sensitive when adjusting in the ear; easily configured in the app.",
+    "gaming_score": 8.9,
+    "community_score": 9.3,
+    "crinacle_rank": "Unranked (Scarbir Top Sub-0 Pick)",
+    "super_review_rating": "Best Overall Commuter Feature Set",
+    "jays_audio_rating": "King of Sub-0 Daily Drivers",
+    "target_personas": [
+      "Wireless TWS Lovers",
+      "Daily Commuters & Flights",
+      "Office & Calls"
+    ],
+    "verified_stores": [
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=EarFun+Air+Pro+4"
+      },
+      {
+        "name": "EarFun Store",
+        "url": "https://www.myearfun.com/headphones/earfun-air-pro-4-anc-true-wireless-earbuds-black"
+      }
+    ],
+    "notes": "Powered by Qualcomm QCC3091 SoC. Rare dual-flagship codec support with both Qualcomm aptX Lossless and Sony LDAC in a single earbud. Supports Auracast broadcast audio, LE Audio, Google Fast Pair, 50dB QuietSmart 3.0 adaptive ANC, and 52-hour total battery life.",
+    "image": "assets/images/earfun-air-pro-4.jpg",
+    "tagline": "The all-round feature champion: Qualcomm aptX Lossless, LDAC, Auracast, and 50dB ANC.",
+    "sound_summary": "Versatile, rich sound backed by the most complete codec and wireless feature suite available in any wireless earphone under €80.",
+    "takeaway": "The undisputed Swiss army knife of modern wireless earphones. Built on Qualcomm's top-tier QCC3091 platform, it eliminates codec compromise by supporting both Sony LDAC and Qualcomm aptX Lossless. It adds Auracast broadcast audio, 50dB adaptive QuietSmart 3.0 noise cancellation, 52 hours of battery life, and wireless charging. Default tuning is a punchy, musical V-shape that can be dialed into neutral precision with the companion app.",
+    "fit_verdict": "5.5mm nozzle • Extremely comfortable stem design with 5 tip sizes and IPX5 water resistance.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "EarFun Air Pro 4 Earbuds",
+        "url": "assets/images/earfun-air-pro-4.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Stem Controls",
+        "badge": "Touch Area & Feedforward Mic",
+        "url": "assets/images/earfun-air-pro-4-detail.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Packaging",
+        "badge": "Retail Packaging & Accessories Box",
+        "url": "assets/images/earfun-air-pro-4-packaging.jpg"
+      },
+      {
+        "type": "accessories",
+        "label": "Charging Case",
+        "badge": "Compact Clamshell with 52h Battery",
+        "url": "assets/images/earfun-air-pro-4-accessories.jpg"
       }
     ]
   }
