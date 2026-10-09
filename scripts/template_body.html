@@ -153,17 +153,20 @@
         </div>
       </div>
 
-      <!-- Quick Filter Chips -->
-      <div class="flex items-center gap-2 overflow-x-auto touch-scroll-x custom-scrollbar pb-1 text-sm font-medium -mx-3.5 px-3.5 sm:mx-0 sm:px-0">
-        <span class="text-slate-400 font-mono text-xs uppercase tracking-wider shrink-0 mr-1">Filter:</span>
+      <!-- Quick Filter Chips (Responsive Wrap Grid) -->
+      <div class="flex flex-wrap items-center gap-2 text-sm font-medium pt-1">
+        <span class="text-slate-400 font-mono text-xs uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1.5">
+          <i class="fa-solid fa-filter text-amber-400"></i>
+          <span>Filter:</span>
+        </span>
         <button type="button" class="filter-pill active px-3.5 py-1.5 rounded-lg bg-amber-400 text-black font-bold shrink-0 border border-amber-400" data-filter="all">All (26)</button>
-        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500" data-filter="Wireless Chi-Fi TWS">📶 Wireless TWS</button>
-        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500" data-filter="Small Ears &amp; Sleep">🌸 Small Ears (&lt;5.5mm)</button>
-        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500" data-filter="Vocal &amp; Acoustic Lovers">☕ Warm Vocals</button>
-        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500" data-filter="Bassheads &amp; Theatrical EDM">⚡ Fun Bass &amp; Slam</button>
-        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500" data-filter="Audio Purists &amp; Reference">🎯 Neutral Reference</button>
-        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500" data-filter="Tactical FPS Gaming">🎮 Gaming &amp; Footsteps</button>
-        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500" data-filter="Smartphone USB-C Users">📱 USB-C DSP (No Dongle)</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition" data-filter="Wireless Chi-Fi TWS">📶 Wireless TWS</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition" data-filter="Small Ears &amp; Sleep">🌸 Small Ears (&lt;5.5mm)</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition" data-filter="Vocal &amp; Acoustic Lovers">☕ Warm Vocals</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition" data-filter="Bassheads &amp; Theatrical EDM">⚡ Fun Bass &amp; Slam</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition" data-filter="Audio Purists &amp; Reference">🎯 Neutral Reference</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition" data-filter="Tactical FPS Gaming">🎮 Gaming &amp; Footsteps</button>
+        <button type="button" class="filter-pill px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-200 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition" data-filter="Smartphone USB-C Users">📱 USB-C DSP (No Dongle)</button>
       </div>
     </section>
 
@@ -283,47 +286,53 @@
 
     <!-- AUDIOPHILE GEAR & ESSENTIALS TOOLKIT -->
     <section id="gear-toolkit" class="space-y-6 pt-8 border-t border-studio-border">
-      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
-        <div class="space-y-1.5">
-          <div class="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider font-bold">
-            <i class="fa-solid fa-toolbox"></i>
-            <span>Gear &amp; Essentials Bench</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">
-            Audiophile Toolkit: Tips, DACs &amp; Care
-          </h2>
-          <p class="text-sm text-slate-300 max-w-2xl leading-relaxed">
-            Changing eartips, picking a clean dongle, and understanding connectors are the most effective real-world upgrades in personal audio. Here is honest, practical guidance without marketing snake oil.
-          </p>
+      <div class="space-y-2">
+        <div class="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider font-bold">
+          <i class="fa-solid fa-toolbox"></i>
+          <span>Audiophile Lab &amp; Hardware Bench</span>
         </div>
+        <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">
+          Audiophile Knowledge &amp; Hardware Toolkit
+        </h2>
+        <p class="text-sm text-slate-300 max-w-3xl leading-relaxed">
+          From eartip acoustic physics and DAC output impedance to lossless audio formats (FLAC), driver diaphragm materials, and target tuning curves. Honest, evidence-backed knowledge without marketing snake oil.
+        </p>
+      </div>
 
-        <!-- Toolkit Tab Buttons -->
-        <div class="flex items-center gap-2 overflow-x-auto touch-scroll-x custom-scrollbar pb-1 text-sm font-medium w-full md:w-auto -mx-3.5 px-3.5 sm:mx-0 sm:px-0" role="tablist" aria-label="Toolkit sections">
-          <button type="button" class="toolkit-tab-btn active px-3.5 py-1.5 rounded-lg bg-amber-400 text-black font-bold shrink-0 border border-amber-400 transition flex items-center gap-1.5" data-target="toolkit-panel-tips" role="tab" aria-selected="true">
-            <i class="fa-solid fa-ear-listen"></i>
-            <span>Ear Tips</span>
-          </button>
-          <button type="button" class="toolkit-tab-btn px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition flex items-center gap-1.5" data-target="toolkit-panel-dacs" role="tab" aria-selected="false">
-            <i class="fa-solid fa-bolt"></i>
-            <span>Dongle DACs</span>
-          </button>
-          <button type="button" class="toolkit-tab-btn px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition flex items-center gap-1.5" data-target="toolkit-panel-connectors" role="tab" aria-selected="false">
-            <i class="fa-solid fa-circle-nodes"></i>
-            <span>Connectors</span>
-          </button>
-          <button type="button" class="toolkit-tab-btn px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition flex items-center gap-1.5" data-target="toolkit-panel-cables" role="tab" aria-selected="false">
-            <i class="fa-solid fa-lines-leaning"></i>
-            <span>Cables</span>
-          </button>
-          <button type="button" class="toolkit-tab-btn px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition flex items-center gap-1.5" data-target="toolkit-panel-care" role="tab" aria-selected="false">
-            <i class="fa-solid fa-shield-heart"></i>
-            <span>Care &amp; Storage</span>
-          </button>
-          <button type="button" class="toolkit-tab-btn px-3.5 py-1.5 rounded-lg bg-studio-900 text-slate-300 shrink-0 border border-studio-border hover:border-slate-500 hover:text-white transition flex items-center gap-1.5" data-target="toolkit-panel-wireless" role="tab" aria-selected="false">
-            <i class="fa-solid fa-wifi"></i>
-            <span>Wireless TWS</span>
-          </button>
-        </div>
+      <!-- Toolkit Tab Switchboard (Responsive Grid, Zero Horizontal Scrolling) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-8 gap-2 w-full pt-1" role="tablist" aria-label="Audiophile toolkit sections">
+        <button type="button" class="toolkit-tab-btn active px-3 py-2.5 rounded-xl bg-amber-400 text-black font-bold border border-amber-400 transition flex items-center justify-center gap-2 text-center btn-tactile shadow-sm" data-target="toolkit-panel-tips" role="tab" aria-selected="true">
+          <i class="fa-solid fa-ear-listen text-sm"></i>
+          <span class="text-xs sm:text-sm font-semibold tracking-tight">Ear Tips</span>
+        </button>
+        <button type="button" class="toolkit-tab-btn px-3 py-2.5 rounded-xl bg-studio-900 hover:bg-studio-850 text-slate-300 hover:text-white border border-studio-border hover:border-slate-500 transition flex items-center justify-center gap-2 text-center btn-tactile" data-target="toolkit-panel-dacs" role="tab" aria-selected="false">
+          <i class="fa-solid fa-bolt text-sm"></i>
+          <span class="text-xs sm:text-sm font-semibold tracking-tight">Dongle DACs</span>
+        </button>
+        <button type="button" class="toolkit-tab-btn px-3 py-2.5 rounded-xl bg-studio-900 hover:bg-studio-850 text-slate-300 hover:text-white border border-studio-border hover:border-slate-500 transition flex items-center justify-center gap-2 text-center btn-tactile" data-target="toolkit-panel-codecs" role="tab" aria-selected="false">
+          <i class="fa-solid fa-file-audio text-sm"></i>
+          <span class="text-xs sm:text-sm font-semibold tracking-tight">Codecs &amp; FLAC</span>
+        </button>
+        <button type="button" class="toolkit-tab-btn px-3 py-2.5 rounded-xl bg-studio-900 hover:bg-studio-850 text-slate-300 hover:text-white border border-studio-border hover:border-slate-500 transition flex items-center justify-center gap-2 text-center btn-tactile" data-target="toolkit-panel-drivers" role="tab" aria-selected="false">
+          <i class="fa-solid fa-microchip text-sm"></i>
+          <span class="text-xs sm:text-sm font-semibold tracking-tight">Driver Tech</span>
+        </button>
+        <button type="button" class="toolkit-tab-btn px-3 py-2.5 rounded-xl bg-studio-900 hover:bg-studio-850 text-slate-300 hover:text-white border border-studio-border hover:border-slate-500 transition flex items-center justify-center gap-2 text-center btn-tactile" data-target="toolkit-panel-acoustics" role="tab" aria-selected="false">
+          <i class="fa-solid fa-chart-line text-sm"></i>
+          <span class="text-xs sm:text-sm font-semibold tracking-tight">Tuning Curves</span>
+        </button>
+        <button type="button" class="toolkit-tab-btn px-3 py-2.5 rounded-xl bg-studio-900 hover:bg-studio-850 text-slate-300 hover:text-white border border-studio-border hover:border-slate-500 transition flex items-center justify-center gap-2 text-center btn-tactile" data-target="toolkit-panel-hardware" role="tab" aria-selected="false">
+          <i class="fa-solid fa-circle-nodes text-sm"></i>
+          <span class="text-xs sm:text-sm font-semibold tracking-tight">Cables &amp; Plugs</span>
+        </button>
+        <button type="button" class="toolkit-tab-btn px-3 py-2.5 rounded-xl bg-studio-900 hover:bg-studio-850 text-slate-300 hover:text-white border border-studio-border hover:border-slate-500 transition flex items-center justify-center gap-2 text-center btn-tactile" data-target="toolkit-panel-wireless" role="tab" aria-selected="false">
+          <i class="fa-solid fa-wifi text-sm"></i>
+          <span class="text-xs sm:text-sm font-semibold tracking-tight">Wireless &amp; ANC</span>
+        </button>
+        <button type="button" class="toolkit-tab-btn px-3 py-2.5 rounded-xl bg-studio-900 hover:bg-studio-850 text-slate-300 hover:text-white border border-studio-border hover:border-slate-500 transition flex items-center justify-center gap-2 text-center btn-tactile" data-target="toolkit-panel-care" role="tab" aria-selected="false">
+          <i class="fa-solid fa-shield-heart text-sm"></i>
+          <span class="text-xs sm:text-sm font-semibold tracking-tight">Care &amp; Storage</span>
+        </button>
       </div>
 
       <!-- PANEL 1: EAR TIPS GUIDE -->
@@ -583,19 +592,408 @@
         </div>
       </div>
 
-      <!-- PANEL 3: CONNECTOR TYPES & STANDARDS -->
-      <div id="toolkit-panel-connectors" class="toolkit-panel hidden space-y-4">
+      <!-- PANEL 3: AUDIO FORMATS & CODECS GUIDE -->
+      <div id="toolkit-panel-codecs" class="toolkit-panel hidden space-y-4">
+        <!-- Banner: Lossless vs Lossy Reality -->
+        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono leading-relaxed">
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-file-waveform"></i>
+              <span>Lossless (FLAC, ALAC, WAV)</span>
+            </div>
+            <p class="text-slate-300 font-sans text-sm">
+              Bit-perfect acoustic copies of studio master recordings. FLAC and ALAC use predictive compression to reduce file size roughly 50% without discarding a single sound sample. WAV and AIFF are uncompressed raw PCM streams.
+            </p>
+          </div>
+          <div class="space-y-1.5 border-t md:border-t-0 md:border-l border-studio-border pt-3 md:pt-0 md:pl-4">
+            <div class="flex items-center gap-1.5 text-sky-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-compress"></i>
+              <span>Lossy (MP3, AAC, Opus)</span>
+            </div>
+            <p class="text-slate-300 font-sans text-sm">
+              Psychoacoustic compression discards frequencies masked by louder sounds. Modern AAC 256kbps and Opus 160kbps are virtually transparent to human ears in controlled double-blind listening tests.
+            </p>
+          </div>
+          <div class="space-y-1.5 border-t md:border-t-0 md:border-l border-studio-border pt-3 md:pt-0 md:pl-4">
+            <div class="flex items-center gap-1.5 text-emerald-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-flask-vial"></i>
+              <span>The Blind ABX Truth</span>
+            </div>
+            <p class="text-slate-300 font-sans text-sm">
+              In volume-matched blind ABX tests, 99% of perceived fidelity comes from audio mastering dynamic range, not sample rate. A well-mastered 320kbps track easily outperforms a brickwalled 24-bit Hi-Res master.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cards Grid: Formats & Bluetooth Codecs -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+          <!-- FLAC vs ALAC vs WAV -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">Lossless Formats</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">Bit-Perfect</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">FLAC, ALAC &amp; WAV</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                <strong>FLAC</strong> (Free Lossless Audio Codec) is the universal open standard for audiophile libraries. <strong>ALAC</strong> is Apple Lossless for iPhone and Mac users. Both cut raw PCM size in half with metadata tagging. <strong>WAV</strong> lacks native metadata tagging and wastes 50% more storage with zero audible gain over FLAC.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Bitrate: ~700-1411 kbps</span>
+              <span class="text-amber-400 font-semibold">100% Studio Fidelity</span>
+            </div>
+          </div>
+
+          <!-- Redbook CD vs Hi-Res -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">Bit Depth &amp; Rate</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">16/44.1 vs 24/96</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">16-bit / 44.1kHz vs 24-bit Hi-Res</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Standard Redbook CD (16-bit/44.1kHz) provides 96dB of dynamic range and covers up to 22.05kHz, exceeding the human hearing limit of 20kHz via the Nyquist-Shannon theorem. 24-bit/96kHz is vital during studio mixing to prevent digital clipping across 50 tracks, but in consumer playback, human ears cannot hear ultrasonic frequencies.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Dynamic Range: 96dB vs 144dB</span>
+              <span class="text-sky-400 font-semibold">CD Audio is Complete</span>
+            </div>
+          </div>
+
+          <!-- Bluetooth Codecs: SBC, AAC, aptX -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">Bluetooth Standards</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">SBC / AAC / aptX</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">SBC, AAC &amp; aptX Family</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                <strong>SBC</strong> is the mandatory baseline codec (up to 328 kbps). <strong>AAC</strong> (~256 kbps) is Apple default, delivering exceptional psychoacoustic quality on iPhone. <strong>aptX Adaptive</strong> and <strong>aptX Lossless</strong> dynamically scale from 279 kbps to 1000 kbps for CD-lossless wireless transmission on Snapdragon hardware.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Bitrates: 256 to 1000 kbps</span>
+              <span class="text-emerald-400 font-semibold">Broad Compatibility</span>
+            </div>
+          </div>
+
+          <!-- Sony LDAC & LHDC -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider">High-Bitrate Wireless</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">Up to 990 kbps</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Sony LDAC &amp; LHDC</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Sony LDAC transmits up to 990 kbps at 24-bit/96kHz on Android devices. While capable of pristine acoustic data transfer, LDAC is power-hungry and automatically drops to 660 or 330 kbps in crowded radio environments with Wi-Fi interference. Great for quiet home listening, but not a dealbreaker on the street.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Android: Native Support</span>
+              <span class="text-purple-400 font-semibold">330 / 660 / 990 kbps</span>
+            </div>
+          </div>
+
+          <!-- LC3 & Bluetooth LE Audio -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">Next-Gen Audio</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">Bluetooth 5.3+</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">LC3 &amp; Auracast Broadcast</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                The modern Low Complexity Communication Codec (LC3) replaces legacy SBC in Bluetooth LE Audio. It provides higher acoustic clarity and significantly lower latency (under 30ms) at half the bitrate. Enables <strong>Auracast</strong>, allowing public venues, bars, and museums to broadcast audio straight to your earphones.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Efficiency: 50% Less Power</span>
+              <span class="text-cyan-400 font-semibold">Low Latency Standard</span>
+            </div>
+          </div>
+
+          <!-- Lossy Formats: MP3 320 vs Opus vs AAC -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">Streaming Formats</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">Spotify / YouTube</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">MP3 320k, AAC &amp; Ogg / Opus</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Spotify streams in Ogg Vorbis (320kbps), Apple Music streams in AAC (256kbps) or ALAC, and YouTube Music streams in Opus / AAC. Modern codecs like Opus (160kbps) match the perceived fidelity of 320kbps MP3 while saving 50% streaming data. If your stream sounds bad, blame master compression, not the codec.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Spotify: Ogg / Apple: AAC</span>
+              <span class="text-rose-400 font-semibold">Master Quality Matters Most</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 4: DRIVER TECHNOLOGIES & MATERIALS -->
+      <div id="toolkit-panel-drivers" class="toolkit-panel hidden space-y-4">
+        <!-- Banner: Driver Physics Overview -->
         <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-2 text-xs font-mono leading-relaxed">
           <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
-            <i class="fa-solid fa-circle-nodes"></i>
-            <span>Understanding IEM Connector Standards</span>
+            <i class="fa-solid fa-microchip"></i>
+            <span>How In-Ear Drivers Generate Sound</span>
           </div>
           <p class="text-slate-300 font-sans text-sm">
-            Chi-Fi earphones use several pin and socket architectures. Knowing which connector your IEM uses ensures seamless cable swapping without damaged sockets or bent pins.
+            Earphone transducers convert electrical audio signals into mechanical air pressure. The driver architecture and diaphragm material dictate transient speed, bass slam, harmonic distortion, and treble extension.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+        <!-- Cards Grid: Drivers and Materials -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+          <!-- Dynamic Driver (DD) -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">Acoustic Workhorse</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">6mm to 10mm</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Dynamic Drivers (DD)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                A voice coil bonded to a conical diaphragm suspended within a permanent magnet. Displaces real physical air volume, delivering tactile sub-bass rumble, natural acoustic impact, and realistic reverb decay. The undisputed benchmark for natural bass and coherent timbre.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Signature: Tactile Bass Slam</span>
+              <span class="text-amber-400 font-semibold">Natural Decay</span>
+            </div>
+          </div>
+
+          <!-- Diaphragm Materials: DLC, Beryllium, LCP -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">Material Science</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">DLC / LCP / Bio</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Diaphragm Materials: DLC, LCP &amp; Bio-Cellulose</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                <strong>DLC</strong> (Diamond-Like Carbon) provides exceptional stiffness-to-weight with rapid transient attack and minimal distortion. <strong>LCP</strong> (Liquid Crystal Polymer) damps modal breakup for smooth, fatigue-free midranges. <strong>Bio-cellulose</strong> uses organic plant fibers for warm, rich acoustic timbre.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Goal: Rigidity + Internal Damping</span>
+              <span class="text-sky-400 font-semibold">Zero Breakup Distortion</span>
+            </div>
+          </div>
+
+          <!-- Balanced Armatures (BA) -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">Micro-Detail Speed</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">Knowles &amp; Sonion</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Balanced Armatures (BA)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                A tiny metallic reed poised between opposing magnets inside an enclosed capsule. With near-zero moving mass, BAs accelerate with lightning speed, producing razor-sharp treble articulation and pinpoint vocal separation. However, they lack the physical sub-bass air displacement of dynamic drivers.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Signature: Laser Articulation</span>
+              <span class="text-emerald-400 font-semibold">Fast Mids &amp; Treble</span>
+            </div>
+          </div>
+
+          <!-- Planar Magnetic -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider">Isodynamic Speed</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">13mm to 14.8mm</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Planar Magnetic Drivers</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                An ultra-thin membrane with etched electrical conductors suspended between opposing neodymium magnet arrays. Driven uniformly across its entire surface, eliminating cone flex and modal distortion completely. Delivers ruler-flat bass texture, blistering speed, and effortless instrument layering (found in NiceHCK F1 Pro and Artti T10).
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Signature: Flat Low Distortion</span>
+              <span class="text-purple-400 font-semibold">Layered Bass Texture</span>
+            </div>
+          </div>
+
+          <!-- Silicon MEMS Micro-Speakers -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">Semiconductor Audio</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">USound &amp; xMEMS</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Silicon MEMS Micro-Speakers</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Manufactured directly onto semiconductor silicon wafers using micro-electro-mechanical systems (MEMS). Resonant frequencies exceed 40kHz with microscopic phase consistency and transient speed. Implemented as dedicated micro-tweeters in modern flagship TWS sets (e.g. QCY MeloBuds N70) for sparkling, crystalline high frequencies.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Signature: Zero Phase Delay</span>
+              <span class="text-cyan-400 font-semibold">Ultrasonic Micro-Tweeter</span>
+            </div>
+          </div>
+
+          <!-- Crossover Networks & Hybrids -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">Acoustic Crossover</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">Hybrid Integration</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Crossover Networks &amp; Sound Tubes</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                In multi-driver hybrid sets (like Truthear Hexa with 1DD + 3BA), passive electronic crossovers (resistors and capacitors) divide the audio signal so each driver only plays its optimal frequencies. Independent 3D-printed acoustic tubes and damping mesh filters align phase and prevent constructive frequency cancellation.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Design: Multi-Way Division</span>
+              <span class="text-rose-400 font-semibold">Phase Coherence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 5: ACOUSTIC CURVES & TUNING ANATOMY -->
+      <div id="toolkit-panel-acoustics" class="toolkit-panel hidden space-y-4">
+        <!-- Banner: Target Curves Overview -->
+        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono leading-relaxed">
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Harman In-Ear Target</span>
+            </div>
+            <p class="text-slate-300 font-sans text-sm">
+              Formulated by Sean Olive through scientific blind preference testing. Features a +6dB to +8dB sub-bass shelf and an energetic pinna gain rise, mimicking high-end speakers in a treated listening room.
+            </p>
+          </div>
+          <div class="space-y-1.5 border-t md:border-t-0 md:border-l border-studio-border pt-3 md:pt-0 md:pl-4">
+            <div class="flex items-center gap-1.5 text-sky-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-compass-drafting"></i>
+              <span>Diffuse Field (DF)</span>
+            </div>
+            <p class="text-slate-300 font-sans text-sm">
+              The acoustic response of human ears in an entirely reflective room with sound arriving from all angles. Forward, clear, and analytical, but perceived as lean in the bass by modern listeners.
+            </p>
+          </div>
+          <div class="space-y-1.5 border-t md:border-t-0 md:border-l border-studio-border pt-3 md:pt-0 md:pl-4">
+            <div class="flex items-center gap-1.5 text-emerald-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-bullseye"></i>
+              <span>IEF Neutral &amp; VDSF</span>
+            </div>
+            <p class="text-slate-300 font-sans text-sm">
+              IEF Neutral (Crinacle target) provides an uncolored reference baseline with flat bass and smooth midrange. Moondrop VDSF applies ear-canal HRTF compensation for wide soundstage and sweet vocal presence.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6 Frequency Zones Breakdown -->
+        <div class="bg-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-4">
+          <div class="flex items-center justify-between border-b border-studio-border/60 pb-3">
+            <div class="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider font-bold">
+              <i class="fa-solid fa-wave-square"></i>
+              <span>Anatomy of the Human Frequency Spectrum</span>
+            </div>
+            <span class="text-xs font-mono text-slate-400">20 Hz to 20,000 Hz</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 text-sm">
+            <!-- Zone 1: Sub-bass -->
+            <div class="bg-studio-900 p-3.5 rounded-xl border border-studio-border space-y-1.5">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-amber-400 font-bold uppercase">1. Sub-Bass</span>
+                <span class="text-slate-400 font-semibold">20 Hz - 60 Hz</span>
+              </div>
+              <h5 class="text-white font-bold font-display text-sm">Visceral Physical Vibration</h5>
+              <p class="text-xs text-slate-300 leading-relaxed font-sans">
+                Felt more than heard. Deep 808 synth drops, organ pedal tones, and cinematic earthquakes. A clean sub-bass boost provides immersive weight without masking midrange vocals.
+              </p>
+            </div>
+
+            <!-- Zone 2: Mid-bass -->
+            <div class="bg-studio-900 p-3.5 rounded-xl border border-studio-border space-y-1.5">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-sky-400 font-bold uppercase">2. Mid-Bass</span>
+                <span class="text-slate-400 font-semibold">60 Hz - 250 Hz</span>
+              </div>
+              <h5 class="text-white font-bold font-display text-sm">Punch &amp; Rhythm Definition</h5>
+              <p class="text-xs text-slate-300 leading-relaxed font-sans">
+                Kick drum impacts, bass guitar lines, and lower rhythm slam. Too much creates muddy bloat that bleeds into male vocals; too little leaves music feeling thin and sterile.
+              </p>
+            </div>
+
+            <!-- Zone 3: Lower Midrange -->
+            <div class="bg-studio-900 p-3.5 rounded-xl border border-studio-border space-y-1.5">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-emerald-400 font-bold uppercase">3. Lower Midrange</span>
+                <span class="text-slate-400 font-semibold">250 Hz - 800 Hz</span>
+              </div>
+              <h5 class="text-white font-bold font-display text-sm">Vocal Body &amp; Instrument Warmth</h5>
+              <p class="text-xs text-slate-300 leading-relaxed font-sans">
+                Fundamental frequencies for acoustic guitars, cellos, baritone vocals, and snares. Provides natural musical warmth and body without sounding boxed in.
+              </p>
+            </div>
+
+            <!-- Zone 4: Pinna Gain -->
+            <div class="bg-studio-900 p-3.5 rounded-xl border border-studio-border space-y-1.5">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-purple-400 font-bold uppercase">4. Pinna Gain</span>
+                <span class="text-slate-400 font-semibold">1 kHz - 3.5 kHz</span>
+              </div>
+              <h5 class="text-white font-bold font-display text-sm">Ear Canal Acoustic Resonance</h5>
+              <p class="text-xs text-slate-300 leading-relaxed font-sans">
+                The most critical zone in earphone design. Your outer ear naturally boosts this region by 8dB to 12dB. Proper pinna rise brings vocals forward naturally. Too much sounds shouty and harsh; too little sounds muffled.
+              </p>
+            </div>
+
+            <!-- Zone 5: Presence & Sibilance -->
+            <div class="bg-studio-900 p-3.5 rounded-xl border border-studio-border space-y-1.5">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-rose-400 font-bold uppercase">5. Treble Presence</span>
+                <span class="text-slate-400 font-semibold">5 kHz - 8 kHz</span>
+              </div>
+              <h5 class="text-white font-bold font-display text-sm">Articulation &amp; Sibilance Control</h5>
+              <p class="text-xs text-slate-300 leading-relaxed font-sans">
+                Snare drum bite, guitar pick attack, and consonant clarity ("s", "t", "sh"). Peaks around 6kHz to 8kHz cause painful piercing sibilance and ear fatigue during prolonged listening.
+              </p>
+            </div>
+
+            <!-- Zone 6: Upper Treble Air -->
+            <div class="bg-studio-900 p-3.5 rounded-xl border border-studio-border space-y-1.5">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-cyan-400 font-bold uppercase">6. Upper Treble Air</span>
+                <span class="text-slate-400 font-semibold">10 kHz - 20 kHz</span>
+              </div>
+              <h5 class="text-white font-bold font-display text-sm">Soundstage Dimensionality</h5>
+              <p class="text-xs text-slate-300 leading-relaxed font-sans">
+                Cymbal shimmer, room reverberation tails, and acoustic space. Proper air gives instruments breathing room and heightens three-dimensional soundstage imaging.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 6: HARDWARE, CONNECTORS & CABLES -->
+      <div id="toolkit-panel-hardware" class="toolkit-panel hidden space-y-4">
+        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-2 text-xs font-mono leading-relaxed">
+          <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-circle-nodes"></i>
+            <span>Understanding Connectors &amp; Replacement Cables</span>
+          </div>
+          <p class="text-slate-300 font-sans text-sm">
+            Chi-Fi earphones use several pin standards. Quality replacement cables eliminate stiffness, tangling, and clothing microphonics, but do not alter sound frequency response unless the original cable was broken.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
           <!-- 0.78mm 2-Pin -->
           <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2 hover:border-slate-500 transition">
             <div class="flex items-center justify-between">
@@ -604,10 +1002,10 @@
             </div>
             <h4 class="text-base font-display font-bold text-white">0.78mm 2-Pin (Flush &amp; Recessed)</h4>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-              Two parallel gold-plated brass pins spaced 0.78mm apart. Most modern sets (Truthear Hexa, Moondrop Chu II, Kiwi Ears Cadenza) use recessed sockets where the female port sits slightly inside the shell, shielding the pins from lateral bending forces.
+              Two parallel gold-plated brass pins spaced 0.78mm apart. Most modern sets (Truthear Hexa, Moondrop Chu II, Kiwi Ears Cadenza) use recessed sockets where the female port sits inside the shell, shielding pins from lateral shear forces.
             </p>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-400">
-              <span>Used by: Truthear, Moondrop, Kiwi Ears, 7Hz, Tangzu</span>
+              <span>Truthear, Moondrop, Kiwi Ears, 7Hz</span>
             </div>
           </div>
 
@@ -619,10 +1017,10 @@
             </div>
             <h4 class="text-base font-display font-bold text-white">QDC / KZ Style (Protruding Hood)</h4>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-              The female connector protrudes out of the earpiece inside a rectangular plastic block, and the cable plug has a hooded sleeve that slides completely over it. Extremely resistant to bending, but note that KZ/QDC pins frequently use reversed electrical polarity relative to standard 2-pin cables.
+              The female connector protrudes out of the earpiece in a rectangular block, and the cable plug slides completely over it. Extremely resistant to bending, but note that KZ/QDC often uses reversed electrical polarity relative to standard 2-pin cables.
             </p>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-400">
-              <span>Used by: KZ ZAR, CCA, QDC models</span>
+              <span>KZ ZAR, CCA, QDC models</span>
             </div>
           </div>
 
@@ -634,10 +1032,10 @@
             </div>
             <h4 class="text-base font-display font-bold text-white">MMCX (Micro-Miniature Coaxial)</h4>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-              A circular snap-in connector that rotates freely 360 degrees. Provides natural earhook alignment because the cable swivels with head movements. However, frequent plugging and unplugging can loosen the internal gold retention clip over years of use.
+              A circular snap-in connector that rotates freely 360 degrees. Provides natural earhook alignment because the cable swivels with head movement. Frequent plugging and unplugging can loosen the internal gold retention ring over time.
             </p>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-400">
-              <span>Used by: Shure, Westone, DUNU (older lines), TinHifi</span>
+              <span>Shure, Westone, TinHifi</span>
             </div>
           </div>
 
@@ -649,28 +1047,16 @@
             </div>
             <h4 class="text-base font-display font-bold text-white">Modular Swappable Terminations</h4>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-              Found on premium packages like TRN Conch, DUNU Titan X, and Moondrop Aria 2. A 4-pin internal collar on the cable allows you to swap between 3.5mm single-ended, 4.4mm balanced Pentaconn, and 2.5mm plugs in 5 seconds without changing the cable.
+              Found on upgrade cables and premium sets like TRN Conch. A multi-pin collar allows you to swap between 3.5mm single-ended, 4.4mm balanced Pentaconn, and 2.5mm plugs in 5 seconds without changing the cable.
             </p>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-400">
-              <span>Benefit: Future-proof for phone dongles and balanced amps</span>
+              <span>Future-proof for balanced desktop amps</span>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- PANEL 4: REPLACEMENT CABLES GUIDE -->
-      <div id="toolkit-panel-cables" class="toolkit-panel hidden space-y-4">
-        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-2 text-xs font-mono leading-relaxed">
-          <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
-            <i class="fa-solid fa-lines-leaning"></i>
-            <span>The Honest Truth About IEM Cables</span>
-          </div>
-          <p class="text-slate-300 font-sans text-sm">
-            Cables do not magically add bass or expand soundstage unless your original stock wire was damaged or had abnormally high electrical resistance. What quality aftermarket cables <strong>actually do</strong> is eliminate cable stiffness, eliminate microphonics (clothing rustle noise), prevent tangling, and provide soft, comfortable earhooks.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+        <!-- Cable Reality Check Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm pt-2">
           <!-- Tripowin Zonie -->
           <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
             <div class="space-y-2">
@@ -680,7 +1066,7 @@
               </div>
               <h4 class="text-base font-display font-bold text-white">Tripowin Zonie (16-Core SPC)</h4>
               <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-                The undefeated king of budget replacement cables. 16 cores of silver-plated copper woven into an extraordinarily soft braid with zero memory retention. It never tangles and produces zero microphonic rustling when you walk.
+                The undefeated king of budget replacement cables. 16 cores of silver-plated copper woven into an extraordinarily soft braid with zero memory retention. Never tangles and produces zero microphonic rustling when walking.
               </p>
             </div>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
@@ -698,7 +1084,7 @@
               </div>
               <h4 class="text-base font-display font-bold text-white">NiceHCK BlackCat / RedAg</h4>
               <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-                Features knurled aluminum alloy splitters, a snug chin slider that stays in place while jogging, and ultra-flexible PVC insulation. Outstanding build quality that feels three times its street price.
+                Features knurled aluminum alloy splitters, a snug chin slider that stays in place while jogging, and ultra-flexible insulation. Outstanding build quality that feels three times its street price.
               </p>
             </div>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
@@ -707,27 +1093,108 @@
             </div>
           </div>
 
-          <!-- TRN Modular Cables -->
+          <!-- Cable Reality Check -->
+          <div class="bg-studio-950 p-4 rounded-xl border border-dashed border-studio-border space-y-2 flex flex-col justify-center">
+            <div class="flex items-center gap-2 text-xs font-mono font-bold text-amber-300 uppercase tracking-wider">
+              <i class="fa-solid fa-scale-balanced"></i>
+              <span>Cables: Ergonomics vs Snake Oil</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+              Upgrading cables fixes microphonic jacket rubbing noise, stiff earhooks, and tangles. Cables do not add "deeper bass" or "wider staging" unless the original cable had abnormally high resistance. Spend on comfortable ear tips and clean music masters first.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 7: WIRELESS AUDIO, BLUETOOTH & ANC ARCHITECTURE -->
+      <div id="toolkit-panel-wireless" class="toolkit-panel hidden space-y-4">
+        <!-- TWS Philosophy Banner -->
+        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-2 text-xs font-mono leading-relaxed">
+          <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-tower-broadcast"></i>
+            <span>Wireless Audio Engineering &amp; Acoustics</span>
+          </div>
+          <p class="text-slate-300 font-sans text-sm">
+            True wireless earbuds combine acoustic transducers, Bluetooth RF receivers, miniature DAC/amplifiers, and active noise cancellation into an 8-gram housing. Here is how the technology actually works under the hood.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 text-sm">
+          <!-- Bluetooth Latency & Audio Buffering -->
           <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
             <div class="space-y-2">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">Swappable Jacks</span>
-                <span class="text-xs font-mono text-slate-300 font-semibold">~€18 to €24</span>
+                <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">RF Architecture</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">Latency vs Bandwidth</span>
               </div>
-              <h4 class="text-base font-display font-bold text-white">TRN T2 Pro / RedChain Modular</h4>
+              <h4 class="text-base font-display font-bold text-white">Bluetooth Latency &amp; Buffer Delays</h4>
               <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-                A modular upgrade cable that includes 2.5mm, 3.5mm, and 4.4mm swappable jack plugs right in the package. Lets you switch between phones and balanced desktop amplifiers without buying separate cables.
+                Standard Bluetooth A2DP audio incurs 150ms to 250ms of latency due to packet buffering. Modern video players on iOS and Android automatically delay video frames so lips match audio perfectly. However, interactive gaming requires dedicated low-latency gaming modes (50ms to 80ms) to ensure gunshots and footsteps sync in real time.
               </p>
             </div>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
-              <span>Included: 3 Terminations</span>
-              <span class="text-rose-400 font-semibold">Modular versatility</span>
+              <span>Standard: ~200ms / Game Mode: ~55ms</span>
+              <span class="text-amber-400 font-semibold">OS Video Sync Offset</span>
+            </div>
+          </div>
+
+          <!-- Hybrid ANC Mechanics -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">Noise Cancellation</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">Phase Inversion</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Active Noise Cancellation (ANC) Demystified</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Hybrid ANC uses feedforward exterior microphones to capture incoming environmental noise, and feedback internal nozzle microphones to monitor the sound reaching your eardrum. Onboard DSP chips generate an inverted anti-phase soundwave to cancel out the noise. Highly effective on continuous low-frequency drone (jet engines, trains, HVAC), while passive silicone seal blocks high-frequency speech.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Engine/HVAC: Canceled by ANC</span>
+              <span class="text-emerald-400 font-semibold">Voices: Blocked by Tip Seal</span>
+            </div>
+          </div>
+
+          <!-- Bluetooth Earhooks: Turn Wired into TWS -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">Audiophile Bridge</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">~€25 to €90</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">Bluetooth Earhooks (UTWS5, BT20XS)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Want wireless freedom without giving up your favorite wired IEMs like Truthear Hexa, Delci, or Zero:Red? Detachable Bluetooth earhooks (such as TRN BT20XS for ~€25 or FiiO UTWS5 for ~€90) clip directly onto standard 0.78mm 2-pin or MMCX sockets. They contain independent DAC/amps and battery cells, converting any wired earphone into an audiophile true wireless setup.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Fit: 0.78mm 2-Pin / MMCX</span>
+              <span class="text-sky-300 font-semibold">True Wired Drivers on the Go</span>
+            </div>
+          </div>
+
+          <!-- Battery Degradation Reality -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">Hardware Lifespan</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">30-50 mAh Cells</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">TWS Battery Reality &amp; Longevity</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Unlike wired earphones that last a decade with replaceable cables, all TWS earbuds use glued-in 30mAh to 55mAh lithium micro-cells. Lithium battery chemistry degrades after 300 to 500 full charge cycles, yielding noticeable battery decline after 2 to 3 years. Keep this in mind when budgeting: wired IEMs are durable investments, whereas TWS earphones are consumable gadgets.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Wired: 10+ Year Lifespan</span>
+              <span class="text-rose-400 font-semibold">TWS: 2 to 4 Year Lifecycle</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- PANEL 5: CARE, STORAGE & CLEANING -->
+      <!-- PANEL 8: CARE, STORAGE & CLEANING -->
       <div id="toolkit-panel-care" class="toolkit-panel hidden space-y-4">
         <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-2 text-xs font-mono leading-relaxed">
           <div class="flex items-center gap-1.5 text-emerald-400 font-bold uppercase tracking-wider">
@@ -735,7 +1202,7 @@
             <span>Practical Rules for 5+ Year IEM Lifespan</span>
           </div>
           <p class="text-slate-300 font-sans text-sm">
-            Chi-Fi in-ear monitors are precision acoustic devices. Simple habits prevent 90% of common failures like channel imbalance, broken copper cores, and clogged damper filters.
+            Chi-Fi in-ear monitors are precision acoustic instruments. Simple habits prevent 90% of common failures like channel imbalance, broken copper cores, and clogged damper filters.
           </p>
         </div>
 
@@ -749,7 +1216,7 @@
               </div>
               <h4 class="text-base font-display font-bold text-white">The Over-Under 'Roadie Wrap'</h4>
               <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-                Never wrap cables tightly around your phone or around your knuckles. Tight wrapping creates severe torsional strain that breaks fine copper strands and leaves permanent kinks.
+                Never wrap cables tightly around your phone or knuckles. Tight wrapping creates severe torsional strain that breaks fine copper strands and leaves permanent kinks.
               </p>
               <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border/60 text-xs font-mono text-slate-300">
                 <span class="text-amber-300 font-semibold">The method:</span>
@@ -792,119 +1259,6 @@
                 <span class="block mt-0.5">Hold the IEM facing downward and gently brush with a soft nylon baby toothbrush or press Blu-Tack lightly on the surface. Never poke pins or needles into the mesh.</span>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PANEL 6: WIRELESS CHI-FI & TWS GUIDE -->
-      <div id="toolkit-panel-wireless" class="toolkit-panel hidden space-y-4">
-        <!-- TWS Philosophy Banner -->
-        <div class="bg-gradient-to-r from-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-2 text-xs font-mono leading-relaxed">
-          <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
-            <i class="fa-solid fa-tower-broadcast"></i>
-            <span>The Audiophile Wireless Reality Check</span>
-          </div>
-          <p class="text-slate-300 font-sans text-sm">
-            Mainstream budget wireless earbuds traditionally relied on bloated, muddy bass to mask cheap drivers. Chi-Fi manufacturers like Moondrop, QCY, and EarFun upended the market by applying acoustic diffuse-field target curves (VDSF and Harman) to custom dynamic, silicon MEMS, and planar drivers, bringing legitimate audiophile vocal clarity to the €25 to €75 price bracket.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 text-sm">
-          <!-- Space Travel 1 vs 2 -->
-          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">Tuning Reference</span>
-                <span class="text-xs font-mono text-slate-300 font-semibold">~€22 to €34</span>
-              </div>
-              <h4 class="text-base font-display font-bold text-white">Moondrop Space Travel 1 &amp; 2</h4>
-              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-                The original Space Travel established the sub-€30 benchmark for tonal accuracy with clean Moondrop VDSF tuning and 35dB ANC, but had a modest 4-hour battery. Space Travel 2 upgrades to 7 hours per charge (24 hours total), Bluetooth 6.0, an AI NPU for call noise reduction, and a 5-band parametric EQ in the app. Both retain the open lidless cockpit case and anime voice lines.
-              </p>
-            </div>
-            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
-              <span>Case: Open Cockpit</span>
-              <span class="text-amber-400 font-semibold">Best vocal clarity under €35</span>
-            </div>
-          </div>
-
-          <!-- Feature & Flagship Leap: QCY MeloBuds N70 (HT18) -->
-          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">DualCore MEMS &amp; ANC</span>
-                <span class="text-xs font-mono text-slate-300 font-semibold">~€36 to €55</span>
-              </div>
-              <h4 class="text-base font-display font-bold text-white">QCY MeloBuds N70 / HT18</h4>
-              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-                The official flagship successor to the popular MeloBuds Pro. It pairs a high-excursion dynamic woofer with a dedicated USound silicon MEMS micro-speaker tweeter, delivering airy, pristine highs without the older Pro model's treble roughness. Upgrades to Bluetooth 6.0, 56dB PureSilenz adaptive hybrid ANC, LDAC Hi-Res, Qi wireless charging, and 50 hours of battery life.
-              </p>
-            </div>
-            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
-              <span>Codecs: LDAC / AAC</span>
-              <span class="text-emerald-400 font-semibold">Best sub-€55 tech &amp; 56dB ANC</span>
-            </div>
-          </div>
-
-          <!-- All-Round Feature Champion: EarFun Air Pro 4 -->
-          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">Swiss Army Knife</span>
-                <span class="text-xs font-mono text-slate-300 font-semibold">~€59 to €75</span>
-              </div>
-              <h4 class="text-base font-display font-bold text-white">EarFun Air Pro 4 &amp; 4+</h4>
-              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-                The most complete true wireless earbud under €80. Powered by Qualcomm QCC3091, it supports both Qualcomm aptX Lossless and Sony LDAC in a single unit. Includes Auracast broadcast audio, 50dB QuietSmart 3.0 adaptive ANC, cVc 8.0 noise reduction, Qi wireless charging, and 52 hours of total battery. Default tuning is a punchy, musical V-shape easily refined with in-app 10-band EQ.
-              </p>
-            </div>
-            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
-              <span>Codecs: aptX Lossless + LDAC</span>
-              <span class="text-cyan-300 font-semibold">Best commuter features</span>
-            </div>
-          </div>
-
-          <!-- Wireless Earhooks: Turn Wired into TWS -->
-          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider">Audiophile Hack</span>
-                <span class="text-xs font-mono text-slate-300 font-semibold">~€25 to €90</span>
-              </div>
-              <h4 class="text-base font-display font-bold text-white">Bluetooth Earhooks (UTWS5, BT20XS)</h4>
-              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-                Want wireless freedom with your favorite wired earphones like Truthear Hexa, Delci, or Zero:Red? Detachable Bluetooth earhooks (such as TRN BT20XS for ~€25 or FiiO UTWS5 for ~€90) clip directly onto standard 0.78mm 2-pin or MMCX sockets, providing dedicated DAC/amps without sacrificing high-resolution wired acoustic drivers.
-              </p>
-            </div>
-            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
-              <span>Fit: 0.78mm 2-Pin / MMCX</span>
-              <span class="text-sky-300 font-semibold">True wired fidelity on go</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Driver Spotlight & Codec Reality Check Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-          <!-- Driver Spotlight Box -->
-          <div class="bg-studio-950 p-4 rounded-xl border border-dashed border-studio-border space-y-2">
-            <div class="flex items-center gap-2 text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">
-              <i class="fa-solid fa-microchip"></i>
-              <span>Driver Tech Spotlight: Dynamic vs MEMS vs Planar</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed font-sans">
-              Dynamic drivers (Space Travel, MeloBuds Pro) excel at deep sub-bass slam and natural acoustic decay. Silicon MEMS micro-speakers (QCY N70) etch physical silicon wafers into microscopic acoustic actuators, offering near-zero inertia and crystal-clear high frequencies. Planar magnetic drivers (Moondrop Golden Ages) use ultra-thin voice coils across permanent magnets for flat impedance, high resolution, and minimal harmonic distortion.
-            </p>
-          </div>
-
-          <!-- Codec Reality Check Box -->
-          <div class="bg-studio-950 p-4 rounded-xl border border-dashed border-studio-border space-y-2">
-            <div class="flex items-center gap-2 text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">
-              <i class="fa-solid fa-code-compare"></i>
-              <span>Bluetooth Codecs: SBC vs AAC vs LDAC vs aptX Lossless</span>
-            </div>
-            <p class="text-slate-300 leading-relaxed font-sans">
-              Do not obsess over LDAC or aptX Lossless on budget TWS unless you are in a quiet room listening to uncompressed FLAC files. In daily street listening, acoustic driver tuning and eartip seal affect sound quality ten times more than Bluetooth bitrates. High-bitrate codecs also consume up to 40% more battery and reduce wireless range in crowded RF environments.
-            </p>
           </div>
         </div>
       </div>
@@ -1130,7 +1484,7 @@
     </div>
 
     <!-- Category Tabs -->
-    <div class="px-3 py-2 border-t border-studio-border bg-studio-950 flex items-center gap-1.5 text-xs font-mono font-medium overflow-x-auto">
+    <div class="px-3 py-2 border-t border-studio-border bg-studio-950 flex flex-wrap items-center gap-1.5 text-xs font-mono font-medium">
       <button type="button" class="deck-cat-btn active px-3 py-1 rounded-md bg-amber-400 text-black font-bold text-xs" data-cat="all">All (9)</button>
       <button type="button" class="deck-cat-btn px-3 py-1 rounded-md bg-studio-850 text-slate-300 hover:text-white text-xs" data-cat="kessoku">🎸 Kessoku</button>
       <button type="button" class="deck-cat-btn px-3 py-1 rounded-md bg-studio-850 text-slate-300 hover:text-white text-xs" data-cat="yoasobi">✨ YOASOBI</button>
