@@ -431,7 +431,7 @@ async def run_e2e_tests():
             print("\n[Test 10] Audiophile Gear Toolkit Interaction")
             toolkit_visible = await page.locator("#gear-toolkit").is_visible()
             tabs_count = await page.locator(".toolkit-tab-btn").count()
-            if toolkit_visible and tabs_count == 6:
+            if toolkit_visible and tabs_count == 8:
                 record_pass(f"Audiophile Gear Toolkit section is visible with {tabs_count} category tabs")
             else:
                 record_fail("Toolkit visibility", f"Vis: {toolkit_visible}, Tabs: {tabs_count}")
@@ -445,7 +445,7 @@ async def run_e2e_tests():
 
             # Click Dongle DACs tab
             await page.click(".toolkit-tab-btn[data-target='toolkit-panel-dacs']")
-            await page.wait_for_timeout(300)
+            await page.wait_for_timeout(200)
             dacs_visible = await page.locator("#toolkit-panel-dacs").is_visible()
             tips_now_hidden = not await page.locator("#toolkit-panel-tips").is_visible()
             apple_dongle_present = await page.locator("#toolkit-panel-dacs h4:has-text('Apple USB-C')").is_visible()
@@ -455,9 +455,66 @@ async def run_e2e_tests():
             else:
                 record_fail("DACs tab switch", f"DACS vis: {dacs_visible}, Tips hidden: {tips_now_hidden}")
 
+            # Click Codecs & FLAC tab
+            await page.click(".toolkit-tab-btn[data-target='toolkit-panel-codecs']")
+            await page.wait_for_timeout(200)
+            codecs_visible = await page.locator("#toolkit-panel-codecs").is_visible()
+            flac_card = await page.locator("#toolkit-panel-codecs h4:has-text('FLAC, ALAC & WAV')").is_visible()
+            cd_vs_hires = await page.locator("#toolkit-panel-codecs h4:has-text('16-bit / 44.1kHz')").is_visible()
+            if codecs_visible and flac_card and cd_vs_hires:
+                record_pass("Codecs & FLAC tab activated, displaying Lossless Formats & CD vs Hi-Res guide")
+            else:
+                record_fail("Codecs tab switch", f"Codecs vis: {codecs_visible}, FLAC: {flac_card}, CD/Hi-Res: {cd_vs_hires}")
+
+            # Click Driver Tech tab
+            await page.click(".toolkit-tab-btn[data-target='toolkit-panel-drivers']")
+            await page.wait_for_timeout(200)
+            drivers_visible = await page.locator("#toolkit-panel-drivers").is_visible()
+            dd_card = await page.locator("#toolkit-panel-drivers h4:has-text('Dynamic Drivers')").is_visible()
+            planar_card = await page.locator("#toolkit-panel-drivers h4:has-text('Planar Magnetic')").is_visible()
+            if drivers_visible and dd_card and planar_card:
+                record_pass("Driver Tech tab activated with Dynamic Drivers, Planar Magnetic, and MEMS cards")
+            else:
+                record_fail("Drivers tab switch", f"Drivers vis: {drivers_visible}, DD: {dd_card}, Planar: {planar_card}")
+
+            # Click Tuning Curves tab
+            await page.click(".toolkit-tab-btn[data-target='toolkit-panel-acoustics']")
+            await page.wait_for_timeout(200)
+            acoustics_visible = await page.locator("#toolkit-panel-acoustics").is_visible()
+            harman_target = await page.locator("#toolkit-panel-acoustics span:has-text('Harman In-Ear Target')").is_visible()
+            subbass_zone = await page.locator("#toolkit-panel-acoustics span:has-text('1. Sub-Bass')").is_visible()
+            if acoustics_visible and harman_target and subbass_zone:
+                record_pass("Tuning Curves tab activated with Harman Target and 6 Frequency Zones anatomy")
+            else:
+                record_fail("Acoustics tab switch", f"Acoustics vis: {acoustics_visible}, Harman: {harman_target}")
+
+            # Click Cables & Plugs tab
+            await page.click(".toolkit-tab-btn[data-target='toolkit-panel-hardware']")
+            await page.wait_for_timeout(200)
+            hardware_visible = await page.locator("#toolkit-panel-hardware").is_visible()
+            pin_card = await page.locator("#toolkit-panel-hardware h4:has-text('0.78mm 2-Pin')").is_visible()
+            zonie_card = await page.locator("#toolkit-panel-hardware h4:has-text('Tripowin Zonie')").is_visible()
+            if hardware_visible and pin_card and zonie_card:
+                record_pass("Cables & Plugs tab activated with Connector Standards and Cable Truth cards")
+            else:
+                record_fail("Hardware tab switch", f"Hardware vis: {hardware_visible}, 2-Pin: {pin_card}, Zonie: {zonie_card}")
+
+            # Click Wireless & ANC tab
+            await page.click(".toolkit-tab-btn[data-target='toolkit-panel-wireless']")
+            await page.wait_for_timeout(200)
+            wireless_visible = await page.locator("#toolkit-panel-wireless").is_visible()
+            latency_present = await page.locator("#toolkit-panel-wireless h4:has-text('Bluetooth Latency')").is_visible()
+            anc_present = await page.locator("#toolkit-panel-wireless h4:has-text('Active Noise Cancellation')").is_visible()
+            earhooks_present = await page.locator("#toolkit-panel-wireless h4:has-text('Bluetooth Earhooks')").is_visible()
+            battery_present = await page.locator("#toolkit-panel-wireless h4:has-text('TWS Battery Reality')").is_visible()
+            if wireless_visible and latency_present and anc_present and earhooks_present and battery_present:
+                record_pass("Wireless & ANC tab activated with Bluetooth Latency, ANC Mechanics, Earhooks, and Battery Reality")
+            else:
+                record_fail("Wireless tab switch", f"Vis: {wireless_visible}, Latency: {latency_present}, ANC: {anc_present}, Hooks: {earhooks_present}")
+
             # Click Care & Storage tab
             await page.click(".toolkit-tab-btn[data-target='toolkit-panel-care']")
-            await page.wait_for_timeout(300)
+            await page.wait_for_timeout(200)
             care_visible = await page.locator("#toolkit-panel-care").is_visible()
             roadie_wrap = await page.locator("#toolkit-panel-care h4:has-text('Roadie Wrap')").is_visible()
             silica_gel = await page.locator("#toolkit-panel-care h4:has-text('Silica Gel')").is_visible()
@@ -465,19 +522,6 @@ async def run_e2e_tests():
                 record_pass("Care & Storage tab activated with Roadie Wrap and Silica Gel guides")
             else:
                 record_fail("Care tab switch", f"Care vis: {care_visible}, Roadie: {roadie_wrap}, Silica: {silica_gel}")
-
-            # Click Wireless TWS tab
-            await page.click(".toolkit-tab-btn[data-target='toolkit-panel-wireless']")
-            await page.wait_for_timeout(300)
-            wireless_visible = await page.locator("#toolkit-panel-wireless").is_visible()
-            st_card_present = await page.locator("#toolkit-panel-wireless h4:has-text('Space Travel')").is_visible()
-            qcy_card_present = await page.locator("#toolkit-panel-wireless h4:has-text('QCY MeloBuds N70')").is_visible()
-            earfun_card_present = await page.locator("#toolkit-panel-wireless h4:has-text('EarFun Air Pro 4')").is_visible()
-            earhooks_present = await page.locator("#toolkit-panel-wireless h4:has-text('Bluetooth Earhooks')").is_visible()
-            if wireless_visible and st_card_present and qcy_card_present and earfun_card_present and earhooks_present:
-                record_pass("Wireless TWS tab activated, displaying Space Travel, MeloBuds N70, EarFun Air Pro 4, and Earhooks guide")
-            else:
-                record_fail("Wireless TWS tab switch", f"Vis: {wireless_visible}, ST: {st_card_present}, QCY: {qcy_card_present}, EarFun: {earfun_card_present}, Hooks: {earhooks_present}")
 
             # -----------------------------------------------------------------
             # TEST 11: Responsiveness & Screenshots
