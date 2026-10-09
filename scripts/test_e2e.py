@@ -518,10 +518,11 @@ async def run_e2e_tests():
             care_visible = await page.locator("#toolkit-panel-care").is_visible()
             roadie_wrap = await page.locator("#toolkit-panel-care h4:has-text('Roadie Wrap')").is_visible()
             silica_gel = await page.locator("#toolkit-panel-care h4:has-text('Silica Gel')").is_visible()
-            if care_visible and roadie_wrap and silica_gel:
-                record_pass("Care & Storage tab activated with Roadie Wrap and Silica Gel guides")
+            yt_link = await page.locator("#toolkit-panel-care a[href='https://www.youtube.com/watch?v=_fsvANAT3yg']").is_visible()
+            if care_visible and roadie_wrap and silica_gel and yt_link:
+                record_pass("Care & Storage tab activated with Roadie Wrap, Super* Review YouTube guide, and Silica Gel")
             else:
-                record_fail("Care tab switch", f"Care vis: {care_visible}, Roadie: {roadie_wrap}, Silica: {silica_gel}")
+                record_fail("Care tab switch", f"Care vis: {care_visible}, Roadie: {roadie_wrap}, YT: {yt_link}, Silica: {silica_gel}")
 
             # -----------------------------------------------------------------
             # TEST 11: Responsiveness & Screenshots
