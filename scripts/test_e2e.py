@@ -324,7 +324,7 @@ async def run_e2e_tests():
             else:
                 record_fail("Filter Shared Only", f"Expected 2 cards, got {shared_cards_count}")
 
-            # Click Show All 26
+            # Click Show All button
             await page.click("#clear-shared-view-btn")
             await page.wait_for_timeout(300)
             all_restored = await page.locator("#cards-view > div:not(.hidden)").count()

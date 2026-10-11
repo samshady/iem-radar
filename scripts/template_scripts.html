@@ -944,7 +944,14 @@
       });
     });
 
-    // Initializations
+    // Initializations & Dynamic Count Sync
+    const allPill = document.getElementById('filter-pill-all');
+    if (allPill) allPill.textContent = `All (${iemsData.length})`;
+    const clearSharedBtn = document.getElementById('clear-shared-view-btn');
+    if (clearSharedBtn) clearSharedBtn.textContent = `Show All ${iemsData.length}`;
+    const curatedSetsCount = document.getElementById('curated-sets-count');
+    if (curatedSetsCount) curatedSetsCount.textContent = `${iemsData.length} Models`;
+
     updateTrackDisplay(false);
     updateShortlistUI();
     render();
