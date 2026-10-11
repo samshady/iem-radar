@@ -106,10 +106,10 @@ async def run_e2e_tests():
                 record_fail("Page title check", f"Unexpected title: '{title}'")
 
             cards = await page.locator("#cards-view > div").all()
-            if len(cards) == 26:
-                record_pass("All 26 IEM cards rendered in main view")
+            if len(cards) == 30:
+                record_pass("All 30 IEM cards rendered in main view")
             else:
-                record_fail("Card count", f"Expected 26 cards, found {len(cards)}")
+                record_fail("Card count", f"Expected 30 cards, found {len(cards)}")
 
             # Check that images inside cards actually loaded (naturalWidth > 0)
             await page.wait_for_timeout(500)
@@ -126,7 +126,7 @@ async def run_e2e_tests():
                     return { total: imgs.length, badCount: bad.length, badSources: bad.map(i => i.src) };
                 }
             """)
-            if images_ok["badCount"] == 0 and images_ok["total"] == 26:
+            if images_ok["badCount"] == 0 and images_ok["total"] == 30:
                 record_pass(f"All {images_ok['total']} card product images loaded successfully (naturalWidth > 0)")
             else:
                 record_fail("Card product images", f"Found {images_ok['badCount']} broken images: {images_ok['badSources']}")
@@ -148,10 +148,10 @@ async def run_e2e_tests():
             await page.click("#clear-search-btn")
             await page.wait_for_timeout(300)
             visible_after_clear = await page.locator("#cards-view > div:not(.hidden)").count()
-            if visible_after_clear == 26:
-                record_pass("Clear search button restored all 26 cards")
+            if visible_after_clear == 30:
+                record_pass("Clear search button restored all 30 cards")
             else:
-                record_fail("Clear search", f"Expected 26 cards, got {visible_after_clear}")
+                record_fail("Clear search", f"Expected 30 cards, got {visible_after_clear}")
 
             # Search by sound character
             await page.fill("#search-input", "planar")
@@ -206,10 +206,10 @@ async def run_e2e_tests():
             await page.click("button[data-filter='all']")
             await page.wait_for_timeout(300)
             count_all = await page.locator("#cards-view > div:not(.hidden)").count()
-            if count_all == 26:
-                record_pass("All (26) filter restored all 26 cards")
+            if count_all == 30:
+                record_pass("All (30) filter restored all 30 cards")
             else:
-                record_fail("All filter", f"Expected 26, got {count_all}")
+                record_fail("All filter", f"Expected 30, got {count_all}")
 
             # -----------------------------------------------------------------
             # TEST 4: Sort Dropdown
@@ -242,8 +242,8 @@ async def run_e2e_tests():
             table_visible = await page.locator("#table-view").is_visible()
             cards_visible = await page.locator("#cards-view").is_visible()
             row_count = await page.locator("#table-body tr").count()
-            if table_visible and not cards_visible and row_count == 26:
-                record_pass("Switched to Comparison Table view; 26 table rows rendered")
+            if table_visible and not cards_visible and row_count == 30:
+                record_pass("Switched to Comparison Table view; 30 table rows rendered")
             else:
                 record_fail("Table view switch", f"Table vis: {table_visible}, Cards vis: {cards_visible}, Rows: {row_count}")
 
@@ -328,10 +328,10 @@ async def run_e2e_tests():
             await page.click("#clear-shared-view-btn")
             await page.wait_for_timeout(300)
             all_restored = await page.locator("#cards-view > div:not(.hidden)").count()
-            if all_restored == 26:
-                record_pass("Show All button successfully restored all 26 models")
+            if all_restored == 30:
+                record_pass("Show All button successfully restored all 30 models")
             else:
-                record_fail("Restore from shared", f"Expected 26, got {all_restored}")
+                record_fail("Restore from shared", f"Expected 30, got {all_restored}")
 
             # -----------------------------------------------------------------
             # TEST 8: Detail Modal & Local Note Saving
@@ -592,6 +592,51 @@ async def run_e2e_tests():
                 record_fail("360px overflow", "Detected horizontal scrollbar on 360px viewport")
 
             # -----------------------------------------------------------------
+
+            # -----------------------------------------------------------------
+            # TEST 12: Budget Over-Ear & On-Ear Headphone Bench (< €100)
+            # -----------------------------------------------------------------
+            print("\n[Test 12] Budget Headphone Bench (< €100)")
+            headphones_section = await page.locator("#headphones-bench").is_visible()
+            if headphones_section:
+                record_pass("Headphones bench section (#headphones-bench) is visible")
+            else:
+                record_fail("Headphones bench section", "Section not visible")
+
+            hp_cards = await page.locator("#headphones-bench .grid > div").count()
+            if hp_cards >= 10:
+                record_pass(f"Rendered {hp_cards} budget headphone benchmark cards")
+            else:
+                record_fail("Headphone card count", f"Expected >= 10, got {hp_cards}")
+
+            # Verify key models in the headphone bench
+            eh11_vis = await page.locator("#headphones-bench h3:has-text('FiiO EH11')").is_visible()
+            eh13_vis = await page.locator("#headphones-bench h3:has-text('FiiO EH13')").is_visible()
+            jt1_vis = await page.locator("#headphones-bench h3:has-text('FiiO JT1')").is_visible()
+            old_fashioned_vis = await page.locator("#headphones-bench h3:has-text('Moondrop Old Fashioned')").is_visible()
+            ksc75_vis = await page.locator("#headphones-bench h3:has-text('Koss KSC75')").is_visible()
+
+            if eh11_vis and eh13_vis and jt1_vis and old_fashioned_vis and ksc75_vis:
+                record_pass("Key headphone benchmarks (FiiO EH11, EH13, JT1, Moondrop Old Fashioned, Koss KSC75) verified")
+            else:
+                record_fail("Key headphone models check", f"EH11: {eh11_vis}, EH13: {eh13_vis}, JT1: {jt1_vis}, OldFashioned: {old_fashioned_vis}, KSC75: {ksc75_vis}")
+
+            # -----------------------------------------------------------------
+            # TEST 13: Original TinHiFi C2, Waner variants & QCY MeloBuds Disambiguation
+            # -----------------------------------------------------------------
+            print("\n[Test 13] Original TinHiFi C2, Waner variants & QCY MeloBuds")
+            c2_vis = await page.locator("#cards-view h3:has-text('TinHiFi C2 Mech Warrior')").is_visible()
+            if c2_vis:
+                record_pass("Original TinHiFi C2 Mech Warrior rendered in catalog")
+            else:
+                record_fail("Original TinHiFi C2 check", "C2 card not visible")
+
+            qcy_pro_title = await page.locator("#cards-view h3:has-text('QCY MeloBuds Pro')").text_content()
+            if "HT08" in qcy_pro_title:
+                record_pass(f"QCY MeloBuds Pro title includes HT08 model code: '{qcy_pro_title.strip()}'")
+            else:
+                record_fail("QCY MeloBuds Pro model check", f"Expected HT08 in title, got '{qcy_pro_title}'")
+
             # Console & Network Integrity Check
             # -----------------------------------------------------------------
             print("\n[Console & Network Error Audit]")

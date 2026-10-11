@@ -1426,7 +1426,7 @@
     "driver_type": "1DD",
     "driver_detail": "10mm Upgraded PET Diaphragm Dynamic Driver with refined acoustic chamber",
     "sound_signature": "Warm Vocal Forward / Intimate Musical",
-    "sound_description": "Sweet, luscious vocal midrange, smooth non-fatiguing highs, and warm, round bass punch. Available in standard and 'Red Lion' bass editions.",
+    "sound_description": "Sweet, luscious vocal midrange and smooth non-fatiguing highs. Gen 2 offers balanced musicality, while the Red Lion ('Red Dragon') edition delivers heavy, visceral bass impact.",
     "nozzle_diameter_mm": 5.4,
     "nozzle_warning": "No",
     "comfort_rating": 9.0,
@@ -1460,11 +1460,11 @@
         "url": "https://www.aliexpress.com/wholesale?SearchText=Tangzu+Wan%27er+S.G+II"
       }
     ],
-    "notes": "Includes Tang Sancai patented ear tips in the box. Unbeatable for vocal clarity and timbral warmth under €20.",
+    "notes": "Lineup Guide: Gen 1 (Wan'er S.G, warm vocal classic) vs Gen 2 (Wan'er S.G II, refined carbon composite driver + Tang Sancai tips) vs Red Lion Edition (often called 'Red Dragon', retuned with +4dB heavy sub-bass lift in translucent ruby-red shells).",
     "image": "assets/images/tangzu-waner-2.jpg",
     "tagline": "The vocal lover's paradise, now including Tang Sancai tips.",
     "sound_summary": "Sweet, intimate, forward vocals with smooth, warm acoustics.",
-    "takeaway": "Renowned for how naturally and intimately it renders human voices and acoustic instruments. Japanese and English female vocals sound luscious without ever piercing. The new edition includes Tangzu's premium Tang Sancai tips in the box, which are famous for their comfortable medical-grade silicone texture.",
+    "takeaway": "The Wan'er lineup spans three distinct versions: 1) Gen 1 (original 2022 S.G) was the budget warm vocal queen; 2) Gen 2 (S.G II) refines the treble with a carbon composite driver and bundles €10 Tang Sancai tips; 3) The 'Red Lion' Edition (frequently called 'Red Dragon' by enthusiasts) is the dedicated Bass Edition, packing a visceral +4dB sub-bass and mid-bass boost for hip-hop and electronic music.",
     "fit_verdict": "5.4mm nozzle • Classic ergonomic resin shell.",
     "gallery": [
       {
@@ -1729,7 +1729,7 @@
   },
   {
     "id": "qcy-melobuds-pro",
-    "name": "QCY MeloBuds Pro (HT08)",
+    "name": "QCY MeloBuds Pro (HT08 / LDAC)",
     "brand": "QCY",
     "release_year": "2024-2025",
     "status": "Active",
@@ -1763,18 +1763,18 @@
     "verified_stores": [
       {
         "name": "Amazon.de",
-        "url": "https://www.amazon.de/s?k=QCY+MeloBuds+Pro"
+        "url": "https://www.amazon.de/s?k=QCY+MeloBuds+Pro+HT08"
       },
       {
         "name": "AliExpress Choice",
-        "url": "https://www.aliexpress.com/wholesale?SearchText=QCY+MeloBuds+Pro"
+        "url": "https://www.aliexpress.com/wholesale?SearchText=QCY+HT08+MeloBuds+Pro"
       }
     ],
-    "notes": "Predecessor to the MeloBuds N70. Supports Sony LDAC high-resolution codec (up to 990 kbps), 46dB adaptive hybrid ANC, 6 microphones with AI ENC, IPX5 water resistance, in-ear optical wear detection, and multipoint pairing.",
+    "notes": "Exact Model: HT08 (regulatory BH24HT08A). Do not confuse on AliExpress with the older HT05 (MeloBuds ANC, lacks LDAC/in-ear detection) or HT09 (MeloBuds Neo). Look for the gold Hi-Res Wireless LDAC logo on the box and metallic stem strip.",
     "image": "assets/images/qcy-melobuds-pro.jpg",
     "tagline": "The 2024 predecessor: 46dB Hybrid ANC, LDAC Hi-Res, and sub-€30 clearance value.",
     "sound_summary": "Energetic, punchy, and fun sound backed by genuine Hi-Res LDAC decoding and strong noise isolation.",
-    "takeaway": "The 2024 value champion that brought LDAC and 46dB hybrid ANC to the ultra-budget realm. While now superseded by the dual-driver MeloBuds N70, the Pro remains a fantastic clearance steal if you find it discounted under €30. It provides a traditional protective clamshell lid, optical wear detection, and 34 hours of total battery life with a fun, warm V-shaped sound signature.",
+    "takeaway": "QCY's high-value flagship TWS. When buying on AliExpress, make sure the listing specifies HT08 or MeloBuds Pro with LDAC. The older HT05 (MeloBuds ANC) lacks LDAC and in-ear detection. The real Pro gives you adaptive 46dB ANC, multipoint Bluetooth 5.3, LDAC hi-res streaming, and in-ear auto-pause sensors.",
     "fit_verdict": "5.5mm nozzle • Ergonomic stem design with IPX5 splash resistance.",
     "gallery": [
       {
@@ -1952,6 +1952,254 @@
         "label": "Charging Case",
         "badge": "Compact Clamshell with 52h Battery",
         "url": "assets/images/earfun-air-pro-4-accessories.jpg"
+      }
+    ]
+  },
+  {
+    "id": "tinhifi-c2",
+    "name": "TinHiFi C2 Mech Warrior",
+    "brand": "TinHiFi",
+    "release_year": "2022-2023",
+    "status": "Active",
+    "price_usd_msrp": 35.0,
+    "price_eur_amazon": 34.0,
+    "price_eur_ali_choice": 25.0,
+    "price_eur_ali_1111": 20.0,
+    "driver_type": "1DD",
+    "driver_detail": "10mm PU + LCP (Liquid Crystal Polymer) composite diaphragm dynamic driver with N52 neodymium magnet",
+    "sound_signature": "Harman-Bright / Crisp Fast Transient",
+    "sound_description": "Fast, tight bass punch without mid-bass bleed, transparent forward vocal presence, and energetic, sparkling upper treble with razor-sharp spatial localization for competitive gaming.",
+    "nozzle_diameter_mm": 5.0,
+    "nozzle_warning": "No",
+    "comfort_rating": 8.7,
+    "build_material": "Aviation-grade 6063 CNC aluminum alloy with mechanical angular contours and decorative Torx screws",
+    "connection": "3.5mm Single-Ended",
+    "cable_detail": "Detachable 0.78mm recessed 2-pin silver-plated copper braided cable",
+    "accessories_included": "Silicone ear tips (S/M/L), 2-pin cable, documentation",
+    "accessories_rating": 7.5,
+    "qc_and_known_issues": "Rock-solid all-metal housing; angular facet edges may rest against outer pinna for very small ears.",
+    "gaming_score": 8.8,
+    "community_score": 8.6,
+    "crinacle_rank": "Tracked (Community Hit)",
+    "super_review_rating": "Solid Value Metal Pick",
+    "jays_audio_rating": "Punchy Technical Budget Performer",
+    "target_personas": [
+      "High Detail & Resolution",
+      "Competitive Gaming",
+      "Built Like a Tank"
+    ],
+    "verified_stores": [
+      {
+        "name": "HiFiGO",
+        "url": "https://hifigo.com/pages/search-results-page?q=TinHiFi+C2"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=TinHiFi+C2"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/wholesale?SearchText=TinHiFi+C2+Mech+Warrior"
+      }
+    ],
+    "notes": "The original 2022-2023 all-metal cult classic. Known for its brighter, more analytical transient speed that became a competitive gaming and rock/metal benchmark.",
+    "image": "assets/images/tinhifi-c2.jpg",
+    "tagline": "The original all-metal mecha benchmark with rapid LCP transient speed.",
+    "sound_summary": "Crisp, fast, and analytical with tight bass punch and pinpoint spatial gaming localization.",
+    "takeaway": "The original TinHiFi C2 Mech Warrior remains an audiophile and gaming cult legend. Machined out of solid 6063 aluminum alloy with industrial Torx screws, its LCP driver delivers lightning-fast transient speed without muddy bass bloat, making footstep placement in competitive shooters and fast metal drumbeats razor-sharp.",
+    "fit_verdict": "5.0mm nozzle barrel • Standard comfortable fit with broad aftermarket tip compatibility.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "6063 CNC Aluminum Chassis",
+        "url": "assets/images/tinhifi-c2.jpg"
+      }
+    ]
+  },
+  {
+    "id": "tinhifi-c0-clean",
+    "name": "TinHiFi C0 Clean (ELF)",
+    "brand": "TinHiFi",
+    "release_year": "2024",
+    "status": "Active",
+    "price_usd_msrp": 19.99,
+    "price_eur_amazon": 20.0,
+    "price_eur_ali_choice": 15.5,
+    "price_eur_ali_1111": 12.0,
+    "driver_type": "1DD",
+    "driver_detail": "10mm Titanium-plated composite diaphragm dynamic driver with rear open-back acoustic venting",
+    "sound_signature": "Open-Back Neutral-Bright / Airy Soundstage",
+    "sound_description": "Expansive open-back soundstage with zero ear canal pressure. Crisp acoustic transparency, clean vocal projection, and fast treble air.",
+    "nozzle_diameter_mm": 6.2,
+    "nozzle_warning": "Yes",
+    "comfort_rating": 7.8,
+    "build_material": "Aerospace CNC aluminum alloy bullet shell (approx. 3.8g) with rear acoustic mesh",
+    "connection": "3.5mm or USB-C",
+    "cable_detail": "Detachable 2-pin cable with in-line microphone (USB-C DSP variant available)",
+    "accessories_included": "Silicone tips (S/M/L), manual",
+    "accessories_rating": 6.8,
+    "qc_and_known_issues": "Wide 6.2mm nozzle lacks a retention lip; loose eartips can slip off. Requires grippy third-party tips like Dunu S&S.",
+    "gaming_score": 8.2,
+    "community_score": 8.1,
+    "crinacle_rank": "Unranked (Measurement DB)",
+    "super_review_rating": "Niche Open-Back Budget Performer",
+    "jays_audio_rating": "Spacious Sub-0 Bullet",
+    "target_personas": [
+      "High Detail & Resolution",
+      "Open-Back / Low Isolation",
+      "Casual Everyday"
+    ],
+    "verified_stores": [
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/search?q=TinHiFi+C0"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=TinHiFi+C0"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/wholesale?SearchText=TinHiFi+C0"
+      }
+    ],
+    "notes": "Unique sub-€20 open-back bullet IEM. Completely avoids ear suction, but leaks sound and offers low noise isolation.",
+    "image": "assets/images/tinhifi-c0-clean.jpg",
+    "tagline": "Ultra-lightweight open-back aluminum bullet with expansive acoustic air.",
+    "sound_summary": "Wide, airy staging with transparent vocals and crisp treble, backed by rear-vented pressure relief.",
+    "takeaway": "One of the few open-back bullet IEMs on the market. Weighing only 3.8g, its rear metal mesh vents relieve all ear canal suction pressure and produce an airy, wide presentation that punches way above its price. Note the 6.2mm lipless nozzle: use snug tips.",
+    "fit_verdict": "6.2mm wide lipless nozzle • Requires grippy tips (Dunu S&S or Final E) to prevent slippage.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Open-Back Vented Bullet",
+        "url": "assets/images/tinhifi-c0-clean.jpg"
+      }
+    ]
+  },
+  {
+    "id": "moondrop-lan",
+    "name": "Moondrop LAN",
+    "brand": "Moondrop",
+    "release_year": "2023-2024",
+    "status": "Active",
+    "price_usd_msrp": 39.99,
+    "price_eur_amazon": 42.0,
+    "price_eur_ali_choice": 37.0,
+    "price_eur_ali_1111": 31.0,
+    "driver_type": "1DD",
+    "driver_detail": "10mm Beryllium-plated dome composite diaphragm dual-cavity dynamic driver with N52 magnet",
+    "sound_signature": "VDSF Neutral Reference / Pure Timbre",
+    "sound_description": "Disciplined, uncolored reference tuning following Moondrop VDSF target. Lean, clean bass, organic vocal decay, and linear treble.",
+    "nozzle_diameter_mm": 5.9,
+    "nozzle_warning": "No",
+    "comfort_rating": 8.9,
+    "build_material": "MIM (Metal Injection Molding) stainless steel shell with matte bead-blasted finish",
+    "connection": "3.5mm",
+    "cable_detail": "Detachable 0.78mm 2-pin silver-plated copper low-profile cable",
+    "accessories_included": "Storage pouch, 3 pairs silicone ear tips, manual",
+    "accessories_rating": 7.8,
+    "qc_and_known_issues": "Solid stainless steel construction with zero paint chipping; lean sub-bass may feel light for bassheads.",
+    "gaming_score": 8.3,
+    "community_score": 8.5,
+    "crinacle_rank": "C+ (Solid Reference)",
+    "super_review_rating": "Clean Neutral Benchmark",
+    "jays_audio_rating": "Balanced Vocal Specialist",
+    "target_personas": [
+      "Acoustic & Vocals",
+      "High Detail & Resolution",
+      "Built Like a Tank"
+    ],
+    "verified_stores": [
+      {
+        "name": "ShenzhenAudio",
+        "url": "https://shenzhenaudio.com/pages/search-results-page?q=Moondrop+LAN"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Moondrop+LAN"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/wholesale?SearchText=Moondrop+LAN"
+      }
+    ],
+    "notes": "Moondrop stainless steel reference benchmark, sitting cleanly between the budget Chu II and the mid-tier Aria 2.",
+    "image": "assets/images/moondrop-lan.jpg",
+    "tagline": "MIM stainless steel shell with beryllium dome acoustic precision.",
+    "sound_summary": "Neutral, natural, and transparent with uncolored vocal timbre and fatigue-free treble.",
+    "takeaway": "For listeners who find typical budget IEMs too bass-heavy or boomy, the LAN provides a clean breath of fresh air. Its beryllium-plated dome offers crisp, authentic instrument timbre and uncolored vocal reproduction encased in high-durability stainless steel.",
+    "fit_verdict": "5.9mm nozzle at lip • Compact, rounded stainless steel housing fits comfortably.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "MIM Stainless Steel Housing",
+        "url": "assets/images/moondrop-lan.jpg"
+      }
+    ]
+  },
+  {
+    "id": "kiwi-ears-belle",
+    "name": "Kiwi Ears Belle",
+    "brand": "Kiwi Ears",
+    "release_year": "2024-2025",
+    "status": "Active",
+    "price_usd_msrp": 28.0,
+    "price_eur_amazon": 28.0,
+    "price_eur_ali_choice": 23.0,
+    "price_eur_ali_1111": 18.5,
+    "driver_type": "1DD",
+    "driver_detail": "10mm Diamond-Like Carbon (DLC) dynamic driver with high-efficiency neodymium magnetic circuit",
+    "sound_signature": "Warm Bass-Forward / Relaxed Smooth",
+    "sound_description": "Authoritative sub-bass impact, punchy mid-bass rhythm, natural warm vocals, and relaxed treble that eliminates all fatigue.",
+    "nozzle_diameter_mm": 6.2,
+    "nozzle_warning": "No",
+    "comfort_rating": 9.0,
+    "build_material": "Featherweight 3D resin shell with brushed CNC metal faceplate",
+    "connection": "3.5mm or USB-C",
+    "cable_detail": "Detachable 0.78mm 2-pin copper cable with optional in-line mic and USB-C DSP edition",
+    "accessories_included": "Silicone ear tips (S/M/L), detachable cable, user guide",
+    "accessories_rating": 7.2,
+    "qc_and_known_issues": "Lightweight construction with good resin finish; relaxed treble may lack absolute micro-detail for analytical critical listening.",
+    "gaming_score": 8.0,
+    "community_score": 8.4,
+    "crinacle_rank": "Unranked (Community Favorite)",
+    "super_review_rating": "Fun Relaxed Budget Pick",
+    "jays_audio_rating": "Punchy Everyday Daily Driver",
+    "target_personas": [
+      "Warm & Bass Heavy",
+      "Casual Everyday",
+      "Smartphone DSP / No Jack"
+    ],
+    "verified_stores": [
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/search?q=Kiwi+Ears+Belle"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Kiwi+Ears+Belle"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/wholesale?SearchText=Kiwi+Ears+Belle"
+      }
+    ],
+    "notes": "Kiwi Ears sub-€30 consumer bass-first daily driver, offering DLC diaphragm transient punch and smooth non-fatiguing highs.",
+    "image": "assets/images/kiwi-ears-belle.jpg",
+    "tagline": "Featherweight resin shell with 10mm DLC bass punch and zero-fatigue highs.",
+    "sound_summary": "Muscular, warm bass slam with natural vocal body and relaxed, non-fatiguing treble.",
+    "takeaway": "Designed for pure musical enjoyment and everyday use. The 10mm DLC driver produces tight, physical bass impact for hip-hop, electronic, and pop, while the smoothed treble guarantees you can listen for 6 hours straight without ear fatigue.",
+    "fit_verdict": "6.2mm nozzle at lip • Compact ergonomic resin shell sits flush with the ear.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Resin Shell & Brushed Alloy",
+        "url": "assets/images/kiwi-ears-belle.jpg"
       }
     ]
   }
