@@ -449,9 +449,9 @@ async def run_e2e_tests():
             dacs_visible = await page.locator("#toolkit-panel-dacs").is_visible()
             tips_now_hidden = not await page.locator("#toolkit-panel-tips").is_visible()
             apple_dongle_present = await page.locator("#toolkit-panel-dacs h4:has-text('Apple USB-C')").is_visible()
-            jcally_present = await page.locator("#toolkit-panel-dacs h4:has-text('Jcally JA11')").is_visible()
-            if dacs_visible and tips_now_hidden and apple_dongle_present and jcally_present:
-                record_pass("Dongle DACs tab activated, displaying Apple Dongle & Jcally JA11 PEQ cards")
+            fiio_ja11_present = await page.locator("#toolkit-panel-dacs h4:has-text('FiiO JA11')").is_visible()
+            if dacs_visible and tips_now_hidden and apple_dongle_present and fiio_ja11_present:
+                record_pass("Dongle DACs tab activated, displaying Apple Dongle & FiiO JA11 PEQ cards")
             else:
                 record_fail("DACs tab switch", f"DACS vis: {dacs_visible}, Tips hidden: {tips_now_hidden}")
 
