@@ -465,10 +465,12 @@ async def run_e2e_tests():
             tips_now_hidden = not await page.locator("#toolkit-panel-tips").is_visible()
             apple_dongle_present = await page.locator("#toolkit-panel-dacs h4:has-text('Apple USB-C')").is_visible()
             fiio_ja11_present = await page.locator("#toolkit-panel-dacs h4:has-text('FiiO JA11')").is_visible()
-            if dacs_visible and tips_now_hidden and apple_dongle_present and fiio_ja11_present:
-                record_pass("Dongle DACs tab activated, displaying Apple Dongle & FiiO JA11 PEQ cards")
+            jm12_present = await page.locator("#toolkit-panel-dacs h4:has-text('JCALLY JM12')").is_visible()
+            flash_hack_present = await page.locator("#toolkit-panel-dacs span:has-text('Cross-Flashing the JCALLY JM12')").is_visible()
+            if dacs_visible and tips_now_hidden and apple_dongle_present and fiio_ja11_present and jm12_present and flash_hack_present:
+                record_pass("Dongle DACs tab activated, displaying Apple Dongle, FiiO JA11, JCALLY JM12, and PEQ cross-flashing hack")
             else:
-                record_fail("DACs tab switch", f"DACS vis: {dacs_visible}, Tips hidden: {tips_now_hidden}")
+                record_fail("DACs tab switch", f"DACS vis: {dacs_visible}, Tips hidden: {tips_now_hidden}, JM12: {jm12_present}, Flash: {flash_hack_present}")
 
             # Click Codecs & FLAC tab
             await page.click(".toolkit-tab-btn[data-target='toolkit-panel-codecs']")
