@@ -131,6 +131,13 @@ async def run_e2e_tests():
             else:
                 record_fail("Card product images", f"Found {images_ok['badCount']} broken images: {images_ok['badSources']}")
 
+            # Check that every single IEM card displays the dedicated Acoustic & Fit Profile box
+            acoustic_boxes = await page.locator("#cards-view span:has-text('Acoustic & Fit Profile:')").count()
+            if acoustic_boxes == 30:
+                record_pass("All 30 IEM cards render dedicated 'Acoustic & Fit Profile:' breakdown")
+            else:
+                record_fail("Acoustic profile count", f"Expected 30 cards with profile, got {acoustic_boxes}")
+
             # -----------------------------------------------------------------
             # TEST 2: Search Functionality
             # -----------------------------------------------------------------
@@ -438,10 +445,18 @@ async def run_e2e_tests():
 
             # Verify initial Tips panel is visible
             tips_visible = await page.locator("#toolkit-panel-tips").is_visible()
-            if tips_visible:
-                record_pass("Ear Tips panel is active by default with SpinFit, Sancai, and S&S")
+            divinus_present = await page.locator("#toolkit-panel-tips h4:has-text('Divinus Velvet')").is_visible()
+            softears_present = await page.locator("#toolkit-panel-tips h4:has-text('Softears Ultra Clear')").is_visible()
+            hs18_present = await page.locator("#toolkit-panel-tips h4:has-text('FiiO HS18')").is_visible()
+            dunu_present = await page.locator("#toolkit-panel-tips h4:has-text('DUNU S&S')").is_visible()
+            spinfit_present = await page.locator("#toolkit-panel-tips h4:has-text('SpinFit')").is_visible()
+            figma_chart = await page.locator("#toolkit-panel-tips a[href*='figma.com']").is_visible()
+            yt_tips = await page.locator("#toolkit-panel-tips a[href*='D9l-RGcCD7o']").is_visible()
+
+            if tips_visible and divinus_present and softears_present and hs18_present and dunu_present and spinfit_present and figma_chart and yt_tips:
+                record_pass("Ear Tips panel is active by default with Wave Guide benchmarks (Divinus, Softears, HS18, S&S, SpinFit), Figma link, and video")
             else:
-                record_fail("Tips panel default", "Ear Tips panel was not visible")
+                record_fail("Tips panel default", f"Vis: {tips_visible}, Divinus: {divinus_present}, Softears: {softears_present}, HS18: {hs18_present}, Figma: {figma_chart}, YT: {yt_tips}")
 
             # Click Dongle DACs tab
             await page.click(".toolkit-tab-btn[data-target='toolkit-panel-dacs']")
@@ -529,12 +544,23 @@ async def run_e2e_tests():
             await page.wait_for_timeout(200)
             mics_visible = await page.locator("#toolkit-panel-mics").is_visible()
             ruyi_present = await page.locator("#toolkit-panel-mics h4:has-text('Kinera Celest Ruyi')").is_visible()
+            redchain_present = await page.locator("#toolkit-panel-mics h4:has-text('TRN RedChain Plus')").is_visible()
+            grace_present = await page.locator("#toolkit-panel-mics h4:has-text('Tripowin Grace')").is_visible()
+            dsp_present = await page.locator("#toolkit-panel-mics h4:has-text('USB-C DSP Cables')").is_visible()
             boompro_present = await page.locator("#toolkit-panel-mics h4:has-text('V-MODA BoomPro')").is_visible()
             trrs_present = await page.locator("#toolkit-panel-mics h4:has-text('TRRS Pinouts')").is_visible()
-            if mics_visible and ruyi_present and boompro_present and trrs_present:
-                record_pass("Mic Lab tab activated with Kinera Celest Ruyi, V-MODA BoomPro, and TRRS/DAC guide")
+
+            amber_level_border = await page.locator("#toolkit-panel-mics .border-amber-400\\/40").count()
+
+            if mics_visible and ruyi_present and redchain_present and grace_present and dsp_present and boompro_present and trrs_present:
+                record_pass("Mic Lab tab activated with expanded IEM mic options (Ruyi, RedChain Plus, Grace, DSP) and V-MODA")
             else:
-                record_fail("Mic Lab tab switch", f"Vis: {mics_visible}, Ruyi: {ruyi_present}, BoomPro: {boompro_present}, TRRS: {trrs_present}")
+                record_fail("Mic Lab tab switch", f"Vis: {mics_visible}, Ruyi: {ruyi_present}, RedChain: {redchain_present}, Grace: {grace_present}, DSP: {dsp_present}, BoomPro: {boompro_present}, TRRS: {trrs_present}")
+
+            if amber_level_border == 0:
+                record_pass("Vocal hierarchy levels have uniform un-biased borders")
+            else:
+                record_fail("Vocal hierarchy border check", f"Found {amber_level_border} level cards with amber highlight border")
 
             # Click Care & Storage tab
             await page.click(".toolkit-tab-btn[data-target='toolkit-panel-care']")
@@ -542,11 +568,13 @@ async def run_e2e_tests():
             care_visible = await page.locator("#toolkit-panel-care").is_visible()
             roadie_wrap = await page.locator("#toolkit-panel-care h4:has-text('Roadie Wrap')").is_visible()
             silica_gel = await page.locator("#toolkit-panel-care h4:has-text('Silica Gel')").is_visible()
-            yt_link = await page.locator("#toolkit-panel-care a[href='https://www.youtube.com/watch?v=_fsvANAT3yg']").is_visible()
-            if care_visible and roadie_wrap and silica_gel and yt_link:
-                record_pass("Care & Storage tab activated with Roadie Wrap, Super* Review YouTube guide, and Silica Gel")
+            roadie_yt = await page.locator("#toolkit-panel-care a[href='https://www.youtube.com/watch?v=_fsvANAT3yg']").is_visible()
+            forever_yt = await page.locator("#toolkit-panel-care a[href='https://www.youtube.com/watch?v=lKsX_WVyFXg']").first.is_visible()
+
+            if care_visible and roadie_wrap and silica_gel and roadie_yt and forever_yt:
+                record_pass("Care & Storage tab activated with Forever IEMs masterclass, Roadie Wrap tutorial, and Silica Gel")
             else:
-                record_fail("Care tab switch", f"Care vis: {care_visible}, Roadie: {roadie_wrap}, YT: {yt_link}, Silica: {silica_gel}")
+                record_fail("Care tab switch", f"Care vis: {care_visible}, Wrap: {roadie_wrap}, ForeverYT: {forever_yt}, RoadieYT: {roadie_yt}, Silica: {silica_gel}")
 
             # -----------------------------------------------------------------
             # TEST 11: Responsiveness & Screenshots
@@ -627,11 +655,11 @@ async def run_e2e_tests():
             else:
                 record_fail("Headphones bench section", "Section not visible")
 
-            hp_cards = await page.locator("#headphones-bench .grid > div").count()
-            if hp_cards >= 10:
-                record_pass(f"Rendered {hp_cards} budget headphone benchmark cards")
+            hp_cards = await page.locator("#headphones-bench .grid:last-of-type > div").count()
+            if hp_cards == 10:
+                record_pass(f"Rendered exact {hp_cards} budget headphone benchmark cards (< €100)")
             else:
-                record_fail("Headphone card count", f"Expected >= 10, got {hp_cards}")
+                record_fail("Headphone card count", f"Expected 10, got {hp_cards}")
 
             # Verify key models in the headphone bench
             eh11_vis = await page.locator("#headphones-bench h3:has-text('FiiO EH11')").is_visible()
@@ -639,12 +667,32 @@ async def run_e2e_tests():
             jt1_vis = await page.locator("#headphones-bench h3:has-text('FiiO JT1')").is_visible()
             old_fashioned_vis = await page.locator("#headphones-bench h3:has-text('Moondrop Old Fashioned')").is_visible()
             ksc75_vis = await page.locator("#headphones-bench h3:has-text('Koss KSC75')").is_visible()
-            haylou_vis = await page.locator("#headphones-bench h3:has-text('Haylou PurFree BC01')").is_visible()
 
-            if eh11_vis and eh13_vis and jt1_vis and old_fashioned_vis and ksc75_vis and haylou_vis:
-                record_pass("Key headphone benchmarks (FiiO EH11, EH13, JT1, Moondrop Old Fashioned, Koss KSC75, Haylou BC01) verified")
+            if eh11_vis and eh13_vis and jt1_vis and old_fashioned_vis and ksc75_vis:
+                record_pass("Key headphone benchmarks (FiiO EH11, EH13, JT1, Moondrop Old Fashioned, Koss KSC75) verified")
             else:
-                record_fail("Key headphone models check", f"EH11: {eh11_vis}, EH13: {eh13_vis}, JT1: {jt1_vis}, OldFashioned: {old_fashioned_vis}, KSC75: {ksc75_vis}, Haylou: {haylou_vis}")
+                record_fail("Key headphone models check", f"EH11: {eh11_vis}, EH13: {eh13_vis}, JT1: {jt1_vis}, OldFashioned: {old_fashioned_vis}, KSC75: {ksc75_vis}")
+
+            # -----------------------------------------------------------------
+            # TEST 12B: Dedicated Bone Conduction & Open-Ear Bench
+            # -----------------------------------------------------------------
+            print("\n[Test 12B] Dedicated Bone Conduction Bench")
+            bone_section = await page.locator("#bone-conduction-bench").is_visible()
+            if bone_section:
+                record_pass("Bone conduction bench section (#bone-conduction-bench) is visible")
+            else:
+                record_fail("Bone conduction bench section", "Section not visible")
+
+            bone_cards = await page.locator("#bone-conduction-bench .grid:last-of-type > div").count()
+            shokz_run = await page.locator("#bone-conduction-bench h3:has-text('Shokz OpenRun')").first.is_visible()
+            shokz_pro2 = await page.locator("#bone-conduction-bench h3:has-text('Shokz OpenRun Pro 2')").is_visible()
+            haylou_bc01 = await page.locator("#bone-conduction-bench h3:has-text('Haylou PurFree BC01')").is_visible()
+            haylou_amazon = await page.locator("#bone-conduction-bench a[href*='amazon.de/s?k=Haylou+PurFree+BC01']").is_visible()
+
+            if bone_cards >= 3 and shokz_run and shokz_pro2 and haylou_bc01 and haylou_amazon:
+                record_pass("Bone conduction bench correctly showcases Shokz OpenRun, OpenRun Pro 2, and Haylou BC01 (Amazon.de / Official link)")
+            else:
+                record_fail("Bone conduction cards", f"Count: {bone_cards}, OpenRun: {shokz_run}, Pro2: {shokz_pro2}, Haylou: {haylou_bc01}, AmazonLink: {haylou_amazon}")
 
             # -----------------------------------------------------------------
             # TEST 13: Original TinHiFi C2, Waner variants & QCY MeloBuds Disambiguation

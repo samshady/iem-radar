@@ -443,21 +443,21 @@
               <div class="aspect-[4/3] bg-studio-950 rounded-xl overflow-hidden mb-4 relative cursor-pointer border border-studio-border/60 flex items-center justify-center p-3" onclick="openModal('${iem.id}')">
                 <img src="${iem.image || 'assets/images/' + iem.id + '.jpg'}" alt="${iem.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
                 
-                <!-- Badge on Image -->
+                <!-- Badge on Image (High Contrast Frosted Backdrop) -->
                 <div class="absolute top-2.5 left-2.5">
                   ${iem.nozzle_diameter_mm > 6.0 ? `
-                    <span class="px-2.5 py-0.5 rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-mono font-bold">
+                    <span class="px-2.5 py-1 rounded-md bg-studio-950/95 backdrop-blur-md text-rose-300 border border-rose-500/50 shadow-md text-xs font-mono font-bold">
                       ⚠️ 6.2mm Nozzle
                     </span>
                   ` : isSmallEarSafe ? `
-                    <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-mono font-bold">
+                    <span class="px-2.5 py-1 rounded-md bg-studio-950/95 backdrop-blur-md text-emerald-300 border border-emerald-500/50 shadow-md text-xs font-mono font-bold">
                       🌸 Small Ear Safe
                     </span>
                   ` : ''}
                 </div>
 
                 <!-- Favorite Bookmark Button -->
-                <button type="button" onclick="toggleShortlist('${iem.id}', event)" aria-label="Save to shortlist" class="absolute top-2.5 right-2.5 w-8 h-8 rounded-lg flex items-center justify-center transition ${isFavorited ? 'bg-amber-400 text-black shadow-md' : 'bg-studio-900/80 hover:bg-studio-800 text-slate-300 hover:text-amber-400'} border border-studio-border btn-tactile">
+                <button type="button" onclick="toggleShortlist('${iem.id}', event)" aria-label="Save to shortlist" class="absolute top-2.5 right-2.5 w-8 h-8 rounded-lg flex items-center justify-center transition ${isFavorited ? 'bg-amber-400 text-black shadow-md' : 'bg-studio-950/95 backdrop-blur-md hover:bg-studio-800 text-slate-200 hover:text-amber-400 border border-studio-border/90 shadow-md'} btn-tactile">
                   <i class="fa-${isFavorited ? 'solid' : 'regular'} fa-bookmark text-sm"></i>
                 </button>
               </div>
@@ -478,16 +478,20 @@
                 </span>
               </div>
 
+              <!-- Dedicated Acoustic Sound Profile Box -->
+              <div class="mt-3 bg-studio-950 p-3 rounded-xl border border-studio-border/60 space-y-1.5 text-xs font-sans">
+                <div class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <i class="fa-solid fa-wave-square text-xs"></i>
+                  <span>Acoustic &amp; Fit Profile:</span>
+                </div>
+                <p class="text-slate-300 leading-relaxed"><strong class="text-white font-mono">Sound:</strong> ${iem.sound_description || iem.sound_summary || iem.sound_signature}</p>
+                <p class="text-slate-300 leading-relaxed"><strong class="text-white font-mono">Fit / Nozzle:</strong> ${iem.fit_verdict || (iem.nozzle_diameter_mm + 'mm nozzle')}</p>
+              </div>
+
               <!-- Human Takeaway Copy -->
-              <p class="text-sm text-slate-200 mt-3 leading-relaxed font-sans line-clamp-4">
+              <p class="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed font-sans line-clamp-3">
                 ${iem.takeaway || iem.sound_description}
               </p>
-
-              <!-- Fit Verdict -->
-              <div class="text-xs font-mono text-slate-300 mt-3 flex items-center gap-1.5">
-                <i class="fa-solid fa-ruler-horizontal text-sky-400"></i>
-                <span class="truncate">${iem.fit_verdict || (iem.nozzle_diameter_mm + 'mm nozzle')}</span>
-              </div>
 
               ${hasNote ? `
                 <div class="mt-3 text-sm p-2.5 rounded-lg bg-amber-400/10 text-amber-200 border border-amber-400/20 italic">
