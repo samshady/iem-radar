@@ -531,13 +531,13 @@ async def run_e2e_tests():
             await page.click(".toolkit-tab-btn[data-target='toolkit-panel-bone']")
             await page.wait_for_timeout(200)
             bone_visible = await page.locator("#toolkit-panel-bone").is_visible()
-            sub80_present = await page.locator("#toolkit-panel-bone h4:has-text('Sub-Bass Barrier')").is_visible()
-            dualpitch_present = await page.locator("#toolkit-panel-bone h4:has-text('Hybrid Bone + Air')").is_visible()
-            haylou_present = await page.locator("#toolkit-panel-bone h4:has-text('Haylou PurFree BC01')").is_visible()
-            if bone_visible and sub80_present and dualpitch_present and haylou_present:
-                record_pass("Bone Conduction tab activated with Sub-Bass physics, Shokz DualPitch, and Haylou BC01")
+            impedance_present = await page.locator("#toolkit-panel-bone h4:has-text('Cranial Acoustic Impedance')").is_visible()
+            leakage_present = await page.locator("#toolkit-panel-bone h4:has-text('Sound Leakage & Anti-Phase')").is_visible()
+            transducer_present = await page.locator("#toolkit-panel-bone h4:has-text('True Transducers vs Air')").is_visible()
+            if bone_visible and impedance_present and leakage_present and transducer_present:
+                record_pass("Bone Conduction tab activated with Cranial Impedance, Anti-Phase LeakSlayer, and Transducer Reality")
             else:
-                record_fail("Bone Conduction tab switch", f"Vis: {bone_visible}, Sub80: {sub80_present}, DualPitch: {dualpitch_present}, Haylou: {haylou_present}")
+                record_fail("Bone Conduction tab switch", f"Vis: {bone_visible}, Imp: {impedance_present}, Leak: {leakage_present}, Trans: {transducer_present}")
 
             # Click Mic Lab tab
             await page.click(".toolkit-tab-btn[data-target='toolkit-panel-mics']")
