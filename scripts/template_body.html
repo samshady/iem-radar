@@ -1183,7 +1183,7 @@
             </div>
           </div>
 
-          <!-- FiiO JA11 -->
+          <!-- FiiO JA11 & JCALLY JM12 -->
           <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
             <div class="space-y-2">
               <div class="flex items-center justify-between">
@@ -1192,7 +1192,7 @@
               </div>
               <h4 class="text-base font-display font-bold text-white">FiiO JA11 (FiiO x JadeAudio DSP)</h4>
               <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-                The official €12 to €15 dongle developed by FiiO and JadeAudio (often confused with JCally, whose JM12 shares the same KT02H20 chip). Features custom Parametric EQ managed through the FiiO Control app, saving custom frequency curves straight to hardware.
+                Developed by FiiO and JadeAudio using the KTMicro KT02H20 DSP SoC. Features custom Parametric EQ managed through the FiiO Control app, saving custom frequency curves straight to hardware.
               </p>
               <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border/60 text-xs font-mono text-slate-300">
                 <span class="text-emerald-400 font-semibold">Hardware-resident EQ:</span>
@@ -1202,6 +1202,28 @@
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
               <span>Jack: 3.5mm Single-Ended</span>
               <span class="text-amber-400 font-semibold">FiiO Control App PEQ</span>
+            </div>
+          </div>
+
+          <!-- JCALLY JM12 -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">Ultra-Budget (~€7 to €10)</span>
+                <span class="text-xs font-mono text-emerald-300 font-semibold">KT02H20 Chip</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">JCALLY JM12 (KTMicro KT02H20)</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                JCALLY's ultra-cheap dongle built around the exact same KTMicro KT02H20 SoC found in the FiiO JA11. Decodes up to 32-bit/384kHz and DSD128, delivers ~27.5mW @ 32 ohms with full microphone CTIA support.
+              </p>
+              <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border/60 text-xs font-mono text-slate-300 space-y-1">
+                <span class="text-cyan-300 font-semibold block">Chip Anatomy &amp; Firmware:</span>
+                <span>Shares silicon with JA11. Community members cross-flash JA11 firmware onto the JM12 to unlock 5-band PEQ on an ultra-budget sub-€10 cable.</span>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>Architecture: KT02H20 SoC</span>
+              <span class="text-emerald-400 font-semibold">Microphone &amp; CTIA In</span>
             </div>
           </div>
 
@@ -1266,6 +1288,70 @@
               If you dislike carrying a separate dongle, sets like <strong>Moondrop May</strong>, <strong>Tanchjim Bunny DSP</strong>, or aftermarket cables like <strong>Moondrop FreeDSP</strong> embed the DAC and interactive parametric EQ straight into the USB-C cable connector.
             </p>
           </div>
+        </div>
+
+        <!-- DAC Chipset Architecture & Comparison Guide -->
+        <div class="bg-gradient-to-r from-studio-950 via-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-3 text-xs font-mono">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5 text-cyan-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-microchip"></i>
+              <span>DAC Silicon Architecture: How the Chips Differ &amp; Which to Pick</span>
+            </div>
+            <span class="text-slate-400">KT02H20 vs CX31993 vs CS43131 vs ES9318C</span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-studio-border text-slate-400 uppercase font-mono">
+                  <th class="py-2 pr-3">Chip Family</th>
+                  <th class="py-2 px-3">Key Models</th>
+                  <th class="py-2 px-3">Power &amp; Vrms (32Ω)</th>
+                  <th class="py-2 px-3">SNR / Noise Floor</th>
+                  <th class="py-2 px-3">Sonic Signature</th>
+                  <th class="py-2 pl-3">Hardware PEQ</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-studio-border/50 text-slate-300 font-sans">
+                <tr>
+                  <td class="py-2.5 pr-3 font-mono font-bold text-amber-300">KTMicro KT02H20</td>
+                  <td class="py-2.5 px-3 font-mono">FiiO JA11, JCALLY JM12</td>
+                  <td class="py-2.5 px-3 font-mono">~28mW (0.95 Vrms)</td>
+                  <td class="py-2.5 px-3">112 dB • Very quiet</td>
+                  <td class="py-2.5 px-3">Smooth, balanced, slightly relaxed edges</td>
+                  <td class="py-2.5 pl-3 text-emerald-400 font-mono font-semibold">Yes (5-Band Onboard)</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 pr-3 font-mono font-bold text-sky-300">Conexant CX31993 + Amp</td>
+                  <td class="py-2.5 px-3 font-mono">JCALLY JM6 Pro, JM7</td>
+                  <td class="py-2.5 px-3 font-mono">60-70mW (1.4 Vrms)</td>
+                  <td class="py-2.5 px-3">124 dB • High dynamic punch</td>
+                  <td class="py-2.5 px-3">Crisp, energetic, punchy bass attack</td>
+                  <td class="py-2.5 pl-3 text-slate-400 font-mono">No (Fixed DAC)</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 pr-3 font-mono font-bold text-rose-300">Cirrus Logic CS43131</td>
+                  <td class="py-2.5 px-3 font-mono">FiiO KA11, Dawn Pro, JM10/20</td>
+                  <td class="py-2.5 px-3 font-mono">Up to 200mW (KA11)</td>
+                  <td class="py-2.5 px-3">≥120 dB • Pitch-black silence</td>
+                  <td class="py-2.5 px-3">Natural, organic midrange, airy extension</td>
+                  <td class="py-2.5 pl-3 text-slate-400 font-mono">No (Pure MasterHIFI)</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 pr-3 font-mono font-bold text-purple-300">ESS Sabre ES9318C</td>
+                  <td class="py-2.5 px-3 font-mono">JCALLY JM25</td>
+                  <td class="py-2.5 px-3 font-mono">~25mW (0.85 Vrms)</td>
+                  <td class="py-2.5 px-3">115 dB • High detail speed</td>
+                  <td class="py-2.5 px-3">Ultra-fast transients, clinical precision</td>
+                  <td class="py-2.5 pl-3 text-slate-400 font-mono">No (Fixed DAC)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-slate-400 text-xs font-sans leading-relaxed pt-1">
+            <strong>Key Takeaway:</strong> If you want custom frequency tuning saved to hardware that works on any device (iPhone, Nintendo Switch, work laptop), pick the <strong>KT02H20 (FiiO JA11 / JM12)</strong>. If you need extra voltage swing for planar IEMs or full-size headphones under €20, pick the <strong>Conexant CX31993 with MAX97220 op-amp (JM6 Pro)</strong>. For pure uncolored audiophile transparency and 200mW desktop-class power, step up to the <strong>Cirrus CS43131 (KA11 / Dawn Pro)</strong>.
+          </p>
         </div>
       </div>
 
@@ -1796,7 +1882,7 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 text-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
           <!-- Bluetooth Latency & Audio Buffering -->
           <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
             <div class="space-y-2">
@@ -1861,11 +1947,33 @@
               <h4 class="text-base font-display font-bold text-white">TWS Battery Reality &amp; Longevity</h4>
               <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
                 Unlike wired earphones that last a decade with replaceable cables, all TWS earbuds use glued-in 30mAh to 55mAh lithium micro-cells. Lithium battery chemistry degrades after 300 to 500 full charge cycles, yielding noticeable battery decline after 2 to 3 years. Keep this in mind when budgeting: wired IEMs are durable investments, whereas TWS earphones are consumable gadgets.
-              </p>
             </div>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
               <span>Wired: 10+ Year Lifespan</span>
               <span class="text-rose-400 font-semibold">TWS: 2 to 4 Year Lifecycle</span>
+            </div>
+          </div>
+          <!-- TWS Microphone & Voice Call Quality -->
+          <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider">Voice Comms</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">Beamforming &amp; cVc</span>
+              </div>
+              <h4 class="text-base font-display font-bold text-white">TWS Microphone &amp; Call Quality</h4>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                Why do some wireless earbuds sound muffled on phone calls? Microphones sit centimeters from your mouth rather than in front of your lips. Flagship models use 6-microphone arrays (3 per bud) with beamforming beam-steer filters and Qualcomm cVc 8.0 or AI DNN noise algorithms to isolate voice frequencies while subtracting traffic and wind roar.
+              </p>
+              <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border/60 text-xs font-mono text-slate-300 space-y-1">
+                <span class="text-amber-300 font-semibold block">TWS Mic Standouts:</span>
+                <span>• <strong>EarFun Air Pro 4:</strong> 6-mic array + Qualcomm cVc 8.0 AI wind cancellation. Outstanding call clarity.</span><br>
+                <span>• <strong>QCY MeloBuds N70 / Pro:</strong> 6 mics with anti-wind aerodynamic mesh channel for clean outdoor speech.</span><br>
+                <span>• <strong>Moondrop Space Travel 2:</strong> Upgraded on-chip AI NPU for voice suppression over original Space Travel.</span>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
+              <span>6-Mic Beamforming / AI DNN</span>
+              <span class="text-rose-400 font-semibold">Wind &amp; Traffic Filtering</span>
             </div>
           </div>
         </div>
@@ -1884,50 +1992,20 @@
           </p>
         </div>
 
-        <!-- 3 Diagnostic Tests Grid -->
-        <div class="bg-gradient-to-r from-studio-950 via-studio-900 to-studio-950 p-4 sm:p-5 rounded-2xl border border-studio-border grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono leading-relaxed">
-          <div class="space-y-1.5">
-            <div class="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
-              <i class="fa-solid fa-plug"></i>
-              <span>Test 1: Earplug Occlusion</span>
-            </div>
-            <p class="text-slate-300 font-sans text-xs">
-              Plug both ears with foam tips. Real bone conduction gets <strong>louder with richer bass</strong>. If audio dies, they are fake air speakers.
-            </p>
-          </div>
-          <div class="space-y-1.5 border-t md:border-t-0 md:border-l border-studio-border pt-3 md:pt-0 md:pl-4">
-            <div class="flex items-center gap-1.5 text-cyan-400 font-bold uppercase tracking-wider">
-              <i class="fa-solid fa-arrows-up-down"></i>
-              <span>Test 2: The 2mm Hover</span>
-            </div>
-            <p class="text-slate-300 font-sans text-xs">
-              Lift pads 2mm off your skin. True bone conduction drops by 90% volume. Air speakers keep playing normally into the room.
-            </p>
-          </div>
-          <div class="space-y-1.5 border-t md:border-t-0 md:border-l border-studio-border pt-3 md:pt-0 md:pl-4">
-            <div class="flex items-center gap-1.5 text-emerald-400 font-bold uppercase tracking-wider">
-              <i class="fa-solid fa-table"></i>
-              <span>Test 3: Table Resonance</span>
-            </div>
-            <p class="text-slate-300 font-sans text-xs">
-              Place pods flat on a wooden desk. A real transducer turns the wood into a loud speaker soundboard.
-            </p>
-          </div>
-        </div>
-
+        <!-- Bone Conduction Engineering & Acoustic Physics -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
-          <!-- The Sub-80Hz Barrier & Cheek Tickle -->
+          <!-- 1. The Sub-80Hz Barrier & Cheek Tickle -->
           <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
             <div class="space-y-2">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">Acoustic Physics</span>
                 <span class="text-xs font-mono text-slate-300 font-semibold">Sub-80Hz Limit</span>
               </div>
-              <h4 class="text-base font-display font-bold text-white">The Sub-Bass Barrier &amp; Cheek Tickle</h4>
+              <h4 class="text-base font-display font-bold text-white">Cranial Acoustic Impedance</h4>
               <ul class="text-slate-300 text-xs space-y-1.5 font-sans leading-relaxed">
-                <li><strong class="text-white font-mono">Bone Impedance:</strong> Skull bone resists bass waves 10x more than open air.</li>
-                <li><strong class="text-white font-mono">Cheek Tickle:</strong> Frequencies below 80Hz require violent transducer shaking, causing itchy skin fatigue.</li>
-                <li><strong class="text-white font-mono">Acoustic Filter:</strong> Quality transducers deliberately roll off sub-bass to protect facial comfort.</li>
+                <li><strong class="text-white font-mono">Bone vs Air:</strong> Skull bone requires 10x more vibrational energy to conduct sound waves than air.</li>
+                <li><strong class="text-white font-mono">The Tickle Threshold:</strong> Sub-bass frequencies below 80Hz require violent transducer excursions that cause itchy skin irritation.</li>
+                <li><strong class="text-white font-mono">Tuning Compromise:</strong> True bone conduction intentionally filters out sub-bass rumble to preserve comfort during long workouts.</li>
               </ul>
             </div>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
@@ -1936,43 +2014,43 @@
             </div>
           </div>
 
-          <!-- Hybrid DualPitch Innovation (OpenRun Pro 2) -->
+          <!-- 2. Acoustic Leakage & Anti-Sound Phase Inversion -->
           <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
             <div class="space-y-2">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">Hybrid Architecture</span>
-                <span class="text-xs font-mono text-slate-300 font-semibold">DualPitch Tech</span>
+                <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">Privacy Tech</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">LeakSlayer DSP</span>
               </div>
-              <h4 class="text-base font-display font-bold text-white">Hybrid Bone + Air Conduction</h4>
+              <h4 class="text-base font-display font-bold text-white">Sound Leakage &amp; Anti-Phase Vents</h4>
               <ul class="text-slate-300 text-xs space-y-1.5 font-sans leading-relaxed">
-                <li><strong class="text-white font-mono">Split Drivers:</strong> Bone transducer handles mids and treble; air mini-woofer handles bass.</li>
-                <li><strong class="text-white font-mono">Result:</strong> True tactile punch down to 50Hz without any cheekbone buzzing.</li>
-                <li><strong class="text-white font-mono">Modern Perks:</strong> USB-C charging, 12h battery life, and AI wind-noise rejection.</li>
+                <li><strong class="text-white font-mono">The Leakage Dilemma:</strong> Any physical vibration shaking your skull also vibrates surrounding ambient air.</li>
+                <li><strong class="text-white font-mono">Phase Cancellation:</strong> Shokz LeakSlayer uses dedicated acoustic micro-slits emitting 180-degree reversed sound to cancel airborne leakage.</li>
+                <li><strong class="text-white font-mono">Cheap Clones:</strong> Generic sub-€30 AliExpress models omit anti-phase cancellation, broadcasting your phone calls to everyone around you.</li>
               </ul>
             </div>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
-              <span>Dual Driver Path</span>
-              <span class="text-cyan-400 font-semibold">Bass Without Buzzing</span>
+              <span>Anti-Phase Venting</span>
+              <span class="text-cyan-400 font-semibold">Privacy on Commutes</span>
             </div>
           </div>
 
-          <!-- The Sole Chi-Fi Contender: Haylou PurFree BC01 -->
+          <!-- 3. Piezo Transducer vs Directional Air Slits -->
           <div class="bg-studio-900 p-4 rounded-xl border border-studio-border space-y-2.5 flex flex-col justify-between hover:border-slate-500 transition">
             <div class="space-y-2">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">The Chi-Fi Exception</span>
-                <span class="text-xs font-mono text-slate-300 font-semibold">~€55 to €69</span>
+                <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider">Transducer Anatomy</span>
+                <span class="text-xs font-mono text-slate-300 font-semibold">Real vs Fake</span>
               </div>
-              <h4 class="text-base font-display font-bold text-white">Haylou PurFree BC01 (Real Deal)</h4>
+              <h4 class="text-base font-display font-bold text-white">True Transducers vs Air Micro-Speakers</h4>
               <ul class="text-slate-300 text-xs space-y-1.5 font-sans leading-relaxed">
-                <li><strong class="text-white font-mono">Sole Real Rival:</strong> The only verified budget model matching Shokz OpenMove.</li>
-                <li><strong class="text-white font-mono">Hardware:</strong> Qualcomm QCC3044 chip, aptX audio codec, and cVc 8.0 dual mics.</li>
-                <li><strong class="text-white font-mono">Durability:</strong> Full titanium memory alloy frame, sealed magnetic charge port, IP67.</li>
+                <li><strong class="text-white font-mono">Real Hardware:</strong> Sealed electromagnetic bone conduction vibrators enclosed in solid waterproof silicone pods.</li>
+                <li><strong class="text-white font-mono">The Fake Trap:</strong> 90% of sub-€25 "bone conduction" sets on AliExpress are simple open-air dynamic drivers with directional pinholes.</li>
+                <li><strong class="text-white font-mono">Verification:</strong> Earplug occlusion makes genuine bone conduction boom with louder bass; open-air speakers are instantly silenced.</li>
               </ul>
             </div>
             <div class="pt-2 border-t border-studio-border/60 text-xs font-mono text-slate-300 flex items-center justify-between">
-              <span>Authentic Shokz Rival</span>
-              <span class="text-emerald-400 font-semibold">IP67 / Qualcomm aptX</span>
+              <span>Sealed Transducers</span>
+              <span class="text-emerald-400 font-semibold">Authentic Conduction</span>
             </div>
           </div>
         </div>
