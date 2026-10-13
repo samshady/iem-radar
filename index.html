@@ -1485,6 +1485,54 @@
             <strong>Key Takeaway:</strong> If you want custom frequency tuning saved to hardware that works on any device (iPhone, Nintendo Switch, work laptop), pick the <strong>KT02H20 (FiiO JA11 / JM12)</strong>. If you need extra voltage swing for planar IEMs or full-size headphones under €20, pick the <strong>Conexant CX31993 with MAX97220 op-amp (JM6 Pro)</strong>. For pure uncolored audiophile transparency and 200mW desktop-class power, step up to the <strong>Cirrus CS43131 (KA11 / Dawn Pro)</strong>.
           </p>
         </div>
+
+        <!-- The JCALLY JM12 / FiiO JA11 Cross-Flashing Trick -->
+        <div class="bg-studio-900 p-4 sm:p-5 rounded-2xl border border-studio-border space-y-3 text-xs font-mono">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2 text-emerald-400 font-bold uppercase tracking-wider">
+              <i class="fa-solid fa-bolt"></i>
+              <span>The Sub-€10 PEQ Hack: Cross-Flashing the JCALLY JM12</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-[11px] font-bold">Community Tested</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div class="bg-studio-950 p-3 rounded-xl border border-studio-border/60 space-y-1.5">
+              <div class="text-amber-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Step 1: Identical Silicon</span>
+              </div>
+              <p class="text-slate-300 font-sans text-xs leading-relaxed">
+                Both the FiiO JA11 (~€15) and JCALLY JM12 (~€7) are built on the same <strong>KTMicro KT02H20</strong> audio processor with onboard programmable flash memory.
+              </p>
+            </div>
+
+            <div class="bg-studio-950 p-3 rounded-xl border border-studio-border/60 space-y-1.5">
+              <div class="text-cyan-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-download"></i>
+                <span>Step 2: Flash JA11 Firmware</span>
+              </div>
+              <p class="text-slate-300 font-sans text-xs leading-relaxed">
+                Using FiiO's official web/PC firmware upgrade tool, flash the official FiiO JA11 firmware binary directly onto the JM12 over USB.
+              </p>
+            </div>
+
+            <div class="bg-studio-950 p-3 rounded-xl border border-studio-border/60 space-y-1.5">
+              <div class="text-emerald-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-sliders"></i>
+                <span>Step 3: Hardware PEQ Unlocked</span>
+              </div>
+              <p class="text-slate-300 font-sans text-xs leading-relaxed">
+                The JM12 now identifies as a FiiO JA11 in the <strong>FiiO Control app</strong>. You get 5-band parametric EQ saved directly onto the dongle hardware for under €10.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-studio-950/70 border border-studio-border/50 text-slate-300 font-sans text-xs flex items-start gap-2">
+            <i class="fa-solid fa-circle-info text-cyan-400 mt-0.5 text-xs shrink-0"></i>
+            <span><strong>Why this matters:</strong> Hardware-level PEQ stays loaded inside the dongle's flash memory. When you connect it to an iPhone, Nintendo Switch, PS5, or office laptop without admin rights, your custom sound curve remains active with zero background apps running.</span>
+          </div>
+        </div>
       </div>
 
       <!-- PANEL 3: AUDIO FORMATS & CODECS GUIDE -->
