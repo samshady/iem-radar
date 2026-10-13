@@ -431,7 +431,7 @@ async def run_e2e_tests():
             print("\n[Test 10] Audiophile Gear Toolkit Interaction")
             toolkit_visible = await page.locator("#gear-toolkit").is_visible()
             tabs_count = await page.locator(".toolkit-tab-btn").count()
-            if toolkit_visible and tabs_count == 8:
+            if toolkit_visible and tabs_count == 10:
                 record_pass(f"Audiophile Gear Toolkit section is visible with {tabs_count} category tabs")
             else:
                 record_fail("Toolkit visibility", f"Vis: {toolkit_visible}, Tabs: {tabs_count}")
@@ -511,6 +511,30 @@ async def run_e2e_tests():
                 record_pass("Wireless & ANC tab activated with Bluetooth Latency, ANC Mechanics, Earhooks, and Battery Reality")
             else:
                 record_fail("Wireless tab switch", f"Vis: {wireless_visible}, Latency: {latency_present}, ANC: {anc_present}, Hooks: {earhooks_present}")
+
+            # Click Bone Conduction tab
+            await page.click(".toolkit-tab-btn[data-target='toolkit-panel-bone']")
+            await page.wait_for_timeout(200)
+            bone_visible = await page.locator("#toolkit-panel-bone").is_visible()
+            sub80_present = await page.locator("#toolkit-panel-bone h4:has-text('Sub-Bass Barrier')").is_visible()
+            dualpitch_present = await page.locator("#toolkit-panel-bone h4:has-text('Hybrid Bone + Air')").is_visible()
+            haylou_present = await page.locator("#toolkit-panel-bone h4:has-text('Haylou PurFree BC01')").is_visible()
+            if bone_visible and sub80_present and dualpitch_present and haylou_present:
+                record_pass("Bone Conduction tab activated with Sub-Bass physics, Shokz DualPitch, and Haylou BC01")
+            else:
+                record_fail("Bone Conduction tab switch", f"Vis: {bone_visible}, Sub80: {sub80_present}, DualPitch: {dualpitch_present}, Haylou: {haylou_present}")
+
+            # Click Mic Lab tab
+            await page.click(".toolkit-tab-btn[data-target='toolkit-panel-mics']")
+            await page.wait_for_timeout(200)
+            mics_visible = await page.locator("#toolkit-panel-mics").is_visible()
+            ruyi_present = await page.locator("#toolkit-panel-mics h4:has-text('Kinera Celest Ruyi')").is_visible()
+            boompro_present = await page.locator("#toolkit-panel-mics h4:has-text('V-MODA BoomPro')").is_visible()
+            trrs_present = await page.locator("#toolkit-panel-mics h4:has-text('TRRS Pinouts')").is_visible()
+            if mics_visible and ruyi_present and boompro_present and trrs_present:
+                record_pass("Mic Lab tab activated with Kinera Celest Ruyi, V-MODA BoomPro, and TRRS/DAC guide")
+            else:
+                record_fail("Mic Lab tab switch", f"Vis: {mics_visible}, Ruyi: {ruyi_present}, BoomPro: {boompro_present}, TRRS: {trrs_present}")
 
             # Click Care & Storage tab
             await page.click(".toolkit-tab-btn[data-target='toolkit-panel-care']")
@@ -615,11 +639,12 @@ async def run_e2e_tests():
             jt1_vis = await page.locator("#headphones-bench h3:has-text('FiiO JT1')").is_visible()
             old_fashioned_vis = await page.locator("#headphones-bench h3:has-text('Moondrop Old Fashioned')").is_visible()
             ksc75_vis = await page.locator("#headphones-bench h3:has-text('Koss KSC75')").is_visible()
+            haylou_vis = await page.locator("#headphones-bench h3:has-text('Haylou PurFree BC01')").is_visible()
 
-            if eh11_vis and eh13_vis and jt1_vis and old_fashioned_vis and ksc75_vis:
-                record_pass("Key headphone benchmarks (FiiO EH11, EH13, JT1, Moondrop Old Fashioned, Koss KSC75) verified")
+            if eh11_vis and eh13_vis and jt1_vis and old_fashioned_vis and ksc75_vis and haylou_vis:
+                record_pass("Key headphone benchmarks (FiiO EH11, EH13, JT1, Moondrop Old Fashioned, Koss KSC75, Haylou BC01) verified")
             else:
-                record_fail("Key headphone models check", f"EH11: {eh11_vis}, EH13: {eh13_vis}, JT1: {jt1_vis}, OldFashioned: {old_fashioned_vis}, KSC75: {ksc75_vis}")
+                record_fail("Key headphone models check", f"EH11: {eh11_vis}, EH13: {eh13_vis}, JT1: {jt1_vis}, OldFashioned: {old_fashioned_vis}, KSC75: {ksc75_vis}, Haylou: {haylou_vis}")
 
             # -----------------------------------------------------------------
             # TEST 13: Original TinHiFi C2, Waner variants & QCY MeloBuds Disambiguation
