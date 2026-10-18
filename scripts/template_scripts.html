@@ -906,13 +906,55 @@
     deckPrevBtn.addEventListener('click', playPrevTrack);
     deckNextBtn.addEventListener('click', playNextTrack);
 
+    const soundbenchNavBtn = document.getElementById('open-soundbench-nav-btn');
+    const soundbenchMobileBtn = document.getElementById('open-soundbench-mobile-btn');
+    const dockSoundbenchBtn = document.getElementById('dock-soundbench-btn');
+
+    function updateSoundDeckUI(isOpen) {
+      if (isOpen) {
+        soundDeckPill.classList.add('hidden');
+        soundDeckPanel.classList.remove('hidden');
+        if (dockSoundbenchBtn) {
+          dockSoundbenchBtn.setAttribute('aria-expanded', 'true');
+          dockSoundbenchBtn.classList.add('border-amber-400', 'bg-amber-400/20', 'text-amber-200', 'shadow-[0_0_15px_rgba(251,191,36,0.35)]');
+          dockSoundbenchBtn.innerHTML = '<i class="fa-solid fa-chevron-down text-amber-400"></i><span class="hidden sm:inline">Close Bench</span>';
+        }
+        if (soundbenchNavBtn) {
+          soundbenchNavBtn.setAttribute('aria-expanded', 'true');
+          soundbenchNavBtn.classList.add('bg-amber-400/20', 'border-amber-400');
+        }
+        if (soundbenchMobileBtn) {
+          soundbenchMobileBtn.setAttribute('aria-expanded', 'true');
+          soundbenchMobileBtn.classList.add('bg-amber-400/20', 'border-amber-400');
+        }
+      } else {
+        soundDeckPanel.classList.add('hidden');
+        soundDeckPill.classList.remove('hidden');
+        if (dockSoundbenchBtn) {
+          dockSoundbenchBtn.setAttribute('aria-expanded', 'false');
+          dockSoundbenchBtn.classList.remove('border-amber-400', 'bg-amber-400/20', 'text-amber-200', 'shadow-[0_0_15px_rgba(251,191,36,0.35)]');
+          dockSoundbenchBtn.innerHTML = '<i class="fa-solid fa-music text-amber-400"></i><span class="hidden sm:inline">Sound Bench</span>';
+        }
+        if (soundbenchNavBtn) {
+          soundbenchNavBtn.setAttribute('aria-expanded', 'false');
+          soundbenchNavBtn.classList.remove('bg-amber-400/20', 'border-amber-400');
+        }
+        if (soundbenchMobileBtn) {
+          soundbenchMobileBtn.setAttribute('aria-expanded', 'false');
+          soundbenchMobileBtn.classList.remove('bg-amber-400/20', 'border-amber-400');
+        }
+      }
+    }
+
     function expandSoundDeck() {
-      soundDeckPill.classList.add('hidden');
-      soundDeckPanel.classList.remove('hidden');
+      updateSoundDeckUI(true);
     }
     function minimizeSoundDeck() {
-      soundDeckPanel.classList.add('hidden');
-      soundDeckPill.classList.remove('hidden');
+      updateSoundDeckUI(false);
+    }
+    function toggleSoundDeck() {
+      const isOpen = !soundDeckPanel.classList.contains('hidden');
+      updateSoundDeckUI(!isOpen);
     }
 
     soundDeckPill.addEventListener('click', expandSoundDeck);
@@ -921,6 +963,10 @@
       expandSoundDeck();
     });
     deckMinimizeBtn.addEventListener('click', minimizeSoundDeck);
+
+    if (soundbenchNavBtn) soundbenchNavBtn.addEventListener('click', toggleSoundDeck);
+    if (soundbenchMobileBtn) soundbenchMobileBtn.addEventListener('click', toggleSoundDeck);
+    if (dockSoundbenchBtn) dockSoundbenchBtn.addEventListener('click', toggleSoundDeck);
 
     // Audiophile Gear Toolkit Tab Switcher
     const toolkitTabs = document.querySelectorAll('.toolkit-tab-btn');
