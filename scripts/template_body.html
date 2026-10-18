@@ -34,6 +34,10 @@
           <i class="fa-solid fa-toolbox text-emerald-400"></i>
           <span>Gear Toolkit</span>
         </a>
+        <button type="button" id="open-soundbench-nav-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-studio-900 hover:bg-studio-850 text-xs font-semibold text-amber-300 border border-amber-400/40 hover:border-amber-400 transition btn-tactile min-h-[44px]" aria-label="Open Acoustic Sound Bench player" title="Open Acoustic Sound Bench player">
+          <i class="fa-solid fa-music text-amber-400"></i>
+          <span class="hidden sm:inline">Sound Bench</span>
+        </button>
         <button type="button" id="open-wishlist-top-btn" class="relative px-3 sm:px-3.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs transition flex items-center gap-1.5 sm:gap-2 shadow-sm btn-tactile">
           <i class="fa-solid fa-bookmark text-black"></i>
           <span>Saved Picks</span>
@@ -48,6 +52,10 @@
         <i class="fa-solid fa-layer-group text-amber-400"></i>
         <span>30 Sets</span>
       </a>
+      <button type="button" id="open-soundbench-mobile-btn" class="flex-1 text-center py-1.5 px-2 rounded-lg bg-studio-900 border border-studio-border/80 text-amber-300 font-semibold flex items-center justify-center gap-1 active:bg-amber-400 active:text-black min-h-[44px]" aria-label="Open Sound Bench player">
+        <i class="fa-solid fa-music text-amber-400"></i>
+        <span>Bench</span>
+      </button>
       <a href="#headphones-bench" class="flex-1 text-center py-1.5 px-2 rounded-lg bg-studio-900 border border-studio-border/80 text-slate-200 font-semibold flex items-center justify-center gap-1 active:bg-purple-400 active:text-black">
         <i class="fa-solid fa-headphones text-purple-400"></i>
         <span>Cans</span>
@@ -2590,7 +2598,7 @@
   </div>
 
   <!-- Expanded Sound Deck Panel -->
-  <div id="sound-deck-panel" class="hidden fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-4 sm:left-4 sm:w-[420px] z-40 max-h-[85vh] sm:max-h-[640px] bg-studio-900 border-t sm:border border-studio-border rounded-t-3xl sm:rounded-2xl shadow-2xl overflow-y-auto custom-scrollbar flex flex-col pb-[calc(1rem+env(safe-area-inset-bottom))] sm:pb-0">
+  <div id="sound-deck-panel" class="hidden fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-4 sm:left-4 sm:w-[420px] z-50 max-h-[85vh] sm:max-h-[640px] bg-studio-900 border-t sm:border border-studio-border rounded-t-3xl sm:rounded-2xl shadow-2xl overflow-y-auto custom-scrollbar flex flex-col pb-[calc(1rem+env(safe-area-inset-bottom))] sm:pb-0">
     <!-- Mobile Grab Bar -->
     <div class="w-12 h-1.5 bg-studio-700/80 rounded-full mx-auto my-2 sm:hidden shrink-0"></div>
 
@@ -2697,7 +2705,13 @@
     </div>
   </div>
 
-  <!-- Floating Back to Top Button -->
-  <button id="back-to-top-btn" type="button" aria-label="Scroll back to top" title="Scroll back to top" class="fixed bottom-5 right-5 z-40 w-11 h-11 rounded-full bg-studio-900/90 hover:bg-studio-800 text-slate-300 hover:text-amber-400 border border-studio-border hover:border-amber-400/50 shadow-2xl backdrop-blur-md flex items-center justify-center btn-tactile transition-all duration-300 opacity-0 pointer-events-none translate-y-3 cursor-pointer">
-    <i class="fa-solid fa-arrow-up text-sm"></i>
-  </button>
+  <!-- Floating Action Dock: Sound Bench & Back to Top -->
+  <aside class="fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] sm:bottom-5 right-4 sm:right-5 z-40 flex flex-col gap-2.5 items-end" id="floating-dock" aria-label="Quick Navigation and Audio Controls">
+    <button id="dock-soundbench-btn" type="button" aria-label="Toggle Acoustic Sound Bench player" title="Toggle Acoustic Sound Bench player" class="btn-tactile min-h-[44px] min-w-[44px] px-3.5 py-2.5 rounded-full bg-studio-900/95 hover:bg-studio-800 text-amber-300 border border-amber-400/40 hover:border-amber-400/70 shadow-2xl backdrop-blur-md flex items-center justify-center gap-2 text-xs font-mono font-bold cursor-pointer transition-all">
+      <i class="fa-solid fa-music text-amber-400"></i>
+      <span class="hidden sm:inline">Sound Bench</span>
+    </button>
+    <button id="back-to-top-btn" type="button" aria-label="Scroll back to top" title="Scroll back to top" class="w-11 h-11 rounded-full bg-studio-900/90 hover:bg-studio-800 text-slate-300 hover:text-amber-400 border border-studio-border hover:border-amber-400/50 shadow-2xl backdrop-blur-md flex items-center justify-center btn-tactile transition-all duration-300 opacity-0 pointer-events-none translate-y-3 cursor-pointer">
+      <i class="fa-solid fa-arrow-up text-sm"></i>
+    </button>
+  </aside>
