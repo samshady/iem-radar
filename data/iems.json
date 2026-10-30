@@ -1767,14 +1767,14 @@
       },
       {
         "name": "AliExpress Choice",
-        "url": "https://www.aliexpress.com/wholesale?SearchText=QCY+HT08+MeloBuds+Pro"
+        "url": "https://www.aliexpress.com/wholesale?SearchText=QCY+HT08"
       }
     ],
-    "notes": "Exact Model: HT08 (regulatory BH24HT08A). Do not confuse on AliExpress with the older HT05 (MeloBuds ANC, lacks LDAC/in-ear detection) or HT09 (MeloBuds Neo). Look for the gold Hi-Res Wireless LDAC logo on the box and metallic stem strip.",
+    "notes": "Exact Model: HT08 (regulatory code BH24HT08A). Avoid AliExpress multi-SKU traps: listings often default to cheaper HT05 or T13 in the color dropdown. Look for the gold Hi-Res Wireless and LDAC logos on the box, the vertical egg-shaped case with bottom pairing button, and the glossy stem strip with optical wear sensor.",
     "image": "assets/images/qcy-melobuds-pro.jpg",
     "tagline": "The 2024 predecessor: 46dB Hybrid ANC, LDAC Hi-Res, and sub-€30 clearance value.",
     "sound_summary": "Energetic, punchy, and fun sound backed by genuine Hi-Res LDAC decoding and strong noise isolation.",
-    "takeaway": "QCY's high-value flagship TWS. When buying on AliExpress, make sure the listing specifies HT08 or MeloBuds Pro with LDAC. The older HT05 (MeloBuds ANC) lacks LDAC and in-ear detection. The real Pro gives you adaptive 46dB ANC, multipoint Bluetooth 5.3, LDAC hi-res streaming, and in-ear auto-pause sensors.",
+    "takeaway": "QCY's high-value flagship TWS. When buying on AliExpress, search 'QCY HT08' specifically to avoid seller bait-and-switch listings. In the color swatches, ensure the selected option says HT08 Pro (not HT05, T13, or case skins). You get adaptive 46dB ANC, multipoint Bluetooth 5.3, LDAC hi-res streaming, and optical in-ear auto-pause sensors.",
     "fit_verdict": "5.5mm nozzle • Ergonomic stem design with IPX5 splash resistance.",
     "gallery": [
       {
@@ -1843,14 +1843,14 @@
       },
       {
         "name": "AliExpress Choice",
-        "url": "https://www.aliexpress.com/wholesale?SearchText=QCY+MeloBuds+N70"
+        "url": "https://www.aliexpress.com/wholesale?SearchText=QCY+HT18+N70"
       }
     ],
-    "notes": "Official flagship successor to the MeloBuds Pro (HT08). Introduces a dedicated USound MEMS tweeter, 56dB PureSilenz adaptive hybrid ANC, Bluetooth 6.0 with Google Fast Pair, LDAC Hi-Res Wireless, and Qi wireless charging.",
+    "notes": "Official flagship successor to the MeloBuds Pro. Engineering code: HT18 (regulatory BH25HT18A). CRITICAL: Never search 'QCY T18' (which is an old 2022 model with zero ANC). Look for the 56dB Adaptive ANC, Bluetooth 6.0, dual-driver (Dynamic + MEMS micro-speaker), and Qi wireless charging.",
     "image": "assets/images/qcy-melobuds-n70.jpg",
     "tagline": "The 2025 flagship leap: Silicon MEMS micro-speaker tweeter, 56dB adaptive ANC, and Bluetooth 6.0.",
     "sound_summary": "Resolving, balanced sound with crystalline highs from its dedicated MEMS tweeter and clean, punchy bass that outclasses typical single-driver budget earbuds.",
-    "takeaway": "The direct successor to the MeloBuds Pro and a genuine technical breakthrough for budget wireless. By pairing a traditional dynamic woofer with a cutting-edge USound MEMS micro-speaker tweeter, it fixes the Pro's slightly rolled-off, metallic high end while boosting adaptive ANC to 56dB and total battery life to 50 hours. Add in Bluetooth 6.0, LDAC, and Qi wireless charging, and it sets the new sub-€55 benchmark.",
+    "takeaway": "The direct successor to the MeloBuds Pro and a genuine technical breakthrough for budget wireless. Pairing a dynamic woofer with a cutting-edge USound MEMS micro-speaker tweeter, it fixes typical single-driver treble roll-off while boosting adaptive ANC to 56dB. When purchasing on AliExpress, search specifically for 'QCY HT18' or 'QCY N70' to avoid the 2022 T18 trap. Includes Bluetooth 6.0, LDAC, Google Fast Pair, and Qi wireless charging.",
     "fit_verdict": "5.4mm nozzle • Ergonomic stem fit with 5 tip sizes (XS to XL) and IPX5 rating.",
     "gallery": [
       {
