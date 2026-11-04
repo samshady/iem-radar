@@ -142,6 +142,80 @@
     ]
   },
   {
+    "id": "kefine-loric",
+    "name": "Kefine Loric",
+    "brand": "Kefine",
+    "release_year": "2026",
+    "status": "Active Budget",
+    "price_usd_msrp": 28.0,
+    "price_eur_amazon": 32.0,
+    "price_eur_ali_choice": 24.0,
+    "price_eur_ali_1111": 18.0,
+    "driver_type": "1DD",
+    "driver_detail": "10mm PU + Titanium Composite Diaphragm Dynamic Driver with dual-magnet cavity",
+    "sound_signature": "Warm Musical / Relaxed Harman",
+    "sound_description": "Impactful low-end punch, warm and full-bodied vocal presentation, and a polite, non-fatiguing treble roll-off. Tuned for musical enjoyment and casual listening.",
+    "nozzle_diameter_mm": 5.4,
+    "nozzle_warning": "No",
+    "comfort_rating": 9.3,
+    "build_material": "Ergonomic lightweight composite body with metallic armor-inspired faceplate",
+    "connection": "3.5mm or USB-C DSP",
+    "cable_detail": "Detachable 0.78mm 2-pin oxygen-free copper cable with optional Type-C DSP and inline mic",
+    "accessories_included": "Spring-clasp leatherette storage pouch, 6 pairs silicone ear tips (S/M/L)",
+    "accessories_rating": 8.7,
+    "qc_and_known_issues": "Polite upper treble sacrifices airy micro-detail for a fatigue-free sound; shell is noticeably lighter than the all-metal Klean.",
+    "gaming_score": 8.2,
+    "community_score": 8.8,
+    "crinacle_rank": "Unranked (New Release)",
+    "super_review_rating": "Easy-Going Budget Contender",
+    "jays_audio_rating": "Warm & Forgiving Musicality",
+    "target_personas": [
+      "Casual Everyday",
+      "Smartphone DSP / No Jack",
+      "Pop, Hip-Hop & Podcasts"
+    ],
+    "verified_stores": [
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/products/kefine-loric"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=Kefine+Loric"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/wholesale?SearchText=Kefine+Loric"
+      }
+    ],
+    "notes": "Kefine's sub-$30 entry level model. Positioned below the Klean and Delci, focusing on warm musicality and lightweight comfort.",
+    "image": "assets/images/kefine-loric.jpg",
+    "tagline": "Armor-inspired lightweight budget monitor with PU plus titanium warmth.",
+    "sound_summary": "Rich mid-bass punch with lush vocals and relaxed, non-fatiguing treble.",
+    "takeaway": "Kefine's most affordable set. While the Klean focuses on analytical speed and swappable nozzles, the Loric prioritizes warm, fun musicality with a lightweight armor-styled shell and a convenient Type-C DSP cable option.",
+    "fit_verdict": "5.4mm nozzle • Featherweight composite shell with comfortable, secure inner ear contour.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Gunmetal Armor Faceplate",
+        "url": "assets/images/kefine-loric.jpg"
+      },
+      {
+        "type": "detail",
+        "label": "Silver Faceplate",
+        "badge": "Silver Armor Edition",
+        "url": "assets/images/kefine-loric-detail.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Cable & Mic",
+        "badge": "0.78mm 2-Pin Detachable Cable",
+        "url": "assets/images/kefine-loric-cable.jpg"
+      }
+    ]
+  },
+  {
     "id": "kefine-klean",
     "name": "Kefine Klean",
     "brand": "Kefine",
