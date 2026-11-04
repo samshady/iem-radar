@@ -1414,6 +1414,80 @@
     ]
   },
   {
+    "id": "7hz-crinacle-zero-3",
+    "name": "7Hz x Crinacle Zero: 3",
+    "brand": "7Hz x Crinacle",
+    "release_year": "2026",
+    "status": "Active Benchmark",
+    "price_usd_msrp": 29.99,
+    "price_eur_amazon": 34.0,
+    "price_eur_ali_choice": 25.0,
+    "price_eur_ali_1111": 19.5,
+    "driver_type": "1DD",
+    "driver_detail": "10mm Upgraded Dynamic Driver with Metal Dome Composite Diaphragm",
+    "sound_signature": "Refined Warm Harman / Controlled Sub-Bass",
+    "sound_description": "Third-generation evolution of the Zero formula. Deep, impactful sub-bass punch with refined pinna gain and smoother, non-fatiguing treble.",
+    "nozzle_diameter_mm": 5.4,
+    "nozzle_warning": "No",
+    "comfort_rating": 9.4,
+    "build_material": "Ergonomic resin composite body with redesigned metal faceplate geometry",
+    "connection": "3.5mm (Mic optional)",
+    "cable_detail": "High-purity silver-plated OFC copper 0.78mm 2-pin detachable cable",
+    "accessories_included": "Multi-density silicone ear tips (6 pairs), silver-plated cable, manual",
+    "accessories_rating": 8.5,
+    "qc_and_known_issues": "Redesigned shell contour improves seal over Zero:2; rock-solid driver consistency.",
+    "gaming_score": 8.5,
+    "community_score": 9.2,
+    "crinacle_rank": "Excluded (Co-Designed by Crinacle)",
+    "super_review_rating": "Recommended Budget Evolution",
+    "jays_audio_rating": "Smooth, Musical & Ergonomic",
+    "target_personas": [
+      "Universal Starter IEM",
+      "Pop, Rock, Hip-Hop",
+      "Smooth Extended Listening"
+    ],
+    "verified_stores": [
+      {
+        "name": "Linsoul",
+        "url": "https://www.linsoul.com/products/7hz-x-crinacle-zero-3"
+      },
+      {
+        "name": "Amazon.de",
+        "url": "https://www.amazon.de/s?k=7Hz+x+Crinacle+Zero+3"
+      },
+      {
+        "name": "AliExpress Choice",
+        "url": "https://www.aliexpress.com/wholesale?SearchText=7Hz+x+Crinacle+Zero+3"
+      }
+    ],
+    "notes": "Third generation of the Salnotes Zero legacy, featuring an upgraded metal-dome composite driver and refined ergonomics.",
+    "image": "assets/images/7hz-crinacle-zero-3.jpg",
+    "tagline": "The 3rd generation budget champion with upgraded metal dome driver and sculpted comfort.",
+    "sound_summary": "Impactful sub-bass warmth with smooth, non-fatiguing treble extension.",
+    "takeaway": "7Hz and Crinacle refined their budget formula with a metal dome dynamic driver and a noticeably more comfortable shell. It keeps the warm, fun bass punch that made the Zero:2 popular while smoothing out vocal sibilance.",
+    "fit_verdict": "5.4mm nozzle • Sculpted ergonomic shell provides an easy, low-fatigue seal.",
+    "gallery": [
+      {
+        "type": "earphones",
+        "label": "Earphones",
+        "badge": "Metal Dome Composite Dynamic Driver",
+        "url": "assets/images/7hz-crinacle-zero-3.jpg"
+      },
+      {
+        "type": "packaging",
+        "label": "Retail Packaging",
+        "badge": "Presentation Box & Included Tips",
+        "url": "assets/images/7hz-crinacle-zero-3-packaging.jpg"
+      },
+      {
+        "type": "cable",
+        "label": "Detachable Cable",
+        "badge": "Silver-Plated OFC 0.78mm 2-Pin Cable",
+        "url": "assets/images/7hz-crinacle-zero-3-cable.jpg"
+      }
+    ]
+  },
+  {
     "id": "tangzu-waner-2",
     "name": "Tangzu Wan'er S.G II (Wan'er 2)",
     "brand": "Tangzu",
