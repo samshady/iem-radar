@@ -436,6 +436,13 @@
         const hasNote = personalNotes[iem.id];
         const isSmallEarSafe = iem.nozzle_diameter_mm <= 5.5;
 
+        // Extract verified store links
+        const stores = iem.verified_stores || [];
+        const aliStore = stores.find(s => s.name && s.name.toLowerCase().includes('ali'));
+        const linsoulStore = stores.find(s => s.name && s.name.toLowerCase().includes('linsoul'));
+        const shenzhenStore = stores.find(s => s.name && s.name.toLowerCase().includes('shenzhen'));
+        const amazonStore = stores.find(s => s.name && s.name.toLowerCase().includes('amazon'));
+
         return `
           <div class="studio-card rounded-2xl p-5 flex flex-col justify-between group relative">
             <div>
@@ -501,22 +508,62 @@
             </div>
 
             <!-- Pricing & Action Footer -->
-            <div class="mt-5 pt-4 border-t border-studio-border space-y-3">
-              <div class="grid grid-cols-2 gap-2 text-sm font-mono">
-                <div class="bg-studio-950 p-2.5 rounded-lg border border-studio-border">
-                  <span class="text-xs text-slate-400 block uppercase font-mono">Amazon.de</span>
-                  <span class="font-bold text-white text-base block mt-0.5">~€${iem.price_eur_amazon}</span>
+            <div class="mt-5 pt-4 border-t border-studio-border/80 space-y-3">
+              <!-- Price Comparison Header -->
+              <div class="flex items-baseline justify-between gap-2">
+                <div>
+                  <span class="text-[11px] font-mono text-emerald-400 uppercase font-bold tracking-wider block">11.11 Floor Price</span>
+                  <div class="text-2xl font-display font-black text-emerald-400 num-tabular leading-tight">
+                    ~€${iem.price_eur_ali_1111}
+                  </div>
                 </div>
-                <div class="bg-emerald-500/10 p-2.5 rounded-lg border border-emerald-500/20">
-                  <span class="text-xs text-emerald-400 block uppercase font-mono">11.11 / Choice</span>
-                  <span class="font-bold text-emerald-300 text-base block mt-0.5">~€${iem.price_eur_ali_1111}</span>
+                <div class="flex flex-wrap items-center justify-end gap-1.5 font-mono text-xs">
+                  <span class="px-2 py-1 rounded-md bg-studio-950 border border-studio-border text-slate-300" title="AliExpress Choice Street Price">
+                    Choice: <strong class="text-white">€${iem.price_eur_ali_choice}</strong>
+                  </span>
+                  <span class="px-2 py-1 rounded-md bg-studio-950 border border-studio-border text-slate-400 line-through" title="Amazon.de Standard Price">
+                    Amazon: €${iem.price_eur_amazon}
+                  </span>
                 </div>
               </div>
 
-              <button type="button" onclick="openModal('${iem.id}')" class="w-full py-2.5 px-3 rounded-lg bg-studio-850 hover:bg-studio-800 text-slate-200 text-sm font-bold transition flex items-center justify-center gap-2 border border-studio-border btn-tactile">
-                <i class="fa-solid fa-circle-info text-amber-400"></i>
-                <span>Notes, Cables &amp; Stores</span>
-              </button>
+              <!-- Primary Hero Buy Button (AliExpress Choice Floor Deal) -->
+              ${aliStore ? `
+                <a href="${aliStore.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition">
+                  <i class="fa-solid fa-cart-shopping text-sm"></i>
+                  <span>Ali Choice Deal (~€${iem.price_eur_ali_1111})</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[11px] opacity-75 ml-0.5"></i>
+                </a>
+              ` : ''}
+
+              <!-- Direct Store Buying Links & Specs Grid (>=44px touch targets) -->
+              <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                ${linsoulStore ? `
+                  <a href="${linsoulStore.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-850 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate" title="Shop ${iem.name} on Linsoul">
+                    <i class="fa-solid fa-store text-sky-400 text-xs shrink-0"></i>
+                    <span class="truncate">Linsoul</span>
+                  </a>
+                ` : ''}
+
+                ${shenzhenStore ? `
+                  <a href="${shenzhenStore.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-850 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate" title="Shop ${iem.name} on ShenzhenAudio">
+                    <i class="fa-solid fa-bag-shopping text-emerald-400 text-xs shrink-0"></i>
+                    <span class="truncate">ShenzhenAudio</span>
+                  </a>
+                ` : ''}
+
+                ${amazonStore ? `
+                  <a href="${amazonStore.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-950 hover:bg-studio-850 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate" title="Shop ${iem.name} on Amazon.de (~€${iem.price_eur_amazon})">
+                    <i class="fa-brands fa-amazon text-amber-400 text-xs shrink-0"></i>
+                    <span class="truncate">Amazon.de</span>
+                  </a>
+                ` : ''}
+
+                <button type="button" onclick="openModal('${iem.id}')" class="btn-tactile min-h-[44px] px-2.5 py-2 rounded-xl bg-studio-850 hover:bg-studio-800 text-slate-200 border border-studio-border flex items-center justify-center gap-1.5 transition truncate">
+                  <i class="fa-solid fa-circle-info text-amber-400 text-xs shrink-0"></i>
+                  <span class="truncate">Specs &amp; Fit</span>
+                </button>
+              </div>
             </div>
           </div>
         `;
@@ -525,6 +572,8 @@
       // Render Table
       tableBody.innerHTML = filtered.map(iem => {
         const isFavorited = shortlist.includes(iem.id);
+        const stores = iem.verified_stores || [];
+        const aliStore = stores.find(s => s.name && s.name.toLowerCase().includes('ali'));
         return `
           <tr class="hover:bg-studio-850/60 transition cursor-pointer" onclick="openModal('${iem.id}')">
             <td class="px-4 py-3.5 flex items-center space-x-3">
@@ -544,9 +593,21 @@
             <td class="px-4 py-3.5 font-mono font-bold text-white text-sm">~€${iem.price_eur_amazon}</td>
             <td class="px-4 py-3.5 font-mono font-bold text-emerald-400 text-sm">~€${iem.price_eur_ali_1111}</td>
             <td class="px-4 py-3.5 text-right" onclick="event.stopPropagation()">
-              <button type="button" onclick="toggleShortlist('${iem.id}', event)" aria-label="Toggle shortlist item" class="p-2 rounded-lg text-slate-400 hover:text-amber-400 transition">
-                <i class="fa-${isFavorited ? 'solid text-amber-400' : 'regular'} fa-bookmark text-sm"></i>
-              </button>
+              <div class="flex items-center justify-end gap-1.5">
+                ${aliStore ? `
+                  <a href="${aliStore.url}" target="_blank" rel="noopener noreferrer" class="btn-tactile min-h-[38px] px-2.5 py-1.5 rounded-lg bg-amber-400 text-black hover:bg-amber-300 font-mono text-xs font-bold inline-flex items-center gap-1 shadow-sm transition" title="AliExpress Choice Deal">
+                    <i class="fa-solid fa-cart-shopping text-xs"></i>
+                    <span>Deal</span>
+                  </a>
+                ` : ''}
+                <button type="button" onclick="openModal('${iem.id}')" class="btn-tactile min-h-[38px] px-2.5 py-1.5 rounded-lg bg-studio-850 hover:bg-studio-800 text-slate-200 border border-studio-border font-mono text-xs inline-flex items-center gap-1 transition" title="Full Specs &amp; Notes">
+                  <i class="fa-solid fa-circle-info text-amber-400 text-xs"></i>
+                  <span>Specs</span>
+                </button>
+                <button type="button" onclick="toggleShortlist('${iem.id}', event)" aria-label="Toggle shortlist item" class="min-h-[38px] min-w-[38px] p-2 rounded-lg text-slate-400 hover:text-amber-400 transition inline-flex items-center justify-center">
+                  <i class="fa-${isFavorited ? 'solid text-amber-400' : 'regular'} fa-bookmark text-sm"></i>
+                </button>
+              </div>
             </td>
           </tr>
         `;

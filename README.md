@@ -77,5 +77,5 @@ iem-radar/
    ```
 4. Check for zero em-dashes across all files:
    ```bash
-   grep -n -E "—|–" scripts/template_body.html dist/index.html README.md
+   grep -n -E " - | - " scripts/template_body.html dist/index.html README.md
    ```
